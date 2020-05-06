@@ -2,7 +2,7 @@
 
 |  **#** | **Código** | **Apellidos, Nombre** | **% Trabajo** |
 | :---: | :---: | :---: | :---: |
-|  1 |  |  | 100% |
+|  1 |  201810040 | Gálvez Ccopa, Juan Antonio | 100% |
 |  2 |  201710433 | Navarro Nieto, Juan Manuel | 100% |
 |  3 |  |  | 100% |
 |  4 |  |  | 100% |
