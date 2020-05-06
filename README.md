@@ -34,7 +34,7 @@
 2. NFR-02 [#2](/../../issues/12)
 3. NFR-03 [#3](/../../issues/13)
 4. NFR-04 [#4](/../../issues/14)
-5. NFR-03 [#5](/../../issues/15)
+5. NFR-05 [#5](/../../issues/15)
 
 ### Resultados de las Técnicas de Recolección de Requerimientos
 1. [Técnica 1](docs/analysis/tecnica1.md)
