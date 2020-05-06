@@ -2,12 +2,11 @@
 
 |  **#** | **Código** | **Apellidos, Nombre** | **% Trabajo** |
 | :---: | :---: | :---: | :---: |
-|  1 |  |  | 100% |
+|  1 |  201810431 | Caballero Falcon, Cristian | 100% |
 |  2 |  201710433 | Navarro Nieto, Juan Manuel | 100% |
-|  3 |  |  | 100% |
-|  4 |  |  | 100% |
-|  5 |  |  | 100% |
-|  6 |  |  | 100% |
+|  3 |  201810160 | Garcia Castanñeda, Fabrizio| 100% |
+|  4 |  201810294 |Figueroa Gomez, Nicolas     | 100% |
+|  5 |  201810040|Galvez CCopa, Juan Antonio   | 100% |
 
 ## Contenido
 
