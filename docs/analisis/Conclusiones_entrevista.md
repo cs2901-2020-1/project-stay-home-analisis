@@ -2,12 +2,12 @@
 
 
 ## Datos generales
-Tamaño de la muestra: 
-Diversidad de la muestra:
+Tamaño de la muestra: 2 profesores y 2 alumnos.<br/>
+Diversidad de la muestra: 50% profesores, 50% alumnos.
 
 ## Objetivo
 
-El objetivo principal de esta entrevista es conocer qué esperan nuestros potenciales clientes de una plataforma como Stay Home y cuadrar una idea central sobre la cual desarrollarla.
+El objetivo principal de esta entrevista es conocer qué esperan nuestros potenciales usuarios de una plataforma como Stay Home y cuadrar una idea central sobre la cual desarrollarla.
 
 1. Presentación del equipo Stay Home y mencionar la finalidad de la entrevista.
 
