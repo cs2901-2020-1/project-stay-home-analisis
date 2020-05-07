@@ -1,5 +1,7 @@
 # Análisis de resultados Stay Home
 
+La encuesta creada y enviada a varios alumnos tuvo como objetivo recopilar información acerca de los requerimientos que interesan a nuestro público objetivo, para lograr asi tener su opinion respecto a lo que teniamos planteado.
+
 Este documento tiene el objetivo de hacer un análisis estadístico de los resultados obtenidos en las encuestas realizadas por el equipo de Stay Home. Dicha encuesta puede ser encontrada en el siguiente link: https://docs.google.com/forms/d/14wh0bNK3MSg3WY8v24V-g8bWXihrTHVPKeyv0MWj63Y/edit#responses
 
 ## Pregunta 1
