@@ -6,7 +6,7 @@
 |  2 |  201710433 | Navarro Nieto, Juan Manuel | 100% |
 |  3 |  201810160 | Garcia Castañeda, Fabrizio| 100% |
 |  4 |  201810294 |Figueroa Gomez, Nicolas     | 100% |
-|  5 |  201810040|Galvez CCopa, Juan Antonio   | 100% |
+|  5 |  201810040|Galvez Ccopa, Juan Antonio   | 100% |
 
 ## Contenido
 
@@ -37,14 +37,14 @@
 5. NFR-05 [#5](/../../issues/15)
 
 ### Resultados de las Técnicas de Recolección de Requerimientos
-1. [Técnica 1](docs/analysis/tecnica1.md)
-1. [Técnica 2](docs/analysis/tecnica2.md)
+1. [Encuestas](docs/analisis/Encuesta_Stay_Home.csv)
+1. [Técnica 2](docs/analisis/tecnica2.md)
 
 ### Casos de Uso
-1. [UC-01](docs/analysis/UC01.md)
-2. [UC-02](docs/analysis/UC02.md)
-3. [UC-03](docs/analysis/UC03.md)
-4. [UC Diagram](docs/analysis/UC_Diagram.md)
+1. [UC-07](docs/analisis/UC07.md)
+2. [UC-04](docs/analisis/UC04.md)
+3. [UC Diagram 07](docs/analisis/UC07.png)
+4. [UC Diagram 04](docs/analisis/UC04.png)
 
 ### Presentation
 1. [Presentación Etapa de Análisis](docs/analysis/presentation.pdf)
