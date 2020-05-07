@@ -4,12 +4,8 @@ La encuesta creada y enviada a varios alumnos tuvo como objetivo recopilar infor
 
 Este documento tiene el objetivo de hacer un análisis estadístico de los resultados obtenidos en las encuestas realizadas por el equipo de Stay Home. Dicha encuesta puede ser encontrada en el siguiente link: https://docs.google.com/forms/d/14wh0bNK3MSg3WY8v24V-g8bWXihrTHVPKeyv0MWj63Y/edit#responses
 
-## Diversidad de la muestra
-
-100% Alumnos
-
 ## Datos generales
-
+Diversidad de la muestra: 100% Alumnos.
 Tamaño de la muestra: 148 personas.
 
 ## Pregunta 1
