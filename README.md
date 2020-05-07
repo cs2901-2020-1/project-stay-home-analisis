@@ -62,4 +62,4 @@
 19. [UC Diagram 09](docs/analisis/UC10.png)
 20. [UC Diagram 10](docs/analisis/UC09.PNG)
 ### Presentation
-1. [Presentación Etapa de Análisis](docs/analysis/presentation.pdf)
+1. [Presentación Etapa de Análisis](docs/analisis/presentation.pdf)
