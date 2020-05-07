@@ -1,5 +1,10 @@
 # Entrevista: Stay Home
 
+
+## Datos generales
+Tamaño de la muestra: 
+Diversidad de la muestra:
+
 ## Objetivo
 
 El objetivo principal de esta entrevista es conocer qué esperan nuestros potenciales clientes de una plataforma como Stay Home y cuadrar una idea central sobre la cual desarrollarla.
