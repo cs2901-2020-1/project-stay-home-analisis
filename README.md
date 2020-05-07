@@ -10,7 +10,7 @@
 
 ## Contenido
 
-### [Glosario](docs/glossary.md)
+### [Glosario](docs/Glosario.md)
 
 ### Lista de Requerimientos 
 
