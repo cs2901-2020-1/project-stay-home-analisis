@@ -42,7 +42,7 @@
 
 ### Casos de Uso
 1. [UC-07](docs/analisis/UC07.md)
-2. [UC-02](docs/analisis/UC02.md)
+2. [UC-04](docs/analisis/UC04.md)
 3. [UC Diagram 01](docs/analisis/UC01.png)
 4. [UC Diagram 02](docs/analisis/UC02.png)
 
