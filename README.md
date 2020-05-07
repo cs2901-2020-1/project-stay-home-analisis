@@ -43,8 +43,8 @@
 ### Casos de Uso
 1. [UC-07](docs/analisis/UC07.md)
 2. [UC-04](docs/analisis/UC04.md)
-3. [UC Diagram 01](docs/analisis/UC01.png)
-4. [UC Diagram 02](docs/analisis/UC02.png)
+3. [UC Diagram 07](docs/analisis/UC01.png)
+4. [UC Diagram 04](docs/analisis/UC02.png)
 
 ### Presentation
 1. [Presentación Etapa de Análisis](docs/analysis/presentation.pdf)
