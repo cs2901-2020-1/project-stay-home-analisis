@@ -47,7 +47,7 @@
 4. [UC-04](docs/analisis/U_C04.md)
 5. [UC-05](docs/analisis/UC05.md)
 6. [UC-06](docs/analisis/U_C06.md)
-7. [UC-07](docs/analisis/UC07.md)
+7. [UC-07](docs/analisis/UC_07.md)
 8. [UC-08](docs/analisis/U_C08.md)
 9. [UC-09](docs/analisis/U_C09.md)
 10. [UC-10](docs/analisis/U_C10.md)
