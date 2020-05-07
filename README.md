@@ -2,12 +2,11 @@
 
 |  **#** | **Código** | **Apellidos, Nombre** | **% Trabajo** |
 | :---: | :---: | :---: | :---: |
-|  1 |  |  | 100% |
+|  1 |  201810431 | Caballero Falcon, Cristian | 100% |
 |  2 |  201710433 | Navarro Nieto, Juan Manuel | 100% |
-|  3 |  |  | 100% |
-|  4 |  |  | 100% |
-|  5 |  |  | 100% |
-|  6 |  |  | 100% |
+|  3 |  201810160 | Garcia Castañeda, Fabrizio| 100% |
+|  4 |  201810294 |Figueroa Gomez, Nicolas     | 100% |
+|  5 |  201810040|Galvez CCopa, Juan Antonio   | 100% |
 
 ## Contenido
 
@@ -27,15 +26,15 @@
 
 
 #### Requerimientos Funcionales Nice-to-Have
-1. FR-02 [#1](/../../issues/9)
-2. FR-02 [#2](/../../issues/10)
+1. FR-09 [#1](/../../issues/9)
+2. FR-10 [#2](/../../issues/10)
 
 #### Requerimientos No Funcionales
 1. NFR-01 [#2](/../../issues/11)
-2. NFR-01 [#2](/../../issues/12)
+2. NFR-02 [#2](/../../issues/12)
 3. NFR-03 [#3](/../../issues/13)
-4. NFR-03 [#4](/../../issues/14)
-5. NFR-03 [#5](/../../issues/15)
+4. NFR-04 [#4](/../../issues/14)
+5. NFR-05 [#5](/../../issues/15)
 
 ### Resultados de las Técnicas de Recolección de Requerimientos
 1. [Técnica 1](docs/analysis/tecnica1.md)
