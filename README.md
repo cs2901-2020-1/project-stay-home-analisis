@@ -6,7 +6,7 @@
 |  2 |  201710433 | Navarro Nieto, Juan Manuel | 100% |
 |  3 |  201810160 | Garcia Castañeda, Fabrizio| 100% |
 |  4 |  201810294 |Figueroa Gomez, Nicolas     | 100% |
-|  5 |  201810040|Galvez CCopa, Juan Antonio   | 100% |
+|  5 |  201810040|Galvez Ccopa, Juan Antonio   | 100% |
 
 ## Contenido
 
@@ -43,9 +43,8 @@
 ### Casos de Uso
 1. [UC-01](docs/analisis/UC01.md)
 2. [UC-02](docs/analisis/UC02.md)
-3. [UC-03](docs/analisis/UC03.md)
-4. [UC Diagram 01](docs/analisis/UC01.png)
-5. [UC Diagram 02](docs/analisis/UC02.png)
+3. [UC Diagram 01](docs/analisis/UC01.png)
+4. [UC Diagram 02](docs/analisis/UC02.png)
 
 ### Presentation
 1. [Presentación Etapa de Análisis](docs/analysis/presentation.pdf)
