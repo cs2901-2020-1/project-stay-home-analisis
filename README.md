@@ -37,7 +37,7 @@
 5. NFR-05 [#5](/../../issues/15)
 
 ### Resultados de las Técnicas de Recolección de Requerimientos
-1. [Encuestas](docs/analysis/Encuesta\Stay\Home.csv)
+1. [Encuestas](docs/analysis/Encuesta_Stay_Home.csv)
 1. [Técnica 2](docs/analysis/tecnica2.md)
 
 ### Casos de Uso
