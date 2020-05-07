@@ -44,7 +44,8 @@
 1. [UC-01](docs/analisis/UC01.md)
 2. [UC-02](docs/analisis/UC02.md)
 3. [UC-03](docs/analisis/UC03.md)
-4. [UC Diagram](docs/analysis/UC_Diagram.md)
+4. [UC Diagram 01](docs/analisis/UC01.png)
+5. [UC Diagram 02](docs/analisis/UC02.png)
 
 ### Presentation
 1. [Presentación Etapa de Análisis](docs/analysis/presentation.pdf)
