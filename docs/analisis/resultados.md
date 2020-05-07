@@ -6,7 +6,7 @@ Este documento tiene el objetivo de hacer un analisis estadistico de los resulta
 
 En el caso de la primera pregunta, dejamos que fuese una pregunta abierta con el afan de conocer un poco mas a nuestro publico objetivo. Tales respondieron de una manera muy interesante, sin embargo, haciendo un analisis estadistico, estos serian los resultados:
 
-![](p1.png)
+![](p1.PNG)
 
 ## Pregunta 2 y 3
 
