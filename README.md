@@ -38,7 +38,7 @@
 
 ### Resultados de las Técnicas de Recolección de Requerimientos
 1. [Encuestas](docs/analisis/Encuesta_Stay_Home.csv)
-1. [Técnica 2](docs/analisis/tecnica2.md)
+1. [Entrevistas](docs/analisis/Conclusiones_entrevista.md)
 
 ### Casos de Uso
 1. [UC-01](docs/analisis/UC01.md)
