@@ -53,7 +53,7 @@
 10. [UC-10](docs/analisis/UC10.md)
 11. [UC Diagram 01](docs/analisis/UC01.PNG)
 12. [UC Diagram 02](docs/analisis/UC02.png)
-13. [UC Diagram 03](docs/analisis/UC03.png)
+13. [UC Diagram 03](docs/analisis/UC03.PNG)
 14. [UC Diagram 04](docs/analisis/UC04.png)
 15. [UC Diagram 05](docs/analisis/UC05.png)
 16. [UC Diagram 06](docs/analisis/UC06.png)
