@@ -12,7 +12,7 @@ En el caso de la primera pregunta, dejamos que fuese una pregunta abierta con el
 
 ![](p2.png)
 
-![](p3.pn)
+![](p3.png)
 
 A simple vista, se puede apreciar que la mayoria de usuarios utilizan la computadora a la hora de realizar sus tareas o proyectos a pesar de tener respuestas mixtas a la hora del uso del internet. Esto nos indica que tales usuarios objetivos sacarian mas provecho de una plataforma web para acomodarlo a sus necesidades.
 
