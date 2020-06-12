@@ -3,8 +3,8 @@ const Pool = require('pg').Pool
 const pool = new Pool({
     host: 'localhost',
     user: 'postgres',
-    password : 'password',
-    database : 'stayhome',
+    password : '1234',
+    database : 'StayHome',
     port : '5432'
 })
 
@@ -28,9 +28,17 @@ const getUserById = (request, response) => {
   })
 }
 
-const createUser = (request, response) => {
-    const { email, password } = request.body
+const createUser = async(request, response) => {
 
+    const { email, password } = request.body
+    const emails = await pool.query('SELECT email FROM users;');
+    for(var i = 0; i < emails.rows.length; i++){
+      const actual_email = (emails.rows[i].email);
+      if (email == actual_email){
+          response.status(404).json(emails.rows[i].email)
+          break;
+      }
+    }
     pool.query('INSERT INTO users (email, password) VALUES ($1, $2)', [email, password], (error, results) => {
     if (error) {
       throw error

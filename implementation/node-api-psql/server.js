@@ -18,6 +18,9 @@ app.use(morgan('dev'));
 //Routes
 app.use(require('./routes/routes.js'))
 
+//Static Files
+app.use(express.static(path.join(__dirname, '/public')));
+
 //Listening the Server
 app.listen(app.get('port'), () => {
   console.log(`App running on port ${app.get('port')}.`)
