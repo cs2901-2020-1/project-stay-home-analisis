@@ -1,6 +1,9 @@
 <template>
     <div>
         WELCOME: {{currentUser.username}}
+        <v-btn x-small
+        app color="white"
+        >Administrar Cuenta</v-btn>
     </div>
 </template>
 
