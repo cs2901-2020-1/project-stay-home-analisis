@@ -21,14 +21,18 @@ public class StayHome implements Serializable{
     private String email;
 
     @Column
+    private String username;
+
+    @Column
     private String password;
 
     public StayHome() {
     }
 
-    public StayHome(BigInteger user_id, String email, String password) {
+    public StayHome(BigInteger user_id, String email, String password, String username) {
         this.user_id = user_id;
         this.email =  email;
+        this.username = username;
         this.password = password;
     }
 
@@ -41,6 +45,8 @@ public class StayHome implements Serializable{
         return email;
     }
 
+    public String getUsername() { return username; }
+
     public String getPassword() {
         return password;
     }
@@ -51,6 +57,10 @@ public class StayHome implements Serializable{
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public void setPassword(String password) {
