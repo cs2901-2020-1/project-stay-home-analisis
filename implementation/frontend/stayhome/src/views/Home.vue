@@ -1,31 +1,23 @@
 <template>
     <v-container>
-      <div v-for="user in users" :key ="user.user_id">
-           <div class="perfil">
-            <h1> ¡Bienvenido! </h1>
-         <div>
-           
-    <v-carousel>
-    <v-carousel-item
-      v-for="(item,i) in items"
-      :key="i"
-      :src="item.src"
-      reverse-transition="fade-transition"
-      transition="fade-transition"
-    ></v-carousel-item>
-  </v-carousel>
-  <v-spacer></v-spacer>
-            </div>
-        </div>
-      </div>
-
+      <div class="titulo"> ¡Bienvenido! </div>
+      <v-carousel>
+        <v-carousel-item
+          v-for="(item,i) in items"
+          :key="i"
+          :src="item.src"
+          reverse-transition="fade-transition"
+          transition="fade-transition"
+        ></v-carousel-item>
+      </v-carousel>
+      <v-spacer></v-spacer>
     </v-container>
 </template>
 
 <script>
 import { mapState } from 'vuex';
 export default {
-  
+
   name: 'Home',
   computed: {
     ...mapState(['users'])
@@ -34,7 +26,7 @@ export default {
     this.$store.dispatch("loadAll")
   },
   methods: {
-   
+
   },
   data () {
       return {
@@ -51,7 +43,7 @@ export default {
           {
             src: 'https://cde.laprensa.e3.pe/ima/0/0/1/5/3/153438.jpg',
           },
-          
+
         ],
       }
     },
@@ -61,7 +53,7 @@ export default {
 
 <style lang="scss" scoped>
 
-.perfil{
+.titulo{
         //background-attachment: fixed;
         text-align: center;
         font-style: normal;

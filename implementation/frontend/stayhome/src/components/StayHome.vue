@@ -6,7 +6,7 @@
          <v-container>
         <div class="text-center"  >
             <b-button-group  vertical center size="lg">
-            <b-button>Administrar Perfil</b-button>
+            <b-button @click="admin">Administrar Perfil</b-button>
             <b-button>Descargas</b-button>
             <b-button>Historial</b-button>
             </b-button-group>
@@ -25,6 +25,13 @@ export default {
     mounted(){
     this.$store.dispatch("loadAll")
     },
+    methods:
+    {
+        admin()
+        {
+                this.$router.push("/update")
+        }
+    }
 }
        
 </script>

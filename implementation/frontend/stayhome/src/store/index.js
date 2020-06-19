@@ -21,6 +21,11 @@ export default new Vuex.Store({
     SET_CURRENT_USER(state,user){
       state.currentUser = user;
       window.localStorage.currentUser = JSON.stringify(user);
+    },
+    UPDATE_USER(state,user){
+      let u = state.users.find(u => u.user_id == user.user_id)
+      u = user;
+      window.localStorage.currentUser = JSON.stringify(u);
     }
   },
   actions: {
@@ -37,6 +42,22 @@ export default new Vuex.Store({
     },
     logoutUser({commit}){
       commit('LOGOUT_USER');
+    },
+
+    async updateUser({commit},editInfo)
+    {
+      try{
+        let response = await Api().put(`/edit_user/${editInfo.user_id}`,editInfo);
+        console.log(response);
+        let updated_user = response.data;
+        commit('UPDATE_USER',updated_user);
+        commit('SET_CURRENT_USER',updated_user);
+        return updated_user;
+      }
+      catch
+      {
+        return {error: "Update failed. Please try again"};
+      }
     },
 
     async loginUser({commit},loginInfo){

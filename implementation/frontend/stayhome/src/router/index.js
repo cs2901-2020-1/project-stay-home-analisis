@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import UserLogin from '../views/UserLogin.vue'
 import UserRegistration from '../views/UserRegistration.vue'
 import StayHome from '../components/StayHome.vue'
+import UserUpdate from '../views/UserUpdate.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,11 @@ Vue.use(VueRouter)
     path: '/mainpage',
     name: 'mainpage',
     component: StayHome
+   },
+   {
+    path: '/update',
+    name: 'user-update',
+    component: UserUpdate
    }
 ]
 
