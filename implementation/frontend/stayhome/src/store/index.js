@@ -26,6 +26,10 @@ export default new Vuex.Store({
       let u = state.users.find(u => u.user_id == user.user_id)
       u = user;
       window.localStorage.currentUser = JSON.stringify(u);
+    },
+    DELETE_USER(state,uid)
+    {
+      state.users.filter(a => a.user_id != uid);
     }
   },
   actions: {
@@ -80,6 +84,19 @@ export default new Vuex.Store({
         commit('SET_CURRENT_USER', user);
         return user;
       }catch{
+        return {error: "There was an error, please try again"}
+      }
+    },
+    async deleteUser({commit},deleteInfo){
+      try{
+        let response = await Api().delete(`/edit_user/${deleteInfo.user_id}`);
+        if(response.status==200 || response.status==204)
+        {
+          commit('DELETE_USER',deleteInfo.user_id);
+          commit('LOGOUT_USER');
+        }     
+      }
+      catch{
         return {error: "There was an error, please try again"}
       }
     }

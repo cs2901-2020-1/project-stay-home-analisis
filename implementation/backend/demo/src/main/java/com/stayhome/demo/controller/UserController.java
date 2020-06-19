@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class UserController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class UserController {
     }
 
     //update
-    @PutMapping("/edit_user{id}")
+    @PutMapping("/edit_user/{id}")
     public StayHome update(
             @PathVariable BigInteger id,
             @RequestBody StayHome item
@@ -38,7 +38,7 @@ public class UserController {
     }
 
     //delete
-    @DeleteMapping("/edit_user{id}")
+    @DeleteMapping("/edit_user/{id}")
     public void delete(@PathVariable BigInteger id){
         business.delete(id);
     }
