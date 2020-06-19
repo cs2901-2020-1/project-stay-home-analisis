@@ -1,28 +1,51 @@
 <template>
   <v-app>
-    <v-app-bar app color="grey">
+    <v-app-bar app color=#009688 >
       <v-toolbar-title class="headline text-uppercase">
-        <v-btn text to="/">StayHome</v-btn>
+                 <v-btn  class="white--text" text to ="/" >STAYHOME  </v-btn>
+
       </v-toolbar-title>
       <div>
-        <v-img src="../public/img/StayHome.png"
+        <v-img src="../public/img/Logo_stay.png"
          max-width="50"
-         max-height="45"
+         max-height="50"
         ></v-img>
       </div>
       <v-spacer></v-spacer>
       <div v-if="currentUser.username">
-        {{currentUser.username}}
-        <v-btn text class="mr-2" @click="logoutUser">Logout</v-btn>
+        <v-btn  class="white--text" text to="/mainpage" > {{currentUser.username}} </v-btn>
+        <v-btn  class="white--text" text @click="logoutUser">Logout</v-btn>
       </div>
       <div v-else>
-        <v-btn text class="mr-2" to="/login">Login</v-btn>
-        <v-btn text class="mr-2" to="/registration">Register</v-btn>
+         <v-btn  class="white--text" text to="/login">Login</v-btn>
+         <v-btn  class="white--text" text to="/registration">Register</v-btn>
       </div>
     </v-app-bar>
     <v-content>
       <router-view />
     </v-content>
+    <v-footer
+    dark
+    padless
+  >
+    <v-card
+      class="flex"
+      flat
+      tile
+    >
+      <v-card-title class="teal">
+        <v-btn class="subheading">¡Contáctanos!</v-btn>
+
+        <v-spacer></v-spacer>
+
+        <v-btn  class="white--text" > ©Copyright </v-btn>
+      </v-card-title>
+
+      <v-card-text class="py-2 white--text text-center">
+        {{ new Date().getFullYear() }} — <strong>StayHome</strong>
+      </v-card-text>
+    </v-card>
+  </v-footer>
   </v-app>
 </template>
 
@@ -46,7 +69,11 @@ export default {
   },
 
   data: () => ({
-    //
   }),
+
+
+
+
+
 };
 </script>

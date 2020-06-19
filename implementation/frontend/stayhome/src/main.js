@@ -5,6 +5,14 @@ import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';
 
+import BootstrapVue from "bootstrap-vue"
+
+Vue.use(BootstrapVue)
+
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap-vue/dist/bootstrap-vue.css"
+
+
 Vue.config.productionTip = false
 
 new Vue({
