@@ -1,6 +1,6 @@
 package com.stayhome.demo.business;
 
-import com.stayhome.demo.data.StayHome;
+import com.stayhome.demo.data.User;
 import com.stayhome.demo.repositories.StayHomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class UserBusiness {
      * @param newUser
      * @return StayHome guardado
      */
-    public StayHome create(StayHome newUser){
+    public User create(User newUser){
         return repository.save(newUser);
 
     }
@@ -31,7 +31,7 @@ public class UserBusiness {
      * @return users
      *
      */
-    public List<StayHome> findAll(){
+    public List<User> findAll(){
 
         return new ArrayList<>(repository.findAll());
     }
@@ -41,8 +41,8 @@ public class UserBusiness {
      * @param item
      * @return User actualizado
      */
-    public StayHome update(StayHome item){
-        StayHome a = repository.findById(item.getUser_id()).get();
+    public User update(User item){
+        User a = repository.findById(item.getUser_id()).get();
         if(a != null){
             return repository.save(item);
         }

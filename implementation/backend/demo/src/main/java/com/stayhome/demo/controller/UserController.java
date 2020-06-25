@@ -1,7 +1,7 @@
 package com.stayhome.demo.controller;
 
 import com.stayhome.demo.business.UserBusiness;
-import com.stayhome.demo.data.StayHome;
+import com.stayhome.demo.data.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,27 +18,27 @@ public class UserController {
 
     //create
     @PostMapping("/users")
-    public StayHome create (@RequestBody StayHome item){
+    public User create (@RequestBody User item){
         return business.create(item);
     }
 
     //read//
     @GetMapping( "/users" )
-    public List<StayHome> read (){
+    public List<User> read (){
         return business.findAll();
     }
 
     //update
-    @PutMapping("/edit_user/{id}")
-    public StayHome update(
+    @PutMapping("/users/{id}")
+    public User update(
             @PathVariable BigInteger id,
-            @RequestBody StayHome item
+            @RequestBody User item
     ){
         return business.update(item);
     }
 
     //delete
-    @DeleteMapping("/edit_user/{id}")
+    @DeleteMapping("/users/{id}")
     public void delete(@PathVariable BigInteger id){
         business.delete(id);
     }

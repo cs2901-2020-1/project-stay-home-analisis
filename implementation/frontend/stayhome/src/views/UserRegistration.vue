@@ -54,6 +54,7 @@ export default {
       if(validator.data == ''){
         this.registerInfo.user_id = 1;
       }else{
+        console.log(validator.data[validator.data.length-1].user_id);
         this.registerInfo.user_id = validator.data[validator.data.length-1].user_id + 1;
       }
       /* Fin de asignacion */

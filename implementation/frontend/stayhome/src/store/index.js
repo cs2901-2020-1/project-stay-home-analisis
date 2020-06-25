@@ -29,7 +29,9 @@ export default new Vuex.Store({
     },
     DELETE_USER(state,uid)
     {
-      state.users.filter(a => a.user_id != uid);
+      let a = state.users.filter(a => a.user_id != uid);
+      this.state.users = a
+      console.log(this.state.users);
     }
   },
   actions: {
@@ -51,7 +53,7 @@ export default new Vuex.Store({
     async updateUser({commit},editInfo)
     {
       try{
-        let response = await Api().put(`/edit_user/${editInfo.user_id}`,editInfo);
+        let response = await Api().put(`/users/${editInfo.user_id}`,editInfo);
         console.log(response);
         let updated_user = response.data;
         commit('UPDATE_USER',updated_user);
@@ -89,7 +91,7 @@ export default new Vuex.Store({
     },
     async deleteUser({commit},deleteInfo){
       try{
-        let response = await Api().delete(`/edit_user/${deleteInfo.user_id}`);
+        let response = await Api().delete(`/users/${deleteInfo.user_id}`);
         if(response.status==200 || response.status==204)
         {
           commit('DELETE_USER',deleteInfo.user_id);

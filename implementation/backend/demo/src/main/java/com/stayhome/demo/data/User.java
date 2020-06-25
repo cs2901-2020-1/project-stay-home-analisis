@@ -12,7 +12,7 @@ import java.math.BigInteger;
 @Table(name = "app_user",
         schema = "public"
 )
-public class StayHome implements Serializable{
+public class User implements Serializable{
 
     @Id
     private BigInteger user_id;
@@ -26,10 +26,10 @@ public class StayHome implements Serializable{
     @Column
     private String password;
 
-    public StayHome() {
+    public User() {
     }
 
-    public StayHome(BigInteger user_id, String email, String password, String username) {
+    public User(BigInteger user_id, String email, String password, String username) {
         this.user_id = user_id;
         this.email =  email;
         this.username = username;

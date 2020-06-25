@@ -1,8 +1,9 @@
 <template>
     <v-container>
       <div class="titulo"> ¡Bienvenido! </div>
-      <v-carousel cycle     hide-delimiter-background
-    show-arrows-on-hover>
+      <v-carousel cycle 
+      hide-delimiter-background
+      show-arrows-on-hover>
         <v-carousel-item
           v-for="(item,i) in items"
           :key="i"
