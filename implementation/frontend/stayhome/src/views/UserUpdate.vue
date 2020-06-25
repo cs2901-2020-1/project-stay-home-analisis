@@ -1,96 +1,126 @@
 <template>
     <v-container>
-      <h1>Administrar mi cuenta</h1>      
+      <h1>{{currentUser.username}} >> Administrar Perfil </h1>
       <v-spacer></v-spacer>
-      <v-form v-model="valid">
-        <div>
-          Username : {{currentUser.username}}
-    <v-dialog v-model="dialog1" persistent max-width="290"> 
-        <template v-slot:activator="{ on, attrs }">
-        <v-btn  color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on">Editar</v-btn>
-        </template>
-        <v-card>
-        <v-card-title class="headline">Cambiar username</v-card-title>
-        <v-card-text> 
-          <v-row>
-            <v-col cols="12"> 
-        <v-text-field v-model="editInfo.username" label="Username" :rules="nameRules"/>
-            </v-col>
-          </v-row>  
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialog1 = false">Cerrar</v-btn>
-          <v-btn color="green darken-1" text @click="userUpdate">Guardar cambios</v-btn>
-        </v-card-actions>
-      </v-card>
-      </v-dialog>
-        </div>
-        <div>
-        Email : {{currentUser.email}}
-        <v-dialog v-model="dialog2" persistent max-width="290"> 
-        <template v-slot:activator="{ on, attrs }">
-        <v-btn  color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on">Editar</v-btn>
-        </template>
-        <v-card>
-          <v-form v-model="valid">
-        <v-card-title class="headline">Cambiar email</v-card-title>
-        <v-card-text>
-          <v-row>
-            <v-col cols="12"> 
-                 <v-text-field v-model="editInfo.email" label="Email" :rules="emailRules"/>
-            </v-col>
-          </v-row>             
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialog2 = false">Cerrar</v-btn>
-          <v-btn color="green darken-1" text @click="userUpdate" :disabled="!valid">Guardar cambios</v-btn>
-        </v-card-actions>
-          </v-form>
-      </v-card>
-      </v-dialog>
-        </div>
-        <div> 
-        Contraseña : {{currentUser.password}} 
-        <v-dialog v-model="dialog3" persistent max-width="290"> 
-        <template v-slot:activator="{ on, attrs }">
-        <v-btn  color="primary"
-          dark
-          v-bind="attrs"
-          v-on="on">Editar</v-btn>
-        </template>
-        <v-card>
-        <v-card-title class="headline">Cambiar contraseña</v-card-title>
-        <v-card-text> 
-          <v-row>
-            <v-col cols="12"> 
+      <v-container>
+        <h2 class="text-md-center" > ¿Qué desea editar?</h2>
+
+        <v-row class="pa-3" justify="center">
+          Username: {{currentUser.username}}
+          <v-dialog v-model="dialog1" persistent max-width="290"> 
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn style="margin-left: 40px" class="subheading"
+                  small 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                  ><v-icon left>mdi-pencil</v-icon>Editar
+                </v-btn>
+              </template>
+              <v-card>
+                <v-card-title class="headline">Cambiar username</v-card-title>
+                <v-card-text> 
+                  <v-row>
+                    <v-col cols="12"> 
+                      <v-text-field v-model="editInfo.username" label="Username" :rules="nameRules"/>
+                    </v-col>
+                  </v-row>  
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="green darken-1" text @click="dialog1 = false">Cerrar</v-btn>
+                  <v-btn color="green darken-1" text @click="userUpdate">Guardar cambios</v-btn>
+                </v-card-actions>
+              </v-card>
+          </v-dialog>
+        </v-row>
+      
+        <v-row class="pa-3" justify="center">
+          Email: {{currentUser.email}}
+          <v-dialog v-model="dialog2" persistent max-width="290"> 
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn style="margin-left: 40px" class="subheading"
+                  small  
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                  ><v-icon left>mdi-pencil</v-icon>Editar
+                </v-btn>
+              </template>
+              <v-card>
+                <v-form v-model="valid">
+                  <v-card-title class="headline">Cambiar email</v-card-title>
+                  <v-card-text>
+                    <v-row>
+                      <v-col cols="12"> 
+                          <v-text-field v-model="editInfo.email" label="Email" :rules="emailRules"/>
+                      </v-col>
+                    </v-row>             
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="green darken-1" text @click="dialog2 = false">Cerrar</v-btn>
+                    <v-btn color="green darken-1" text @click="userUpdate" :disabled="!valid">Guardar cambios</v-btn>
+                  </v-card-actions>
+                </v-form>
+              </v-card>
+          </v-dialog>
+        </v-row>
+      
+        <v-row class="pa-3" justify="center">
+          Password: {{currentUser.password}}
+          <v-dialog v-model="dialog3" persistent max-width="290"> 
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn style="margin-left: 40px" class="subheading"
+                  small  
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                  ><v-icon left>mdi-pencil</v-icon>Editar
+                </v-btn>
+              </template>
+              <v-card>
+                <v-card-title class="headline">Cambiar contraseña</v-card-title>
+                <v-card-text> 
+                <v-row>
+                  <v-col cols="12"> 
                       <v-text-field v-model="editInfo.password" 
                       label="Password" 
                       :type="showPassword ? 'text' : 'password' "
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                       :rules="passwordRules"
                       @click:append="showPassword=!showPassword"/>
-            </v-col>
-          </v-row>  
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="dialog3 = false">Cerrar</v-btn>
-          <v-btn color="green darken-1" text @click="userUpdate">Guardar cambios</v-btn>
-        </v-card-actions>
-      </v-card>
-      </v-dialog>
-        </div>
-        <v-btn @click="userDelete">Eliminar cuenta</v-btn>
-      </v-form>
+                  </v-col>
+                </v-row>  
+                </v-card-text>
+              <v-card-actions>
+              <v-spacer></v-spacer>
+                <v-btn color="green darken-1" text @click="dialog3 = false">Cerrar</v-btn>
+                <v-btn color="green darken-1" text @click="userUpdate">Guardar cambios</v-btn>
+              </v-card-actions>
+              </v-card>
+          </v-dialog> 
+
+        </v-row>
+    
+        <v-row class="pa-5" justify="center" >
+          <v-btn  small  @click="userDelete"  color="error" >Eliminar cuenta</v-btn>
+        </v-row>
+
+        <v-row  class="pa-9" align="center" justify="center">
+          <v-img src="../../public/img/edit2.png"
+            max-width="400"
+            max-height="400"
+            justify="center"
+          ></v-img>
+        </v-row>
+
     </v-container>
+
+  </v-container>
 </template>
 
 <script>
