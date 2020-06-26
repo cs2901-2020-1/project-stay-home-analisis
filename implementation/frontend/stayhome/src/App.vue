@@ -13,8 +13,45 @@
       </div>
       <v-spacer></v-spacer>
       <div v-if="currentUser.username">
-        <v-btn  class="white--text" text to="/mainpage" > {{currentUser.username}} </v-btn>
-        <v-btn  class="white--text" text @click="logoutUser">Logout</v-btn>
+         <v-menu
+        bottom
+        offset-y
+      >
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn
+            class="white--text"
+            v-bind="attrs"
+            v-on="on"
+            dark
+          >{{currentUser.username}}</v-btn>
+        </template>
+        <v-list>
+          <v-list-item
+            @click="inicio" 
+          >
+            <v-list-item-title>Inicio</v-list-item-title>
+          </v-list-item>
+
+          <v-list-item
+            @click="admin" 
+          >
+            <v-list-item-title>Administrar Perfil</v-list-item-title>
+          </v-list-item>
+           
+          <v-list-item
+            @click="hola2"
+          >
+          <v-list-item-title>Historial</v-list-item-title>
+           </v-list-item>
+           <v-list-item
+            @click="logoutUser" 
+          >
+          <v-list-item-title>Logout</v-list-item-title>
+           </v-list-item>
+            
+        </v-list>
+      </v-menu>
+
       </div>
       <div v-else>
          <v-btn  class="white--text" text to="/login">Login</v-btn>
@@ -65,7 +102,24 @@ export default {
       this.$store.dispatch("logoutUser");
       alert('Vuelva Pronto');
       this.$router.push('/');
-    }
+    },
+
+        inicio()
+        {
+                this.$router.push("/mainpage")
+        },
+        admin()
+        {
+                this.$router.push("/update")
+        },
+        hola()
+        {
+            console.log("Hola")
+        },
+          hola2()
+        {
+            console.log("hola2")
+        }
   },
 
   data: () => ({
