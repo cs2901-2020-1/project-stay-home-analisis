@@ -1,5 +1,6 @@
 <template>
-    <v-container>
+<v-container>
+    <v-container v-if="currentUser.username">
       <h1>{{currentUser.username}} >> Administrar Perfil </h1>
       <v-spacer></v-spacer>
       <v-container>
@@ -119,8 +120,12 @@
         </v-row>
 
     </v-container>
-
   </v-container>
+
+  <v-container v-else>
+  Por favor Logueate
+  </v-container>
+</v-container>  
 </template>
 
 <script>

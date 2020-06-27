@@ -37,12 +37,19 @@
           >
             <v-list-item-title>Administrar Perfil</v-list-item-title>
           </v-list-item>
-           
+
           <v-list-item
+            @click="upload"
+          >
+          <v-list-item-title>Upload Articles</v-list-item-title>
+           </v-list-item>
+
+           <v-list-item
             @click="hola2"
           >
           <v-list-item-title>Historial</v-list-item-title>
            </v-list-item>
+
            <v-list-item
             @click="logoutUser" 
           >
@@ -103,23 +110,21 @@ export default {
       alert('Vuelva Pronto');
       this.$router.push('/');
     },
-
-        inicio()
-        {
-                this.$router.push("/mainpage")
-        },
-        admin()
-        {
-                this.$router.push("/update")
-        },
-        hola()
-        {
-            console.log("Hola")
-        },
-          hola2()
-        {
-            console.log("hola2")
-        }
+    inicio(){
+      this.$router.push("/mainpage")
+    },
+    admin(){
+      this.$router.push("/update")
+    },
+    upload(){
+      this.$router.push("/upload")
+    },
+    hola(){
+      console.log("Hola")
+    },
+    hola2(){
+        console.log("hola2")
+    }
   },
 
   data: () => ({

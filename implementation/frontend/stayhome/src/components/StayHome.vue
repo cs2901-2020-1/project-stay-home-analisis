@@ -1,5 +1,6 @@
 <template>
-  <v-container>
+<v-container>
+  <v-container v-if="currentUser.username">
       <v-container class="grey lighten-3">
         <v-row class="text-center" >
           <v-col
@@ -96,25 +97,12 @@
     </v-card-actions>
   </v-card>
       </v-container>
-      <v-container style="center" class="text-md-center" justify="center">
-         <v-btn
-          :loading="loading3"
-          :disabled="loading3"
-          color="blue-grey"
-          class="ma-2 white--text"
-          @click="loader = 'loading3'"
-          
-         
-        >
-          Upload
-        <v-icon right dark>mdi-cloud-upload</v-icon>
-        </v-btn>
 
-
-
-      </v-container>
-
-</v-container>
+    </v-container>
+    <v-container v-else>
+     Por favor Logueate
+    </v-container>
+</v-container>    
 </template>
 
 <script>

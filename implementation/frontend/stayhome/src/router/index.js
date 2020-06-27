@@ -5,6 +5,7 @@ import UserLogin from '../views/UserLogin.vue'
 import UserRegistration from '../views/UserRegistration.vue'
 import StayHome from '../components/StayHome.vue'
 import UserUpdate from '../views/UserUpdate.vue'
+import UserUpload from '../views/UserUpload'
 
 Vue.use(VueRouter)
 
@@ -33,6 +34,11 @@ Vue.use(VueRouter)
     path: '/update',
     name: 'user-update',
     component: UserUpdate
+   },
+   {
+    path: '/upload',
+    name: 'user-upload',
+    component: UserUpload
    }
 ]
 
