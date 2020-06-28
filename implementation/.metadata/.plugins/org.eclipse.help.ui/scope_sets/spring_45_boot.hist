@@ -1,0 +1,5 @@
+#Thu Jun 11 12:40:46 PET 2020
+__DEFAULT__=false
+org.eclipse.sdk.Eclipse.master=true
+org.eclipse.help.ui.localSearch.master=true
+expression=spring-boot
