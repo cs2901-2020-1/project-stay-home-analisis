@@ -25,7 +25,8 @@ export default {
         user_id: '',
         username: '',
         email: '',
-        password: ''
+        password: '',
+        admin: false
       },
        emailRules: [
         v => !!v || 'Email requerido',
