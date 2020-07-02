@@ -61,11 +61,11 @@ export default {
           if(user.error){
             alert(user.error)
           }else{
-            alert('Thank you for signing in, ' + user.username);
+            alert('Gracias por loguearte, ' + user.username);
             this.$router.push('/mainpage');
           }
        }else{
-         alert('Email/password combination was incorrect. Please try again')
+         alert('Hubo un error al eliminar el usuario, intenta denuevo')
        }
     }
   },

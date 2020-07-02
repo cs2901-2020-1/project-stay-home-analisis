@@ -2,7 +2,7 @@
 <v-container>
    <v-container style="center" class="text-md-center" justify="center" v-model="valid"
     v-if="currentUser.username">
-        <h2 class="text-md-center" >{{currentUser.username}} Suba un article</h2>
+        <h2 class="text-md-center" >{{currentUser.username}} Suba un articulo</h2>
         <v-form>
             <v-select
             v-model="article.curso"
@@ -11,13 +11,31 @@
             label="Curso"
             required
             ></v-select>
-            <v-select v-if="article.curso"
-            v-model="article.tema"
-            :items="temas"
-            :rules="[v => !!v || 'Tema is required']"
-            label="Tema"
-            required
-            ></v-select>
+                    <div v-if="article.curso">
+                        <v-select v-if="article.curso == 'Matemática'"
+                        v-model="article.tema"
+                        :items="temas_mate"
+                        :rules="[v => !!v || 'Tema is required']"
+                        label="Tema"
+                        required
+                        ></v-select>
+
+                        <v-select v-else-if="article.curso == 'Física'"
+                        v-model="article.tema"
+                        :items="temas_fisica"
+                        :rules="[v => !!v || 'Tema is required']"
+                        label="Tema"
+                        required
+                        ></v-select>
+
+                        <v-select v-else-if="article.curso == 'Química'"
+                        v-model="article.tema"
+                        :items="temas_quimica"
+                        :rules="[v => !!v || 'Tema is required']"
+                        label="Tema"
+                        required
+                        ></v-select>
+                    </div>
             <!-- Ver compo se vería mejor, en cascada o que la base de datos se encargue -->
             <v-select v-if="article.tema" 
             v-model="article.tipo"
@@ -140,10 +158,19 @@ import {mapState} from 'vuex';
                 'Física',
                 'Química',
             ],
-            temas:[
+            temas_mate:[
                 'Álgebra',
                 'Geometría',
                 'Ecuaciones'
+            ],
+            temas_fisica:[
+                'Magnetismo',
+                'Cinemática',
+                'Dinámica'
+            ],
+            temas_quimica:[
+                'Química Básica',
+                'Química Orgánica'
             ],
             tipos: [
                 'Video',
@@ -165,23 +192,17 @@ import {mapState} from 'vuex';
         }),
         methods:{
           async  upload_imagenes(){
-        this.article.title = this.imagenes.name;
-        this.article.link= "../../../database/articles/" + this.article.title;
-        this.article.user_id = this.currentUser.user_id;        
-        console.log(this.article);
-        console.log(this.imagenes);
-        let a = await this.$store.dispatch('addArticle',this.article);
-        let id = a.article_id;
-        let capsule = new Capsule(this.imagenes,id);
-        console.log(capsule);
-        console.log(id);
-        let b = await this.$store.dispatch('addFile',capsule);
-        console.log(b);
-
-      }
-
+            this.article.title = this.imagenes.name;
+            this.article.link= "../../../database/articles/" + this.article.title;
+            this.article.user_id = this.currentUser.user_id;        
+            let reponse_article = await this.$store.dispatch('addArticle',this.article);
+            let id = reponse_article.article_id;
+            let capsule = new Capsule(this.imagenes,id);
+            let response_file = await this.$store.dispatch('addFile',capsule);
+            console.log(response_file);
             },
-        }
+        },
+    }
   
 </script>
 

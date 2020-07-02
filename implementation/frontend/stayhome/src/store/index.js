@@ -41,6 +41,12 @@ export default new Vuex.Store({
     {
       let articles = state.articles.concat(article);
       state.articles = articles;
+    },
+    DELETE_ARTICLE(state,aid)
+    {
+      let a = state.articles.filter(a => a.article_id != aid);
+      this.state.articles = a;
+      console.log(this.state.articles);
     }
   },
   actions: {
@@ -71,7 +77,7 @@ export default new Vuex.Store({
       }
       catch
       {
-        return {error: "Update failed. Please try again"};
+        return {error: "No se pudo actualizar, intenta denuevo"};
       }
     },
 
@@ -83,7 +89,7 @@ export default new Vuex.Store({
         commit('SET_CURRENT_USER', user);
         return user;
       }catch{
-        return {error: "Email/password combination was incorrect. Please try again"}
+        return {error: "Email/password incorrectos, intenta denuevo"}
       }
     
     },
@@ -95,7 +101,7 @@ export default new Vuex.Store({
         commit('SET_CURRENT_USER', user);
         return user;
       }catch{
-        return {error: "There was an error, please try again"}
+        return {error: "Hubo un error al registrar, intenta denuevo"}
       }
     },
     async deleteUser({commit},deleteInfo){
@@ -108,8 +114,9 @@ export default new Vuex.Store({
         }     
       }
       catch{
-        return {error: "There was an error, please try again"}
+        return {error: "Hubo un error al eliminar el usuario, intenta denuevo"}
       }
+
     },
     async loadAllArticles({commit}){
       let response = await Api().get('/articles');
@@ -119,26 +126,35 @@ export default new Vuex.Store({
      },
      async addArticle({commit},article)
      {
-
        let response = await Api().post('/articles',article);
        let art = response.data;
        commit('ADD_ARTICLE',art);
        return art;
-     },
-
-     async addFile({commit},capsule){
-      console.log(capsule);
-      const formData = new FormData()
-      formData.append('file', capsule.file)
-     
-      let response = await Api().post(`/uploadFile/${capsule.article_id}`,formData);
-      let f = response.data;
-      commit('ADD_ARTICLE',f);
-      console.log(response.data);
+      },
+      async addFile({commit},capsule){
+        console.log(capsule);
+        const formData = new FormData()
+        formData.append('file', capsule.file)
       
-      return response;
+        let response = await Api().post(`/uploadFile/${capsule.article_id}`,formData);
+        let f = response.data;
+        commit('ADD_ARTICLE',f);
+        console.log(response.data);
+        return response;
 
-    },
+      },
+      async deleteArticle({commit},article){
+        try{
+          let response = await Api().delete(`/articles/${article.article_id}`);
+          if(response.status==200 || response.status==204)
+          {
+            commit('DELETE_ARTICLE',article.article_id);
+          }     
+        }
+        catch{
+          return {error: "Hubo un error al eliminar el articulo, intenta denuevo"}
+        }
+      }
   },
   modules: {
   }

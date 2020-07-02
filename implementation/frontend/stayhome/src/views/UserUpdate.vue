@@ -198,9 +198,11 @@ export default {
         let response = confirm(`¿Estás seguro que deseas eliminar tu cuenta? ${this.currentUser.username}`);
         if(response)
         {
+          
           this.$store.dispatch('deleteUser',this.currentUser);
           console.log(this.currentUser);
           this.$router.push("/");
+
         }
       }
     }

@@ -48,30 +48,18 @@ export default {
   },
   methods: {
     async registerUser(){
-
-      /* Asignando id`s */
-      let validator = await this.$store.dispatch("loadAll");
-      console.log(validator)
-      if(validator.data == ''){
-        this.registerInfo.user_id = 1;
-      }else{
-        console.log(validator.data[validator.data.length-1].user_id);
-        this.registerInfo.user_id = validator.data[validator.data.length-1].user_id + 1;
-      }
-      /* Fin de asignacion */
-      
-      console.log(validator.data)
-      if(this.registerInfo.username != '' && this.registerInfo.email != '' && this.registerInfo.password != '' && this.registerInfo.user_id != '' ){    
+   
+      if(this.registerInfo.username != '' && this.registerInfo.email != '' && this.registerInfo.password != '' ){    
           let user = await this.$store.dispatch('registerUser',this.registerInfo);
           console.log(user);
           if(user.error){
             alert(user.error)
           }else{
-            alert('Thank you for register in StayHome, ' + user.username);
+            alert('Gracias por registrate en StayHome, ' + user.username);
             this.$router.push('/mainpage');
           }
       }else{
-         alert('There was an error, please try again')
+         alert('Hubo un error, intenta de nuevo')
       }
     }
   },

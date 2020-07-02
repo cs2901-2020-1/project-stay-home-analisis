@@ -1,7 +1,7 @@
 package com.stayhome.demo.business;
 
 import com.stayhome.demo.data.User;
-import com.stayhome.demo.repositories.StayHomeRepository;
+import com.stayhome.demo.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +15,7 @@ import java.util.List;
 public class UserBusiness {
 
     @Autowired
-    private StayHomeRepository repository;
+    private UserRepository repository;
 
     /**
      * Create: Guarda un nuevo user

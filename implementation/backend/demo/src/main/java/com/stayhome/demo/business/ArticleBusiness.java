@@ -7,6 +7,7 @@ import com.stayhome.demo.data.Article;
 import com.stayhome.demo.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -25,8 +26,9 @@ public class ArticleBusiness {
 
     @Autowired
     private ArticleRepository repository;
-    //Falta setearlo bien.
-    private String upload_folder = "C:/Users/DARKL/Desktop/file/";
+
+    private final Path root = Paths.get("resources/Files");
+    private String upload_folder = root + "/src/main/java/resources/Files/";
 
     public Article storeFile(MultipartFile file, BigInteger id) {
         try {
@@ -41,7 +43,7 @@ public class ArticleBusiness {
             article.setTipo(tipo);
             article.setLink(fileDownloadUri);
             article.setData(file.getBytes());
-            Path path = Paths.get(upload_folder + titulo);
+            Path path = Paths.get(root +"/"+ titulo);
             Files.write(path,file.getBytes());
             return repository.save(article);
         } catch (Exception ex) {
@@ -56,13 +58,14 @@ public class ArticleBusiness {
 
         return new ArrayList<>(repository.findAll());
     }
-
-
     public Article getArticle(BigInteger article_id) {
         return repository.findById(article_id)
                 .orElseThrow(() -> new ArticleNotFoundException("File not found with id " + article_id));
     }
 
+    public void delete(BigInteger article_id){
 
+        repository.deleteById(article_id);
+    }
 
 }
