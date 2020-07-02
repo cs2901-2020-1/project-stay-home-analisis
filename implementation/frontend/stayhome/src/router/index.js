@@ -7,6 +7,7 @@ import StayHome from '../components/StayHome.vue'
 import UserUpdate from '../views/UserUpdate.vue'
 import UserUpload from '../views/UserUpload'
 
+
 Vue.use(VueRouter)
 
   const routes = [

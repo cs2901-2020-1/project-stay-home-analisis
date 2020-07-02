@@ -50,16 +50,19 @@ public class ArticleController {
         return business.create(item);
     }
 
+
+
+
     @GetMapping( "/articles" )
     public List<Article> read (){
         return business.findAll();
     }
 
-  /*  @GetMapping("/downloadFile/{article_id}")
+
+  /*@GetMapping("/downloadFile/{article_id}")
     public ResponseEntity<Resource> downloadFile(@PathVariable BigInteger article_id) {
         // Load file from database
         Article article = business.getArticle(article_id);
-        article.
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(article.getTipo()))

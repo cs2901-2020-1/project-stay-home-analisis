@@ -5,22 +5,22 @@
         <h2 class="text-md-center" >{{currentUser.username}} Suba un article</h2>
         <v-form>
             <v-select
-            v-model="article.SelectedCurso"
+            v-model="article.curso"
             :items="cursos"
             :rules="[v => !!v || 'Curso is required']"
             label="Curso"
             required
             ></v-select>
-            <v-select v-if="article.SelectedCurso"
-            v-model="article.SelectedTema"
+            <v-select v-if="article.curso"
+            v-model="article.tema"
             :items="temas"
             :rules="[v => !!v || 'Tema is required']"
             label="Tema"
             required
             ></v-select>
             <!-- Ver compo se vería mejor, en cascada o que la base de datos se encargue -->
-            <v-select v-if="article.SelectedTema" 
-            v-model="article.SelectedTipo"
+            <v-select v-if="article.tema" 
+            v-model="article.tipo"
             :items="tipos"
             :rules="[v => !!v || 'Tipo is required']"
             label="Tipo"
@@ -28,7 +28,7 @@
             ></v-select>
 
 
-            <div v-if="article.SelectedTipo == 'Documento'">
+            <div v-if="article.tipo == 'Documento'">
 
                     <v-file-input
                     v-model="documentos"
@@ -52,7 +52,7 @@
                     </v-file-input>
             </div>
 
-            <div v-else-if="article.SelectedTipo == 'Imagen'">
+            <div v-else-if="article.tipo == 'Imagen'">
                     <v-file-input
                     v-model="imagenes"
                     placeholder="Upload your image"
@@ -75,7 +75,7 @@
                     </v-file-input>
             </div>
 
-            <div v-else-if="article.SelectedTipo == 'Video'">
+            <div v-else-if="article.tipo == 'Video'">
                 <v-file-input
                 v-model="videos"
                 placeholder="Upload your video"
@@ -116,6 +116,14 @@
 </template>
 
 <script>
+class Capsule {
+  constructor(file,article_id) {
+    this.file = file;
+    this.article_id = article_id;
+  }
+}
+
+
 import {mapState} from 'vuex';
     export default {
         computed: {
@@ -123,6 +131,7 @@ import {mapState} from 'vuex';
         },
         mounted(){
             this.$store.dispatch("loadAll")
+            this.$store.dispatch("loadAllArticles")
         },
         data: ()=>({
             valid :false,
@@ -142,12 +151,11 @@ import {mapState} from 'vuex';
                 'Imagen',
             ],
             article:{
-             article_id: '',
              link: '',
              title: '',
-             SelectedCurso: '',
-             SelectedTema: '',
-             SelectedTipo: '',
+             curso: '',
+             tema: '',
+             tipo: '',
              user_id: ''
             },
             documentos: [],
@@ -157,19 +165,18 @@ import {mapState} from 'vuex';
         }),
         methods:{
           async  upload_imagenes(){
-     /*   let validator = await this.$store.dispatch("loadAllArticles");
-        console.log(validator)
-        if(validator.data == ''){
-        this.article.article_id = 1;
-        }else{
-        console.log(validator.data[validator.data.length-1].article_id);
-        this.article.article_id = validator.data[validator.data.length-1].article_id + 1;
-        }*/
-        this.article.article_id = 12312;
         this.article.title = this.imagenes.name;
         this.article.link= "../../../database/articles/" + this.article.title;
-        this.article.user_id = this.currentUser.user_id;
-        console.log(this.article)
+        this.article.user_id = this.currentUser.user_id;        
+        console.log(this.article);
+        console.log(this.imagenes);
+        let a = await this.$store.dispatch('addArticle',this.article);
+        let id = a.article_id;
+        let capsule = new Capsule(this.imagenes,id);
+        console.log(capsule);
+        console.log(id);
+        let b = await this.$store.dispatch('addFile',capsule);
+        console.log(b);
 
       }
 

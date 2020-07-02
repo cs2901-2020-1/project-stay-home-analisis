@@ -11,14 +11,22 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.math.BigInteger;
+import java.nio.file.Paths;
+import java.rmi.server.ExportException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 public class ArticleBusiness {
 
     @Autowired
     private ArticleRepository repository;
+    //Falta setearlo bien.
+    private String upload_folder = "C:/Users/DARKL/Desktop/file/";
 
     public Article storeFile(MultipartFile file, BigInteger id) {
         try {
@@ -32,6 +40,9 @@ public class ArticleBusiness {
             article.setTitle(titulo);
             article.setTipo(tipo);
             article.setLink(fileDownloadUri);
+            article.setData(file.getBytes());
+            Path path = Paths.get(upload_folder + titulo);
+            Files.write(path,file.getBytes());
             return repository.save(article);
         } catch (Exception ex) {
             throw new ArticleException(ex.getMessage(), ex);
@@ -46,8 +57,12 @@ public class ArticleBusiness {
         return new ArrayList<>(repository.findAll());
     }
 
+
     public Article getArticle(BigInteger article_id) {
         return repository.findById(article_id)
                 .orElseThrow(() -> new ArticleNotFoundException("File not found with id " + article_id));
     }
+
+
+
 }

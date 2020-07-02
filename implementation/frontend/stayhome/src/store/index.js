@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import Api from "@/services/api";
 
-
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -113,18 +112,33 @@ export default new Vuex.Store({
       }
     },
     async loadAllArticles({commit}){
-      let response = await Api().get('/uploads');
+      let response = await Api().get('/articles');
       commit('SET_ARTICLES',response.data);
       console.log(response.data);
       return response
      },
      async addArticle({commit},article)
      {
+
        let response = await Api().post('/articles',article);
        let art = response.data;
        commit('ADD_ARTICLE',art);
        return art;
-     }
+     },
+
+     async addFile({commit},capsule){
+      console.log(capsule);
+      const formData = new FormData()
+      formData.append('file', capsule.file)
+     
+      let response = await Api().post(`/uploadFile/${capsule.article_id}`,formData);
+      let f = response.data;
+      commit('ADD_ARTICLE',f);
+      console.log(response.data);
+      
+      return response;
+
+    },
   },
   modules: {
   }

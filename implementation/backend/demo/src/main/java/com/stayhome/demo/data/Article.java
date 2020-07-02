@@ -33,17 +33,21 @@ public class Article implements Serializable {
     @Column
     private BigInteger user_id;
 
+    @Lob
+    private byte[] data;
+
     public Article() {
     }
 
     public Article(String link, String title, String curso, String tema, String tipo,
-                   BigInteger user_id) {
+                   BigInteger user_id, byte[] data) {
         this.link = link;
         this.title = title;
         this.curso = curso;
         this.tema = tema;
         this.tipo = tipo;
         this.user_id = user_id;
+        this.data = data;
     }
 
     public Article(String title)
@@ -106,4 +110,8 @@ public class Article implements Serializable {
     public void setUser_id(BigInteger user_id) {
         this.user_id = user_id;
     }
+
+    public byte[] getData() { return data; }
+
+    public void setData(byte[] data) { this.data = data; }
 }
