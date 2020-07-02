@@ -1,19 +1,26 @@
 <template>
 <v-container>
    <v-container style="center" class="text-md-center" justify="center" v-model="valid"
-   v-if="currentUser.username">
+>
         <h2 class="text-md-center" >{{currentUser.username}} Suba un article</h2>
         <v-form>
             <v-select
-            v-model="SelectedCurso"
+            v-model="article.SelectedCurso"
             :items="cursos"
             :rules="[v => !!v || 'Curso is required']"
             label="Curso"
             required
             ></v-select>
+            <v-select v-if="article.SelectedCurso"
+            v-model="article.SelectedTema"
+            :items="temas"
+            :rules="[v => !!v || 'Tema is required']"
+            label="Tema"
+            required
+            ></v-select>
             <!-- Ver compo se vería mejor, en cascada o que la base de datos se encargue -->
-            <v-select v-if="this.SelectedCurso" 
-            v-model="SelectedTipo"
+            <v-select v-if="article.SelectedTema" 
+            v-model="article.SelectedTipo"
             :items="tipos"
             :rules="[v => !!v || 'Tipo is required']"
             label="Tipo"
@@ -21,7 +28,7 @@
             ></v-select>
 
 
-            <div v-if="this.SelectedTipo == 'Documento'">
+            <div v-if="article.SelectedTipo == 'Documento'">
 
                     <v-file-input
                     v-model="documentos"
@@ -45,7 +52,7 @@
                     </v-file-input>
             </div>
 
-            <div v-else-if="this.SelectedTipo == 'Imagen'">
+            <div v-else-if="article.SelectedTipo == 'Imagen'">
                     <v-file-input
                     v-model="imagenes"
                     placeholder="Upload your image"
@@ -62,13 +69,13 @@
                                 label
                                 color="primary"
                             >
-                                {{ text }}
+                                {{ text }}  
                             </v-chip>
                         </template>
                     </v-file-input>
             </div>
 
-            <div v-else-if="this.SelectedTipo == 'Video'">
+            <div v-else-if="article.SelectedTipo == 'Video'">
                 <v-file-input
                 v-model="videos"
                 placeholder="Upload your video"
@@ -93,7 +100,7 @@
             <v-btn 
             color="blue-grey"
             class="ma-2 white--text"
-            @click="upload"
+            @click="upload_imagenes"
             :disabled="!valid"
             >
             Upload
@@ -103,9 +110,6 @@
         </v-form>
    </v-container>
 
-   <v-container v-else>
-   Por favor Logueate
-   </v-container>
 
 </v-container>   
 </template>
@@ -118,33 +122,56 @@ import {mapState} from 'vuex';
         },
         data: ()=>({
             valid :false,
-            SelectedCurso: '',
-            SelectedTipo: '',
             cursos: [
                 'Matemática',
                 'Física',
                 'Química',
+            ],
+            temas:[
+                'Álgebra',
+                'Geometría',
+                'Ecuaciones'
             ],
             tipos: [
                 'Video',
                 'Documento',
                 'Imagen',
             ],
+            article:{
+             article_id: '',
+             link: '',
+             title: '',
+             SelectedCurso: '',
+             SelectedTema: '',
+             SelectedTipo: '',
+             user_id: ''
+            },
             documentos: [],
             imagenes: [],
             videos: [],
 
         }),
         methods:{
-            upload(){
-                console.log(this.documentos)
-                console.log(this.imagenes)
-                console.log(this.videos)
-                console.log(this.SelectedCurso)
-                console.log(this.SelectedTipo)
+          async  upload_imagenes(){
+     /*   let validator = await this.$store.dispatch("loadAllArticles");
+        console.log(validator)
+        if(validator.data == ''){
+        this.article.article_id = 1;
+        }else{
+        console.log(validator.data[validator.data.length-1].article_id);
+        this.article.article_id = validator.data[validator.data.length-1].article_id + 1;
+        }*/
+        this.article.article_id = 12312;
+        this.article.title = this.imagenes.name;
+        this.article.link= "../../../database/articles/" + this.article.title;
+        this.article.user_id = this.currentUser.user_id;
+        console.log(this.article)
+
+      }
+
             },
         }
-    }
+  
 </script>
 
 <style lang="scss" scoped>

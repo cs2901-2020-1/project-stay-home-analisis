@@ -8,7 +8,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     users: [],
-    currentUser: {}
+    currentUser: {},
+    articles: []
   },
   mutations: {
     SET_USERS(state,users){
@@ -32,6 +33,15 @@ export default new Vuex.Store({
       let a = state.users.filter(a => a.user_id != uid);
       this.state.users = a
       console.log(this.state.users);
+    },
+    SET_ARTICLES(state,articles)
+    {
+      state.articles = articles;
+    },
+    ADD_ARTICLE(state,article)
+    {
+      let articles = state.articles.concat(article);
+      state.articles = articles;
     }
   },
   actions: {
@@ -101,7 +111,20 @@ export default new Vuex.Store({
       catch{
         return {error: "There was an error, please try again"}
       }
-    }
+    },
+    async loadAllArticles({commit}){
+      let response = await Api().get('/uploads');
+      commit('SET_ARTICLES',response.data);
+      console.log(response.data);
+      return response
+     },
+     async addArticle({commit},article)
+     {
+       let response = await Api().post('/articles',article);
+       let art = response.data;
+       commit('ADD_ARTICLE',art);
+       return art;
+     }
   },
   modules: {
   }

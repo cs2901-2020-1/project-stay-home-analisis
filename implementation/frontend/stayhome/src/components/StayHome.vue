@@ -149,12 +149,12 @@ export default {
         }
     },
     computed: {
-
+      videos(){return this.$store.state.articles},
         ...mapState(['currentUser'])
-
     },
     mounted(){
-    this.$store.dispatch("loadAll")
+    this.$store.dispatch("loadAll");
+    this.$store.dispatch("loadAllArticles");
     },
     methods:
     {

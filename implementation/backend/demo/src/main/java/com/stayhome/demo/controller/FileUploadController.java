@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.stream.Collectors;
 
 @Controller
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class FileUploadController {
 
 	private final StorageService storageService;
@@ -26,7 +27,7 @@ public class FileUploadController {
 		this.storageService = storageService;
 	}
 
-	@GetMapping("/")
+	@GetMapping("/uploads")
 	public String listUploadedFiles(Model model) throws IOException {
 
 		model.addAttribute("files", storageService.loadAll().map(
@@ -46,7 +47,7 @@ public class FileUploadController {
 				"attachment; filename=\"" + file.getFilename() + "\"").body(file);
 	}
 
-	@PostMapping("/")
+	@PostMapping("/uploads")
 	public String handleFileUpload(@RequestParam("file") MultipartFile file,
 			RedirectAttributes redirectAttributes) {
 

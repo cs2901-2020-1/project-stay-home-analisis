@@ -1,9 +1,6 @@
 package com.stayhome.demo.data;
 
-import javax.persistence.Entity;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 
@@ -15,6 +12,7 @@ import java.math.BigInteger;
 public class Article implements Serializable {
 
     @Id
+    @GeneratedValue
     private BigInteger article_id;
 
     @Column
@@ -38,15 +36,19 @@ public class Article implements Serializable {
     public Article() {
     }
 
-    public Article(BigInteger article_id, String link, String title, String curso, String tema, String tipo,
+    public Article(String link, String title, String curso, String tema, String tipo,
                    BigInteger user_id) {
-        this.article_id = article_id;
         this.link = link;
         this.title = title;
         this.curso = curso;
         this.tema = tema;
         this.tipo = tipo;
         this.user_id = user_id;
+    }
+
+    public Article(String title)
+    {
+        this.title = title;
     }
 
     public BigInteger getArticle_id() {
