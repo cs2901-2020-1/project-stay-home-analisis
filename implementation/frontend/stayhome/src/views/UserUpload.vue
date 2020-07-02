@@ -1,7 +1,7 @@
 <template>
 <v-container>
    <v-container style="center" class="text-md-center" justify="center" v-model="valid"
->
+    v-if="currentUser.username">
         <h2 class="text-md-center" >{{currentUser.username}} Suba un article</h2>
         <v-form>
             <v-select
@@ -109,8 +109,9 @@
 
         </v-form>
    </v-container>
-
-
+   <v-container v-else>
+   Por favor Logueate
+   </v-container>
 </v-container>   
 </template>
 
@@ -119,6 +120,9 @@ import {mapState} from 'vuex';
     export default {
         computed: {
             ...mapState(['currentUser'])
+        },
+        mounted(){
+            this.$store.dispatch("loadAll")
         },
         data: ()=>({
             valid :false,

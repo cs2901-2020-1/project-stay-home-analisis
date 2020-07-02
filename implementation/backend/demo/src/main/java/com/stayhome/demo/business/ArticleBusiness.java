@@ -11,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ArticleBusiness {
@@ -25,7 +27,7 @@ public class ArticleBusiness {
             String tipo = file.getContentType();
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("/downloadFile/")
-                    .path(article.getArticle_id().toString())
+                    .path(article.getUser_id() +"/"+ titulo)
                     .toUriString();
             article.setTitle(titulo);
             article.setTipo(tipo);
@@ -38,6 +40,10 @@ public class ArticleBusiness {
 
     public Article create(Article newArticle) {
         return repository.save(newArticle);
+    }
+    public List<Article> findAll(){
+
+        return new ArrayList<>(repository.findAll());
     }
 
     public Article getArticle(BigInteger article_id) {

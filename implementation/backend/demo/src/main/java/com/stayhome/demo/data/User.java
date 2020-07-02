@@ -1,9 +1,6 @@
 package com.stayhome.demo.data;
 
-import javax.persistence.Entity;
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 
@@ -15,6 +12,7 @@ import java.math.BigInteger;
 public class User implements Serializable{
 
     @Id
+    @GeneratedValue
     private BigInteger user_id;
 
     @Column
@@ -32,8 +30,7 @@ public class User implements Serializable{
     public User() {
     }
 
-    public User(BigInteger user_id, String email, String password, String username, Boolean admin) {
-        this.user_id = user_id;
+    public User(String email, String password, String username, Boolean admin) {
         this.email =  email;
         this.username = username;
         this.password = password;

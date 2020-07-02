@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class ArticleController {
 
     private static final Logger logger = LoggerFactory.getLogger(ArticleController.class);
@@ -30,12 +31,14 @@ public class ArticleController {
     private ArticleBusiness business;
 
     @PostMapping("/uploadFile/{id}")
-    public UploadArticleResponse uploadFile(@RequestParam("file") MultipartFile file
-    ,@PathVariable BigInteger id) {
+    public UploadArticleResponse uploadFile(
+            @RequestParam("file") MultipartFile file,
+            @PathVariable BigInteger id
+    ){
         Article article = business.storeFile(file,id);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
-                .path(article.getArticle_id().toString())
+                .path(article.getUser_id() +"/"+ article.getTitle())
                 .toUriString();
 
         return new UploadArticleResponse(article.getTitle(), fileDownloadUri,
@@ -45,6 +48,11 @@ public class ArticleController {
     @PostMapping("/articles")
     public Article create (@RequestBody Article item){
         return business.create(item);
+    }
+
+    @GetMapping( "/articles" )
+    public List<Article> read (){
+        return business.findAll();
     }
 
   /*  @GetMapping("/downloadFile/{article_id}")
