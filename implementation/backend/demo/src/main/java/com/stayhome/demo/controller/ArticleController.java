@@ -59,10 +59,20 @@ public class ArticleController {
     public Article read (@PathVariable BigInteger article_id){
         return business.getArticle(article_id);
     }
-
+/*
+    @GetMapping( "/articles_by_user/{user_id}" )
+    public List<Article> read (@PathVariable BigInteger user_id){
+        return business.findAll_id(user_id);
+    }
+*/
     @DeleteMapping("/articles/{article_id}")
     public void delete(@PathVariable BigInteger article_id){
         business.delete(article_id);
+    }
+
+    @DeleteMapping("/articles_by_user/{user_id}")
+    public void deleteArticle_u_id(@PathVariable BigInteger user_id){
+        business.deleteArticle_user_id(user_id);
     }
 
 

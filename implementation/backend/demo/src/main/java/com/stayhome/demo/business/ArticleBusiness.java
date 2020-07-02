@@ -43,7 +43,7 @@ public class ArticleBusiness {
             article.setTipo(tipo);
             article.setLink(fileDownloadUri);
             article.setData(file.getBytes());
-            Path path = Paths.get(root +"/"+ titulo);
+            Path path = Paths.get(root + titulo);
             Files.write(path,file.getBytes());
             return repository.save(article);
         } catch (Exception ex) {
@@ -62,7 +62,15 @@ public class ArticleBusiness {
         return repository.findById(article_id)
                 .orElseThrow(() -> new ArticleNotFoundException("File not found with id " + article_id));
     }
+    /*
+    public List<Article> findAll_id(user_id){
 
+        return new ArrayList<>(repository.findById(user_id));
+    }
+*/
+    public void deleteArticle_user_id(BigInteger user_id){
+        repository.deleteById(user_id);
+    }
     public void delete(BigInteger article_id){
 
         repository.deleteById(article_id);

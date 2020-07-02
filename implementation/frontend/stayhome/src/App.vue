@@ -27,13 +27,13 @@
         </template>
         <v-list>
           <v-list-item
-            @click="inicio" 
+            @click="inicio"
           >
             <v-list-item-title>Inicio</v-list-item-title>
           </v-list-item>
 
           <v-list-item
-            @click="admin" 
+            @click="admin"
           >
             <v-list-item-title>Administrar Perfil</v-list-item-title>
           </v-list-item>
@@ -51,11 +51,11 @@
            </v-list-item>
 
            <v-list-item
-            @click="logoutUser" 
+            @click="logoutUser"
           >
           <v-list-item-title>Logout</v-list-item-title>
            </v-list-item>
-            
+
         </v-list>
       </v-menu>
 
@@ -129,9 +129,6 @@ export default {
 
   data: () => ({
   }),
-
-
-
 
 
 };

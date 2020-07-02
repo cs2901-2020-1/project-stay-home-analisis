@@ -47,14 +47,21 @@ export default new Vuex.Store({
       let a = state.articles.filter(a => a.article_id != aid);
       this.state.articles = a;
       console.log(this.state.articles);
-    }
+    },
+    DELETE_ARTICLE_BY_USER_ID(state,uid)
+    {
+      let a = state.articles.filter(a => a.user_id != uid);
+      this.state.articles = a;
+      console.log(this.state.articles);
+    },
+
   },
   actions: {
     async loadAll({commit}){
       let response = await Api().get('/users');
       commit('SET_USERS', response.data);
       console.log(response.data);
-      
+
       let user = JSON.parse(window.localStorage.currentUser);
       commit('SET_CURRENT_USER', user);
 
@@ -91,7 +98,7 @@ export default new Vuex.Store({
       }catch{
         return {error: "Email/password incorrectos, intenta denuevo"}
       }
-    
+
     },
     async registerUser({commit},registrationInfo){
       try{
@@ -111,7 +118,7 @@ export default new Vuex.Store({
         {
           commit('DELETE_USER',deleteInfo.user_id);
           commit('LOGOUT_USER');
-        }     
+        }
       }
       catch{
         return {error: "Hubo un error al eliminar el usuario, intenta denuevo"}
@@ -135,7 +142,7 @@ export default new Vuex.Store({
         console.log(capsule);
         const formData = new FormData()
         formData.append('file', capsule.file)
-      
+
         let response = await Api().post(`/uploadFile/${capsule.article_id}`,formData);
         let f = response.data;
         commit('ADD_ARTICLE',f);
@@ -149,12 +156,25 @@ export default new Vuex.Store({
           if(response.status==200 || response.status==204)
           {
             commit('DELETE_ARTICLE',article.article_id);
-          }     
+          }
         }
         catch{
           return {error: "Hubo un error al eliminar el articulo, intenta denuevo"}
         }
-      }
+      },
+      async deleteArticle_by_user_id({commit},user){
+        try{
+          let response = await Api().delete(`/articles_by_user/${user.user_id}`);
+          if(response.status==200 || response.status==204)
+          {
+            commit('DELETE_ARTICLE_BY_USER_ID',user.user_id);
+          }
+        }
+        catch{
+          return {error: "Hubo un error al eliminar el articulo, intenta denuevo"}
+        }
+      },
+
   },
   modules: {
   }

@@ -8,10 +8,10 @@
 
         <v-row class="pa-3" justify="center">
           Username: {{currentUser.username}}
-          <v-dialog v-model="dialog1" persistent max-width="290"> 
+          <v-dialog v-model="dialog1" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 40px" class="subheading"
-                  small 
+                  small
                   dark
                   v-bind="attrs"
                   v-on="on"
@@ -21,12 +21,12 @@
               </template>
               <v-card>
                 <v-card-title class="headline">Cambiar username</v-card-title>
-                <v-card-text> 
+                <v-card-text>
                   <v-row>
-                    <v-col cols="12"> 
+                    <v-col cols="12">
                       <v-text-field v-model="editInfo.username" label="Username" :rules="nameRules"/>
                     </v-col>
-                  </v-row>  
+                  </v-row>
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
@@ -36,13 +36,13 @@
               </v-card>
           </v-dialog>
         </v-row>
-      
+
         <v-row class="pa-3" justify="center">
           Email: {{currentUser.email}}
-          <v-dialog v-model="dialog2" persistent max-width="290"> 
+          <v-dialog v-model="dialog2" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 40px" class="subheading"
-                  small  
+                  small
                   dark
                   v-bind="attrs"
                   v-on="on"
@@ -55,10 +55,10 @@
                   <v-card-title class="headline">Cambiar email</v-card-title>
                   <v-card-text>
                     <v-row>
-                      <v-col cols="12"> 
+                      <v-col cols="12">
                           <v-text-field v-model="editInfo.email" label="Email" :rules="emailRules"/>
                       </v-col>
-                    </v-row>             
+                    </v-row>
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer></v-spacer>
@@ -69,13 +69,13 @@
               </v-card>
           </v-dialog>
         </v-row>
-      
+
         <v-row class="pa-3" justify="center">
           Password: {{currentUser.password}}
-          <v-dialog v-model="dialog3" persistent max-width="290"> 
+          <v-dialog v-model="dialog3" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 40px" class="subheading"
-                  small  
+                  small
                   dark
                   v-bind="attrs"
                   v-on="on"
@@ -85,17 +85,17 @@
               </template>
               <v-card>
                 <v-card-title class="headline">Cambiar contraseña</v-card-title>
-                <v-card-text> 
+                <v-card-text>
                 <v-row>
-                  <v-col cols="12"> 
-                      <v-text-field v-model="editInfo.password" 
-                      label="Password" 
+                  <v-col cols="12">
+                      <v-text-field v-model="editInfo.password"
+                      label="Password"
                       :type="showPassword ? 'text' : 'password' "
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                       :rules="passwordRules"
                       @click:append="showPassword=!showPassword"/>
                   </v-col>
-                </v-row>  
+                </v-row>
                 </v-card-text>
               <v-card-actions>
               <v-spacer></v-spacer>
@@ -103,10 +103,10 @@
                 <v-btn color="green darken-1" text @click="userUpdate">Guardar cambios</v-btn>
               </v-card-actions>
               </v-card>
-          </v-dialog> 
+          </v-dialog>
 
         </v-row>
-    
+
         <v-row class="pa-5" justify="center" >
           <v-btn  small  @click="userDelete"  color="error" >Eliminar cuenta</v-btn>
         </v-row>
@@ -125,7 +125,7 @@
   <v-container v-else>
   Por favor Logueate
   </v-container>
-</v-container>  
+</v-container>
 </template>
 
 <script>
@@ -198,7 +198,7 @@ export default {
         let response = confirm(`¿Estás seguro que deseas eliminar tu cuenta? ${this.currentUser.username}`);
         if(response)
         {
-          
+          this.$store.dispatch('deleteArticle_by_user_id',this.currentUser);
           this.$store.dispatch('deleteUser',this.currentUser);
           console.log(this.currentUser);
           this.$router.push("/");
@@ -206,6 +206,6 @@ export default {
         }
       }
     }
-  
+
 }
 </script>
