@@ -76,15 +76,14 @@ public class ArticleController {
     }
 
 
-  /*@GetMapping("/downloadFile/{article_id}")
+  @GetMapping("/downloadFile/{article_id}")
     public ResponseEntity<Resource> downloadFile(@PathVariable BigInteger article_id) {
-        // Load file from database
         Article article = business.getArticle(article_id);
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(article.getTipo()))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + article.getTitle() + "\"")
                 .body(new ByteArrayResource(article.getData()));
-    }*/
+    }
 
 }

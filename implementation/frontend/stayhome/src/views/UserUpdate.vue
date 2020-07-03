@@ -1,30 +1,39 @@
 <template>
 <v-container>
     <v-container v-if="currentUser.username">
-      <h1>{{currentUser.username}} >> Administrar Perfil </h1>
+      
+      <h1 class="estiloUser" >{{currentUser.username}} <v-text class="estilo"> >> </v-text> <v-text class="estiloAdmin">  Administrar Perfil </v-text> </h1> 
       <v-spacer></v-spacer>
       <v-container>
-        <h2 class="text-md-center" > ¿Qué desea editar?</h2>
+      </v-container>
+      <v-container>
+        <h2 class="text-md-left" > ¿Qué desea editar?</h2>
+        <v-row class="pa-3" justify="left">
+          <v-col class="User">
+          Username: <v-text class="userc"> {{currentUser.username}}</v-text>
+          </v-col> 
 
-        <v-row class="pa-3" justify="center">
-          Username: {{currentUser.username}}
+          <v-col>
           <v-dialog v-model="dialog1" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
-                <v-btn style="margin-left: 40px" class="subheading"
+                <v-btn style="margin-left: 130px" class="subheading"
                   small
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                  ><v-icon left>mdi-pencil</v-icon>Editar
+                  
+                  ><v-icon center>mdi-pencil</v-icon>
                 </v-btn>
+                
               </template>
+            
               <v-card>
-                <v-card-title class="headline">Cambiar username</v-card-title>
+                <v-card-title class="headline">Cambiar usuario</v-card-title>
                 <v-card-text>
                   <v-row>
                     <v-col cols="12">
-                      <v-text-field v-model="editInfo.username" label="Username" :rules="nameRules"/>
+                      <v-text-field v-model="editInfo.username" label="Usuario" :rules="nameRules"/>
                     </v-col>
                   </v-row>
                 </v-card-text>
@@ -35,28 +44,34 @@
                 </v-card-actions>
               </v-card>
           </v-dialog>
+          </v-col>
         </v-row>
 
-        <v-row class="pa-3" justify="center">
-          Email: {{currentUser.email}}
+        <v-row class="pa-3" justify="left">
+           
+           <v-col class="Email">
+              Correo: <v-text class="emailc">{{currentUser.email}}</v-text>
+           </v-col>
+
+          <v-col>
           <v-dialog v-model="dialog2" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
-                <v-btn style="margin-left: 40px" class="subheading"
+                <v-btn style="margin-left: 130px" class="subheading"
                   small
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                  ><v-icon left>mdi-pencil</v-icon>Editar
+                  ><v-icon center>mdi-pencil</v-icon>
                 </v-btn>
               </template>
               <v-card>
                 <v-form v-model="valid">
-                  <v-card-title class="headline">Cambiar email</v-card-title>
+                  <v-card-title class="headline">Cambiar correo</v-card-title>
                   <v-card-text>
                     <v-row>
                       <v-col cols="12">
-                          <v-text-field v-model="editInfo.email" label="Email" :rules="emailRules"/>
+                          <v-text-field v-model="editInfo.email" label="Correo" :rules="emailRules"/>
                       </v-col>
                     </v-row>
                   </v-card-text>
@@ -68,19 +83,24 @@
                 </v-form>
               </v-card>
           </v-dialog>
+          </v-col>
         </v-row>
 
-        <v-row class="pa-3" justify="center">
-          Password: {{currentUser.password}}
+        <v-row class="pa-3" justify="left">
+           <v-col class="Password">
+              Contraseña: <v-text class="passwordc">{{currentUser.password}} </v-text>
+           </v-col>
+
+          <v-col>
           <v-dialog v-model="dialog3" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
-                <v-btn style="margin-left: 40px" class="subheading"
+                <v-btn style="margin-left: 130px" class="subheading"
                   small
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                  ><v-icon left>mdi-pencil</v-icon>Editar
+                  ><v-icon center>mdi-pencil</v-icon>
                 </v-btn>
               </template>
               <v-card>
@@ -89,7 +109,7 @@
                 <v-row>
                   <v-col cols="12">
                       <v-text-field v-model="editInfo.password"
-                      label="Password"
+                      label="Contraseña"
                       :type="showPassword ? 'text' : 'password' "
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                       :rules="passwordRules"
@@ -104,20 +124,14 @@
               </v-card-actions>
               </v-card>
           </v-dialog>
-
+         </v-col>
         </v-row>
 
-        <v-row class="pa-5" justify="center" >
-          <v-btn  small  @click="userDelete"  color="error" >Eliminar cuenta</v-btn>
+        <v-row class="pa-5" justify="left" >
+          <v-btn  medium  @click="userDelete"  color="error" >Eliminar cuenta</v-btn>
         </v-row>
 
-        <v-row  class="pa-9" align="center" justify="center">
-          <v-img src="../../public/img/edit2.png"
-            max-width="400"
-            max-height="400"
-            justify="center"
-          ></v-img>
-        </v-row>
+       
 
     </v-container>
   </v-container>
@@ -137,6 +151,7 @@ export default {
   },
   data() {
     return {
+      
       showPassword : false,
       editInfo:{
         user_id: '',
@@ -209,3 +224,51 @@ export default {
 
 }
 </script>
+<style lang="scss" scoped>
+
+.estiloUser{
+        font-size:45px;
+    }
+
+.estilo{
+        font-size: 15px;
+        font-family: "Lucida Console", Courier, monospace;
+
+    }
+
+.estiloAdmin{
+        font-size: 25px;
+        
+    }
+    
+.User{
+        font-size: 18px;
+        font-weight: bold;
+         font-family: 'MyWebFont', Fallback, sans-serif;
+        .userc {
+        font-size: 20px; 
+        font-weight: normal;
+      }      
+}
+
+    
+.Email{
+        font-size: 18px;
+        font-weight: bold;
+        .emailc {
+        font-size: 20px; 
+        font-weight: normal;
+      }      
+    }
+    
+.Password{
+        font-size: 18px;
+        font-weight: bold;
+        .passwordc {
+        font-size: 20px; 
+        font-weight: normal;
+      }      
+
+    }
+
+</style>

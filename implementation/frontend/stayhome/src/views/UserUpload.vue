@@ -49,7 +49,7 @@
             <div v-if="article.tipo == 'Documento'">
 
                     <v-file-input
-                    v-model="documentos"
+                    v-model="articles"
                     placeholder="Upload your document"
                     label="Documento"
                     prepend-icon="mdi-file-document"
@@ -72,7 +72,7 @@
 
             <div v-else-if="article.tipo == 'Imagen'">
                     <v-file-input
-                    v-model="imagenes"
+                    v-model="articles"
                     placeholder="Upload your image"
                     label="Imagen"
                     prepend-icon="mdi-camera"
@@ -118,7 +118,7 @@
             <v-btn 
             color="blue-grey"
             class="ma-2 white--text"
-            @click="upload_imagenes"
+            @click="upload"
             :disabled="!valid"
             >
             Upload
@@ -185,21 +185,24 @@ import {mapState} from 'vuex';
              tipo: '',
              user_id: ''
             },
-            documentos: [],
-            imagenes: [],
-            videos: [],
+            articles:[]
 
         }),
         methods:{
-          async  upload_imagenes(){
-            this.article.title = this.imagenes.name;
+          async  upload(){
+            this.article.title = this.articles.name;
             this.article.link= "../../../database/articles/" + this.article.title;
             this.article.user_id = this.currentUser.user_id;        
             let reponse_article = await this.$store.dispatch('addArticle',this.article);
             let id = reponse_article.article_id;
-            let capsule = new Capsule(this.imagenes,id);
+            let capsule = new Capsule(this.articles,id);
             let response_file = await this.$store.dispatch('addFile',capsule);
-            console.log(response_file);
+             if(response_file.error){
+            alert(response_file.error)
+          }else{
+            alert('La subida del archivo se completó con éxito');
+            this.$router.push('/mainpage');
+          }
             },
         },
     }

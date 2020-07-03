@@ -133,12 +133,18 @@ export default new Vuex.Store({
      },
      async addArticle({commit},article)
      {
+       try{
        let response = await Api().post('/articles',article);
        let art = response.data;
        commit('ADD_ARTICLE',art);
-       return art;
+       return art;}
+       catch
+       {
+        return {error: "Hubo un error al subir el articulo"}
+       }
       },
       async addFile({commit},capsule){
+        try{
         console.log(capsule);
         const formData = new FormData()
         formData.append('file', capsule.file)
@@ -148,6 +154,11 @@ export default new Vuex.Store({
         commit('ADD_ARTICLE',f);
         console.log(response.data);
         return response;
+        }
+        catch
+        {
+          return {error: "Hubo un error al subir el articulo"}
+        }
 
       },
       async deleteArticle({commit},article){
@@ -173,8 +184,7 @@ export default new Vuex.Store({
         catch{
           return {error: "Hubo un error al eliminar el articulo, intenta denuevo"}
         }
-      },
-
+      }
   },
   modules: {
   }
