@@ -28,7 +28,7 @@ public class ArticleBusiness {
     @Autowired
     private ArticleRepository repository;
 
-    private File f = new File("../../../../resources/Files/.");
+    private File f = new File("src/main/resources/Files/");
     private String upload_folder = f.getAbsolutePath();
 
     public Article storeFile(MultipartFile file, BigInteger id) {
@@ -44,7 +44,7 @@ public class ArticleBusiness {
             article.setTipo(tipo);
             article.setLink(fileDownloadUri);
             article.setData(file.getBytes());
-            Path path = Paths.get(upload_folder + titulo);
+            Path path = Paths.get(upload_folder + "/"+ titulo);
             Files.write(path,file.getBytes());
             return repository.save(article);
         } catch (Exception ex) {
