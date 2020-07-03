@@ -20,6 +20,7 @@ import java.util.concurrent.ExecutionException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.io.*;
 
 @Service
 public class ArticleBusiness {
@@ -27,8 +28,8 @@ public class ArticleBusiness {
     @Autowired
     private ArticleRepository repository;
 
-    private final Path root = Paths.get("resources/Files");
-    private String upload_folder = root + "/src/main/java/resources/Files/";
+    private File f = new File("../../../../resources/Files/.");
+    private String upload_folder = f.getAbsolutePath();
 
     public Article storeFile(MultipartFile file, BigInteger id) {
         try {
@@ -43,7 +44,7 @@ public class ArticleBusiness {
             article.setTipo(tipo);
             article.setLink(fileDownloadUri);
             article.setData(file.getBytes());
-            Path path = Paths.get(root + titulo);
+            Path path = Paths.get(upload_folder + titulo);
             Files.write(path,file.getBytes());
             return repository.save(article);
         } catch (Exception ex) {
