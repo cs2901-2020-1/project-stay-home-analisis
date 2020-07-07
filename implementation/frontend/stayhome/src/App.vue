@@ -41,7 +41,7 @@
           <v-list-item
             @click="upload"
           >
-          <v-list-item-title>Upload Articles</v-list-item-title>
+          <v-list-item-title>Subir artículos</v-list-item-title>
            </v-list-item>
 
            <v-list-item
@@ -53,7 +53,7 @@
            <v-list-item
             @click="logoutUser"
           >
-          <v-list-item-title>Logout</v-list-item-title>
+          <v-list-item-title>Cerrar sesión</v-list-item-title>
            </v-list-item>
 
         </v-list>
@@ -61,8 +61,8 @@
 
       </div>
       <div v-else>
-         <v-btn  class="white--text" text to="/login">Login</v-btn>
-         <v-btn  class="white--text" text to="/registration">Register</v-btn>
+         <v-btn  class="white--text" text to="/login">Iniciar sesión</v-btn>
+         <v-btn  class="white--text" text to="/registration">Registrarse</v-btn>
       </div>
     </v-app-bar>
     <v-content>

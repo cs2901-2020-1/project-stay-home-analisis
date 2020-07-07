@@ -1,16 +1,16 @@
 <template>
     <v-container>
-      <h1>LOGIN</h1>
+      <h1>Iniciar sesión</h1>
       <v-spacer></v-spacer>
       <v-form v-model="valid">
-        <v-text-field v-model="loginInfo.email" label="Email" :rules="emailRules"/>
+        <v-text-field v-model="loginInfo.email" label="Correo" :rules="emailRules"/>
         <v-text-field v-model="loginInfo.password" 
-                      label="Password" 
+                      label="Contraseña" 
                       :type="showPassword ? 'text' : 'password' "
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                       :rules="passwordRules"
                       @click:append="showPassword=!showPassword"/>
-        <v-btn @click="loginUser" :disabled="!valid">Login</v-btn>
+        <v-btn @click="loginUser" :disabled="!valid">Iniciar sesión</v-btn>
       </v-form>
     </v-container>
 </template>
@@ -30,11 +30,11 @@ export default {
       },
        emailRules: [
         v => !!v || 'Email requerido',
-        v => /.+@.+\..+/.test(v) || 'Email tiene que ser valido',
+        v => /.+@.+\..+/.test(v) || 'Correo tiene que ser valido',
       ],
       passwordRules: [
         v => !!v || 'Password requirido',
-        v => (v && v.length <= 20) || 'Password tiene que ser menor que 20 caracteres',
+        v => (v && v.length <= 20) || 'Contraseña tiene que ser menor que 20 caracteres',
       ]
     }
   },
@@ -61,7 +61,7 @@ export default {
           if(user.error){
             alert(user.error)
           }else{
-            alert('Gracias por loguearte, ' + user.username);
+            alert('Gracias por iniciar sesión, ' + user.username);
             this.$router.push('/mainpage');
           }
        }else{

@@ -1,10 +1,14 @@
 <template>
 <v-container>
   <v-container v-if="currentUser.username">
-    <v-btn @click="down"> Ver articulos </v-btn>
+    <h1 class="estilo"> {{currentUser.username}}  <v-text class="estiloc"> >> </v-text>  <v-text class="estiloI"> Inicio </v-text></h1>
+    <v-container>  </v-container>
+    <h2> Artículos</h2>
+    <v-container>  </v-container>
+    <v-btn class="white--text"  dark @click="down"> Ver artículos </v-btn>
     </v-container>
     <v-container v-else>
-     Por favor Logueate
+     Por favor inicia sesión
     </v-container>
 </v-container>    
 </template>
@@ -117,6 +121,20 @@ export default {
         text-transform: uppercase;
     }
 
+.estilo {
+        font-size:45px;
+    }
+
+.estiloc {
+        font-size: 15px;
+        font-family: "Lucida Console", Courier, monospace;
+
+
+    }
+.estiloI{
+   font-size: 25px;
+        
+}
 
 
 

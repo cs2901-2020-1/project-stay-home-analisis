@@ -10,7 +10,7 @@
         <h2 class="text-md-left" > ¿Qué desea editar?</h2>
         <v-row class="pa-3" justify="left">
           <v-col class="User">
-          Username: <v-text class="userc"> {{currentUser.username}}</v-text>
+          Usuario: <v-text class="userc"> {{currentUser.username}}</v-text>
           </v-col> 
 
           <v-col>
@@ -161,16 +161,16 @@ export default {
         admin: false
        },
        emailRules: [
-        v => !!v || 'Email requerido',
-        v => /.+@.+\..+/.test(v) || 'Email tiene que ser valido',
+        v => !!v || 'Correo requerido',
+        v => /.+@.+\..+/.test(v) || 'Correo tiene que ser valido',
       ],
       nameRules: [
-        v => !!v || 'Username requirido',
-        v => (v && v.length <= 15) || 'Username tiene que ser menor que 15 caracteres',
+        v => !!v || 'Usuario requerido',
+        v => (v && v.length <= 15) || 'Usuario tiene que ser menor que 15 caracteres',
       ],
       passwordRules: [
-        v => !!v || 'Password requirido',
-        v => (v && v.length <= 20) || 'Password tiene que ser menor que 20 caracteres',
+        v => !!v || 'Contraseña requerida',
+        v => (v && v.length <= 20) || 'Contraseña tiene que ser menor que 20 caracteres',
       ],
       dialog1: false,
       dialog2: false,
