@@ -6,7 +6,6 @@ import UserRegistration from '../views/UserRegistration.vue'
 import StayHome from '../components/StayHome.vue'
 import UserUpdate from '../views/UserUpdate.vue'
 import UserUpload from '../views/UserUpload'
-import UserDownload from '../views/UserDownload.vue'
 
 
 Vue.use(VueRouter)
@@ -41,11 +40,6 @@ Vue.use(VueRouter)
     path: '/upload',
     name: 'user-upload',
     component: UserUpload
-   },
-   {
-     path: '/download',
-     name: 'article-download',
-     component: UserDownload
    }
 ]
 

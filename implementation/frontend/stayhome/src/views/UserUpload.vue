@@ -58,7 +58,8 @@
                     outlined
                     show-size
                     class="pa-3"
-                    accept=".pdf"
+                    accept=".pdf, .docx"
+            
                     >   
                         <template v-slot:selection="{ text }">
                             <v-chip
@@ -69,6 +70,7 @@
                                 {{ text }}
                             </v-chip>
                         </template>
+
                     </v-file-input>
             </div>
 
@@ -97,7 +99,7 @@
 
             <div v-else-if="article.tipo == 'Video'">
                 <v-file-input
-                v-model="videos"
+                v-model="articles"
                 placeholder="Subir tu video"
                 label="Video"
                 prepend-icon="mdi-video"

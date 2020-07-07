@@ -1,16 +1,135 @@
 <template>
-<v-container>
-  <v-container v-if="currentUser.username">
+<v-container v-if="currentUser.username">
     <h1 class="estilo"> {{currentUser.username}}  <v-text class="estiloc"> >> </v-text>  <v-text class="estiloI"> Inicio </v-text></h1>
-    <v-container>  </v-container>
-    <h2> Artículos</h2>
-    <v-container>  </v-container>
-    <v-btn class="white--text"  dark @click="down"> Ver artículos </v-btn>
-    </v-container>
+  <v-container >
+    <v-row >
+
+      <v-col  >
+        Matemática
+      </v-col>
+      <v-col>
+        Física
+      </v-col>
+      <v-col>
+        Química
+      </v-col>
+
+    </v-row>
+   
+    <v-row>
+      
+      <v-col>
+        <v-container>
+          <v-container></v-container>
+            <div v-for="article in articles" :key ="article.article_id" >
+            <div  v-if="article.curso == 'Matemática'">
+              
+            <v-row>
+            <v-col >
+              
+              </div>
+              <div  v-if="article.tipo[0] =='a'"> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} </v-text> 
+              </div>
+              
+              <div  v-else-if="article.tipo[0] =='v'"> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} </v-text> 
+              </div>
+              
+              <div  v-else> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} </v-text> 
+              </div>
+            </v-col>
+            <v-col>
+              
+              <v-btn  small
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
+                <v-icon small left color=" darken">mdi-arrow-down-bold-box</v-icon>  Descargar </v-btn> 
+            </v-col>
+            
+            </v-row>
+            </div>
+            </div>
+        </v-container>
+      </v-col>
+
+
+
+    <v-col>
+      <v-container>
+          <v-container></v-container>
+            <div v-for="article in articles" :key ="article.article_id" >
+            <div  v-if="article.curso == 'Física'">
+            <v-row>
+            <v-col>
+              <div  v-if="article.tipo[0] =='a'"> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} </v-text> 
+              </div>
+              
+              <div  v-else-if="article.tipo[0] =='v'"> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} </v-text> 
+              </div>
+              
+              <div  v-else> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} </v-text> 
+              </div>
+            </v-col>
+            <v-col>
+              <v-btn  small
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
+                <v-icon small left color=" darken">mdi-arrow-down-bold-box</v-icon>  Descargar </v-btn> 
+            </v-col>
+            </v-row>
+            </div>
+            </div>
+        </v-container>
+    </v-col>
+
+
+    <v-col>
+      <v-container>
+          <v-container></v-container>
+            <div v-for="article in articles" :key ="article.article_id" >
+            <div  v-if="article.curso == 'Química'">
+            <v-row>
+            <v-col>
+              <div  v-if="article.tipo[0] =='a'"> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} </v-text> 
+              </div>
+              
+              <div  v-else-if="article.tipo[0] =='v'"> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} </v-text> 
+              </div>
+              
+              <div  v-else> 
+              <v-text class="estiloArticle">  <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} </v-text> 
+              </div>
+            </v-col>
+            <v-col>
+              <v-btn  small
+                      dark
+                      v-bind="attrs"
+                      v-on="on"
+                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
+                <v-icon small left color=" darken">mdi-arrow-down-bold-box</v-icon>  Descargar </v-btn> 
+            </v-col>
+            </v-row>
+            </div>
+            </div>
+        </v-container>
+    </v-col>
+  </v-row>
+  </v-container>
+</v-container>
     <v-container v-else>
      Por favor inicia sesión
-    </v-container>
-</v-container>    
+    </v-container>   
 </template>
 
 <script>
@@ -26,7 +145,8 @@ export default {
     },
     computed: {
       videos(){return this.$store.state.articles},
-        ...mapState(['currentUser'])
+        ...mapState(['currentUser']),
+        ...mapState(['articles']),
     },
     mounted(){
     this.$store.dispatch("loadAll");
