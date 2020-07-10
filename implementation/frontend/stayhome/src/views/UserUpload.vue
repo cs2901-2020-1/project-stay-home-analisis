@@ -38,7 +38,6 @@
                         required
                         ></v-select>
                     </div>
-            <!-- Ver compo se vería mejor, en cascada o que la base de datos se encargue -->
             <v-select v-if="article.tema" 
             v-model="article.tipo"
             :items="tipos"
@@ -47,8 +46,11 @@
             required
             ></v-select>
 
+            <v-textarea v-if="article.tipo" v-model="article.descripcion" label="Descripción" required :rules="descripcionRules"/>
 
-            <div v-if="article.tipo == 'Documento'">
+
+
+            <div v-if="article.tipo == 'Documento' && article.descripcion">
 
                     <v-file-input
                     v-model="articles"
@@ -74,7 +76,7 @@
                     </v-file-input>
             </div>
 
-            <div v-else-if="article.tipo == 'Imagen'">
+            <div v-else-if="article.tipo == 'Imagen' && article.descripcion">
                     <v-file-input
                     v-model="articles"
                     placeholder="Subir tu imagen"
@@ -97,7 +99,7 @@
                     </v-file-input>
             </div>
 
-            <div v-else-if="article.tipo == 'Video'">
+            <div v-else-if="article.tipo == 'Video' && article.descripcion">
                 <v-file-input
                 v-model="articles"
                 placeholder="Subir tu video"
@@ -157,6 +159,10 @@ import {mapState} from 'vuex';
         },
         data: ()=>({
             valid :false,
+             descripcionRules: [
+        v => !!v || 'Descripción requirida',
+        v => (v && v.length <= 1000) || 'La descripción tiene que ser menor que 1000 caracteres',
+      ],
             cursos: [
                 'Matemática',
                 'Física',
@@ -187,6 +193,7 @@ import {mapState} from 'vuex';
              curso: '',
              tema: '',
              tipo: '',
+             descripcion: '',
              user_id: ''
             },
             articles:[]

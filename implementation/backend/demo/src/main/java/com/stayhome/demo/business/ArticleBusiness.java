@@ -55,6 +55,7 @@ public class ArticleBusiness {
     public Article create(Article newArticle) {
         return repository.save(newArticle);
     }
+
     public List<Article> findAll(){
 
         return new ArrayList<>(repository.findAll());
