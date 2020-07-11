@@ -31,6 +31,7 @@ export default new Vuex.Store({
     {
       let a = state.users.filter(a => a.user_id != uid);
       this.state.users = a
+      window.localStorage.currentUser = JSON.stringify({});
       console.log(this.state.users);
     },
     SET_ARTICLES(state,articles)
@@ -41,6 +42,10 @@ export default new Vuex.Store({
     {
       let articles = state.articles.concat(article);
       state.articles = articles;
+    },
+    UPDATE_ARTICLE(state,article){
+      state.articles.find(u => u.article_id == article.article_id)
+      //a = article;
     },
     DELETE_ARTICLE(state,aid)
     {
@@ -125,12 +130,14 @@ export default new Vuex.Store({
       }
 
     },
+ 
     async loadAllArticles({commit}){
       let response = await Api().get('/articles');
       commit('SET_ARTICLES',response.data);
       console.log(response.data);
       return response
      },
+    
      async addArticle({commit},article)
      {
        try{
@@ -160,6 +167,19 @@ export default new Vuex.Store({
           return {error: "Hubo un error al subir el articulo"}
         }
 
+      },
+      async updateArticle({commit},articleInfo){
+        try{
+          let response = await Api().put(`/articles/${articleInfo.article_id}`,articleInfo);
+          console.log(response);
+          let updated_article = response.data;
+          commit('UPDATE_ARTICLE',updated_article);
+          return updated_article;
+        }
+        catch
+        {
+          return {error: "Error al validar"};
+        }
       },
       async deleteArticle({commit},article){
         try{

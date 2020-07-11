@@ -1,8 +1,13 @@
 package com.stayhome.demo.data;
 
+import javax.validation.constraints.NotNull;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
+
 
 
 @Entity
@@ -16,24 +21,36 @@ public class Article implements Serializable {
     private BigInteger article_id;
 
     @Column
+    @NotNull
     private String link;
 
     @Column
+    @NotNull
     private String title;
 
     @Column
+    @NotNull
     private String curso;
 
     @Column
+    @NotNull
     private String tema;
 
     @Column
+    @NotNull
     private String tipo;
 
     @Column
+    @NotNull
     private String descripcion;
 
     @Column
+    @NotNull
+    private Boolean aceptado = false;
+
+    @Column
+    @NotNull
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private BigInteger user_id;
 
     @Lob
@@ -43,13 +60,14 @@ public class Article implements Serializable {
     }
 
     public Article(String link, String title, String curso, String tema, String tipo,
-                   String descripcion, BigInteger user_id, byte[] data) {
+                   String descripcion, Boolean aceptado, BigInteger user_id, byte[] data) {
         this.link = link;
         this.title = title;
         this.curso = curso;
         this.tema = tema;
         this.tipo = tipo;
         this.descripcion = descripcion;
+        this.aceptado = aceptado;
         this.user_id = user_id;
         this.data = data;
     }
@@ -111,6 +129,9 @@ public class Article implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public Boolean getAceptado() { return aceptado; }
+
+    public void setAceptado(Boolean aceptado) { this.aceptado = aceptado; }
 
     public BigInteger getUser_id() {
         return user_id;

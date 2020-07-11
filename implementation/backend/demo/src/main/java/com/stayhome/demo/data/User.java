@@ -1,6 +1,8 @@
 package com.stayhome.demo.data;
 
+
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigInteger;
 
@@ -16,16 +18,20 @@ public class User implements Serializable{
     private BigInteger user_id;
 
     @Column
+    @NotNull
     private String email;
 
     @Column
+    @NotNull
     private String username;
 
     @Column
+    @NotNull
     private String password;
 
     @Column
-    private Boolean admin;
+    @NotNull
+    private Boolean admin = false;
 
     public User() {
     }
@@ -52,7 +58,7 @@ public class User implements Serializable{
         return password;
     }
 
-    public Boolean getAdmin() {return admin;}
+    public Boolean  getAdmin() {return admin;}
 
     public void setUser_id(BigInteger user_id) {
         this.user_id = user_id;

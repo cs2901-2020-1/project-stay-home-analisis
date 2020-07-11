@@ -27,7 +27,7 @@ export default {
         username: '',
         email: '',
         password: '',
-        admin: false
+        admin: false,
       },
        emailRules: [
         v => !!v || 'Email requerido',

@@ -1,7 +1,7 @@
 <template>
 <v-container>
    <v-container  v-model="valid"
-    v-if="currentUser.username">
+    v-if="currentUser.username  && currentUser.admin == false ">
         <h2 class="estilo"  >{{currentUser.username}}<v-text class="estiloc"> >> </v-text> <v-text class="estiloA"> Subir artículos </v-text> </h2>
         <v-container>  </v-container>
         
@@ -134,7 +134,7 @@
         </v-form>
    </v-container>
    <v-container v-else>
-   Por favor inicia sesión
+   ERROR
    </v-container>
 </v-container>   
 </template>
@@ -194,6 +194,7 @@ import {mapState} from 'vuex';
              tema: '',
              tipo: '',
              descripcion: '',
+             aceptado: false,
              user_id: ''
             },
             articles:[]

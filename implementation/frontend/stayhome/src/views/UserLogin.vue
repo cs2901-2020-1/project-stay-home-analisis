@@ -45,6 +45,7 @@ export default {
     async loginUser(){
       /* Autenticar */
       let password = '';
+      let admin = '';
       let validator = await this.$store.dispatch("loadAll");
       console.log(validator.data)
        for(var i = 0; i < validator.data.length; i++){
@@ -52,6 +53,10 @@ export default {
            this.loginInfo.user_id = validator.data[i].user_id;
            this.loginInfo.username = validator.data[i].username;
            password = validator.data[i].password;
+           if(validator.data[i].admin == true){
+                admin = validator.data[i].admin;
+                this.loginInfo.admin = admin
+           }
          }
        }
        if(this.loginInfo.password == password){

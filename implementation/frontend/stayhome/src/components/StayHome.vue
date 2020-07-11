@@ -1,5 +1,17 @@
 <template>
-<v-container v-if="currentUser.username" >
+<v-container v-if="currentUser.admin == true">
+     Solicitudes
+     <div v-for="article in articles" :key ="article.article_id">
+        <h1 v-if="article.aceptado == false">
+              {{article.title}}
+              {{article.aceptado}}
+              <v-btn x-small @click="Validar(article)">Validar</v-btn>
+              <v-btn x-small @click="Eliminar(article)">Eliminar</v-btn>
+        </h1>
+      </div>
+</v-container> 
+
+<v-container v-else-if="currentUser.username" >
     <h1 class="estilo"> {{currentUser.username}}  <v-text class="estiloc"> >> </v-text>  <v-text class="estiloI"> Inicio </v-text></h1>
    
    
@@ -98,6 +110,7 @@
                       <v-subheader>Videos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
                       <div  v-if="article.curso == 'Matemática'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Álgebra'">
                       <div  v-if="article.tipo[0] == 'v'">
                       <v-list-item  @click="sheet = false">
@@ -126,6 +139,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -150,6 +164,7 @@
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Álgebra'">
                       <div  v-if="article.tipo[0] == 'i'">
@@ -179,6 +194,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -204,6 +220,7 @@
                     <v-list>
                       <v-subheader>Documentos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Álgebra'">
                       <div  v-if="article.tipo[0] == 'a'">
@@ -229,6 +246,7 @@
               </v-col>
             </v-row>
                      </v-list-item>
+                     </div>
                      </div>
                      </div>
                      </div>
@@ -286,6 +304,7 @@
                     <v-list>
                       <v-subheader>Videos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Geometría'">
                       <div  v-if="article.tipo[0] == 'v'">
@@ -315,6 +334,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -339,6 +359,7 @@
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Geometría'">
                       <div  v-if="article.tipo[0] == 'i'">
@@ -368,6 +389,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -393,6 +415,7 @@
                     <v-list>
                       <v-subheader>Documentos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Geometría'">
                       <div  v-if="article.tipo[0] == 'a' " >
@@ -418,6 +441,7 @@
               </v-col>
             </v-row>
                      </v-list-item>
+                     </div>
                      </div>
                      </div>
                      </div>
@@ -477,6 +501,7 @@
                     <v-list>
                       <v-subheader>Videos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Ecuaciones'">
                       <div  v-if="article.tipo[0] == 'v'">
@@ -506,6 +531,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -530,6 +556,7 @@
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Ecuaciones'">
                       <div  v-if="article.tipo[0] == 'i'">
@@ -559,6 +586,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -584,6 +612,7 @@
                     <v-list>
                       <v-subheader>Documentos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Ecuaciones'">
                       <div  v-if="article.tipo[0] == 'a' " >
@@ -609,6 +638,7 @@
               </v-col>
             </v-row>
                      </v-list-item>
+                     </div>
                      </div>
                      </div>
                      </div>
@@ -682,6 +712,7 @@
                     <v-list>
                       <v-subheader>Videos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Magnetismo'">
                       <div  v-if="article.tipo[0] == 'v'">
@@ -711,6 +742,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -735,6 +767,7 @@
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Magnetismo'">
                       <div  v-if="article.tipo[0] == 'i'">
@@ -764,6 +797,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -789,6 +823,7 @@
                     <v-list>
                       <v-subheader>Documentos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Magnetismo'">
                       <div  v-if="article.tipo[0] == 'a'">
@@ -814,6 +849,7 @@
               </v-col>
             </v-row>
                      </v-list-item>
+                     </div>
                      </div>
                      </div>
                      </div>
@@ -869,6 +905,7 @@
                     <v-list>
                       <v-subheader>Videos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Cinemática'">
                       <div  v-if="article.tipo[0] == 'v'">
@@ -898,6 +935,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -922,6 +960,7 @@
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Cinemática'">
                       <div  v-if="article.tipo[0] == 'i'">
@@ -951,6 +990,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -976,6 +1016,7 @@
                     <v-list>
                       <v-subheader>Documentos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Cinemática'">
                       <div  v-if="article.tipo[0] == 'a'">
@@ -1001,6 +1042,7 @@
               </v-col>
             </v-row>
                      </v-list-item>
+                     </div>
                      </div>
                      </div>
                      </div>
@@ -1060,6 +1102,7 @@
                     <v-list>
                       <v-subheader>Videos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Dinámica'">
                       <div  v-if="article.tipo[0] == 'v'">
@@ -1089,6 +1132,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -1113,6 +1157,7 @@
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Dinámica'">
                       <div  v-if="article.tipo[0] == 'i'">
@@ -1142,6 +1187,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -1167,6 +1213,7 @@
                     <v-list>
                       <v-subheader>Documentos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
                       <div  v-if="article.tema == 'Dinámica'">
                       <div  v-if="article.tipo[0] == 'a'">
@@ -1192,6 +1239,7 @@
               </v-col>
             </v-row>
                      </v-list-item>
+                     </div>
                      </div>
                      </div>
                      </div>
@@ -1267,6 +1315,7 @@
                     <v-list>
                       <v-subheader>Videos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
                       <div  v-if="article.tema == 'Química Básica'">
                       <div  v-if="article.tipo[0] == 'v'">
@@ -1296,6 +1345,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -1320,6 +1370,7 @@
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
                       <div  v-if="article.tema == 'Química Básica'">
                       <div  v-if="article.tipo[0] == 'i'">
@@ -1349,6 +1400,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -1374,6 +1426,7 @@
                     <v-list>
                       <v-subheader>Documentos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
                       <div  v-if="article.tema == 'Química Básica'">
                       <div  v-if="article.tipo[0] == 'a'">
@@ -1399,6 +1452,7 @@
               </v-col>
             </v-row>
                      </v-list-item>
+                     </div>
                      </div>
                      </div>
                      </div>
@@ -1458,6 +1512,7 @@
                     <v-list>
                       <v-subheader>Videos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
                       <div  v-if="article.tema == 'Química Orgánica'">
                       <div  v-if="article.tipo[0] == 'v'">
@@ -1487,6 +1542,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -1511,6 +1567,7 @@
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
                       <div  v-if="article.tema == 'Química Orgánica'">
                       <div  v-if="article.tipo[0] == 'i'">
@@ -1540,6 +1597,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -1565,6 +1623,7 @@
                     <v-list>
                       <v-subheader>Documentos</v-subheader>
                       <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
                       <div  v-if="article.tema == 'Química Orgánica'">
                       <div  v-if="article.tipo[0] == 'a'">
@@ -1594,6 +1653,7 @@
                      </div>
                      </div>
                      </div>
+                     </div>
                     </v-list>
                   </v-bottom-sheet>
                 </div>
@@ -1614,7 +1674,6 @@
     </v-col>
     </v-row>
 </v-container>
-
 
 <v-container v-else>
      Por favor inicia sesión
@@ -1676,6 +1735,7 @@ export default {
     },
     computed: {
       videos(){return this.$store.state.articles},
+
         ...mapState(['currentUser']),
         ...mapState(['articles']),
     },
@@ -1683,14 +1743,11 @@ export default {
     this.$store.dispatch("loadAll");
     this.$store.dispatch("loadAllArticles");
     },
-    methods:
-    {
+    methods:{
       
-        down()
-        {
-                this.$router.push("/download")
+      down(){
+            this.$router.push("/download")
         },
-
       next () {
         this.onboarding = this.onboarding + 1 === this.length
           ? 0
@@ -1702,8 +1759,24 @@ export default {
           : this.onboarding - 1
       },
 
+      async Validar(article){
+        article.aceptado = true;
+        let updated_article = await this.$store.dispatch("updateArticle",article);
+          if(updated_article.error){
+            alert(updated_article.error);
+          }else{
+            alert("Se ha validado correctamente")
+          }
+          this.$router.push("/mainpage")
+      },
+      Eliminar(article){
+        let response = confirm(`¿Estás seguro que deseas eliminar este articulo? ${this.currentUser.username}`);
+        if(response){
+          this.$store.dispatch('deleteArticle',article);
+          this.$router.push("/mainpage");
 
-
+        }
+      }
 
 
     },

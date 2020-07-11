@@ -60,19 +60,25 @@ public class ArticleBusiness {
 
         return new ArrayList<>(repository.findAll());
     }
+
     public Article getArticle(BigInteger article_id) {
         return repository.findById(article_id)
                 .orElseThrow(() -> new ArticleNotFoundException("File not found with id " + article_id));
     }
+    public Article update(Article item){
+        Article a = repository.findById(item.getArticle_id()).get();
+        if(a!=null){
+            return repository.save(item);
+        }
+        return null;
+    }
+
     /*
     public List<Article> findAll_id(user_id){
 
         return new ArrayList<>(repository.findById(user_id));
     }
 */
-    public void deleteArticle_user_id(BigInteger user_id){
-        repository.deleteById(user_id);
-    }
     public void delete(BigInteger article_id){
 
         repository.deleteById(article_id);

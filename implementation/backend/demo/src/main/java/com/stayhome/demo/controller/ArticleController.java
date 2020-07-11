@@ -55,9 +55,18 @@ public class ArticleController {
     public List<Article> read (){
         return business.findAll();
     }
+
     @GetMapping( "/articles/{article_id}" )
     public Article read (@PathVariable BigInteger article_id){
         return business.getArticle(article_id);
+    }
+
+    @PutMapping("/articles/{article_id}")
+    public Article update(
+            @PathVariable BigInteger article_id,
+            @RequestBody Article item
+    ){
+        return business.update(item);
     }
 /*
     @GetMapping( "/articles_by_user/{user_id}" )
@@ -70,13 +79,7 @@ public class ArticleController {
         business.delete(article_id);
     }
 
-    @DeleteMapping("/articles_by_user/{user_id}")
-    public void deleteArticle_u_id(@PathVariable BigInteger user_id){
-        business.deleteArticle_user_id(user_id);
-    }
-
-
-  @GetMapping("/downloadFile/{article_id}")
+    @GetMapping("/downloadFile/{article_id}")
     public ResponseEntity<Resource> downloadFile(@PathVariable BigInteger article_id) {
         Article article = business.getArticle(article_id);
 

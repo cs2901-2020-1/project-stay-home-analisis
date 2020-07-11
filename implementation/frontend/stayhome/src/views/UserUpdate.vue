@@ -1,6 +1,6 @@
 <template>
 <v-container>
-    <v-container v-if="currentUser.username">
+    <v-container v-if="currentUser.username && currentUser.admin == false">
       
       <h1 class="estiloUser" >{{currentUser.username}} <v-text class="estilo"> >> </v-text> <v-text class="estiloAdmin">  Administrar Perfil </v-text> </h1> 
       <v-spacer></v-spacer>
@@ -137,7 +137,7 @@
   </v-container>
 
   <v-container v-else>
-  Por favor Logueate
+  ERROR
   </v-container>
 </v-container>
 </template>

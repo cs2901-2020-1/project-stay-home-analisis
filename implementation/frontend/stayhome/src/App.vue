@@ -34,20 +34,16 @@
 
           <v-list-item
             @click="admin"
+            v-if="currentUser.admin == false"
           >
             <v-list-item-title>Administrar Perfil</v-list-item-title>
           </v-list-item>
 
           <v-list-item
             @click="upload"
+            v-if="currentUser.admin == false"
           >
           <v-list-item-title>Subir artículos</v-list-item-title>
-           </v-list-item>
-
-           <v-list-item
-            @click="hola2"
-          >
-          <v-list-item-title>Historial</v-list-item-title>
            </v-list-item>
 
            <v-list-item
@@ -118,12 +114,6 @@ export default {
     },
     upload(){
       this.$router.push("/upload")
-    },
-    hola(){
-      console.log("Hola")
-    },
-    hola2(){
-        console.log("hola2")
     }
   },
 
