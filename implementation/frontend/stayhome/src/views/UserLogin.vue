@@ -70,7 +70,7 @@ export default {
             this.$router.push('/mainpage');
           }
        }else{
-         alert('Hubo un error al eliminar el usuario, intenta denuevo')
+         alert('Email/password incorrectos, intenta denuevo')
        }
     }
   },

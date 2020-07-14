@@ -217,6 +217,10 @@ import {mapState} from 'vuex';
           }
             },
         },
+
+        
+
+
     }
   
 </script>

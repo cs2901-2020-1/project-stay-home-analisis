@@ -7,6 +7,9 @@ import StayHome from '../components/StayHome.vue'
 import UserUpdate from '../views/UserUpdate.vue'
 import UserUpload from '../views/UserUpload'
 
+import prueba from '../views/prueba'
+
+
 
 Vue.use(VueRouter)
 
@@ -40,7 +43,13 @@ Vue.use(VueRouter)
     path: '/upload',
     name: 'user-upload',
     component: UserUpload
+   },
+   {
+     path:'/prueba',
+     name:'prueba',
+     component:prueba
    }
+  
 ]
 
 const router = new VueRouter({

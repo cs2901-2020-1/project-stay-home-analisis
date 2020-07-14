@@ -1,14 +1,1058 @@
 <template>
 <v-container v-if="currentUser.admin == true">
-     Solicitudes
-     <div v-for="article in articles" :key ="article.article_id">
-        <h1 v-if="article.aceptado == false">
-              {{article.title}}
-              {{article.aceptado}}
-              <v-btn x-small @click="Validar(article)">Validar</v-btn>
-              <v-btn x-small @click="Eliminar(article)">Eliminar</v-btn>
-        </h1>
-      </div>
+<v-container></v-container>
+     <v-row>
+     <v-text class="estiloTituloAdmin"> Solicitudes </v-text>
+     </v-row>
+    <v-container></v-container>
+
+
+<v-row>
+<v-col justify="center">
+
+ <v-card id="lateral" dark color="dark">
+    <v-toolbar
+      dark
+      tabs
+      flat
+      color="dark"
+    >
+       
+      <v-toolbar-title> Matemática </v-toolbar-title>
+      <v-spacer></v-spacer>
+
+    
+      <template v-slot:extension>
+       
+        <v-tabs
+          v-model="tabs"
+          align-with-title
+        >
+          <v-tab href="#one"> Álgebra </v-tab>
+          <v-tab href="#two"> Geometría </v-tab>
+          <v-tab href="#three"> Ecuaciones </v-tab>
+
+          <v-tabs-slider color="green"></v-tabs-slider>
+
+        </v-tabs>
+
+      </template>
+    </v-toolbar>
+    <v-card-text>
+
+      <v-tabs-items v-model="tabs">
+        <v-tab-item
+          v-for="content in ['one', 'two', 'three']"
+          :key="content"
+          :value="content"
+        >
+        <div  v-if="content == 'one'" >
+        <v-col>
+    <v-card >
+
+    
+      <v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows>
+
+      <v-slide-item
+          v-for="article in articles" 
+          :key ="article.article_id"
+       >
+      <div v-if="article.aceptado == false" >
+        <div v-if="article.curso == 'Matemática'" >
+          <div v-if="article.tema == 'Álgebra'" >
+      <v-col>
+        <div v-if="article.tipo[0] == 'i'"> 
+        <v-card
+        class="estiloC"
+          
+          height="300"    
+        >
+                <v-row  
+                class="fill-height"
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+
+                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="2" contain> 
+                  </v-img>
+                  
+                </v-row>
+                <v-container></v-container>
+                 <v-row  class="estiloc" justify="center">
+                  <div  v-for="users in user" 
+                        :key ="users.user_id">
+
+                  <h1  v-if="users.user_id == alticle.article_id"> {{users.username}} </h1>
+                  <v-text > {{article.title}} </v-text>
+                  
+                   
+                   </div>
+                </v-row>
+                <v-container> </v-container>
+                <v-row justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                </v-row>
+                <v-container> </v-container>
+                <v-row  justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+        </div>
+
+        
+
+<div v-else-if="article.tipo[0] == 'v'"> 
+        <v-card
+        class="estiloC"
+          
+          widht="200"
+          height="300" 
+             
+        >
+                <v-row  
+                
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+
+                  <video class="video-js" widht="240" height="240" muted controls>
+                  <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" type="video/mp4" />
+                  </video>
+                  
+                </v-row>
+                 <v-row  justify="center">
+                   <v-col>
+                  <v-text class="estiloc" > {{article.title}} </v-text>
+                   </v-col>
+                   <v-col justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                  </v-col>
+                  <v-col justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-col>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </v-col>
+  </div>
+  </div>
+  </div>
+        
+      </v-slide-item>
+      </v-slide-group>
+    
+
+  </v-card>
+  </v-col>         
+  </div>
+
+
+
+
+    <div v-if="content == 'two'" >
+
+    
+    <v-col>
+    <v-card >
+
+    
+      <v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows>
+
+      <v-slide-item
+          v-for="article in articles" 
+          :key ="article.article_id"
+       >
+      <div v-if="article.aceptado == false" >
+        <div v-if="article.curso == 'Matemática'" >
+          <div v-if="article.tema == 'Geometría'" >
+      <v-col>
+        <v-card
+        class="estiloC"
+          
+          height="300"    
+        >
+                <v-row  
+                class="fill-height"
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
+                  </v-img>
+                </v-row>
+                <v-container></v-container>
+                 <v-row  class="estiloc" justify="center">
+                  <v-text > {{article.title}} </v-text>
+                </v-row>
+                <v-container> </v-container>
+                <v-row justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                </v-row>
+                <v-container> </v-container>
+                <v-row  justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+    </v-col>
+  </div>
+  </div>
+  </div>
+        
+      </v-slide-item>
+      </v-slide-group>
+    
+
+  </v-card>
+  </v-col>         
+  </div>
+
+
+
+  <div v-if="content == 'three'" >
+          
+        <v-col>
+    <v-card >
+
+    
+      <v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows>
+
+      <v-slide-item
+          v-for="article in articles" 
+          :key ="article.article_id"
+       >
+      <div v-if="article.aceptado == false" >
+        <div v-if="article.curso == 'Matemática'" >
+          <div v-if="article.tema == 'Ecuaciones'" >
+      <v-col>
+        <v-card
+        class="estiloC"
+          
+          height="300"    
+        >
+                <v-row  
+                class="fill-height"
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
+                  </v-img>
+                </v-row>
+                <v-container></v-container>
+                 <v-row  class="estiloc" justify="center">
+                  <v-text > {{article.title}} </v-text>
+                </v-row>
+                <v-container> </v-container>
+                <v-row justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                </v-row>
+                <v-container> </v-container>
+                <v-row  justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+    </v-col>
+  </div>
+  </div>
+  </div>
+        
+      </v-slide-item>
+      </v-slide-group>
+    
+
+  </v-card>
+  </v-col>         
+  </div>
+
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card-text>
+    
+  </v-card>
+
+  </v-col>
+</v-row>
+
+
+
+
+
+
+
+
+
+
+
+<v-row>
+<v-col justify="center">
+
+ <v-card id="lateral">
+    <v-toolbar
+      dark
+      tabs
+      flat
+      color="dark"
+    >
+       
+      <v-toolbar-title> Física </v-toolbar-title>
+      <v-spacer></v-spacer>
+
+    
+      <template v-slot:extension>
+       
+        <v-tabs
+          v-model="tabsF"
+          align-with-title
+        >
+          <v-tab href="#oneF"> Magnetismo </v-tab>
+          <v-tab href="#twoF"> Cinemática </v-tab>
+          <v-tab href="#threeF"> Dinámica </v-tab>
+
+          <v-tabs-slider color="green"></v-tabs-slider>
+
+        </v-tabs>
+
+      </template>
+    </v-toolbar>
+    <v-card-text>
+
+      <v-tabs-items v-model="tabsF">
+        <v-tab-item
+          v-for="content in ['oneF', 'twoF', 'threeF']"
+          :key="content"
+          :value="content"
+        >
+        <div  v-if="content == 'oneF'" >
+        <v-col>
+    <v-card >
+
+    
+      <v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows>
+
+      <v-slide-item
+          v-for="article in articles" 
+          :key ="article.article_id"
+       >
+      <div v-if="article.aceptado == false" >
+        <div v-if="article.curso == 'Física'" >
+          <div v-if="article.tema == 'Magnetismo'" >
+      <v-col>
+        <v-card
+        class="estiloC"
+          
+          height="300"    
+        >
+                <v-row  
+                class="fill-height"
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
+                  </v-img>
+                </v-row>
+                <v-container></v-container>
+                 <v-row  class="estiloc" justify="center">
+                  <v-text > {{article.title}} </v-text>
+                </v-row>
+                <v-container> </v-container>
+                <v-row justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                </v-row>
+                <v-container> </v-container>
+                <v-row  justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+    </v-col>
+  </div>
+  </div>
+  </div>
+        
+      </v-slide-item>
+      </v-slide-group>
+    
+
+  </v-card>
+  </v-col>         
+  </div>
+
+
+
+
+    <div v-if="content == 'twoF'" >
+
+    
+    <v-col>
+    <v-card >
+
+    
+      <v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows>
+
+      <v-slide-item
+          v-for="article in articles" 
+          :key ="article.article_id"
+       >
+      <div v-if="article.aceptado == false" >
+        <div v-if="article.curso == 'Física'" >
+          <div v-if="article.tema == 'Cinemática'" >
+      <v-col>
+        <v-card
+        class="estiloC"
+          
+          height="300"    
+        >
+                <v-row  
+                class="fill-height"
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
+                  </v-img>
+                </v-row>
+                <v-container></v-container>
+                 <v-row  class="estiloc" justify="center">
+                  <v-text > {{article.title}} </v-text>
+                </v-row>
+                <v-container> </v-container>
+                <v-row justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                </v-row>
+                <v-container> </v-container>
+                <v-row  justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+    </v-col>
+  </div>
+  </div>
+  </div>
+        
+      </v-slide-item>
+      </v-slide-group>
+    
+
+  </v-card>
+  </v-col>         
+  </div>
+
+
+
+  <div v-if="content == 'threeF'" >
+          
+        <v-col>
+    <v-card >
+
+    
+      <v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows>
+
+      <v-slide-item
+          v-for="article in articles" 
+          :key ="article.article_id"
+       >
+      <div v-if="article.aceptado == false" >
+        <div v-if="article.curso == 'Física'" >
+          <div v-if="article.tema == 'Dinámica'" >
+      <v-col>
+        <v-card
+        class="estiloC"
+          
+          height="300"    
+        >
+                <v-row  
+                class="fill-height"
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
+                  </v-img>
+                </v-row>
+                <v-container></v-container>
+                 <v-row  class="estiloc" justify="center">
+                  <v-text > {{article.title}} </v-text>
+                </v-row>
+                <v-container> </v-container>
+                <v-row justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                </v-row>
+                <v-container> </v-container>
+                <v-row  justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+    </v-col>
+  </div>
+  </div>
+  </div>
+        
+      </v-slide-item>
+      </v-slide-group>
+    
+
+  </v-card>
+  </v-col>         
+  </div>
+
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card-text>
+    
+  </v-card>
+
+  </v-col>
+</v-row>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<v-row>
+<v-col justify="center">
+
+ <v-card id="lateral">
+    <v-toolbar
+      dark
+      tabs
+      flat
+      color="dark"
+    >
+       
+      <v-toolbar-title> Química </v-toolbar-title>
+      <v-spacer></v-spacer>
+
+    
+      <template v-slot:extension>
+       
+        <v-tabs
+          v-model="tabsQ"
+          align-with-title
+        >
+          <v-tab href="#oneQ"> Química básica </v-tab>
+          <v-tab href="#twoQ"> Química orgánica </v-tab>
+
+          <v-tabs-slider color="green"></v-tabs-slider>
+
+        </v-tabs>
+
+      </template>
+    </v-toolbar>
+    <v-card-text>
+
+      <v-tabs-items v-model="tabsQ">
+        <v-tab-item
+          v-for="content in ['oneQ', 'twoQ']"
+          :key="content"
+          :value="content"
+        >
+        <div  v-if="content == 'oneQ'" >
+        <v-col>
+    <v-card >
+
+    
+      <v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows>
+
+      <v-slide-item
+          v-for="article in articles" 
+          :key ="article.article_id"
+       >
+      <div v-if="article.aceptado == false" >
+        <div v-if="article.curso == 'Química'" >
+          <div v-if="article.tema == 'Química Básica'" >
+      <v-col>
+        <v-card
+        class="estiloC"
+          
+          height="300"    
+        >
+                <v-row  
+                class="fill-height"
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
+                  </v-img>
+                </v-row>
+                <v-container></v-container>
+                 <v-row  class="estiloc" justify="center">
+                  <v-text > {{article.title}} </v-text>
+                </v-row>
+                <v-container> </v-container>
+                <v-row justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                </v-row>
+                <v-container> </v-container>
+                <v-row  justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+    </v-col>
+  </div>
+  </div>
+  </div>
+        
+      </v-slide-item>
+      </v-slide-group>
+    
+
+  </v-card>
+  </v-col>         
+  </div>
+
+
+
+
+    <div v-if="content == 'twoQ'" >
+
+    
+    <v-col>
+    <v-card >
+
+    
+      <v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows>
+
+      <v-slide-item
+          v-for="article in articles" 
+          :key ="article.article_id"
+       >
+      <div v-if="article.aceptado == false" >
+        <div v-if="article.curso == 'Química'" >
+          <div v-if="article.tema == 'Química Orgánica'" >
+      <v-col>
+        <v-card
+        class="estiloC"
+          
+          height="300"    
+        >
+                <v-row  
+                class="fill-height"
+                align="center"
+                justify="center"
+              >
+               <v-col>
+                <v-row justify="center">
+                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
+                  </v-img>
+                </v-row>
+                <v-container></v-container>
+                 <v-row  class="estiloc" justify="center">
+                  <v-text > {{article.title}} </v-text>
+                </v-row>
+                <v-container> </v-container>
+                <v-row justify="center">
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Validar(article)">Validar</v-btn>
+                </v-row>
+                <v-container> </v-container>
+                <v-row  justify="center">
+                <v-btn 
+                 dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                small @click="Eliminar(article)">Eliminar</v-btn>
+                </v-row>
+                
+               </v-col>
+                </v-row>
+
+   <v-card-actions class="justify-space-between">
+
+      <v-btn
+        text
+        @click="prev"
+      >
+        <v-icon>mdi-chevron-down</v-icon>
+      </v-btn>
+     
+      <v-btn
+        text
+        @click="next"
+      >
+        <v-icon>mdi-chevron-up</v-icon>
+      </v-btn>
+
+    </v-card-actions>
+              
+    </v-card>
+    </v-col>
+  </div>
+  </div>
+  </div>
+        
+      </v-slide-item>
+      </v-slide-group>
+    
+
+  </v-card>
+  </v-col>         
+  </div>
+
+
+        </v-tab-item>
+      </v-tabs-items>
+    </v-card-text>
+    
+  </v-card>
+
+  </v-col>
+</v-row>
+
+
+
+
+
+
+
 </v-container> 
 
 <v-container v-else-if="currentUser.username" >
@@ -1690,6 +2734,17 @@ export default {
     name: 'StayHome',
     data(){
         return{
+
+         tabs: null,
+         
+         tabsF:null,
+
+         tabsQ:null,
+
+         length: 3,
+         onboarding: 0,
+
+
            sheet:false,
            sheet2:false,
            sheet3:false,
@@ -1733,16 +2788,22 @@ export default {
 
         }
     },
+
+  
     computed: {
+
+    
       videos(){return this.$store.state.articles},
 
         ...mapState(['currentUser']),
         ...mapState(['articles']),
+      
     },
     mounted(){
     this.$store.dispatch("loadAll");
     this.$store.dispatch("loadAllArticles");
     },
+
     methods:{
       
       down(){
@@ -1759,6 +2820,7 @@ export default {
           : this.onboarding - 1
       },
 
+      
       async Validar(article){
         article.aceptado = true;
         let updated_article = await this.$store.dispatch("updateArticle",article);
@@ -1790,12 +2852,17 @@ export default {
 
         this.loader = null
       },
+
     },
 }
        
 </script>
 
 <style lang="scss" scoped>
+
+
+
+
 
   .custom-loader {
     animation: loader 1s infinite;
@@ -1892,5 +2959,19 @@ export default {
 
 
     }
+
+    .estiloTituloAdmin{
+        text-align: left;
+        font-size: 40px;    
+
+
+
+    }
+
+
+
+
+
+
 
 </style>
