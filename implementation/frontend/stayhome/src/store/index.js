@@ -8,7 +8,8 @@ export default new Vuex.Store({
   state: {
     users: [],
     currentUser: {},
-    articles: []
+    articles: [],
+    articlepacks: []
 
   },
   mutations: {
@@ -60,6 +61,28 @@ export default new Vuex.Store({
       this.state.articles = a;
       console.log(this.state.articles);
     },
+
+    SET_ARTICLEPACKS(state,articlepacks)
+    {
+      state.articlepacks = articlepacks;
+    },
+
+    ADD_ARTICLEPACK(state,articlepack)
+    {
+      let adartpack = state.articlepacks.concat(articlepack);
+      state.articlepacks = adartpack;
+    },
+
+
+
+
+
+
+
+
+
+
+
 
   },
   actions: {
@@ -205,7 +228,33 @@ export default new Vuex.Store({
         catch{
           return {error: "Hubo un error al eliminar el articulo, intenta denuevo"}
         }
+      },
+
+
+      async loadAllArticlepacks({commit}){
+        console.log("gato");
+        let response = await Api().get('/articlepacks');
+        commit('SET_ARTICLEPACKS',response.data);
+        console.log(response.data);
+        return response
+       },
+
+       async addArticlepack({commit},articlepack)
+     {
+       try{
+       let response = await Api().post('/articlepacks',articlepack);
+       let artpack = response.data;
+       console.log(artpack);
+       commit('ADD_ARTICLEPACK',artpack);
+       return artpack;
       }
+       catch
+       {
+        return {error: "Hubo un error al subir el articulo"}
+       }
+      },
+
+  
   },
   modules: {
   }

@@ -80,7 +80,7 @@ public class ArticleBusiness {
     }
 */
 
-    public int addLike(BigInteger article_id, BigInteger user_id){
+    /*public int addLike(BigInteger article_id, BigInteger user_id){
 
             //if usuario aun no ha likeado este articulo
             Article article = repository.findById(article_id).get();
@@ -96,9 +96,9 @@ public class ArticleBusiness {
             }
             return article.likes.size();
             
-    }
+    }*/
 
-    public int addDislike(BigInteger article_id, BigInteger user_id){
+    /*public int addDislike(BigInteger article_id, BigInteger user_id){
             //if usuario aun no ha dislikeado este articulo
             Article article = repository.findById(article_id).get();
             
@@ -115,16 +115,16 @@ public class ArticleBusiness {
             return article.dislikes.size();
 
 
-    }
+    }*/
 
-    public void addComment(BigInteger article_id, BigInteger user_id, String comment){
+    /*public void addComment(BigInteger article_id, BigInteger user_id, String comment){
         try{
             Article article = repository.findById(article_id).get();
             article.comentarios.add(comment);
         } catch (Exception ex){
             //alerta "Solo usuarios logeados pueden dejar feedback!"
         }
-    }
+    }*/
 
     public void delete(BigInteger article_id){
 

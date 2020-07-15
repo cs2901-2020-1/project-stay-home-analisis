@@ -42,16 +42,81 @@
 
     <v-card-actions>
       <v-col>
-        <v-col justify="center">
+        <v-row justify="center">
       <v-btn 
         dark
         v-bind="attrs"
         v-on="on"
         color="dark"
+        
         small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
         </v-btn>
-      </v-col>
+      </v-row>
+
+    <v-container></v-container>
+
+      <v-row justify="center">
+    <v-btn
+      dark
+      color="dark"
+      small
+      @click.stop="dialog = true"
+    >
+      Ver mis paquetes de artículos
+    </v-btn>
+
+    <v-dialog
+      v-model="dialog"
+      max-width="400"
+    >
+      <v-card>
+        <v-card-title class="headline"> Paquete de artículos </v-card-title>
+
+        <v-card-text>
+          <v-col>
+            <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
+              <v-row>
+                <v-col>
+                <v-text class="estiloP" > <v-icon color="dark">mdi-folder-multiple</v-icon> {{articlepack.name}} </v-text>
+                </v-col>
+                <v-col>
+                <v-btn
+                  color="dark"
+                  dark
+                  small
+                  @click="addArticletoPack(articlepack.articlepack_id)"
+                >
+                  Añadir
+                 </v-btn>
+                 </v-col>
+              </v-row>
+            </div>
+          
+
+          </v-col>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            dark
+            color="dark"
+            small
+            @click="dialog = false"
+          >
+            cerrar
+          </v-btn>
+
+          
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
     </v-col>
+
+
+
       <v-col >
         <v-row justify="center">
       <v-btn
@@ -149,9 +214,7 @@
         <v-divider></v-divider>
 
         <v-card-text>
-    
         {{currentArticle.descripcion}}
-       
         </v-card-text>
       </div>
     </v-expand-transition>
@@ -211,10 +274,21 @@ export default {
     pdf
   },
     
-    data: () => ({
-      show: false,
-     
-    }),
+    data () {
+      return {
+         dialog:false,
+         show: false,
+
+      doublei: {
+            "articlepackid": '',
+            "article_id": ''
+        }
+
+    
+
+
+    }
+   },
 
 
  computed: {
@@ -227,6 +301,7 @@ export default {
         ...mapState(['currentUser']),
         ...mapState(['articles']),
         ...mapState(['users']),
+        ...mapState(['articlepacks']),
 
       
     },
@@ -235,6 +310,7 @@ export default {
     mounted(){
     this.$store.dispatch("loadAll");
     this.$store.dispatch("loadAllArticles");
+    this.$store.dispatch("loadAllArticlepacks");
 
    
     },
@@ -246,9 +322,19 @@ methods:{
       this.$router.push("/")
     },
 
-down(){
+  down(){
             this.$router.push("/download")
         },
+
+  async addArticletoPack(articlepack_id)
+   {
+     this.doublei.article_id = this.currentArticle.article_id;
+     this.doublei.articlepackid = articlepack_id;
+     console.log(this.doublei);
+     let response = await Api().post("/articlesporpack/",doublei);
+     console.log(response)
+
+   }     
 
 
 },

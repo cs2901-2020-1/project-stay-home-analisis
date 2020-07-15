@@ -21,3 +21,10 @@ CREATE TABLE APP_ARTICLE(
 	USER_ID BIGINT not null REFERENCES app_user(user_id),
     PRIMARY KEY(ARTICLE_ID)
 );
+
+
+CREATE TABLE app_articlesbypack(
+    articlepackid  BIGINT not null REFERENCES app_article_pack(articlepack_id),
+    article_id    BIGINT not null REFERENCES app_article(article_id),
+    PRIMARY KEY(articlepackid,article_id)
+);

@@ -13,6 +13,8 @@ import previsualizar from '../views/previsualizar'
 
 import previsualizarUser from '../views/previsualizarUser'
 
+import Myplaylists from '../views/Myplaylists'
+
 
 
 Vue.use(VueRouter)
@@ -65,6 +67,13 @@ Vue.use(VueRouter)
     name:'previsualizarUser',
     component:previsualizarUser,
     params: true
+  },
+
+  {
+    path:"/Myplaylists",
+    name:'Myplaylists',
+    component: Myplaylists,
+    
   }
   
 ]

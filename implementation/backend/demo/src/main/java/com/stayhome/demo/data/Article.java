@@ -53,14 +53,14 @@ public class Article implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private BigInteger user_id;
 
-    @Column
+    /*@Column
     public Vector<String> comentarios;
 
     @Column
     public Vector<BigInteger> likes;
 
     @Column
-    public Vector<BigInteger> dislikes;
+    public Vector<BigInteger> dislikes;*/
 
 
     @Lob
@@ -82,9 +82,9 @@ public class Article implements Serializable {
         this.user_id = user_id;
         this.data = data;
 
-        this.comentarios = comentarios;
+        /*this.comentarios = comentarios;
         this.likes = likes;
-        this.dislikes = dislikes;
+        this.dislikes = dislikes;*/
     }
 
 
@@ -161,7 +161,7 @@ public class Article implements Serializable {
     public void setData(byte[] data) { this.data = data; }
 
 
-    public Vector<String> getComentarios() { return comentarios; }
+    /*public Vector<String> getComentarios() { return comentarios; }
 
     public void setComentarios(Vector<String> comentarios) {
         this.comentarios = comentarios;
@@ -173,7 +173,7 @@ public class Article implements Serializable {
 
     public Vector<BigInteger> getDislikes() { return dislikes; }
 
-    public void setDislikes(Vector<BigInteger> dislikes) { this.dislikes = dislikes; }
+    public void setDislikes(Vector<BigInteger> dislikes) { this.dislikes = dislikes; }*/
 
 
 }
