@@ -611,8 +611,58 @@
 </v-container> 
 
 <v-container v-else-if="currentUser.username" >
-    <h1 class="estilo"> {{currentUser.username}}  <v-text class="estiloc"> >> </v-text>  <v-text class="estiloI"> Inicio </v-text></h1>
-   
+    <v-row>
+      <h1 class="estilo"> {{currentUser.username}}  <v-text class="estiloc"> >> </v-text>  <v-text class="estiloI"> Inicio </v-text></h1>
+      <v-spacer></v-spacer>
+      <v-dialog
+        v-model="dialog"
+        width="500"
+      >
+        <template v-slot:activator="{ on, attrs }">     
+          <v-btn
+            color="red lighten-2"
+            dark
+            v-bind="attrs"
+            v-on="on"
+          >
+          Crear paquete de artículos
+          </v-btn>
+        </template>
+        <v-card v-model="valid">
+          <v-card-title
+            class="headline grey lighten-2"
+            primary-title
+          >
+          Paquete de artículos
+          </v-card-title>
+
+          <v-card-text>
+             <v-text-field v-model="playlist.name" label="Nombre del paquete" :rules="nombreRules" > Ingresa el nombre del paquete de artículos</v-text-field>
+          </v-card-text>
+
+          <v-divider></v-divider>
+
+          <v-card-actions>
+            <v-btn
+              color="primary"
+              text
+              @click="addarticle"
+              :disabled="!valid"
+            >
+            Crear
+            </v-btn>
+            <v-spacer></v-spacer>
+            <v-btn
+              color="primary"
+              text
+              @click="dialog = false"
+            >
+            Cerrar
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog> 
+    </v-row>
    
     <v-row class="estiloM" >
         
@@ -1862,11 +1912,6 @@
      </v-card>
       
     </v-col>
-   
-    
-
-
-
 
     <v-col >
       <v-card
@@ -2075,8 +2120,6 @@
 
 <v-container></v-container>
            
-
-
 <v-dialog v-model="dialogq2" scrollable max-width="700px">
 
             <template v-slot:activator="{ on, attrs }">
@@ -2288,12 +2331,17 @@ import { mapState } from 'vuex';
 
 export default {
 
-   
-
-    
     name: 'StayHome',
     data(){
         return{
+          nombreRules: [
+            v => !!v || 'Nombre requirido',
+            v => (v && v.length <= 20) || 'El nombre tiene que tener menos de 20 caracteres',
+          ],
+          playlist: { 
+            name:'',
+          },
+          dialog: false,
 
           dialogA: false,
 
@@ -2353,14 +2401,9 @@ export default {
 
   
     computed: {
-
-    
-
         ...mapState(['currentUser']),
         ...mapState(['articles']),
-
         
-      
     },
     
     mounted(){
@@ -2383,6 +2426,15 @@ export default {
           ? this.length - 1
           : this.onboarding - 1
       },
+      async addarticle(){
+        let reponse_articlepack = await this.$store.dispatch('addArticlepack',this.playlist);
+        if(reponse_articlepack.error){
+          alert(reponse_articlepack.error);
+        }else{
+           alert('El paquete ' + reponse_articlepack.name + ' se ha creado correctamente');
+           this.$router.go(0);//MAGIA//
+        }
+      }
 
     },
 
@@ -2392,9 +2444,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-
-
 
 
   .custom-loader {

@@ -8,13 +8,11 @@ import UserUpdate from '../views/UserUpdate.vue'
 import UserUpload from '../views/UserUpload'
 
 import prueba from '../views/prueba'
-
 import previsualizar from '../views/previsualizar'
-
 import previsualizarUser from '../views/previsualizarUser'
-
 import Myplaylists from '../views/Myplaylists'
 
+import Playlist from '../views/Playlist.vue'
 
 
 Vue.use(VueRouter)
@@ -74,6 +72,13 @@ Vue.use(VueRouter)
     name:'Myplaylists',
     component: Myplaylists,
     
+  },
+  
+  {
+
+    path:"/Playlist",
+    name:'Playlist',
+    component: Playlist,
   }
   
 ]

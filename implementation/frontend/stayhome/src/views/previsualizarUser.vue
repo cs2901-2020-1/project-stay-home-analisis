@@ -222,9 +222,6 @@
 </v-row>
 
 
-
-
-
 <v-row  v-else-if="currentArticle.tipo[0] == 'a'">
 
 <v-row justify="left">
@@ -242,20 +239,6 @@
 </v-row>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </v-container>
 
 </template>
@@ -265,8 +248,8 @@
 <script>
 import { mapState } from 'vuex';
 
-import pdf from 'vue-pdf'
-
+import pdf from 'vue-pdf';
+import Api from "@/services/api";
 
 export default {
 
@@ -278,15 +261,12 @@ export default {
       return {
          dialog:false,
          show: false,
-
-      doublei: {
-            "articlepackid": '',
-            "article_id": ''
-        }
-
-    
-
-
+          article_to_pack:{
+          doublei: {
+                articlepackid: '',
+                article_id: ''
+            }
+          }
     }
    },
 
@@ -312,7 +292,6 @@ export default {
     this.$store.dispatch("loadAllArticles");
     this.$store.dispatch("loadAllArticlepacks");
 
-   
     },
 
 
@@ -328,27 +307,24 @@ methods:{
 
   async addArticletoPack(articlepack_id)
    {
-     this.doublei.article_id = this.currentArticle.article_id;
-     this.doublei.articlepackid = articlepack_id;
-     console.log(this.doublei);
-     let response = await Api().post("/articlesporpack/",doublei);
+     this.article_to_pack.doublei.article_id = this.currentArticle.article_id;
+     this.article_to_pack.doublei.articlepackid = articlepack_id;
+     console.log(this.article_to_pack.doublei);
+     let response = await Api().post("/articlesporpack/",this.article_to_pack);
      console.log(response)
-
-   }     
-
-
-},
-
-
-
-
-
-    
+/*
+     let list_ids = [];
+     let articlepack_response = await Api().get(`/articlesporpack/${this.article_to_pack.doublei.articlepackid}`);
+     for(var i = 0; i < articlepack_response.data.length; i++){
+          list_ids[i] = articlepack_response.data[i].doublei.article_id;
+     }
+     console.log(list_ids);
+   
+*/
+   },     
 
 }
-
-
-
+}
 </script>
 
 <style scoped>

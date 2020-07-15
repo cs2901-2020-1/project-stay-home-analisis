@@ -301,18 +301,9 @@ async Validar(currentArticle){
 
         }
       }
-
-
-},
-
-
-
-
-
-    
+},  
 
 }
-
 
 
 </script>

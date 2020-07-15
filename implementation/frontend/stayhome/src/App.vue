@@ -54,6 +54,13 @@
            </v-list-item>
 
            <v-list-item
+            @click="playlist"
+            v-if="currentUser.admin == false"
+          >
+          <v-list-item-title>Mis Playlists</v-list-item-title>
+           </v-list-item>
+
+           <v-list-item
             @click="logoutUser"
           >
           <v-list-item-title>Cerrar sesión</v-list-item-title>
@@ -121,6 +128,9 @@ export default {
     },
     upload(){
       this.$router.push("/upload")
+    },
+    playlist(){
+      this.$router.push("/Myplaylists")
     }
   },
 

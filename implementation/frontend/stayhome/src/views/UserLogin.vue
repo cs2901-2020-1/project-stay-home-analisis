@@ -53,10 +53,14 @@ export default {
            this.loginInfo.user_id = validator.data[i].user_id;
            this.loginInfo.username = validator.data[i].username;
            password = validator.data[i].password;
+
            if(validator.data[i].admin == true){
                 admin = validator.data[i].admin;
                 this.loginInfo.admin = admin
+           }else{
+                this.loginInfo.admin = false;
            }
+
          }
        }
        if(this.loginInfo.password == password){

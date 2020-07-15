@@ -9,7 +9,8 @@ export default new Vuex.Store({
     users: [],
     currentUser: {},
     articles: [],
-    articlepacks: []
+    articlepacks: [],
+    lista_ids: [],
 
   },
   mutations: {
@@ -73,19 +74,24 @@ export default new Vuex.Store({
       state.articlepacks = adartpack;
     },
 
+    SET_LIST_IDS(state,lista){
 
-
-
-
-
-
-
+        state.lista_ids = lista;
+    }
 
 
 
 
   },
   actions: {
+    async getIds({commit}){
+      let response = await Api().get(`/articlesporpack/${this.article_to_pack.doublei.articlepackid}`);
+      let list_ids = [];
+      for(var i = 0; i < response.data.length; i++){
+        list_ids[i] = response.data[i].doublei.article_id;
+      }
+      commit('SET_LIST_IDS',list_ids)
+    },
     async loadAll({commit}){
       let response = await Api().get('/users');
       commit('SET_USERS', response.data);
@@ -168,7 +174,8 @@ export default new Vuex.Store({
        let response = await Api().post('/articles',article);
        let art = response.data;
        commit('ADD_ARTICLE',art);
-       return art;}
+       return art;
+      }
        catch
        {
         return {error: "Hubo un error al subir el articulo"}
@@ -250,7 +257,7 @@ export default new Vuex.Store({
       }
        catch
        {
-        return {error: "Hubo un error al subir el articulo"}
+        return {error: "Hubo un error al crear el paquete de artículos"}
        }
       },
 
