@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-
+import java.util.Vector;
 
 @Entity
 @Table(name = "app_article",
@@ -53,6 +53,16 @@ public class Article implements Serializable {
     @OnDelete(action = OnDeleteAction.CASCADE)
     private BigInteger user_id;
 
+    @Column
+    private Vector<String> comentarios;
+
+    @Column
+    private int likes;
+
+    @Column
+    private int dislikes;
+
+
     @Lob
     private byte[] data;
 
@@ -60,7 +70,8 @@ public class Article implements Serializable {
     }
 
     public Article(String link, String title, String curso, String tema, String tipo,
-                   String descripcion, Boolean aceptado, BigInteger user_id, byte[] data) {
+                   String descripcion, Boolean aceptado, BigInteger user_id, byte[] data,
+                   Vector<String> comentarios, int likes, int dislikes) {
         this.link = link;
         this.title = title;
         this.curso = curso;
@@ -70,6 +81,10 @@ public class Article implements Serializable {
         this.aceptado = aceptado;
         this.user_id = user_id;
         this.data = data;
+
+        this.comentarios = comentarios;
+        this.likes = likes;
+        this.dislikes = dislikes;
     }
 
 
@@ -144,4 +159,21 @@ public class Article implements Serializable {
     public byte[] getData() { return data; }
 
     public void setData(byte[] data) { this.data = data; }
+
+
+    public Vector<String> getComentarios() { return comentarios; }
+
+    public void setComentarios(Vector<String> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public int getLikes() { return likes; }
+
+    public void setLikes(int likes) { this.likes = likes; }
+
+    public int getDislikes() { return dislikes; }
+
+    public void setDislikes(int dislikes) { this.dislikes = dislikes; }
+
+
 }
