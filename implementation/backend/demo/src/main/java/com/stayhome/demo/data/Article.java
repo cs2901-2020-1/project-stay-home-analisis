@@ -54,13 +54,13 @@ public class Article implements Serializable {
     private BigInteger user_id;
 
     @Column
-    private Vector<String> comentarios;
+    public Vector<String> comentarios;
 
     @Column
-    private int likes;
+    public Vector<BigInteger> likes;
 
     @Column
-    private int dislikes;
+    public Vector<BigInteger> dislikes;
 
 
     @Lob
@@ -71,7 +71,7 @@ public class Article implements Serializable {
 
     public Article(String link, String title, String curso, String tema, String tipo,
                    String descripcion, Boolean aceptado, BigInteger user_id, byte[] data,
-                   Vector<String> comentarios, int likes, int dislikes) {
+                   Vector<String> comentarios, Vector<BigInteger> likes, Vector<BigInteger> dislikes) {
         this.link = link;
         this.title = title;
         this.curso = curso;
@@ -167,13 +167,13 @@ public class Article implements Serializable {
         this.comentarios = comentarios;
     }
 
-    public int getLikes() { return likes; }
+    public Vector<BigInteger> getLikes() { return likes; }
 
-    public void setLikes(int likes) { this.likes = likes; }
+    public void setLikes(Vector<BigInteger> likes) { this.likes = likes; }
 
-    public int getDislikes() { return dislikes; }
+    public Vector<BigInteger> getDislikes() { return dislikes; }
 
-    public void setDislikes(int dislikes) { this.dislikes = dislikes; }
+    public void setDislikes(Vector<BigInteger> dislikes) { this.dislikes = dislikes; }
 
 
 }

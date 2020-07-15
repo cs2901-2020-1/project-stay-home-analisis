@@ -79,6 +79,53 @@ public class ArticleBusiness {
         return new ArrayList<>(repository.findById(user_id));
     }
 */
+
+    public int addLike(BigInteger article_id, BigInteger user_id){
+
+            //if usuario aun no ha likeado este articulo
+            Article article = repository.findById(article_id).get();
+            
+            if(article.likes.contains(user_id)){
+                article.likes.add(user_id);
+            }
+            //si ha likeado antes
+
+            if(article.dislikes.contains(user_id)){
+                article.dislikes.remove(user_id);
+                article.likes.add(user_id);
+            }
+            return article.likes.size();
+            
+    }
+
+    public int addDislike(BigInteger article_id, BigInteger user_id){
+            //if usuario aun no ha dislikeado este articulo
+            Article article = repository.findById(article_id).get();
+            
+            if(article.dislikes.contains(user_id)){
+                article.dislikes.add(user_id);
+            }
+            //si ha likeado antes
+
+            if(article.likes.contains(user_id)){
+                article.likes.remove(user_id);
+                article.dislikes.add(user_id);
+            }
+             
+            return article.dislikes.size();
+
+
+    }
+
+    public void addComment(BigInteger article_id, BigInteger user_id, String comment){
+        try{
+            Article article = repository.findById(article_id).get();
+            article.comentarios.add(comment);
+        } catch (Exception ex){
+            //alerta "Solo usuarios logeados pueden dejar feedback!"
+        }
+    }
+
     public void delete(BigInteger article_id){
 
         repository.deleteById(article_id);
