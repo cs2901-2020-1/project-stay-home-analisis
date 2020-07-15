@@ -6,10 +6,13 @@
     <v-container></v-container>
 
 
-<div v-for="user in currentUser" :key="user.user_id">
-        <v-text>hola</v-text>
+<div v-for="user in users" :key="user.user_id">
+       
 
 </div>
+<h1> {{this.$route.params.id}}</h1>
+
+
 </div>
   
   
@@ -24,9 +27,16 @@
 
   export default {
 
+    data(){
+      return {
+      }
+
+    },
+
     computed: {
             ...mapState(['currentUser']),
             ...mapState(['articles']),
+            ...mapState(['users']),
 
         },
         mounted(){

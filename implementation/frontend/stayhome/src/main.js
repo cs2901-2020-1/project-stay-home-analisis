@@ -7,7 +7,14 @@ import vuetify from './plugins/vuetify';
 
 
 
+import VueVideoPlayer from 'vue-video-player'
 
+import 'video.js/dist/video-js.css'
+
+Vue.use(VueVideoPlayer, /* {
+  options: global default options,
+  events: global videojs events
+} */)
 
 
 import BootstrapVue from "bootstrap-vue"

@@ -9,6 +9,10 @@ import UserUpload from '../views/UserUpload'
 
 import prueba from '../views/prueba'
 
+import previsualizar from '../views/previsualizar'
+
+import previsualizarUser from '../views/previsualizarUser'
+
 
 
 Vue.use(VueRouter)
@@ -45,10 +49,23 @@ Vue.use(VueRouter)
     component: UserUpload
    },
    {
-     path:'/prueba',
+     path:"/prueba/:id",
      name:'prueba',
-     component:prueba
-   }
+     component:prueba,
+     params: true
+   },
+   {
+    path:"/previsualizar/:id",
+    name:'previsualizar',
+    component:previsualizar,
+    params: true
+  },
+  {
+    path:"/previsualizarUser/:id",
+    name:'previsualizarUser',
+    component:previsualizarUser,
+    params: true
+  }
   
 ]
 

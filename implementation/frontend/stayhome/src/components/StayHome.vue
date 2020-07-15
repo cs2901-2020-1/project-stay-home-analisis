@@ -1,11 +1,13 @@
 <template>
 <v-container v-if="currentUser.admin == true">
 <v-container></v-container>
-     <v-row>
-     <v-text class="estiloTituloAdmin"> Solicitudes </v-text>
-     </v-row>
-    <v-container></v-container>
 
+    <v-row justify="left">
+    
+    <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Solicitudes </v-text></v-text>
+
+    </v-row>
+    <v-container></v-container>
 
 <v-row>
 <v-col justify="center">
@@ -38,7 +40,7 @@
 
       </template>
     </v-toolbar>
-    <v-card-text>
+    <v-card-text >
 
       <v-tabs-items v-model="tabs">
         <v-tab-item
@@ -47,416 +49,189 @@
           :value="content"
         >
         <div  v-if="content == 'one'" >
-        <v-col>
-    <v-card >
 
-    
-      <v-slide-group
+        <v-col>
+
+  <v-sheet
+    class="mx-auto"
+    elevation="8"
+    max-width="900"
+  >
+    <v-slide-group
       v-model="model"
       class="pa-4"
-      active-class="success"
-      show-arrows>
-
+      prev-icon="mdi-minus"
+      next-icon="mdi-plus"
+      show-arrows
+    >
       <v-slide-item
-          v-for="article in articles" 
+       v-for="article in articles" 
           :key ="article.article_id"
-       >
+      >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Matemática'" >
           <div v-if="article.tema == 'Álgebra'" >
-      <v-col>
-        <div v-if="article.tipo[0] == 'i'"> 
+      
         <v-card
-        class="estiloC"
-          
-          height="300"    
+          class="ma-4"
+          height="300"
+          width="200"
         >
-                <v-row  
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-
-                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="2" contain> 
-                  </v-img>
-                  
-                </v-row>
-                <v-container></v-container>
-                 <v-row  class="estiloc" justify="center">
-                  <div  v-for="users in user" 
-                        :key ="users.user_id">
-
-                  <h1  v-if="users.user_id == alticle.article_id"> {{users.username}} </h1>
-                  <v-text > {{article.title}} </v-text>
-                  
-                   
-                   </div>
-                </v-row>
-                <v-container> </v-container>
-                <v-row justify="center">
-                <v-btn 
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            {{article.title}}
+          
+          <v-container></v-container>
+            <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                </v-row>
-                <v-container> </v-container>
-                <v-row  justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-        </div>
-
-        
-
-<div v-else-if="article.tipo[0] == 'v'"> 
-        <v-card
-        class="estiloC"
-          
-          widht="200"
-          height="300" 
-             
-        >
-                <v-row  
-                
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-
-                  <video class="video-js" widht="240" height="240" muted controls>
-                  <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" type="video/mp4" />
-                  </video>
-                  
-                </v-row>
-                 <v-row  justify="center">
-                   <v-col>
-                  <v-text class="estiloc" > {{article.title}} </v-text>
-                   </v-col>
-                   <v-col justify="center">
-                <v-btn 
-                  dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                  </v-col>
-                  <v-col justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-col>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </v-col>
-  </div>
-  </div>
-  </div>
-        
+                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          </v-row>
+        </v-card>
+          </div>
+          </div>
+          </div>
       </v-slide-item>
-      </v-slide-group>
-    
+    </v-slide-group>
+  </v-sheet>
 
-  </v-card>
-  </v-col>         
-  </div>
-
+</v-col>
+</div>
 
 
+   <div  v-if="content == 'two'" >
 
-    <div v-if="content == 'two'" >
+        <v-col>
 
-    
-    <v-col>
-    <v-card >
-
-    
-      <v-slide-group
+  <v-sheet
+    class="mx-auto"
+    elevation="8"
+    max-width="900"
+  >
+    <v-slide-group
       v-model="model"
       class="pa-4"
-      active-class="success"
-      show-arrows>
-
+      prev-icon="mdi-minus"
+      next-icon="mdi-plus"
+      show-arrows
+    >
       <v-slide-item
-          v-for="article in articles" 
+       v-for="article in articles" 
           :key ="article.article_id"
-       >
+      >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Matemática'" >
           <div v-if="article.tema == 'Geometría'" >
-      <v-col>
+      
         <v-card
-        class="estiloC"
-          
-          height="300"    
+          class="ma-4"
+          height="300"
+          width="200"
         >
-                <v-row  
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
-                  </v-img>
-                </v-row>
-                <v-container></v-container>
-                 <v-row  class="estiloc" justify="center">
-                  <v-text > {{article.title}} </v-text>
-                </v-row>
-                <v-container> </v-container>
-                <v-row justify="center">
-                <v-btn 
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            {{article.title}}
+          
+          <v-container></v-container>
+            <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                </v-row>
-                <v-container> </v-container>
-                <v-row  justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-    </v-col>
-  </div>
-  </div>
-  </div>
-        
+                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          </v-row>
+        </v-card>
+          </div>
+          </div>
+          </div>
       </v-slide-item>
-      </v-slide-group>
-    
+    </v-slide-group>
+  </v-sheet>
 
-  </v-card>
-  </v-col>         
-  </div>
-
+</v-col>
+</div>
 
 
-  <div v-if="content == 'three'" >
-          
-        <v-col>
-    <v-card >
 
-    
-      <v-slide-group
+
+<div  v-if="content == 'three'" >
+
+<v-col>
+
+  <v-sheet
+    class="mx-auto"
+    elevation="8"
+    max-width="900"
+  >
+    <v-slide-group
       v-model="model"
       class="pa-4"
-      active-class="success"
-      show-arrows>
-
+      prev-icon="mdi-minus"
+      next-icon="mdi-plus"
+      show-arrows
+    >
       <v-slide-item
-          v-for="article in articles" 
+       v-for="article in articles" 
           :key ="article.article_id"
-       >
+      >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Matemática'" >
           <div v-if="article.tema == 'Ecuaciones'" >
-      <v-col>
+      
         <v-card
-        class="estiloC"
-          
-          height="300"    
+          class="ma-4"
+          height="300"
+          width="200"
         >
-                <v-row  
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
-                  </v-img>
-                </v-row>
-                <v-container></v-container>
-                 <v-row  class="estiloc" justify="center">
-                  <v-text > {{article.title}} </v-text>
-                </v-row>
-                <v-container> </v-container>
-                <v-row justify="center">
-                <v-btn 
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            {{article.title}}
+          
+          <v-container></v-container>
+            <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                </v-row>
-                <v-container> </v-container>
-                <v-row  justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-    </v-col>
-  </div>
-  </div>
-  </div>
-        
+                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          </v-row>
+        </v-card>
+          </div>
+          </div>
+          </div>
       </v-slide-item>
-      </v-slide-group>
-    
+    </v-slide-group>
+  </v-sheet>
 
-  </v-card>
-  </v-col>         
-  </div>
+</v-col>
+</div>
 
         </v-tab-item>
       </v-tabs-items>
     </v-card-text>
     
   </v-card>
+  
 
   </v-col>
 </v-row>
 
 
-
-
-
-
-
-
-
-
-
 <v-row>
 <v-col justify="center">
 
- <v-card id="lateral">
+ <v-card id="lateral" dark color="dark">
     <v-toolbar
       dark
       tabs
@@ -492,289 +267,175 @@
           :key="content"
           :value="content"
         >
-        <div  v-if="content == 'oneF'" >
-        <v-col>
-    <v-card >
 
-    
-      <v-slide-group
+ <div  v-if="content == 'oneF'" >
+
+        <v-col>
+
+  <v-sheet
+    class="mx-auto"
+    elevation="8"
+    max-width="900"
+  >
+    <v-slide-group
       v-model="model"
       class="pa-4"
-      active-class="success"
-      show-arrows>
-
+      prev-icon="mdi-minus"
+      next-icon="mdi-plus"
+      show-arrows
+    >
       <v-slide-item
-          v-for="article in articles" 
+       v-for="article in articles" 
           :key ="article.article_id"
-       >
+      >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Física'" >
           <div v-if="article.tema == 'Magnetismo'" >
-      <v-col>
+      
         <v-card
-        class="estiloC"
-          
-          height="300"    
+          class="ma-4"
+          height="300"
+          width="200"
         >
-                <v-row  
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
-                  </v-img>
-                </v-row>
-                <v-container></v-container>
-                 <v-row  class="estiloc" justify="center">
-                  <v-text > {{article.title}} </v-text>
-                </v-row>
-                <v-container> </v-container>
-                <v-row justify="center">
-                <v-btn 
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            {{article.title}}
+          
+          <v-container></v-container>
+            <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                </v-row>
-                <v-container> </v-container>
-                <v-row  justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-    </v-col>
-  </div>
-  </div>
-  </div>
-        
+                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          </v-row>
+        </v-card>
+          </div>
+          </div>
+          </div>
       </v-slide-item>
-      </v-slide-group>
-    
+    </v-slide-group>
+  </v-sheet>
 
-  </v-card>
-  </v-col>         
-  </div>
+</v-col>
+</div> 
+ 
 
+<div  v-if="content == 'twoF'" >
 
+        <v-col>
 
-
-    <div v-if="content == 'twoF'" >
-
-    
-    <v-col>
-    <v-card >
-
-    
-      <v-slide-group
+  <v-sheet
+    class="mx-auto"
+    elevation="8"
+    max-width="900"
+  >
+    <v-slide-group
       v-model="model"
       class="pa-4"
-      active-class="success"
-      show-arrows>
-
+      prev-icon="mdi-minus"
+      next-icon="mdi-plus"
+      show-arrows
+    >
       <v-slide-item
-          v-for="article in articles" 
+       v-for="article in articles" 
           :key ="article.article_id"
-       >
+      >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Física'" >
           <div v-if="article.tema == 'Cinemática'" >
-      <v-col>
+      
         <v-card
-        class="estiloC"
-          
-          height="300"    
+          class="ma-4"
+          height="300"
+          width="200"
         >
-                <v-row  
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
-                  </v-img>
-                </v-row>
-                <v-container></v-container>
-                 <v-row  class="estiloc" justify="center">
-                  <v-text > {{article.title}} </v-text>
-                </v-row>
-                <v-container> </v-container>
-                <v-row justify="center">
-                <v-btn 
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            {{article.title}}
+          
+          <v-container></v-container>
+            <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                </v-row>
-                <v-container> </v-container>
-                <v-row  justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-    </v-col>
-  </div>
-  </div>
-  </div>
-        
+                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          </v-row>
+        </v-card>
+          </div>
+          </div>
+          </div>
       </v-slide-item>
-      </v-slide-group>
-    
+    </v-slide-group>
+  </v-sheet>
 
-  </v-card>
-  </v-col>         
-  </div>
-
+</v-col>
+</div> 
 
 
-  <div v-if="content == 'threeF'" >
-          
+
+<div  v-if="content == 'threeF'" >
+
         <v-col>
-    <v-card >
 
-    
-      <v-slide-group
+  <v-sheet
+    class="mx-auto"
+    elevation="8"
+    max-width="900"
+  >
+    <v-slide-group
       v-model="model"
       class="pa-4"
-      active-class="success"
-      show-arrows>
-
+      prev-icon="mdi-minus"
+      next-icon="mdi-plus"
+      show-arrows
+    >
       <v-slide-item
-          v-for="article in articles" 
+       v-for="article in articles" 
           :key ="article.article_id"
-       >
+      >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Física'" >
           <div v-if="article.tema == 'Dinámica'" >
-      <v-col>
+      
         <v-card
-        class="estiloC"
-          
-          height="300"    
+          class="ma-4"
+          height="300"
+          width="200"
         >
-                <v-row  
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
-                  </v-img>
-                </v-row>
-                <v-container></v-container>
-                 <v-row  class="estiloc" justify="center">
-                  <v-text > {{article.title}} </v-text>
-                </v-row>
-                <v-container> </v-container>
-                <v-row justify="center">
-                <v-btn 
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            {{article.title}}
+          
+          <v-container></v-container>
+            <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                </v-row>
-                <v-container> </v-container>
-                <v-row  justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-    </v-col>
-  </div>
-  </div>
-  </div>
-        
+                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          </v-row>
+        </v-card>
+          </div>
+          </div>
+          </div>
       </v-slide-item>
-      </v-slide-group>
-    
+    </v-slide-group>
+  </v-sheet>
 
-  </v-card>
-  </v-col>         
-  </div>
+</v-col>
+</div> 
+
 
         </v-tab-item>
       </v-tabs-items>
@@ -788,32 +449,10 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <v-row>
-<v-col justify="center">
+<v-col justify="center" >
 
- <v-card id="lateral">
+ <v-card id="lateral" dark color="dark">
     <v-toolbar
       dark
       tabs
@@ -848,196 +487,117 @@
           :key="content"
           :value="content"
         >
-        <div  v-if="content == 'oneQ'" >
-        <v-col>
-    <v-card >
 
-    
-      <v-slide-group
+<div  v-if="content == 'oneQ'" >
+
+        <v-col>
+
+  <v-sheet
+    class="mx-auto"
+    elevation="8"
+    max-width="900"
+  >
+    <v-slide-group
       v-model="model"
       class="pa-4"
-      active-class="success"
-      show-arrows>
-
+      prev-icon="mdi-minus"
+      next-icon="mdi-plus"
+      show-arrows
+    >
       <v-slide-item
-          v-for="article in articles" 
+       v-for="article in articles" 
           :key ="article.article_id"
-       >
+      >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Química'" >
           <div v-if="article.tema == 'Química Básica'" >
-      <v-col>
+      
         <v-card
-        class="estiloC"
-          
-          height="300"    
+          class="ma-4"
+          height="300"
+          width="200"
         >
-                <v-row  
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
-                  </v-img>
-                </v-row>
-                <v-container></v-container>
-                 <v-row  class="estiloc" justify="center">
-                  <v-text > {{article.title}} </v-text>
-                </v-row>
-                <v-container> </v-container>
-                <v-row justify="center">
-                <v-btn 
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            {{article.title}}
+          
+          <v-container></v-container>
+            <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                </v-row>
-                <v-container> </v-container>
-                <v-row  justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-    </v-col>
-  </div>
-  </div>
-  </div>
-        
+                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          </v-row>
+        </v-card>
+          </div>
+          </div>
+          </div>
       </v-slide-item>
-      </v-slide-group>
-    
+    </v-slide-group>
+  </v-sheet>
 
-  </v-card>
-  </v-col>         
-  </div>
-
+</v-col>
+</div> 
 
 
+<div  v-if="content == 'twoQ'" >
 
-    <div v-if="content == 'twoQ'" >
+        <v-col>
 
-    
-    <v-col>
-    <v-card >
-
-    
-      <v-slide-group
+  <v-sheet
+    class="mx-auto"
+    elevation="8"
+    max-width="900"
+  >
+    <v-slide-group
       v-model="model"
       class="pa-4"
-      active-class="success"
-      show-arrows>
-
+      prev-icon="mdi-minus"
+      next-icon="mdi-plus"
+      show-arrows
+    >
       <v-slide-item
-          v-for="article in articles" 
+       v-for="article in articles" 
           :key ="article.article_id"
-       >
+      >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Química'" >
           <div v-if="article.tema == 'Química Orgánica'" >
-      <v-col>
+      
         <v-card
-        class="estiloC"
-          
-          height="300"    
+          class="ma-4"
+          height="300"
+          width="200"
         >
-                <v-row  
-                class="fill-height"
-                align="center"
-                justify="center"
-              >
-               <v-col>
-                <v-row justify="center">
-                  <v-img v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${article.title}`)" aspect-ratio="3" contain> 
-                  </v-img>
-                </v-row>
-                <v-container></v-container>
-                 <v-row  class="estiloc" justify="center">
-                  <v-text > {{article.title}} </v-text>
-                </v-row>
-                <v-container> </v-container>
-                <v-row justify="center">
-                <v-btn 
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+            {{article.title}}
+          
+          <v-container></v-container>
+            <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small @click="Validar(article)">Validar</v-btn>
-                </v-row>
-                <v-container> </v-container>
-                <v-row  justify="center">
-                <v-btn 
-                 dark
-                  v-bind="attrs"
-                  v-on="on"
-                  color="dark"
-                small @click="Eliminar(article)">Eliminar</v-btn>
-                </v-row>
-                
-               </v-col>
-                </v-row>
-
-   <v-card-actions class="justify-space-between">
-
-      <v-btn
-        text
-        @click="prev"
-      >
-        <v-icon>mdi-chevron-down</v-icon>
-      </v-btn>
-     
-      <v-btn
-        text
-        @click="next"
-      >
-        <v-icon>mdi-chevron-up</v-icon>
-      </v-btn>
-
-    </v-card-actions>
-              
-    </v-card>
-    </v-col>
-  </div>
-  </div>
-  </div>
-        
+                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          </v-row>
+        </v-card>
+          </div>
+          </div>
+          </div>
       </v-slide-item>
-      </v-slide-group>
-    
+    </v-slide-group>
+  </v-sheet>
 
-  </v-card>
-  </v-col>         
-  </div>
-
-
+</v-col>
+</div>   
         </v-tab-item>
       </v-tabs-items>
     </v-card-text>
@@ -1046,6 +606,22 @@
 
   </v-col>
 </v-row>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1172,9 +748,12 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
+
+
 
               </v-col>
             </v-row>
@@ -1227,8 +806,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -1283,8 +862,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -1367,8 +946,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye</v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -1422,8 +1001,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -1478,8 +1057,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -1564,8 +1143,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark" > 
+                <v-icon small left color=" darken"> mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -1619,8 +1198,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -1675,8 +1254,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken"> mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -1775,8 +1354,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -1830,8 +1409,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -1886,8 +1465,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -1968,8 +1547,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -2023,8 +1602,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -2079,8 +1658,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken"> mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -2165,8 +1744,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -2220,8 +1799,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -2276,8 +1855,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -2378,8 +1957,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -2433,8 +2012,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -2489,8 +2068,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
               </v-col>
@@ -2575,8 +2154,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -2630,8 +2209,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"  > 
+                <v-icon small left color=" darken">mdi-eye</v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -2686,8 +2265,8 @@
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  :href="'http://localhost:9898/downloadFile/'+ article.article_id" > 
-                <v-icon small left color=" darken">mdi-arrow-down-bold-box </v-icon>  Descargar 
+                      color="dark"   > 
+                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
               </v-col>
@@ -2727,13 +2306,17 @@
 
 <script>
 import { mapState } from 'vuex';
+
 export default {
 
-    
+   
+
     
     name: 'StayHome',
     data(){
         return{
+
+          dialogA: false,
 
          tabs: null,
          
@@ -2783,7 +2366,7 @@ export default {
            sheetQO1:false,
            sheetQO2:false,
            sheetQO3:false,
-           dialogq2:false
+           dialogq2:false,
 
 
         }
@@ -2793,12 +2376,14 @@ export default {
     computed: {
 
     
-      videos(){return this.$store.state.articles},
 
         ...mapState(['currentUser']),
         ...mapState(['articles']),
+
+        
       
     },
+    
     mounted(){
     this.$store.dispatch("loadAll");
     this.$store.dispatch("loadAllArticles");
@@ -2820,40 +2405,9 @@ export default {
           : this.onboarding - 1
       },
 
-      
-      async Validar(article){
-        article.aceptado = true;
-        let updated_article = await this.$store.dispatch("updateArticle",article);
-          if(updated_article.error){
-            alert(updated_article.error);
-          }else{
-            alert("Se ha validado correctamente")
-          }
-          this.$router.push("/mainpage")
-      },
-      Eliminar(article){
-        let response = confirm(`¿Estás seguro que deseas eliminar este articulo? ${this.currentUser.username}`);
-        if(response){
-          this.$store.dispatch('deleteArticle',article);
-          this.$router.push("/mainpage");
-
-        }
-      }
-
-
     },
 
-    watch: {
-      loader () {
-        const l = this.loader
-        this[l] = !this[l]
-
-        setTimeout(() => (this[l] = false), 3000)
-
-        this.loader = null
-      },
-
-    },
+  
 }
        
 </script>
@@ -2969,6 +2523,18 @@ export default {
     }
 
 
+
+.estilo {
+        font-size:40px;
+    }
+
+.estiloP {
+        font-size: 15px;
+        font-family: "Lucida Console", Courier, monospace;
+    }
+ .estiloT{
+   font-size: 25px;
+ }   
 
 
 

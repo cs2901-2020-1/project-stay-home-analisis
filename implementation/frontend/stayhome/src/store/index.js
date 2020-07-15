@@ -9,6 +9,7 @@ export default new Vuex.Store({
     users: [],
     currentUser: {},
     articles: []
+
   },
   mutations: {
     SET_USERS(state,users){

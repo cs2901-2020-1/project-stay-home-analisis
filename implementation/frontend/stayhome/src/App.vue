@@ -28,15 +28,22 @@
         <v-list>
           <v-list-item
             @click="inicio"
+            v-if="currentUser.admin==false"
           >
             <v-list-item-title>Inicio</v-list-item-title>
+          </v-list-item>
+           <v-list-item
+            @click="inicio"
+            v-if="currentUser.admin==true"
+          >
+            <v-list-item-title>Solicitudes</v-list-item-title>
           </v-list-item>
 
           <v-list-item
             @click="admin"
             v-if="currentUser.admin == false"
           >
-            <v-list-item-title>Administrar Perfil</v-list-item-title>
+            <v-list-item-title> Administrar Perfil </v-list-item-title>
           </v-list-item>
 
           <v-list-item
