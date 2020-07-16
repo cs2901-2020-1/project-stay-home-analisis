@@ -6,11 +6,15 @@ import com.stayhome.demo.exceptions.ArticleNotFoundException;
 import com.stayhome.demo.data.Article;
 import com.stayhome.demo.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.persistence.OneToMany;
 import java.math.BigInteger;
 import java.nio.file.Paths;
 import java.rmi.server.ExportException;
@@ -38,7 +42,7 @@ public class ArticleBusiness {
             String tipo = file.getContentType();
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("/downloadFile/")
-                    .path(article.getUser_id() +"/"+ titulo)
+                    .path(article.getUser() +"/"+ titulo)
                     .toUriString();
             article.setTitle(titulo);
             article.setTipo(tipo);
@@ -129,6 +133,11 @@ public class ArticleBusiness {
     public void delete(BigInteger article_id){
 
         repository.deleteById(article_id);
+    }
+
+    public void delete_by_User_id(BigInteger article_id){
+
+        repository.delete_article_by_user_id(article_id);
     }
 
 }

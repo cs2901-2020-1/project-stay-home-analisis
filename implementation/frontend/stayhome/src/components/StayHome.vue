@@ -2340,6 +2340,7 @@ export default {
           ],
           playlist: { 
             name:'',
+            user:[]
           },
           dialog: false,
 
@@ -2427,6 +2428,8 @@ export default {
           : this.onboarding - 1
       },
       async addarticle(){
+        this.playlist.user = this.currentUser;
+        console.log(this.playlist);
         let reponse_articlepack = await this.$store.dispatch('addArticlepack',this.playlist);
         if(reponse_articlepack.error){
           alert(reponse_articlepack.error);

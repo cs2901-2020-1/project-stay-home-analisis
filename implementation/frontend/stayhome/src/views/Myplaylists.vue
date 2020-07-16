@@ -3,9 +3,10 @@
 <v-container >
 
     <div class="text-center">
-        <div  v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">    
+        <div  v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
+        {{articlepack.articlepack_id}}    
         {{articlepack.name}}
-            </div>
+        </div>
 
   </div>
     

@@ -1,10 +1,14 @@
 package com.stayhome.demo.data;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigInteger;
+
 
 
 @Entity
@@ -36,7 +40,10 @@ public class User implements Serializable{
     public User() {
     }
 
-    public User(String email, String password, String username, Boolean admin) {
+    @JsonCreator
+    public User(@JsonProperty("user_id")BigInteger user_id, @JsonProperty("email")String email, @JsonProperty("password")String password,
+                @JsonProperty("username") String username, @JsonProperty("admin")Boolean admin) {
+        this.user_id = user_id;
         this.email =  email;
         this.username = username;
         this.password = password;
@@ -77,4 +84,5 @@ public class User implements Serializable{
     }
 
     public void setAdmin(Boolean admin) {this.admin = admin;}
+
 }

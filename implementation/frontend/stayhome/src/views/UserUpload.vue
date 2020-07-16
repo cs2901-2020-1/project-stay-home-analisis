@@ -195,7 +195,7 @@ import {mapState} from 'vuex';
              tipo: '',
              descripcion: '',
              aceptado: false,
-             user_id: ''
+             user:[]
             },
             articles:[]
 
@@ -204,7 +204,7 @@ import {mapState} from 'vuex';
           async  upload(){
             this.article.title = this.articles.name;
             this.article.link= "../../../database/articles/" + this.article.title;
-            this.article.user_id = this.currentUser.user_id;        
+            this.article.user = this.currentUser;     
             let reponse_article = await this.$store.dispatch('addArticle',this.article);
             let id = reponse_article.article_id;
             let capsule = new Capsule(this.articles,id);

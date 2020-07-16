@@ -1,14 +1,12 @@
 package com.stayhome.demo.data;
 
 import javax.validation.constraints.NotNull;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-import java.util.Vector;
 
 @Entity
 @Table(name = "app_article",
@@ -48,10 +46,10 @@ public class Article implements Serializable {
     @NotNull
     private Boolean aceptado = false;
 
-    @Column
     @NotNull
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private BigInteger user_id;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     /*@Column
     public Vector<String> comentarios;
@@ -70,8 +68,7 @@ public class Article implements Serializable {
     }
 
     public Article(String link, String title, String curso, String tema, String tipo,
-                   String descripcion, Boolean aceptado, BigInteger user_id, byte[] data,
-                   Vector<String> comentarios, Vector<BigInteger> likes, Vector<BigInteger> dislikes) {
+                   String descripcion, Boolean aceptado, User user, byte[] data) {
         this.link = link;
         this.title = title;
         this.curso = curso;
@@ -79,14 +76,10 @@ public class Article implements Serializable {
         this.tipo = tipo;
         this.descripcion = descripcion;
         this.aceptado = aceptado;
-        this.user_id = user_id;
+        this.user = user;
         this.data = data;
 
-        /*this.comentarios = comentarios;
-        this.likes = likes;
-        this.dislikes = dislikes;*/
     }
-
 
     public BigInteger getArticle_id() {
         return article_id;
@@ -148,13 +141,9 @@ public class Article implements Serializable {
 
     public void setAceptado(Boolean aceptado) { this.aceptado = aceptado; }
 
-    public BigInteger getUser_id() {
-        return user_id;
-    }
+    public User getUser() { return user; }
 
-    public void setUser_id(BigInteger user_id) {
-        this.user_id = user_id;
-    }
+    public void setUser_id(User user) {this.user = user; }
 
     public byte[] getData() { return data; }
 

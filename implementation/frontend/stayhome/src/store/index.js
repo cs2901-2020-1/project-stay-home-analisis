@@ -56,12 +56,6 @@ export default new Vuex.Store({
       this.state.articles = a;
       console.log(this.state.articles);
     },
-    DELETE_ARTICLE_BY_USER_ID(state,uid)
-    {
-      let a = state.articles.filter(a => a.user_id != uid);
-      this.state.articles = a;
-      console.log(this.state.articles);
-    },
 
     SET_ARTICLEPACKS(state,articlepacks)
     {
@@ -147,19 +141,32 @@ export default new Vuex.Store({
       }
     },
     async deleteUser({commit},deleteInfo){
+
       try{
+    
+        let delete_article = await Api().delete(`/articlesUserId/${deleteInfo.user_id}`);
+        console.log(delete_article.data);
+        if(delete_article.status==200 || delete_article.status==204)
+        {
+          commit('DELETE_ARTICLE',delete_article.article_id);
+        
+        }
+
         let response = await Api().delete(`/users/${deleteInfo.user_id}`);
+        console.log(response.data);
         if(response.status==200 || response.status==204)
         {
           commit('DELETE_USER',deleteInfo.user_id);
           commit('LOGOUT_USER');
         }
+        return response;
       }
       catch{
         return {error: "Hubo un error al eliminar el usuario, intenta denuevo"}
       }
 
     },
+  
  
     async loadAllArticles({commit}){
       let response = await Api().get('/articles');
@@ -171,6 +178,7 @@ export default new Vuex.Store({
      async addArticle({commit},article)
      {
        try{
+         console.log(article);
        let response = await Api().post('/articles',article);
        let art = response.data;
        commit('ADD_ARTICLE',art);

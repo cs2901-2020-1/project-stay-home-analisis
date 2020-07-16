@@ -208,15 +208,18 @@ export default {
           }
         this.$router.push("/mainpage")
       },
-      userDelete()
+      async userDelete()
       {
         let response = confirm(`¿Estás seguro que deseas eliminar tu cuenta? ${this.currentUser.username}`);
         if(response)
         {
-          this.$store.dispatch('deleteArticle_by_user_id',this.currentUser);
-          this.$store.dispatch('deleteUser',this.currentUser);
-          console.log(this.currentUser);
-          this.$router.push("/");
+          let response = await this.$store.dispatch('deleteUser',this.currentUser);
+          if(response.error){
+            alert(response.error);
+          }else{
+            alert("Se ha eliminado correctamente el usuario");
+            this.$router.push("/");
+          }
 
         }
       }

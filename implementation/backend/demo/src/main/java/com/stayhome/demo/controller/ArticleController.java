@@ -2,7 +2,6 @@ package com.stayhome.demo.controller;
 
 import com.stayhome.demo.data.Article;
 import com.stayhome.demo.business.ArticleBusiness;
-import com.stayhome.demo.data.User;
 import com.stayhome.demo.payload.UploadArticleResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,9 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.math.BigInteger;
-import java.util.Arrays;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
@@ -38,7 +36,7 @@ public class ArticleController {
         Article article = business.storeFile(file,id);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
-                .path(article.getUser_id() +"/"+ article.getTitle())
+                .path(article.getUser() +"/"+ article.getTitle())
                 .toUriString();
 
         return new UploadArticleResponse(article.getTitle(), fileDownloadUri,
@@ -78,6 +76,11 @@ public class ArticleController {
     public void delete(@PathVariable BigInteger article_id){
         business.delete(article_id);
     }
+
+
+    @DeleteMapping("/articlesUserId/{user_id}")
+    public void delete_by_User_id(@PathVariable BigInteger user_id){business.delete_by_User_id(user_id);}
+
 
     @GetMapping("/downloadFile/{article_id}")
     public ResponseEntity<Resource> downloadFile(@PathVariable BigInteger article_id) {
