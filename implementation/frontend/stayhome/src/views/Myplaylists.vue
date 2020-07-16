@@ -1,27 +1,39 @@
 <template>
 
-<v-container v-if="currentUser.admin == false">
+<v-container v-if="currentUser.admin == false" >
 
-    <div class="text-center">
-        <div  v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
-          <div v-if="articlepack.user.user_id == currentUser.user_id">
-               
-                {{articlepack.name}}
-              
-          </div>
-        </div>
+<v-row justify="left">
 
+    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    
+   <v-text class="estiloT" color="grey"> Inicio </v-text> 
+  
+</v-row>
+
+
+
+<div class="text-center" >
+
+  <v-row>
+    <v-col>
+      <v-text class="estilo">Mis paquetes de artículos</v-text>
+    </v-col>
+    
+    <v-col>
         <div>
           <v-dialog
             v-model="dialog"
             width="500"
+            
           >
             <template v-slot:activator="{ on, attrs }">     
               <v-btn
-                color="red lighten-2"
+                color="dark"
                 dark
                 v-bind="attrs"
                 v-on="on"
+                large
               >
               Crear paquete de artículos
               </v-btn>
@@ -34,14 +46,16 @@
               >
               Paquete de artículos
               </v-card-title>
+              <v-container></v-container>
               <v-card-text>
-                <v-text-field v-model="playlist.name" label="Nombre del paquete" :rules="nombreRules" > Ingresa el nombre del paquete de artículos</v-text-field>
+                <v-text-field v-model="playlist.name" label="Nombre del paquete" :rules="nombreRules" ></v-text-field>
               </v-card-text>
               <v-divider></v-divider>
               <v-card-actions>
                 <v-btn
-                  color="primary"
-                  text
+                  dark
+                  color="dark"
+                  
                   @click="addarticle"
                   :disabled="!valid"
                 >
@@ -49,8 +63,9 @@
                 </v-btn>
                 <v-spacer></v-spacer>
                 <v-btn
-                  color="primary"
-                  text
+                  dark
+                  color="dark"
+                  
                   @click="dialog = false"
                 >
                 Cerrar
@@ -59,7 +74,79 @@
             </v-card>
           </v-dialog> 
         </div>
+        </v-col>
+        </v-row>
   </div>
+
+<v-container></v-container>
+
+
+<v-card
+    max-width="920"
+    class="mx-auto"
+    dark
+>
+
+<v-container>
+
+<v-item-group  >
+     
+     <v-row >
+        <v-col
+          v-for="articlepack in articlepacks" :key="articlepack.articlepack_id"
+          cols="12"
+            md="6"
+        >
+        <div v-if="articlepack.user.user_id == currentUser.user_id">
+          <v-item class="estiloC" 
+          >
+
+            <v-card
+              class="d-inline-block mx-auto"
+              dark
+              height="150"
+              width="430"
+              
+              
+            >
+
+            <v-container></v-container>
+            <v-row justify="center" >
+              <v-text class="estiloT" > {{articlepack.name}} </v-text>
+              </v-row>
+            
+            <v-container></v-container>
+
+              <v-row justify="center" >
+                
+                <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                medium 
+                
+                > 
+                <v-icon left  large > mdi-folder-google-drive </v-icon> 
+              
+                <router-link class="white--text" :to ="{ name: 'Playlist', params:{ id: articlepack.articlepack_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
+
+               
+                
+                </v-row>
+              
+            </v-card>
+            
+          </v-item>
+        <v-container></v-container>
+        
+          </div>
+        </v-col>
+        </v-row>
+  </v-item-group>
+</v-container>
+</v-card>
+
     
 </v-container>
 </template>
@@ -142,6 +229,14 @@ export default {
  .estiloT{
    font-size: 25px;
  }   
+ .estiloC{
+
+        background-color: #00897B;
+
+ }  
+
+
+
 
 
 </style>

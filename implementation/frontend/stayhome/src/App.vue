@@ -88,11 +88,11 @@
       tile
     >
       <v-card-title class="teal">
-        <v-btn class="subheading">¡Contáctanos!</v-btn>
+        <v-btn class="subheading" @click="contacto" >¡Contáctanos!</v-btn>
 
         <v-spacer></v-spacer>
 
-        <v-btn  class="white--text" > ©Copyright </v-btn>
+        <v-btn  class="white--text" dark color="dark"   href="https://www.indecopi.gob.pe/" > ©Copyright </v-btn>
       </v-card-title>
 
       <v-card-text class="py-2 white--text text-center">
@@ -131,7 +131,11 @@ export default {
     },
     buscar(){
       this.$router.push("/buscar")
-    }
+    },
+    contacto(){
+      this.$router.push("/contactanos")
+    },
+    
   },
 
   data: () => ({

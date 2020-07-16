@@ -1,17 +1,17 @@
 <template>
     <v-container>
-      <h1>REGISTER</h1>
+      <h1> Registrate </h1>
       <v-spacer></v-spacer>
       <v-form v-model="valid">
-        <v-text-field v-model="registerInfo.username" label="Username" :rules="nameRules"/>
-        <v-text-field v-model="registerInfo.email" label="Email" :rules="emailRules"/>
+        <v-text-field v-model="registerInfo.username" label="Usuario" :rules="nameRules"/>
+        <v-text-field v-model="registerInfo.email" label="Correo" :rules="emailRules"/>
         <v-text-field v-model="registerInfo.password" 
-                      label="Password" 
+                      label="Contraseña" 
                       :type="showPassword ? 'text' : 'password' "
                       :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                       :rules="passwordRules"
                       @click:append="showPassword=!showPassword"/>
-        <v-btn @click="registerUser" :disabled="!valid" >Register</v-btn>
+        <v-btn @click="registerUser" :disabled="!valid" >Registrate</v-btn>
       </v-form>
     </v-container>
 </template>
@@ -56,6 +56,7 @@ export default {
             alert(user.error)
           }else{
             alert('Gracias por registrate en StayHome, ' + user.username);
+            
             if(this.loginInfo.admin == false){
                 this.$router.push('/myplaylists');
             }else{

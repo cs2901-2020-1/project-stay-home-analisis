@@ -183,15 +183,70 @@
 <v-row  v-else-if="currentArticle.tipo[0] == 'a'">
 
 <v-row justify="left">
-    <v-text  class="estilo"> Título  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  {{currentArticle.title}} </v-text></v-text>
+    <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Artículo </v-text></v-text>
 
 </v-row>
 
 <v-container></v-container>
 
-<v-container>
-   <pdf src="merge.pdf"></pdf>
+
+<v-row class="estiloT" justify="left">
+   Tema: {{currentArticle.tema}}
+</v-row>
+<v-container></v-container>
+
+<v-row  class="estiloT" justify="left">
+   Título: {{currentArticle.title}}
+
+</v-row>
+
+<v-container></v-container>
+
+<v-row  class="estiloT" justify="left">
+  Descripción: {{currentArticle.descripcion}}
+
+</v-row>
+
+
+
+<v-container justify="center" >
+  <v-col>
+   <iframe src="http://www.colvema.org/pdf/consejos/origenperrogato.pdf" width="900" height="780" style="border: none;"></iframe>
+
+</v-col>
+<v-container></v-container>
+<v-container></v-container>
+<v-container></v-container>
+
+
+<v-row justify="center">
+        <v-col justify="center">
+      <v-btn 
+        dark
+        v-bind="attrs"
+        v-on="on"
+        color="dark"
+        large @click="Validar(currentArticle)">Validar
+        </v-btn>
+      </v-col>
+      <v-col justify="center">
+      <v-btn 
+        dark
+        v-bind="attrs"
+        v-on="on"
+        color="dark"
+        large @click="Eliminar(currentArticle)">Eliminar
+        </v-btn>
+        </v-col>
+    </v-row>
+
+
 </v-container>
+
+
+
+
+
 
 
 </v-row>
@@ -223,14 +278,11 @@
 <script>
 import { mapState } from 'vuex';
 
-import pdf from 'vue-pdf'
 
 
 export default {
 
-  components: {
-    pdf
-  },
+ 
     
     data: () => ({
       show: false,

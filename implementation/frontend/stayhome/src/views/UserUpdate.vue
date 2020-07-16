@@ -1,8 +1,20 @@
 <template>
 <v-container>
+
     <v-container v-if="currentUser.username && currentUser.admin == false">
-      
-      <h1 class="estiloUser" >{{currentUser.username}} <v-text class="estilo"> >> </v-text> <v-text class="estiloAdmin">  Administrar Perfil </v-text> </h1> 
+
+
+      <v-row justify="left">
+
+          <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+          <v-icon >mdi-chevron-right</v-icon>
+          
+        <v-text class="estiloT" color="grey"> Administrar perfil </v-text> 
+        
+      </v-row>
+
+
+
       <v-spacer></v-spacer>
       <v-container>
       </v-container>
@@ -273,5 +285,9 @@ export default {
       }      
 
     }
+
+    .estiloT{
+   font-size: 25px;
+ }   
 
 </style>

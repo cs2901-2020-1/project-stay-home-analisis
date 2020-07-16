@@ -611,9 +611,16 @@
 </v-container> 
 
 <v-container v-else-if="currentUser.username" >
-    <v-row>
-      <h1 class="estilo"> {{currentUser.username}}  <v-text class="estiloc"> >> </v-text>  <v-text class="estiloI"> Articulos </v-text></h1>
-    </v-row>
+
+  <v-row justify="left">
+
+    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    
+   <v-text class="estiloT" color="grey"> Buscar artículos </v-text> 
+  
+</v-row>
+    
    
     <v-row class="estiloM" >
         

@@ -2,7 +2,17 @@
 <v-container>
    <v-container  v-model="valid"
     v-if="currentUser.username  && currentUser.admin == false ">
-        <h2 class="estilo"  >{{currentUser.username}}<v-text class="estiloc"> >> </v-text> <v-text class="estiloA"> Subir artículos </v-text> </h2>
+
+    <v-row justify="left">
+
+          <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+          <v-icon >mdi-chevron-right</v-icon>
+          
+        <v-text class="estiloT" color="grey"> Subir artículos </v-text> 
+        
+      </v-row>
+
+
         <v-container>  </v-container>
         
         <v-form>
@@ -247,6 +257,15 @@ import {mapState} from 'vuex';
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 24px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 26.4px; } h3 { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 700; line-height: 15.4px; } p { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 20px; } blockquote { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 21px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 30px; } pre { font-family: Arial, "Helvetica Neue", Helvetica, sans-serif; font-size: 13px; font-style: normal; font-variant: normal; font-weight: 400; line-height: 18.5714px; 
         
 }
+
+ .estiloT{
+   font-size: 25px;
+ }   
+ .estiloC{
+
+        background-color: #4DB6AC;
+
+ }  
 
 
 

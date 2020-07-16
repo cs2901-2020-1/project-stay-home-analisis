@@ -6,14 +6,26 @@
 
   
   <v-row justify="left">
-    <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Artículo </v-text></v-text>
 
+    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    <router-link  to = "/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
+
+    <v-icon >mdi-chevron-right</v-icon>
+   <v-text class="estiloT" color="grey"> Artículo </v-text> 
+
+
+    
+  
 </v-row>
+
+
+  
 
 <v-container></v-container>
 
 <v-row justify="center">
-    <v-text  class="estiloT"> Tema:  <v-text class="estiloT">  Álgebra </v-text></v-text>
+    <v-text  class="estiloT"> Título:  <v-text class="estiloT">  {{currentArticle.title}} </v-text></v-text>
 
 </v-row>
 
@@ -29,7 +41,7 @@
     ></v-img>
 
     <v-card-title>
-      Título: {{currentArticle.title}}
+      Tema: {{currentArticle.tema}}
     </v-card-title>
 
     <v-card-subtitle>
@@ -75,9 +87,10 @@
         <v-card-text>
           <v-col>
             <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
+              <div v-if="articlepack.user.user_id == currentUser.user_id">
               <v-row>
                 <v-col>
-                <v-text class="estiloP" > <v-icon color="dark">mdi-folder-multiple</v-icon> {{articlepack.name}} </v-text>
+                <v-text class="estiloP" > <v-icon color="dark">mdi-folder-multiple</v-icon>  {{articlepack.name}}</v-text>
                 </v-col>
                 <v-col>
                 <v-btn
@@ -91,6 +104,7 @@
                  </v-col>
               </v-row>
             </div>
+          </div>
           
 
           </v-col>
@@ -163,8 +177,8 @@
   >
   <video 
     controls
-     widht="240" 
-     height="240" 
+     widht="340" 
+     height="340" 
     >
     <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.title}`)" type="video/mp4" />
   </video>
@@ -184,7 +198,7 @@
 
     <v-card-actions>
       <v-col>
-        <v-col justify="center">
+        <v-row justify="center">
       <v-btn 
         dark
         v-bind="attrs"
@@ -192,7 +206,72 @@
         color="dark"
         small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id"> Descargar
         </v-btn>
-      </v-col>
+      </v-row>
+
+    <v-container></v-container>
+
+    <v-row justify="center">
+    <v-btn
+      dark
+      color="dark"
+      small
+      @click.stop="dialog = true"
+    >
+      Ver mis paquetes de artículos
+    </v-btn>
+
+    <v-dialog
+      v-model="dialog"
+      max-width="400"
+    >
+      <v-card>
+        <v-card-title class="headline"> Paquete de artículos </v-card-title>
+
+        <v-card-text>
+          <v-col>
+            <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
+              <div v-if="articlepack.user.user_id == currentUser.user_id">
+              <v-row>
+                <v-col>
+                <v-text class="estiloP" > <v-icon color="dark">mdi-folder-multiple</v-icon>  {{articlepack.name}}</v-text>
+                </v-col>
+                <v-col>
+                <v-btn
+                  color="dark"
+                  dark
+                  small
+                  @click="addArticletoPack(articlepack)"
+                >
+                  Añadir
+                 </v-btn>
+                 </v-col>
+              </v-row>
+            </div>
+          </div>
+          
+
+          </v-col>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            dark
+            color="dark"
+            small
+            @click="dialog = false"
+          >
+            cerrar
+          </v-btn>
+
+          
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-row>
+
+
     </v-col>
       <v-col >
         <v-row justify="center">
@@ -224,15 +303,124 @@
 
 <v-row  v-else-if="currentArticle.tipo[0] == 'a'">
 
+
+
+
 <v-row justify="left">
-    <v-text  class="estilo"> Tema  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  {{currentArticle.tema}} </v-text></v-text>
+    <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Artículo </v-text></v-text>
 
 </v-row>
 
 <v-container></v-container>
 
-<v-container>
-   <pdf src="merge.pdf"></pdf>
+
+<v-row class="estiloT" justify="left">
+   Tema: {{currentArticle.tema}}
+</v-row>
+<v-container></v-container>
+
+<v-row  class="estiloT" justify="left">
+   Título: {{currentArticle.title}}
+
+</v-row>
+
+<v-container></v-container>
+
+<v-row  class="estiloT" justify="left">
+  Descripción: {{currentArticle.descripcion}}
+
+</v-row>
+
+
+
+<v-container justify="center" >
+  <v-col>
+   <iframe src="http://www.colvema.org/pdf/consejos/origenperrogato.pdf" width="900" height="780" style="border: none;"></iframe>
+
+</v-col>
+<v-container></v-container>
+<v-container></v-container>
+<v-container></v-container>
+
+
+ <v-row>
+        <v-col justify="center">
+      <v-btn 
+        dark
+        v-bind="attrs"
+        v-on="on"
+        color="dark"
+        small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id"> Descargar
+        </v-btn>
+      </v-col>
+
+    <v-container></v-container>
+
+    <v-col justify="center">
+    <v-btn
+      dark
+      color="dark"
+      small
+      @click.stop="dialog = true"
+    >
+      Ver mis paquetes de artículos
+    </v-btn>
+
+    <v-dialog
+      v-model="dialog"
+      max-width="400"
+    >
+      <v-card>
+        <v-card-title class="headline"> Paquete de artículos </v-card-title>
+
+        <v-card-text>
+          <v-col>
+            <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
+              <div v-if="articlepack.user.user_id == currentUser.user_id">
+              <v-row>
+                <v-col>
+                <v-text class="estiloP" > <v-icon color="dark">mdi-folder-multiple</v-icon>  {{articlepack.name}}</v-text>
+                </v-col>
+                <v-col>
+                <v-btn
+                  color="dark"
+                  dark
+                  small
+                  @click="addArticletoPack(articlepack)"
+                >
+                  Añadir
+                 </v-btn>
+                 </v-col>
+              </v-row>
+            </div>
+          </div>
+          
+
+          </v-col>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            dark
+            color="dark"
+            small
+            @click="dialog = false"
+          >
+            cerrar
+          </v-btn>
+
+          
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+  </v-col>
+
+
+    </v-row>
+
+
 </v-container>
 
 
@@ -248,14 +436,11 @@
 <script>
 import { mapState } from 'vuex';
 
-import pdf from 'vue-pdf';
 import Api from "@/services/api";
 
 export default {
 
-  components: {
-    pdf
-  },
+  
     
     data () {
       return {
@@ -266,7 +451,34 @@ export default {
                 articlepack: [],
                 article: []
             }
-          }
+
+          },
+
+
+
+        items: [
+        {
+          text: 'Inicio',
+          disabled: false,
+          href: 'http://localhost:8080/myplaylists',
+          
+        },
+        {
+          text: 'Artículos',
+          disabled: false,
+          href: 'http://localhost:8080/buscar',
+        },
+        {
+          text: 'Artículo',
+          disabled: true,
+        
+        },
+      ],
+
+
+
+
+
     }
    },
 

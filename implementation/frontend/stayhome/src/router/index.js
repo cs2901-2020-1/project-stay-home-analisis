@@ -7,10 +7,12 @@ import UserRegistration from '../views/UserRegistration.vue'
 import Buscar from '../views/Buscar.vue'
 import UserUpdate from '../views/UserUpdate.vue'
 import UserUpload from '../views/UserUpload.vue'
-import Previsualizar from '../views/Previsualizar.vue'
-import PrevisualizarUser from '../views/PrevisualizarUser.vue'
+import Previsualizar from '../views/previsualizar.vue'
+import PrevisualizarUser from '../views/previsualizarUser.vue'
 import Myplaylists from '../views/Myplaylists.vue'
 import Playlist from '../views/Playlist.vue'
+import previsualizarMyArticle from '../views/previsualizarMyArticle.vue'
+import contactanos from '../views/contactanos.vue'
 
 
 Vue.use(VueRouter)
@@ -73,6 +75,20 @@ Vue.use(VueRouter)
     name:'Playlist',
     component: Playlist,
     params: true
+  },
+
+  {
+    path:"/previsualizarMyArticle/:id",
+    name:'previsualizarMyArticle',
+    component: previsualizarMyArticle,
+    params: true
+  },
+
+  {
+    path:"/contactanos",
+    name:'contactanos',
+    component: contactanos,
+   
   }
   
 ]

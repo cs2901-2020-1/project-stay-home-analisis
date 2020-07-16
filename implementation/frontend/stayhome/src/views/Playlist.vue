@@ -1,10 +1,71 @@
 <template>
+<v-container>
+
+<v-row justify="left">
+
+    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    
+   <v-text class="estiloT" color="grey"> Artículos </v-text> 
+  
+</v-row>
+
+
     <v-container>
+<v-row>
     <div v-for="articles in articles_por_tupac" :key="articles.article_id">
-       {{articles.doublei.article.title}}
+    <v-col>
+            <v-card
+            max-width="344"
+            outlined
+            class="estiloC"
+            >
+    <v-list-item three-line>
+        
+      <v-list-item-content>
+        <v-list-item-title class="headline mb-1" >  {{articles.doublei.article.title}}</v-list-item-title>
+
+        <div class="overline mb-4"> Curso: {{articles.doublei.article.curso}} </div>
+
+
+        <v-list-item-subtitle>Tema: {{articles.doublei.article.tema}}</v-list-item-subtitle>
+      </v-list-item-content>
+
+      <v-list-item-avatar
+        tile
+        size="80"
+      ><v-icon x-large color="black">
+          mdi-library
+      </v-icon>
+      
+      </v-list-item-avatar>
+
+
+    </v-list-item>
+
+    <v-card-actions>
+        <v-row justify="center">
+     <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                medium > <router-link class="white--text" :to ="{ name: 'previsualizarMyArticle', params:{ id: articles.doublei.article.article_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
+        
+      </v-row>
+    </v-card-actions>
+  </v-card>
+    </v-col>
+    <v-container></v-container>
+
+    
     </div>   
+</v-row>
     
     </v-container>
+
+    </v-container>
+
 </template>
 
 <script>
@@ -17,7 +78,8 @@ export default {
         },
         ...mapState(['articles']),
         ...mapState(['articlepacks']),
-        ...mapState(['articles_por_tupac'])
+        ...mapState(['articles_por_tupac']),
+        ...mapState(['currentUser']),
 
     },
     mounted(){
@@ -37,6 +99,27 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
-</style>>
+.estilo {
+        font-size:40px;
+    }
+
+.estiloP {
+        font-size: 15px;
+        font-family: "Lucida Console", Courier, monospace;
+    }
+ .estiloT{
+   font-size: 25px;
+ }   
+ .estiloC{
+
+        background-color: #4DB6AC;
+
+ }  
+
+
+
+
+
+</style>
