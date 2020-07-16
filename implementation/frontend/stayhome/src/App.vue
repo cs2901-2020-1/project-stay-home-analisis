@@ -33,7 +33,7 @@
             <v-list-item-title>Inicio</v-list-item-title>
           </v-list-item>
            <v-list-item
-            @click="inicio"
+            @click="buscar"
             v-if="currentUser.admin==true"
           >
             <v-list-item-title>Solicitudes</v-list-item-title>
@@ -50,14 +50,14 @@
             @click="upload"
             v-if="currentUser.admin == false"
           >
-          <v-list-item-title>Subir artículos</v-list-item-title>
+          <v-list-item-title>Subir Artículos</v-list-item-title>
            </v-list-item>
 
            <v-list-item
-            @click="Buscar"
+            @click="buscar"
             v-if="currentUser.admin == false"
           >
-          <v-list-item-title>Buscar</v-list-item-title>
+          <v-list-item-title>Buscar Artículos</v-list-item-title>
            </v-list-item>
 
            <v-list-item
@@ -121,7 +121,7 @@ export default {
       this.$router.push('/');
     },
     inicio(){
-      this.$router.push("/mainpage")
+      this.$router.push("/myplaylists")
     },
     admin(){
       this.$router.push("/update")
@@ -129,7 +129,7 @@ export default {
     upload(){
       this.$router.push("/upload")
     },
-    Buscar(){
+    buscar(){
       this.$router.push("/buscar")
     }
   },

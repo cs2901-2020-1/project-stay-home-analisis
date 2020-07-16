@@ -71,7 +71,11 @@ export default {
             alert(user.error)
           }else{
             alert('Gracias por iniciar sesión, ' + user.username);
-            this.$router.push('/mainpage');
+            if(this.loginInfo.admin == false){
+                this.$router.push('/myplaylists');
+            }else{
+                this.$router.push('/buscar');
+            }
           }
        }else{
          alert('Email/password incorrectos, intenta denuevo')

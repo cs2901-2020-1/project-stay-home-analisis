@@ -66,12 +66,7 @@ public class ArticleController {
     ){
         return business.update(item);
     }
-/*
-    @GetMapping( "/articles_by_user/{user_id}" )
-    public List<Article> read (@PathVariable BigInteger user_id){
-        return business.findAll_id(user_id);
-    }
-*/
+
     @DeleteMapping("/articles/{article_id}")
     public void delete(@PathVariable BigInteger article_id){
         business.delete(article_id);

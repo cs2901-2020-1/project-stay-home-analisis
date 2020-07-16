@@ -1,17 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+
 import Home from '../views/Home.vue'
 import UserLogin from '../views/UserLogin.vue'
 import UserRegistration from '../views/UserRegistration.vue'
 import Buscar from '../views/Buscar.vue'
 import UserUpdate from '../views/UserUpdate.vue'
-import UserUpload from '../views/UserUpload'
-
-import prueba from '../views/prueba'
-import previsualizar from '../views/previsualizar'
-import previsualizarUser from '../views/previsualizarUser'
-import Myplaylists from '../views/Myplaylists'
-
+import UserUpload from '../views/UserUpload.vue'
+import Previsualizar from '../views/Previsualizar.vue'
+import PrevisualizarUser from '../views/PrevisualizarUser.vue'
+import Myplaylists from '../views/Myplaylists.vue'
 import Playlist from '../views/Playlist.vue'
 
 
@@ -35,7 +33,7 @@ Vue.use(VueRouter)
    },
    {
     path: '/buscar',
-    name: 'mainpage',
+    name: 'articulos',
     component: Buscar
    },
    {
@@ -48,37 +46,33 @@ Vue.use(VueRouter)
     name: 'user-upload',
     component: UserUpload
    },
-   {
-     path:"/prueba/:id",
-     name:'prueba',
-     component:prueba,
-     params: true
-   },
+
    {
     path:"/previsualizar/:id",
     name:'previsualizar',
-    component:previsualizar,
-    params: true
-  },
-  {
-    path:"/previsualizarUser/:id",
-    name:'previsualizarUser',
-    component:previsualizarUser,
+    component: Previsualizar,
     params: true
   },
 
   {
-    path:"/mainpage",
+    path:"/previsualizarUser/:id",
+    name:'previsualizarUser',
+    component: PrevisualizarUser,
+    params: true
+  },
+
+  {
+    path:"/myplaylists",
     name:'Myplaylists',
     component: Myplaylists,
     
   },
   
   {
-
-    path:"/Playlist",
+    path:"/playlist/:id",
     name:'Playlist',
     component: Playlist,
+    params: true
   }
   
 ]

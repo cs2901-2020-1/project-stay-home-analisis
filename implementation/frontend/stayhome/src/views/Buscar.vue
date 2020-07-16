@@ -286,7 +286,7 @@
     >
       <v-slide-item
        v-for="article in articles" 
-          :key ="article.article_id"
+          :key="article.article_id"
       >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Física'" >
@@ -310,7 +310,7 @@
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                small > <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
           </v-row>
         </v-card>
           </div>
@@ -342,7 +342,7 @@
     >
       <v-slide-item
        v-for="article in articles" 
-          :key ="article.article_id"
+          :key="article.article_id"
       >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Física'" >
@@ -423,7 +423,7 @@
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                small > <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
           </v-row>
         </v-card>
           </div>

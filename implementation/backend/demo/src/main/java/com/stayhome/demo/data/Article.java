@@ -51,16 +51,6 @@ public class Article implements Serializable {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    /*@Column
-    public Vector<String> comentarios;
-
-    @Column
-    public Vector<BigInteger> likes;
-
-    @Column
-    public Vector<BigInteger> dislikes;*/
-
-
     @Lob
     private byte[] data;
 
@@ -148,21 +138,5 @@ public class Article implements Serializable {
     public byte[] getData() { return data; }
 
     public void setData(byte[] data) { this.data = data; }
-
-
-    /*public Vector<String> getComentarios() { return comentarios; }
-
-    public void setComentarios(Vector<String> comentarios) {
-        this.comentarios = comentarios;
-    }
-
-    public Vector<BigInteger> getLikes() { return likes; }
-
-    public void setLikes(Vector<BigInteger> likes) { this.likes = likes; }
-
-    public Vector<BigInteger> getDislikes() { return dislikes; }
-
-    public void setDislikes(Vector<BigInteger> dislikes) { this.dislikes = dislikes; }*/
-
 
 }
