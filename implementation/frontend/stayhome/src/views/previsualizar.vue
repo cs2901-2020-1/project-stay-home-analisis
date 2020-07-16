@@ -196,21 +196,6 @@
 
 </v-row>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </v-container>
 
     <v-container v-else>

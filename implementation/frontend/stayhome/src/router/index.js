@@ -3,7 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import UserLogin from '../views/UserLogin.vue'
 import UserRegistration from '../views/UserRegistration.vue'
-import StayHome from '../components/StayHome.vue'
+import Buscar from '../views/Buscar.vue'
 import UserUpdate from '../views/UserUpdate.vue'
 import UserUpload from '../views/UserUpload'
 
@@ -34,9 +34,9 @@ Vue.use(VueRouter)
     component: UserRegistration
    },
    {
-    path: '/mainpage',
+    path: '/buscar',
     name: 'mainpage',
-    component: StayHome
+    component: Buscar
    },
    {
     path: '/update',
@@ -68,7 +68,7 @@ Vue.use(VueRouter)
   },
 
   {
-    path:"/Myplaylists",
+    path:"/mainpage",
     name:'Myplaylists',
     component: Myplaylists,
     

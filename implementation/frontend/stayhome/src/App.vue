@@ -54,10 +54,10 @@
            </v-list-item>
 
            <v-list-item
-            @click="playlist"
+            @click="Buscar"
             v-if="currentUser.admin == false"
           >
-          <v-list-item-title>Mis Playlists</v-list-item-title>
+          <v-list-item-title>Buscar</v-list-item-title>
            </v-list-item>
 
            <v-list-item
@@ -129,8 +129,8 @@ export default {
     upload(){
       this.$router.push("/upload")
     },
-    playlist(){
-      this.$router.push("/Myplaylists")
+    Buscar(){
+      this.$router.push("/buscar")
     }
   },
 
