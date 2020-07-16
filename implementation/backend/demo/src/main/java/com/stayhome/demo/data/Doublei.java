@@ -2,6 +2,8 @@ package com.stayhome.demo.data;
 
 
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigInteger;
@@ -9,11 +11,13 @@ import java.math.BigInteger;
 @Embeddable
 public class Doublei implements Serializable {
 
-    @NotNull
-    private BigInteger articlepackid;
+    @ManyToOne
+    @JoinColumn(name = "articlepack_id", nullable = false)
+    private ArticlePack articlepack;
 
-    @NotNull
-    private BigInteger article_id;
+    @ManyToOne
+    @JoinColumn(name = "article_id", nullable = false)
+    private Article article;
 
 
     public Doublei(){
@@ -21,25 +25,26 @@ public class Doublei implements Serializable {
     }
 
 
-    public Doublei(BigInteger articlepackid, BigInteger article_id)
-    {
-        this.articlepackid=articlepackid;
-        this.article_id=article_id;
+    public Doublei(ArticlePack articlepack, Article article) {
+        this.articlepack=articlepack;
+        this.article=article;
     }
 
-    public BigInteger getarticlepackid() {
-        return articlepackid;
+    public ArticlePack getArticlepack() {
+        return articlepack;
     }
 
-    public void setarticlepackid(BigInteger articlepackid) {
-        this.articlepackid = articlepackid;
+    public void setArticlepack(ArticlePack articlepack) {
+        this.articlepack = articlepack;
     }
 
-    public BigInteger getArticle_id() {
-        return article_id;
+    public Article getArticle() {
+        return article;
     }
 
-    public void setArticle_id(BigInteger  article_id) {
-        this.article_id = article_id;
+    public void setArticle(Article article) {
+        this.article = article;
     }
+
+
 }

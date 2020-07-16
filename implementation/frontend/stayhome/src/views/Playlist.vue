@@ -1,21 +1,29 @@
 <template>
     <v-container>
-
-        <div>
-            <v-btn @click="asd" >HOLA</v-btn>
-        </div>
+    <div v-for="articles in articles_por_tupac" :key="articles.article_id">
+       {{articles.doublei.article.title}}
+    </div>   
     
     </v-container>
 </template>
 
 <script>
 import { mapState } from 'vuex';
-import Api from "@/services/api";
+//import Api from "@/services/api";
 export default {
     computed:{
+        currentArticlePack(){
+          return this.$store.state.articlepacks.find(ar => ar.article_id == this.$route.params.id)
+        },
         ...mapState(['articles']),
+        ...mapState(['articlepacks']),
+        ...mapState(['articles_por_tupac'])
+
     },
-    methods:{
+    mounted(){
+        this.$store.dispatch("loadAllArticles_tupac",this.$route.params.id)
+    },
+    methods:{/*
         async asd(){
             let list_ids = [];
             let articlepack_response = await Api().get("/articlesporpack/67");
@@ -24,6 +32,7 @@ export default {
             }
             console.log(list_ids);
         }
+        */
     }
 }
 </script>

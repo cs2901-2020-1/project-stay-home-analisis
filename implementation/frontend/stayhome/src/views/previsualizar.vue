@@ -275,14 +275,14 @@ async Validar(currentArticle){
           }else{
             alert("Se ha validado correctamente")
           }
-          this.$router.push("/mainpage")
+          this.$router.push("/buscar")
       },
 
       Eliminar(currentArticle){
         let response = confirm(`¿Estás seguro que deseas eliminar este articulo? ${this.currentUser.username}`);
         if(response){
           this.$store.dispatch('deleteArticle',currentArticle);
-          this.$router.push("/mainpage");
+          this.$router.push("/buscar");
 
         }
       }

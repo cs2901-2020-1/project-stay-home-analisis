@@ -84,7 +84,7 @@
                   color="dark"
                   dark
                   small
-                  @click="addArticletoPack(articlepack.articlepack_id)"
+                  @click="addArticletoPack(articlepack)"
                 >
                   Añadir
                  </v-btn>
@@ -263,8 +263,8 @@ export default {
          show: false,
           article_to_pack:{
           doublei: {
-                articlepackid: '',
-                article_id: ''
+                articlepack: [],
+                article: []
             }
           }
     }
@@ -305,13 +305,19 @@ methods:{
             this.$router.push("/download")
         },
 
-  async addArticletoPack(articlepack_id)
+  async addArticletoPack(articlepack)
    {
-     this.article_to_pack.doublei.article_id = this.currentArticle.article_id;
-     this.article_to_pack.doublei.articlepackid = articlepack_id;
-     console.log(this.article_to_pack.doublei);
+     this.article_to_pack.doublei.article = this.currentArticle;
+     this.article_to_pack.doublei.articlepack = articlepack;
+     console.log(this.article_to_pack);
      let response = await Api().post("/articlesporpack/",this.article_to_pack);
      console.log(response)
+     if(response.error){
+       alert(response.error)
+     }else{
+       alert('Se agrego el articulo a ' + this.article_to_pack.doublei.articlepack.name)
+       this.$router.go(0);//MAGIA//
+     }
 /*
      let list_ids = [];
      let articlepack_response = await Api().get(`/articlesporpack/${this.article_to_pack.doublei.articlepackid}`);

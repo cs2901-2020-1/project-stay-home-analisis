@@ -213,7 +213,7 @@ import {mapState} from 'vuex';
             alert(response_file.error)
           }else{
             alert('La subida del archivo se completó con éxito, espere que sea validada por un administrador');
-            this.$router.push('/mainpage');
+            this.$router.push('/myplaylists');
           }
             },
         },

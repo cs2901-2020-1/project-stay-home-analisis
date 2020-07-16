@@ -5,10 +5,9 @@
     <div class="text-center">
         <div  v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
           <div v-if="articlepack.user.user_id == currentUser.user_id">
-                {{articlepack.articlepack_id}}    
+               
                 {{articlepack.name}}
-                {{articlepack.user.username}}
-                {{articlepack.user.user_id}}
+              
           </div>
         </div>
 
@@ -69,7 +68,7 @@
 
 <script>
 import { mapState } from 'vuex';
-//import Buscar from "@/Bucar.vue";
+
 
 export default {
 

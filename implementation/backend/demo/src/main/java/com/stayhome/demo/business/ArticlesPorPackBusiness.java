@@ -22,7 +22,7 @@ public class ArticlesPorPackBusiness {
     }
 
     public List<ArticlesPorPack> getArticlesPorPackId(BigInteger articlepack_id) {
-        return repository.findByDoubleiArticlepackid(articlepack_id);
+        return repository.findByDoubleiArticlepack(articlepack_id);
     }
 
     public ArticlesPorPack create(ArticlesPorPack newArticlesPorPack) {

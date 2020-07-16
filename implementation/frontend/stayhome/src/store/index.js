@@ -10,7 +10,7 @@ export default new Vuex.Store({
     currentUser: {},
     articles: [],
     articlepacks: [],
-    lista_ids: [],
+    articles_por_tupac: []
 
   },
   mutations: {
@@ -67,25 +67,14 @@ export default new Vuex.Store({
       let adartpack = state.articlepacks.concat(articlepack);
       state.articlepacks = adartpack;
     },
+    SET_ARTICLES_POR_TUPAC(state,article_by_pack){
 
-    SET_LIST_IDS(state,lista){
-
-        state.lista_ids = lista;
+      state.articles_por_tupac = article_by_pack;
     }
-
-
-
 
   },
   actions: {
-    async getIds({commit}){
-      let response = await Api().get(`/articlesporpack/${this.article_to_pack.doublei.articlepackid}`);
-      let list_ids = [];
-      for(var i = 0; i < response.data.length; i++){
-        list_ids[i] = response.data[i].doublei.article_id;
-      }
-      commit('SET_LIST_IDS',list_ids)
-    },
+ 
     async loadAll({commit}){
       let response = await Api().get('/users');
       commit('SET_USERS', response.data);
@@ -166,8 +155,6 @@ export default new Vuex.Store({
       }
 
     },
-  
- 
     async loadAllArticles({commit}){
       let response = await Api().get('/articles');
       commit('SET_ARTICLES',response.data);
@@ -247,7 +234,7 @@ export default new Vuex.Store({
 
 
       async loadAllArticlepacks({commit}){
-        console.log("gato");
+ 
         let response = await Api().get('/articlepacks');
         commit('SET_ARTICLEPACKS',response.data);
         console.log(response.data);
@@ -268,6 +255,18 @@ export default new Vuex.Store({
         return {error: "Hubo un error al crear el paquete de artículos"}
        }
       },
+
+      async loadAllArticles_tupac({commit},info){
+        try{
+        console.log(info);
+        let response = await Api().get(`/articlesporpack/${info}`);
+        commit('SET_ARTICLES_POR_TUPAC',response.data);
+        console.log(response.data);
+        return response
+        }catch{
+          return {error: "Hubo un error al agregar el articulo"}
+        }
+       },
 
   
   },

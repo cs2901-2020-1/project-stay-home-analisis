@@ -63,7 +63,7 @@
            <v-list-item
             @click="logoutUser"
           >
-          <v-list-item-title>Cerrar sesión</v-list-item-title>
+          <v-list-item-title>Cerrar Sesión</v-list-item-title>
            </v-list-item>
 
         </v-list>
