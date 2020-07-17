@@ -12,12 +12,6 @@ import java.util.List;
 
 public interface LikesPorArticleRepository extends JpaRepository<LikesPorArticle, Dbi> {
 
-    @Transactional
-    @Query(value = "SELECT * FROM app_likesbyarticle WHERE app_likesbyarticle.articleid = :id AND app_likesbyarticle.lik = TRUE", nativeQuery = true)
-    List<LikesPorArticle> getLikesporArticle(@Param("id") BigInteger id);
-
-    @Query(value = "SELECT * FROM app_likesbyarticle WHERE app_likesbyarticle.articleid = :id AND app_likesbyarticle.lik = FALSE", nativeQuery = true)
-    List<LikesPorArticle> getDislikesporArticle(@Param("id") BigInteger id);
 
 
 }

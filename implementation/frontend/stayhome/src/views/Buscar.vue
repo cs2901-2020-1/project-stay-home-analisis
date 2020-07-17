@@ -770,7 +770,7 @@
               <v-col>
               <div  v-if="article.tipo[0] =='i'"> 
               <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} 
+                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} Likes: {{article.countlikes}} Dislikes: {{article.countdislikes}}
               </v-text> 
               </div>
               </v-col>

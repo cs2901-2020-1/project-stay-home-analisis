@@ -1,5 +1,6 @@
 package com.stayhome.demo.business;
 
+import com.stayhome.demo.data.ArticlePack;
 import com.stayhome.demo.data.ArticlesPorPack;
 import com.stayhome.demo.data.LikesPorArticle;
 import com.stayhome.demo.repositories.LikesPorArticleRepository;
@@ -21,15 +22,6 @@ public class LikesPorArticleBusiness {
         return new ArrayList<>(repository.findAll());
     }
 
-    public List<LikesPorArticle> findLikesById(BigInteger id)
-    {
-        return new ArrayList<>(repository.getLikesporArticle(id));
-    }
-
-    public List<LikesPorArticle> findDislikesById(BigInteger id)
-    {
-        return new ArrayList<>(repository.getDislikesporArticle(id));
-    }
 
     public LikesPorArticle create(LikesPorArticle newLike) {
         return repository.save(newLike);

@@ -49,6 +49,14 @@ public class Article implements Serializable {
 
     @Column
     @NotNull
+    private BigInteger countlikes = BigInteger.valueOf(0);
+
+    @Column
+    @NotNull
+    private BigInteger countdislikes = BigInteger.valueOf(0);
+
+    @Column
+    @NotNull
     private LocalDateTime fecha = LocalDateTime.now();
 
     @Column
@@ -156,5 +164,21 @@ public class Article implements Serializable {
     public byte[] getData() { return data; }
 
     public void setData(byte[] data) { this.data = data; }
+
+    public BigInteger getCountlikes() {
+        return countlikes;
+    }
+
+    public void setCountlikes(BigInteger countlikes) {
+        this.countlikes = countlikes;
+    }
+
+    public BigInteger getCountdislikes() {
+        return countdislikes;
+    }
+
+    public void setCountdislikes(BigInteger countdislikes) {
+        this.countdislikes = countdislikes;
+    }
 
 }

@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.math.BigInteger;
 
 @Embeddable
-public class Dbi implements Serializable {
+public class    Dbi implements Serializable {
 
     @Column
     @NotNull

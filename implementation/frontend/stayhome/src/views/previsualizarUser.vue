@@ -37,6 +37,10 @@
       Subido por: {{currentArticle.user.username}}
     </v-card-subtitle>
 
+    <v-btn @click="addLiketoArticle">Like {{currentArticle.countlikes}}</v-btn>
+
+    <v-btn @click="addDisliketoArticle">Dislike {{currentArticle.countdislikes}} </v-btn>
+
     <v-card-actions>
       <v-col>
         <v-row justify="center">
@@ -422,6 +426,14 @@ export default {
 
           },
 
+          reaccion_to_article:{
+            dbi: {
+              articleid: ' ',
+              userid: ' ',
+            },
+            lik: ' '
+          },
+
 
 
         items: [
@@ -497,16 +509,40 @@ methods:{
        alert('Se agrego el articulo a ' + this.article_to_pack.doublei.articlepack.name)
        this.$router.go(0);//MAGIA//
      }
-/*
-     let list_ids = [];
-     let articlepack_response = await Api().get(`/articlesporpack/${this.article_to_pack.doublei.articlepackid}`);
-     for(var i = 0; i < articlepack_response.data.length; i++){
-          list_ids[i] = articlepack_response.data[i].doublei.article_id;
-     }
-     console.log(list_ids);
-   
-*/
+
    },     
+
+   async addLiketoArticle()
+   {
+    this.reaccion_to_article.dbi.articleid = this.currentArticle.article_id;
+    this.reaccion_to_article.dbi.userid = this.currentUser.user_id;
+    this.reaccion_to_article.lik = true;
+    console.log(this.reaccion_to_article);
+    let response = await this.$store.dispatch('addReaccionToArticle',this.reaccion_to_article);
+    console.log(response);
+    if(response.error){
+       alert(response.error);
+     }else{
+       alert('Se dio Like');
+       this.$router.go(0);
+   }
+
+},
+async addDisliketoArticle()
+   {
+    this.reaccion_to_article.dbi.articleid = this.currentArticle.article_id;
+    this.reaccion_to_article.dbi.userid = this.currentUser.user_id;
+    this.reaccion_to_article.lik = false;
+    console.log(this.reaccion_to_article);
+    let response = await this.$store.dispatch('addReaccionToArticle',this.reaccion_to_article);
+    console.log(response);
+    if(response.error){
+       alert(response.error);
+     }else{
+       alert('Se dio Dislike');
+       this.$router.go(0);
+   }
+}
 
 }
 }
