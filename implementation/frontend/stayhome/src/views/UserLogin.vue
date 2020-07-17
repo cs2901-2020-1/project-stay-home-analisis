@@ -1,26 +1,82 @@
 <template>
-    <v-container>
-      <h1>Iniciar sesión</h1>
-      <v-spacer></v-spacer>
-      <v-form v-model="valid">
-        <v-text-field v-model="loginInfo.email" label="Correo" :rules="emailRules"/>
-        <v-text-field v-model="loginInfo.password" 
-                      label="Contraseña" 
-                      :type="showPassword ? 'text' : 'password' "
-                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                      :rules="passwordRules"
-                      @click:append="showPassword=!showPassword"/>
-        <v-btn @click="loginUser" :disabled="!valid">Iniciar sesión</v-btn>
-      </v-form>
-    </v-container>
+  <v-container>
+    <v-form >
+      <v-container class="fill-height" fluid justify="center">
+        <v-row align="center" justify="center">
+          <v-col md="6">
+            <v-card class="elevation-12" color=#009688>
+              <v-container/>
+              <v-row justify="center">
+                 <v-text class="estilo">Iniciar sesión</v-text>
+              </v-row>
+              <v-spacer></v-spacer>
+              <v-form  v-model="valid"> 
+                <v-card-text>
+                  <v-card height="100px" width="800px">
+                    <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#212121>
+                          <v-icon x-large color=#FFFFFF>mdi-account</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="loginInfo.email" label="Correo" :rules="emailRules"/>
+                      </v-col>
+                    </v-row>
+                    <v-container/>
+                  </v-card>
+                  <v-container/>
+                  <v-card height="100px" width="800px">
+                    <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#212121>
+                          <v-icon x-large color=#FFFFFF>mdi-lock</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="loginInfo.password" 
+                          label="Contraseña" 
+                          :type="showPassword ? 'text' : 'password' "
+                          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                          :rules="passwordRules"
+                          @click:append="showPassword=!showPassword"
+                        />
+                      </v-col>
+                    </v-row>
+                    <v-container/>
+                  </v-card>
+                </v-card-text>
+                <v-row justify="center">
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn x-large @click="loginUser"   :disabled="!valid" :loading="loading" dark> Entrar </v-btn>
+                  </v-card-actions>
+                </v-row>
+                <v-row justify="center">	
+                  <router-link class="estiloP" to="/registration" > <v-text class="estiloP"> ¿No tienes una cuenta? ¡Registrate aquí! </v-text> </router-link>
+                </v-row>
+                <v-container/>
+              </v-form>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-form>
+</v-container>
 </template>
+
 
 <script>
 export default {
   name: 'Login',
+  props: {
+      source: String,
+    },
   data() {
     return {
       showPassword : false,
+      valid:false,
+      loading: false,
       loginInfo:{
         user_id: '',
         username: '',
@@ -29,15 +85,23 @@ export default {
         admin: false
       },
        emailRules: [
-        v => !!v || 'Email requerido',
+        v => !!v || 'Correo requerido',
         v => /.+@.+\..+/.test(v) || 'Correo tiene que ser valido',
       ],
       passwordRules: [
-        v => !!v || 'Password requirido',
+        v => !!v || 'Contraseña requirido',
         v => (v && v.length <= 20) || 'Contraseña tiene que ser menor que 20 caracteres',
       ]
     }
   },
+  watch: {
+      loader () {
+        const l = this.loader
+        this[l] = !this[l]
+        setTimeout(() => (this[l] = false), 3000)
+        this.loader = null
+      },
+  },  
   mounted(){
     this.$store.dispatch("loadAll")
   },
@@ -71,16 +135,57 @@ export default {
             alert(user.error)
           }else{
             alert('Gracias por iniciar sesión, ' + user.username);
-            if(this.loginInfo.admin == false){
-                this.$router.push('/myplaylists');
-            }else{
-                this.$router.push('/buscar');
-            }
+            this.loading = true;
+            setTimeout(() => { 
+                if(this.loginInfo.admin == false){
+                    this.$router.push('/myplaylists');
+                }else{
+                    this.$router.push('/buscar');
+                }
+            },2000);
           }
        }else{
-         alert('Email/password incorrectos, intenta denuevo')
+         alert('Correo/Contraseña incorrectos, intenta denuevo')
        }
     }
   },
 }
 </script>
+
+
+<style scoped>
+  .v-progress-circular {
+    margin: 1rem;
+  }
+
+  .custom-loader {
+    animation: loader 1s infinite;
+    display: flex;
+  }
+
+  @-moz-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .estilo {
+    font-size:50px;
+    color:white;
+        
+  }
+
+  .estiloP {
+    font-size: 17px;
+    color: white;
+  }
+  .estiloT{
+    font-size: 25px;
+  }   
+  .estiloC{
+    background-color: #4DB6AC;
+  }  
+
+</style>
