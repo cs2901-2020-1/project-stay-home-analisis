@@ -19,12 +19,22 @@ public class ArticlePackController {
     @GetMapping("/articlepacks")
     public List<ArticlePack> read()
     {
+        if(business.Fav("Favoritos") == null){
+               ArticlePack Favorite = new ArticlePack();
+               Favorite.setArticlepack_id(BigInteger.valueOf(1));
+               Favorite.setName("Favoritos");
+               Favorite.setDescripcion("Coleccion de Favoritos");
+               Favorite.setUser(UserController.Current);
+               business.create(Favorite);
+
+        }
         return business.findAll();
     }
 
     @PostMapping("/articlepacks")
     public ArticlePack create(@RequestBody ArticlePack articlepack)
     {
+
         return business.create(articlepack);
     }
 

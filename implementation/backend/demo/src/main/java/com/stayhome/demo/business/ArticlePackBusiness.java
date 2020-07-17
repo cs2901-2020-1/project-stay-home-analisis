@@ -40,6 +40,10 @@ public class ArticlePackBusiness {
         repository.deleteById(articlepack_id);
     }
 
+    public String Fav(String name){
+        return repository.FindFavorite(name);
+    }
+
 
 
 }

@@ -13,12 +13,15 @@ import java.util.List;
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 public class UserController {
 
+    public static User Current;
+
     @Autowired
     private UserBusiness business;
 
     //create
     @PostMapping("/users")
     public User create (@RequestBody User item){
+        Current = item;
         return business.create(item);
     }
 

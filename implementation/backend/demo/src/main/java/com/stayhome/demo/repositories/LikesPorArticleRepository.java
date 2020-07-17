@@ -1,6 +1,5 @@
 package com.stayhome.demo.repositories;
 
-import com.stayhome.demo.data.ArticlesPorPack;
 import com.stayhome.demo.data.Dbi;
 import com.stayhome.demo.data.LikesPorArticle;
 import org.springframework.data.jpa.repository.JpaRepository;
