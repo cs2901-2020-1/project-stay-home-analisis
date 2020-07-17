@@ -1,7 +1,5 @@
 package com.stayhome.demo.data;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
 import javax.persistence.*;
 import java.io.Serializable;
 

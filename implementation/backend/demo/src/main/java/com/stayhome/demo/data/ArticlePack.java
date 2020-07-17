@@ -21,6 +21,10 @@ public class ArticlePack implements Serializable {
     @NotNull
     private String name;
 
+    @Column
+    @NotNull
+    private String descripcion;
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)

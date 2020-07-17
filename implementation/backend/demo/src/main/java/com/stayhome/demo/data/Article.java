@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.Date;
 
 
 @Entity
@@ -68,7 +69,6 @@ public class Article implements Serializable {
         this.aceptado = aceptado;
         this.user = user;
         this.data = data;
-
     }
 
     public BigInteger getArticle_id() {
