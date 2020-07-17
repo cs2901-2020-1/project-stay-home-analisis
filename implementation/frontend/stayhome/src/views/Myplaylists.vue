@@ -111,7 +111,10 @@
             <v-container></v-container>
             <v-row justify="center" >
               <v-text class="estiloT" > {{articlepack.name}} </v-text>
-              </v-row>
+            </v-row>
+            <v-row justify="center">
+              <v-text class="estiloP" > {{articlepack.descripcion}} </v-text>
+            </v-row>
             
             <v-container></v-container>
 
@@ -122,17 +125,11 @@
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                medium 
-                
+                  medium 
                 > 
                 <v-icon left  large > mdi-folder-google-drive </v-icon> 
-              
                 <router-link class="white--text" :to="{ name: 'Playlist', params:{ id: articlepack.articlepack_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
-
-               
-                
-                </v-row>
-              
+              </v-row>
             </v-card>
             
           </v-item>
@@ -211,8 +208,6 @@ export default {
       }
 
     }
-    
-
 }
 
 

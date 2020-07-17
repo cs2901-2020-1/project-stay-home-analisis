@@ -33,11 +33,7 @@
     </v-card-title>
 
     <v-card-subtitle>
-        <div  v-for="user in users" :key="user.user_id">
-            <div v-if="user.user_id == currentArticle.user_id">
-                Subido por: {{user.username}}
-            </div>
-        </div>
+      Subido por: {{currentArticle.user.username}}
     </v-card-subtitle>
 
     <v-card-actions>
@@ -119,11 +115,7 @@
     </v-card-title>
 
     <v-card-subtitle>
-        <div  v-for="user in users" :key="user.user_id">
-            <div v-if="user.user_id == currentArticle.user_id">
-                Subido por: {{user.username}}
-            </div>
-        </div>
+      Subido por: {{currentArticle.user.username}}
     </v-card-subtitle>
 
     <v-card-actions>

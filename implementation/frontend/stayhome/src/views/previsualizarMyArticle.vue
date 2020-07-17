@@ -3,24 +3,14 @@
 <v-container >
 
 <v-row  v-if="currentArticle.tipo[0] == 'i'">
-
-  
   <v-row justify="left">
 
-    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     
     <v-icon >mdi-chevron-right</v-icon>
    <v-text class="estiloT" color="grey"> Mi Artículo </v-text> 
-
-
-    
   
 </v-row>
-
-
-    
-
-
 
 <v-container></v-container>
 
@@ -43,13 +33,9 @@
     <v-card-title>
       Tema: {{currentArticle.tema}}
     </v-card-title>
-
+      
     <v-card-subtitle>
-        <div  v-for="user in users" :key="user.user_id">
-            <div v-if="user.user_id == currentArticle.user_id">
-                Subido por: {{user.username}}
-            </div>
-        </div>
+      Subido por: {{currentArticle.user.username}}
     </v-card-subtitle>
 
     <v-card-actions>
@@ -112,11 +98,7 @@
     </v-card-title>
 
     <v-card-subtitle>
-        <div  v-for="user in users" :key="user.user_id">
-            <div v-if="user.user_id == currentArticle.user_id">
-                Subido por: {{user.username}}
-            </div>
-        </div>
+      Subido por: {{currentArticle.user.username}}
     </v-card-subtitle>
 
     <v-card-actions>
@@ -176,7 +158,6 @@
 
 <v-row  class="estiloT" justify="left">
    Título: {{currentArticle.title}}
-
 </v-row>
 
 <v-container></v-container>
@@ -270,6 +251,7 @@ export default {
         ...mapState(['articles']),
         ...mapState(['users']),
         ...mapState(['articlepacks']),
+        ...mapState(['articles_por_tupac'])
 
       
     },

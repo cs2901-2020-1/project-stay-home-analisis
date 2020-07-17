@@ -34,11 +34,7 @@
     </v-card-title>
 
     <v-card-subtitle>
-        <div  v-for="user in users" :key="user.user_id">
-            <div v-if="user.user_id == currentArticle.user_id">
-                Subido por: {{user.username}}
-            </div>
-        </div>
+      Subido por: {{currentArticle.user.username}}
     </v-card-subtitle>
 
     <v-card-actions>
@@ -141,7 +137,7 @@
 
 <v-row  v-else-if="currentArticle.tipo[0] == 'v'">
  <v-row justify="left">
-    <v-text class="estilo"> Tema  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  {{currentArticle.tema}} </v-text></v-text>
+    <v-text class="estilo"> Título  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  {{currentArticle.title}} </v-text></v-text>
 
 </v-row>
 
@@ -161,15 +157,11 @@
 
 
     <v-card-title>
-      Título: {{currentArticle.title}}
+      Tema: {{currentArticle.tema}}
     </v-card-title>
 
     <v-card-subtitle>
-        <div  v-for="user in users" :key="user.user_id">
-            <div v-if="user.user_id == currentArticle.user_id">
-                Subido por: {{user.username}}
-            </div>
-        </div>
+      Subido por: {{currentArticle.user.username}}
     </v-card-subtitle>
 
     <v-card-actions>

@@ -6,7 +6,7 @@
 
       <v-row justify="left">
 
-          <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+          <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
           <v-icon >mdi-chevron-right</v-icon>
           
         <v-text class="estiloT" color="grey"> Administrar perfil </v-text> 
@@ -218,7 +218,7 @@ export default {
           }else{
             alert('Se han actualizado tus datos con éxito');
           }
-        this.$router.push("/mainpage")
+        this.$router.push("/myplaylists")
       },
       async userDelete()
       {
