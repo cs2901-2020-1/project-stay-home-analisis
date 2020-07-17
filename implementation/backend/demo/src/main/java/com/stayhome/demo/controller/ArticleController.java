@@ -83,7 +83,7 @@ public class ArticleController {
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(article.getTipo()))
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + article.getTitle() + "\"")
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + article.getNombre() + "\"")
                 .body(new ByteArrayResource(article.getData()));
     }
 

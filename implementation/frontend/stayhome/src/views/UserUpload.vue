@@ -3,15 +3,13 @@
    <v-container  v-model="valid"
     v-if="currentUser.username  && currentUser.admin == false ">
 
-    <v-row justify="left">
+    <v-row>
 
-          <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+          <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
           <v-icon >mdi-chevron-right</v-icon>
-          
-        <v-text class="estiloT" color="grey"> Subir artículos </v-text> 
+          <v-text class="estiloT" color="grey"> Subir artículos </v-text> 
         
-      </v-row>
-
+    </v-row>
 
         <v-container>  </v-container>
         
@@ -56,9 +54,9 @@
             required
             ></v-select>
 
-            <v-textarea v-if="article.tipo" v-model="article.descripcion" label="Descripción" required :rules="descripcionRules"/>
+            <v-text-field v-if="article.tipo" v-model="article.title" label="Titulo" required :rules="tituloRules"></v-text-field>
 
-
+            <v-textarea v-if="article.title" v-model="article.descripcion" label="Descripción" required :rules="descripcionRules"/>
 
             <div v-if="article.tipo == 'Documento' && article.descripcion">
 
@@ -150,6 +148,7 @@
 </template>
 
 <script>
+
 class Capsule {
   constructor(file,article_id) {
     this.file = file;
@@ -169,10 +168,17 @@ import {mapState} from 'vuex';
         },
         data: ()=>({
             valid :false,
-             descripcionRules: [
-        v => !!v || 'Descripción requirida',
-        v => (v && v.length <= 1000) || 'La descripción tiene que ser menor que 1000 caracteres',
-      ],
+
+            descripcionRules: [
+                v => !!v || 'Descripción requirida',
+                v => (v && v.length <= 1000) || 'La descripción tiene que ser menor que 1000 caracteres',
+            ],
+
+            tituloRules: [
+                v => !!v || 'Titulo requirido',
+                v => (v && v.length <= 30) || 'El titulo tiene que ser menor que 30 caracteres',
+            ],
+
             cursos: [
                 'Matemática',
                 'Física',
@@ -198,39 +204,38 @@ import {mapState} from 'vuex';
                 'Imagen',
             ],
             article:{
-             link: '',
-             title: '',
-             curso: '',
-             tema: '',
-             tipo: '',
-             descripcion: '',
-             aceptado: false,
-             user:[]
+                link: '',
+                nombre: '',
+                title: '',
+                curso: '',
+                tema: '',
+                tipo: '',
+                descripcion: '',
+                aceptado: false,
+                user:[]
             },
-            articles:[]
-
+            articles:[],
+        
         }),
         methods:{
-          async  upload(){
-            this.article.title = this.articles.name;
-            this.article.link= "../../../database/articles/" + this.article.title;
-            this.article.user = this.currentUser;     
-            let reponse_article = await this.$store.dispatch('addArticle',this.article);
-            let id = reponse_article.article_id;
-            let capsule = new Capsule(this.articles,id);
-            let response_file = await this.$store.dispatch('addFile',capsule);
-             if(response_file.error){
-            alert(response_file.error)
-          }else{
-            alert('La subida del archivo se completó con éxito, espere que sea validada por un administrador');
-            this.$router.push('/myplaylists');
-          }
+            async  upload(){
+                this.article.nombre = this.articles.name;
+                this.article.link= "../../../database/articles/" + this.article.title;
+                this.article.user = this.currentUser; 
+                console.log(this.article);    
+                let reponse_article = await this.$store.dispatch('addArticle',this.article);
+                console.log(reponse_article);
+                let id = reponse_article.article_id;
+                let capsule = new Capsule(this.articles,id);
+                let response_file = await this.$store.dispatch('addFile',capsule);
+                if(response_file.error){
+                    alert(response_file.error)
+                }else{
+                    alert('La subida del archivo se completó con éxito, espere que sea validada por un administrador');
+                    this.$router.push('/myplaylists');
+                }
             },
         },
-
-        
-
-
     }
   
 </script>

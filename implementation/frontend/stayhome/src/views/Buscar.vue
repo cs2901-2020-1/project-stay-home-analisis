@@ -1,82 +1,68 @@
 <template>
 <v-container v-if="currentUser.admin == true">
-<v-container></v-container>
-
-    <v-row justify="left">
-    
-    <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Solicitudes </v-text></v-text>
-
-    </v-row>
-    <v-container></v-container>
-
-<v-row>
-<v-col justify="center">
-
- <v-card id="lateral" dark color="dark">
-    <v-toolbar
-      dark
-      tabs
-      flat
-      color="dark"
-    >
+  <v-container></v-container>
+  <v-row justify="left">
+  <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Solicitudes </v-text></v-text>
+  </v-row>
+  <v-container></v-container>
+  <v-row>
+    <v-col justify="center">
+      <v-card id="lateral" dark color="dark">
+        <v-toolbar
+          dark
+          tabs
+          flat
+          color="dark"
+        > 
+          <v-toolbar-title> Matemática </v-toolbar-title>
+          <v-spacer></v-spacer>
+          <template v-slot:extension>
        
-      <v-toolbar-title> Matemática </v-toolbar-title>
-      <v-spacer></v-spacer>
+            <v-tabs
+              v-model="tabs"
+              align-with-title
+            >
+              <v-tab href="#one"> Álgebra </v-tab>
+              <v-tab href="#two"> Geometría </v-tab>
+              <v-tab href="#three"> Ecuaciones </v-tab>
+              <v-tabs-slider color="green"></v-tabs-slider>
+            </v-tabs>
 
-    
-      <template v-slot:extension>
-       
-        <v-tabs
-          v-model="tabs"
-          align-with-title
-        >
-          <v-tab href="#one"> Álgebra </v-tab>
-          <v-tab href="#two"> Geometría </v-tab>
-          <v-tab href="#three"> Ecuaciones </v-tab>
-
-          <v-tabs-slider color="green"></v-tabs-slider>
-
-        </v-tabs>
-
-      </template>
-    </v-toolbar>
-    <v-card-text >
-
-      <v-tabs-items v-model="tabs">
-        <v-tab-item
-          v-for="content in ['one', 'two', 'three']"
-          :key="content"
-          :value="content"
-        >
-        <div  v-if="content == 'one'" >
-
-        <v-col>
-
-  <v-sheet
-    class="mx-auto"
-    elevation="8"
-    max-width="900"
-  >
-    <v-slide-group
-      v-model="model"
-      class="pa-4"
-      prev-icon="mdi-minus"
-      next-icon="mdi-plus"
-      show-arrows
-    >
-      <v-slide-item
-       v-for="article in articles" 
-          :key ="article.article_id"
-      >
-      <div v-if="article.aceptado == false" >
-        <div v-if="article.curso == 'Matemática'" >
-          <div v-if="article.tema == 'Álgebra'" >
-      
-        <v-card
-          class="ma-4"
-          height="300"
-          width="200"
-        >
+          </template>
+        </v-toolbar>
+        <v-card-text >
+          <v-tabs-items v-model="tabs">
+            <v-tab-item
+              v-for="content in ['one', 'two', 'three']"
+              :key="content"
+              :value="content"
+            >
+              <div  v-if="content == 'one'" >
+                <v-col>
+                  <v-sheet
+                    class="mx-auto"
+                    elevation="8"
+                    max-width="900"
+                  >
+                    <v-slide-group
+                      v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                    >
+                      <v-slide-item
+                        v-for="article in articles" 
+                        :key="article.article_id"
+                      >
+                      <div v-if="article.aceptado == false" >
+                        <div v-if="article.curso == 'Matemática'" >
+                          <div v-if="article.tema == 'Álgebra'" >
+                            <v-card
+                              class="ma-4"
+                              height="300"
+                              width="200"
+                            >
           <v-row
             class="fill-height"
             align="center"
@@ -90,7 +76,7 @@
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                small > <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
           </v-row>
         </v-card>
           </div>
@@ -122,7 +108,7 @@
     >
       <v-slide-item
        v-for="article in articles" 
-          :key ="article.article_id"
+          :key="article.article_id"
       >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Matemática'" >
@@ -180,7 +166,7 @@
     >
       <v-slide-item
        v-for="article in articles" 
-          :key ="article.article_id"
+          :key="article.article_id"
       >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Matemática'" >

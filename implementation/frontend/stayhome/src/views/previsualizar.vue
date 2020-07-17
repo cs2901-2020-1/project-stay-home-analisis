@@ -24,7 +24,7 @@
     max-width="1000"
   >
     <v-img
-      v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.title}`)" 
+      v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" 
       height="600px"
     ></v-img>
 
@@ -110,7 +110,7 @@
      widht="240" 
      height="240" 
     >
-    <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.title}`)" type="video/mp4" />
+    <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" type="video/mp4" />
   </video>
 
 

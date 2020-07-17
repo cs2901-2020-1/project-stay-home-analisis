@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -18,13 +19,17 @@ public class Article implements Serializable {
     @GeneratedValue
     private BigInteger article_id;
 
-    @Column
+    @Column (unique = true)
     @NotNull
     private String link;
 
-    @Column
+    @Column (unique = true)
     @NotNull
     private String title;
+
+    @Column (unique = true)
+    @NotNull
+    private String nombre;
 
     @Column
     @NotNull
@@ -38,9 +43,13 @@ public class Article implements Serializable {
     @NotNull
     private String tipo;
 
-    @Column
+    @Column (unique = true)
     @NotNull
     private String descripcion;
+
+    @Column
+    @NotNull
+    private LocalDateTime fecha = LocalDateTime.now();;
 
     @Column
     @NotNull
@@ -58,12 +67,13 @@ public class Article implements Serializable {
     }
 
     public Article(String link, String title, String curso, String tema, String tipo,
-                   String descripcion, Boolean aceptado, User user, byte[] data) {
+                   String nombre, String descripcion, Boolean aceptado, User user, byte[] data) {
         this.link = link;
         this.title = title;
         this.curso = curso;
         this.tema = tema;
         this.tipo = tipo;
+        this.nombre = nombre;
         this.descripcion = descripcion;
         this.aceptado = aceptado;
         this.user = user;
@@ -94,6 +104,10 @@ public class Article implements Serializable {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    public String getNombre() { return nombre; }
+
+    public void setNombre(String nombre) { this.nombre = nombre; }
 
     public String getCurso() {
         return curso;
@@ -127,13 +141,17 @@ public class Article implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public LocalDateTime getLocalDateTime() { return fecha; }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {this.fecha = localDateTime; }
+
     public Boolean getAceptado() { return aceptado; }
 
     public void setAceptado(Boolean aceptado) { this.aceptado = aceptado; }
 
     public User getUser() { return user; }
 
-    public void setUser_id(User user) {this.user = user; }
+    public void setUser(User user) {this.user = user; }
 
     public byte[] getData() { return data; }
 

@@ -4,9 +4,8 @@ package com.stayhome.demo.data;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.math.BigInteger;
+
 
 @Embeddable
 public class Doublei implements Serializable {

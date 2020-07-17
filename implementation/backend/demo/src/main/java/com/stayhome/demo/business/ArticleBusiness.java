@@ -1,32 +1,25 @@
 package com.stayhome.demo.business;
 
-import com.stayhome.demo.data.User;
 import com.stayhome.demo.exceptions.ArticleException;
 import com.stayhome.demo.exceptions.ArticleNotFoundException;
 import com.stayhome.demo.data.Article;
 import com.stayhome.demo.repositories.ArticleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import javax.persistence.OneToMany;
 import java.math.BigInteger;
 import java.nio.file.Paths;
-import java.rmi.server.ExportException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.io.*;
 
 @Service
+@Transactional
 public class ArticleBusiness {
 
     @Autowired
@@ -38,7 +31,7 @@ public class ArticleBusiness {
     public Article storeFile(MultipartFile file, BigInteger id) {
         try {
             Article article = repository.findById(id).get();
-            String titulo = file.getOriginalFilename();
+            String titulo = article.getTitle();
             String tipo = file.getContentType();
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("/downloadFile/")
@@ -48,7 +41,8 @@ public class ArticleBusiness {
             article.setTipo(tipo);
             article.setLink(fileDownloadUri);
             article.setData(file.getBytes());
-            Path path = Paths.get(upload_folder + "/"+ titulo);
+            article.setNombre(file.getOriginalFilename());
+            Path path = Paths.get(upload_folder + "/"+ article.getNombre());
             Files.write(path,file.getBytes());
             return repository.save(article);
         } catch (Exception ex) {

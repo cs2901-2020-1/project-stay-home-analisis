@@ -17,21 +17,27 @@ public class ArticlePack implements Serializable {
     @GeneratedValue
     private BigInteger articlepack_id;
 
-    @Column
+    @Column (unique = true)
     @NotNull
     private String name;
+
+    @Column (unique = true)
+    @NotNull
+    private String descripcion;
 
     @NotNull
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+
     public ArticlePack() {
     }
 
-    public ArticlePack(BigInteger articlepack_id, String name, User user ) {
+    public ArticlePack(BigInteger articlepack_id, String name, String descripcion ,User user ) {
         this.articlepack_id = articlepack_id;
         this.name = name;
+        this.descripcion = descripcion;
         this.user = user;
     }
 
@@ -56,8 +62,12 @@ public class ArticlePack implements Serializable {
         this.name = name;
     }
 
+    public String getDescripcion() { return descripcion; }
+
+    public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
     public User getUser() { return user; }
 
-    public void setUser_id(User user) {this.user = user; }
+    public void setUser(User user) {this.user = user;}
 
 }

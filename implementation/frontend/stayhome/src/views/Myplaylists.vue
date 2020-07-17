@@ -2,16 +2,13 @@
 
 <v-container v-if="currentUser.admin == false" >
 
-<v-row justify="left">
+<v-row>
 
-    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    
-   <v-text class="estiloT" color="grey"> Inicio </v-text> 
+    <v-text class="estiloT" color="grey"> Inicio </v-text> 
   
 </v-row>
-
-
 
 <div class="text-center" >
 
@@ -49,6 +46,7 @@
               <v-container></v-container>
               <v-card-text>
                 <v-text-field v-model="playlist.name" label="Nombre del paquete" :rules="nombreRules" ></v-text-field>
+                <v-text-field v-model="playlist.descripcion" label="Descripcion" :rules="descripcionRules"></v-text-field>
               </v-card-text>
               <v-divider></v-divider>
               <v-card-actions>
@@ -129,7 +127,7 @@
                 > 
                 <v-icon left  large > mdi-folder-google-drive </v-icon> 
               
-                <router-link class="white--text" :to ="{ name: 'Playlist', params:{ id: articlepack.articlepack_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
+                <router-link class="white--text" :to="{ name: 'Playlist', params:{ id: articlepack.articlepack_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
 
                
                 
@@ -147,7 +145,6 @@
 </v-container>
 </v-card>
 
-    
 </v-container>
 </template>
 
@@ -162,13 +159,19 @@ export default {
    data () {
       return {
         dialog: false,
+        valid: false,
 
         nombreRules: [
             v => !!v || 'Nombre requirido',
             v => (v && v.length <= 20) || 'El nombre tiene que tener menos de 20 caracteres',
         ],
+        descripcionRules: [
+            v => !!v || 'Descripcion requirida',
+            v => (v && v.length <= 1000) || 'La descripcion tiene que tener menos de 1000 caracteres',
+        ],
         playlist: { 
             name:'',
+            descripcion:'',
             user:[]
         },
     }

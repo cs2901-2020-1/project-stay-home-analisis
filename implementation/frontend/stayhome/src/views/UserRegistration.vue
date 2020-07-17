@@ -56,10 +56,11 @@ export default {
             alert(user.error)
           }else{
             alert('Gracias por registrate en StayHome, ' + user.username);
-            console.log('hola0')
-            this.$router.push('/buscar');
-            console.log('hola')
-            
+            if(this.registerInfo.admin == false){
+                this.$router.push('/myplaylists');
+            }else{
+                this.$router.push('/buscar');
+            }
           }
       }else{
          alert('Hubo un error, intenta de nuevo')

@@ -4,29 +4,18 @@
 
 <v-row  v-if="currentArticle.tipo[0] == 'i'">
 
-  
-  <v-row justify="left">
-
-    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+  <v-row>
+    <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <router-link  to = "/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
-
+    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-   <v-text class="estiloT" color="grey"> Artículo </v-text> 
-
-
-    
-  
-</v-row>
-
-
-  
+    <v-text class="estiloT" color="grey"> Artículo </v-text> 
+  </v-row>
 
 <v-container></v-container>
 
 <v-row justify="center">
     <v-text  class="estiloT"> Título:  <v-text class="estiloT">  {{currentArticle.title}} </v-text></v-text>
-
 </v-row>
 
 <v-container></v-container>
@@ -36,7 +25,7 @@
     max-width="1000"
   >
     <v-img
-      v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.title}`)" 
+      v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" 
       height="600px"
     ></v-img>
 
@@ -106,7 +95,6 @@
             </div>
           </div>
           
-
           </v-col>
         </v-card-text>
 
@@ -122,23 +110,17 @@
             cerrar
           </v-btn>
 
-          
         </v-card-actions>
       </v-card>
     </v-dialog>
   </v-row>
     </v-col>
-
-
-
-      <v-col >
+      <v-col>
         <v-row justify="center">
       <v-btn
-      
         icon
         @click="show = !show"
         small
-        
       >
         <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text > Descripción </v-text>
       </v-btn>
@@ -149,23 +131,17 @@
     <v-expand-transition>
       <div v-show="show">
         <v-divider></v-divider>
-
         <v-card-text>
-    
         {{currentArticle.descripcion}}
-       
         </v-card-text>
       </div>
     </v-expand-transition>
   </v-card>
 </v-row>
 
-
-
-
 <v-row  v-else-if="currentArticle.tipo[0] == 'v'">
  <v-row justify="left">
-    <v-text  class="estilo"> Tema  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  {{currentArticle.tema}} </v-text></v-text>
+    <v-text class="estilo"> Tema  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  {{currentArticle.tema}} </v-text></v-text>
 
 </v-row>
 
@@ -180,7 +156,7 @@
      widht="340" 
      height="340" 
     >
-    <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.title}`)" type="video/mp4" />
+    <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" type="video/mp4" />
   </video>
 
 
@@ -486,9 +462,8 @@ export default {
  computed: {
 
       currentArticle(){
-          
           return this.$store.state.articles.find(ar => ar.article_id == this.$route.params.id)
-          },
+      },
 
         ...mapState(['currentUser']),
         ...mapState(['articles']),
