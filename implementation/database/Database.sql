@@ -23,8 +23,9 @@ CREATE TABLE APP_ARTICLE(
 );
 
 
-CREATE TABLE app_articlesbypack(
-    articlepackid  BIGINT not null REFERENCES app_article_pack(articlepack_id),
-    article_id    BIGINT not null REFERENCES app_article(article_id),
-    PRIMARY KEY(articlepackid,article_id)
+CREATE TABLE app_likesbyarticle(
+    articleid BIGINT not null REFERENCES app_article(article_id),
+    userid BIGINT not null REFERENCES app_user(user_id),
+    lik BOOLEAN not null,
+    PRIMARY KEY(article_id,userid)
 );
