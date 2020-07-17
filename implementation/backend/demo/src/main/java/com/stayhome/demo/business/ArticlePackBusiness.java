@@ -1,7 +1,9 @@
 package com.stayhome.demo.business;
 
+import com.stayhome.demo.data.Article;
 import com.stayhome.demo.data.ArticlePack;
 import com.stayhome.demo.data.User;
+import com.stayhome.demo.exceptions.ArticleNotFoundException;
 import com.stayhome.demo.repositories.ArticlePackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +22,16 @@ public class ArticlePackBusiness {
 
     public List<ArticlePack> findAll(){
 
-        return new ArrayList<>(repository.findAll());
+
+        List<ArticlePack> items = new ArrayList<>();
+
+        for (ArticlePack item : repository.findAll()){
+
+            BigInteger contador = repository.Contador(item.getArticlepack_id());
+            item.setContador(contador);
+            items.add(item);
+        }
+        return items;
     }
 
     public ArticlePack create(ArticlePack newArticlePack) {
@@ -40,8 +51,8 @@ public class ArticlePackBusiness {
         repository.deleteById(articlepack_id);
     }
 
-    public String Fav(String name){
-        return repository.FindFavorite(name);
+    public String Fav(String name, BigInteger id){
+        return repository.FindFavorite(name,id);
     }
 
 

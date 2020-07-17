@@ -25,6 +25,10 @@ public class ArticlePack implements Serializable {
     @NotNull
     private String descripcion;
 
+    @Column
+    @NotNull
+    private BigInteger contador = BigInteger.valueOf(0);
+
     @NotNull
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -34,10 +38,11 @@ public class ArticlePack implements Serializable {
     public ArticlePack() {
     }
 
-    public ArticlePack(BigInteger articlepack_id, String name, String descripcion ,User user ) {
+    public ArticlePack(BigInteger articlepack_id, String name, String descripcion, BigInteger contador, User user ) {
         this.articlepack_id = articlepack_id;
         this.name = name;
         this.descripcion = descripcion;
+        this.contador = contador;
         this.user = user;
     }
 
@@ -65,6 +70,10 @@ public class ArticlePack implements Serializable {
     public String getDescripcion() { return descripcion; }
 
     public void setDescripcion(String descripcion) { this.descripcion = descripcion; }
+
+    public BigInteger getContador() { return contador;}
+
+    public void setContador(BigInteger contador) { this.contador = contador; }
 
     public User getUser() { return user; }
 

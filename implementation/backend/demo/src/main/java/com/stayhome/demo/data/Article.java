@@ -49,7 +49,7 @@ public class Article implements Serializable {
 
     @Column
     @NotNull
-    private LocalDateTime fecha = LocalDateTime.now();;
+    private LocalDateTime fecha = LocalDateTime.now();
 
     @Column
     @NotNull

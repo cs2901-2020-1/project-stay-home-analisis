@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app color=#009688 >
       <v-toolbar-title class="headline text-uppercase">
-                 <v-btn  class="white--text" text to ="/" >STAYHOME  </v-btn>
+                 <v-btn  class="white--text" text to="/" >STAYHOME  </v-btn>
 
       </v-toolbar-title>
       <div>

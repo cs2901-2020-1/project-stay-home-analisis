@@ -5,7 +5,7 @@
 <v-row >
   <v-row justify="left">
 
-    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     
     <v-icon >mdi-chevron-right</v-icon>
    <v-text class="estiloT" color="grey"> Contáctanos </v-text> 

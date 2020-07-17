@@ -17,13 +17,13 @@ public class ArticlePackController {
     private ArticlePackBusiness business;
 
     @GetMapping("/articlepacks")
-    public List<ArticlePack> read()
-    {
-        if(business.Fav("Favoritos") == null){
+    public List<ArticlePack> read() {
+
+        if(business.Fav("Favoritos de " + UserController.Current.getUsername(),UserController.Current.getUser_id() ) == null){
+
                ArticlePack Favorite = new ArticlePack();
-               Favorite.setArticlepack_id(BigInteger.valueOf(1));
-               Favorite.setName("Favoritos");
-               Favorite.setDescripcion("Coleccion de Favoritos");
+               Favorite.setName("Favoritos de " + UserController.Current.getUsername());
+               Favorite.setDescripcion("Coleccion de Favoritos de " + UserController.Current.getUsername());
                Favorite.setUser(UserController.Current);
                business.create(Favorite);
 
@@ -34,7 +34,6 @@ public class ArticlePackController {
     @PostMapping("/articlepacks")
     public ArticlePack create(@RequestBody ArticlePack articlepack)
     {
-
         return business.create(articlepack);
     }
 

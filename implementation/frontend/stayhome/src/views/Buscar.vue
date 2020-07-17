@@ -385,7 +385,7 @@
     >
       <v-slide-item
        v-for="article in articles" 
-          :key ="article.article_id"
+          :key="article.article_id"
       >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Física'" >
@@ -492,7 +492,7 @@
     >
       <v-slide-item
        v-for="article in articles" 
-          :key ="article.article_id"
+          :key="article.article_id"
       >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Química'" >
@@ -548,7 +548,7 @@
     >
       <v-slide-item
        v-for="article in articles" 
-          :key ="article.article_id"
+          :key="article.article_id"
       >
       <div v-if="article.aceptado == false" >
         <div v-if="article.curso == 'Química'" >
@@ -572,7 +572,7 @@
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                small > <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
           </v-row>
         </v-card>
           </div>
@@ -600,7 +600,7 @@
 
   <v-row justify="left">
 
-    <router-link  to = "/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
     
    <v-text class="estiloT" color="grey"> Buscar artículos </v-text> 
@@ -678,7 +678,7 @@
                 v-on="on"
                 color="dark"
               >
-            <v-icon  left >mdi-numeric</v-icon> Álgebra
+            <v-icon left>mdi-numeric</v-icon> Álgebra
             </v-btn>
             </v-row>
             </template>
@@ -759,7 +759,7 @@
                     </template>
                     <v-list>
                       <v-subheader>Imágenes</v-subheader>
-                      <div  v-for="article in articles" :key ="article.article_id">
+                      <div  v-for="article in articles" :key="article.article_id">
                       <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Álgebra'">

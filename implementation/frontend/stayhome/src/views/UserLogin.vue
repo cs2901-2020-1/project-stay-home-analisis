@@ -62,7 +62,7 @@
         </v-row>
       </v-container>
     </v-form>
-</v-container>
+  </v-container>
 </template>
 
 
@@ -84,7 +84,7 @@ export default {
         password: '',
         admin: false
       },
-       emailRules: [
+      emailRules: [
         v => !!v || 'Correo requerido',
         v => /.+@.+\..+/.test(v) || 'Correo tiene que ser valido',
       ],

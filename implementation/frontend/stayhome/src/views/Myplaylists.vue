@@ -115,6 +115,9 @@
             <v-row justify="center">
               <v-text class="estiloP" > {{articlepack.descripcion}} </v-text>
             </v-row>
+            <v-row justify="center">
+              <v-text class="estiloP" > Contador: {{articlepack.contador}} </v-text>
+            </v-row>
             
             <v-container></v-container>
 
@@ -169,6 +172,7 @@ export default {
         playlist: { 
             name:'',
             descripcion:'',
+            contador: 0,
             user:[]
         },
     }
