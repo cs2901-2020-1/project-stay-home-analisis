@@ -23,8 +23,18 @@ public class LikesPorArticleBusiness {
     }
 
 
-    public LikesPorArticle create(LikesPorArticle newLike) {
-        return repository.save(newLike);
+    public LikesPorArticle create(LikesPorArticle newLike)
+    {
+        LikesPorArticle react = repository.findbykey(newLike.getDbi().getArticleid(),newLike.getDbi().getUserid());
+        if(react!=null) {
+            if (newLike.getLik() == react.getLik()) {
+                repository.deletebykey(react.getDbi().getArticleid(), react.getDbi().getUserid());
+                return newLike;
+            }
+        }
+
+            return repository.save(newLike);
+
     }
 
 }
