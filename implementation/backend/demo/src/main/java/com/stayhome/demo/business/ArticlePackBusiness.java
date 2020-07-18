@@ -1,9 +1,6 @@
 package com.stayhome.demo.business;
 
-import com.stayhome.demo.data.Article;
 import com.stayhome.demo.data.ArticlePack;
-import com.stayhome.demo.data.User;
-import com.stayhome.demo.exceptions.ArticleNotFoundException;
 import com.stayhome.demo.repositories.ArticlePackRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

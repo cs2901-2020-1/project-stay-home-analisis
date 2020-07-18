@@ -22,8 +22,8 @@ public class LikesPorArticleBusiness {
         return new ArrayList<>(repository.findAll());
     }
 
-
     public LikesPorArticle create(LikesPorArticle newLike) {
+
         return repository.save(newLike);
     }
 

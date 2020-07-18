@@ -25,7 +25,6 @@ public class    Dbi implements Serializable {
 
     }
 
-
     public Dbi(BigInteger articleid, BigInteger userid) {
         this.articleid=articleid;
         this.userid=userid;
