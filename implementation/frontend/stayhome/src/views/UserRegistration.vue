@@ -1,19 +1,79 @@
 <template>
-    <v-container>
-      <h1> Registrate </h1>
-      <v-spacer></v-spacer>
-      <v-form v-model="valid">
-        <v-text-field v-model="registerInfo.username" label="Usuario" :rules="nameRules"/>
-        <v-text-field v-model="registerInfo.email" label="Correo" :rules="emailRules"/>
-        <v-text-field v-model="registerInfo.password" 
-                      label="Contraseña" 
-                      :type="showPassword ? 'text' : 'password' "
-                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                      :rules="passwordRules"
-                      @click:append="showPassword=!showPassword"/>
-        <v-btn @click="registerUser" :disabled="!valid" >Registrate</v-btn>
-      </v-form>
-    </v-container>
+<v-container >
+<v-container class="fill-height" fluid justify="center">
+        <v-row align="center" justify="center">
+          <v-col md="6">
+            <v-card class="estiloC">
+              <v-container/>
+              <v-row justify="center">
+                 <v-text class="estilo">Registrarte</v-text>
+              </v-row>
+              <v-spacer></v-spacer>
+              <v-form  v-model="valid"> 
+                <v-card-text>
+                  <v-card class="estiloSubCard" height="100px" width="800px">
+                    <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#212121>
+                          <v-icon x-large color=#FFFFFF>mdi-account</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="registerInfo.username" label="Usuario" :rules="nameRules"/>
+                      </v-col>
+                    </v-row>
+                    <v-container/>
+                  </v-card>
+                  <v-container/>
+
+                  <v-card class="estiloSubCard" height="100px" width="800px">
+                    <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#212121>
+                          <v-icon x-large color=#FFFFFF>mdi-email</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="registerInfo.email" label="Correo" :rules="emailRules"/>
+                      </v-col>
+                    </v-row>
+                    <v-container/>
+                  </v-card>
+                  <v-container/>
+
+                  <v-card class="estiloSubCard" height="100px" width="800px">
+                    <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#212121>
+                          <v-icon x-large color=#FFFFFF>mdi-lock</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="registerInfo.password" 
+                          label="Contraseña" 
+                          :type="showPassword ? 'text' : 'password' "
+                          :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                          :rules="passwordRules"
+                          @click:append="showPassword=!showPassword"
+                        />
+                      </v-col>
+                    </v-row>
+                    <v-container/>
+                  </v-card>
+                </v-card-text>
+                <v-row justify="center">
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn x-large @click="registerUser"   :disabled="!valid" :loading="loading" dark> Regístrate </v-btn>
+                  </v-card-actions>
+                </v-row>
+                <v-container/>
+              </v-form>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container> 
+</v-container>  
 </template>
 
 <script>
@@ -22,6 +82,7 @@ export default {
   data() {
     return {
       showPassword : false,
+      loading: false,
       registerInfo:{
         user_id: '',
         username: '',
@@ -30,16 +91,16 @@ export default {
         admin: false,
       },
        emailRules: [
-        v => !!v || 'Email requerido',
-        v => /.+@.+\..+/.test(v) || 'Email tiene que ser valido',
+        v => !!v || 'Correo requerido',
+        v => /.+@.+\..+/.test(v) || 'El correo tiene que ser valido',
       ],
       nameRules: [
-        v => !!v || 'Username requirido',
-        v => (v && v.length <= 15) || 'Username tiene que ser menor que 10 caracteres',
+        v => !!v || 'Usuario requirido',
+        v => (v && v.length <= 15) || 'El usuario tiene que ser menor que 15 caracteres',
       ],
       passwordRules: [
-        v => !!v || 'Password requirido',
-        v => (v && v.length <= 20) || 'Password tiene que ser menor que 20 caracteres',
+        v => !!v || 'Contraseña requirido',
+        v => (v && v.length <= 20) || 'La contraseña tiene que ser menor que 20 caracteres',
       ]
     }
   },
@@ -56,11 +117,16 @@ export default {
             alert(user.error)
           }else{
             alert('Gracias por registrate en StayHome, ' + user.username);
+            this.loading = true;
+
+          setTimeout(() => {
             if(this.registerInfo.admin == false){
                 this.$router.push('/myplaylists');
             }else{
                 this.$router.push('/buscar');
             }
+          },1000);
+
           }
       }else{
          alert('Hubo un error, intenta de nuevo')
@@ -69,3 +135,38 @@ export default {
   },
 }
 </script>
+
+
+
+<style scoped>
+  .v-progress-circular {
+    margin: 1rem;
+  }
+
+  .custom-loader {
+    animation: loader 1s infinite;
+    display: flex;
+  }
+
+  @-moz-keyframes loader {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .estilo {
+    font-size:50px;
+    color:white;
+        
+  }   
+  .estiloC{
+    background-color: #4DB6AC;
+    border-radius: 30px;
+  }  
+  .estiloSubCard{
+    border-radius: 15px;
+  } 
+  
+</style>

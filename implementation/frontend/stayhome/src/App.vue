@@ -75,7 +75,7 @@
          <v-btn  class="white--text" text to="/registration">Registrarse</v-btn>
       </div>
     </v-app-bar>
-    <v-content>
+    <v-content class="estiloFondo">
       <router-view />
     </v-content>
     <v-footer
@@ -144,3 +144,10 @@ export default {
 
 };
 </script>
+
+<style scoped>
+
+.estiloFondo{
+    background-color: #ECEFF1;
+  } 
+</style>

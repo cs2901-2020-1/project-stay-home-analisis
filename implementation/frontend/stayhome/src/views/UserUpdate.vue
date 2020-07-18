@@ -16,17 +16,35 @@
 
 
       <v-spacer></v-spacer>
-      <v-container>
-      </v-container>
-      <v-container>
-        <h2 class="text-md-left" > ¿Qué desea editar?</h2>
-        <v-row class="pa-3" justify="left">
-          <v-col class="User">
-          Usuario: <v-text class="userc"> {{currentUser.username}}</v-text>
-          </v-col> 
 
-          <v-col>
-          <v-dialog v-model="dialog1" persistent max-width="290">
+      <v-container/>
+      
+      <v-container>
+
+        <h2 class="text-md-left" > ¿Qué desea editar?</h2>
+        <v-container/>
+
+
+  <v-card
+    class="estiloCard"
+    max-width="800"
+    
+    
+  >
+    
+    <v-list    color=#C8E6C9>
+      <v-list-item
+        
+      >
+        <v-list-item-icon>
+          <v-icon small  color=#FF5722> mdi-brightness-1</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content >
+          <v-list-item-title> <v-text class="estiloT"> <v-text class="User" > Usuario: </v-text> {{currentUser.username}} </v-text> </v-list-item-title>
+        </v-list-item-content>
+
+        <v-dialog v-model="dialog1" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 130px" class="subheading"
                   small
@@ -40,33 +58,48 @@
                 
               </template>
             
-              <v-card>
+              <v-card class="estiloB">
                 <v-card-title class="headline">Cambiar usuario</v-card-title>
                 <v-card-text>
-                  <v-row>
-                    <v-col cols="12">
-                      <v-text-field v-model="editInfo.username" label="Usuario" :rules="nameRules"/>
-                    </v-col>
-                  </v-row>
+
+                  <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#212121>
+                          <v-icon x-large color=#FFFFFF>> mdi-account-outline</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="editInfo.username" 
+                          label="Usuario" 
+                          :rules="nameRules"
+                        />
+                      </v-col>
+                    </v-row>
+
+
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn color="green darken-1" text @click="dialog1 = false">Cerrar</v-btn>
-                  <v-btn color="green darken-1" text @click="userUpdate">Guardar cambios</v-btn>
+                  <v-btn color="green darken-1" text @click="userUpdate"  >Guardar cambios</v-btn>
                 </v-card-actions>
               </v-card>
           </v-dialog>
-          </v-col>
-        </v-row>
 
-        <v-row class="pa-3" justify="left">
-           
-           <v-col class="Email">
-              Correo: <v-text class="emailc">{{currentUser.email}}</v-text>
-           </v-col>
+      </v-list-item>
 
-          <v-col>
-          <v-dialog v-model="dialog2" persistent max-width="290">
+
+<v-list-item
+        >
+        <v-list-item-icon>
+          <v-icon   small  color=#FF5722> mdi-brightness-1</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title><v-text class="estiloT"> <v-text class="User" > Correo: </v-text> {{currentUser.email}} </v-text> </v-list-item-title>
+        </v-list-item-content>
+
+        <v-dialog v-model="dialog2" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 130px" class="subheading"
                   small
@@ -74,37 +107,52 @@
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
+                  
                   ><v-icon center>mdi-pencil</v-icon>
                 </v-btn>
+                
               </template>
-              <v-card>
-                <v-form v-model="valid">
-                  <v-card-title class="headline">Cambiar correo</v-card-title>
-                  <v-card-text>
-                    <v-row>
-                      <v-col cols="12">
-                          <v-text-field v-model="editInfo.email" label="Correo" :rules="emailRules"/>
+            
+              <v-card class="estiloB">
+                <v-card-title class="headline">Cambiar correo</v-card-title>
+                <v-card-text>
+                  
+                    <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#212121>
+                          <v-icon x-large color=#FFFFFF>mdi-email</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="editInfo.email" 
+                          label="Correo" 
+                          :rules="emaildRules"
+                        />
                       </v-col>
                     </v-row>
-                  </v-card-text>
-                  <v-card-actions>
-                    <v-spacer></v-spacer>
-                    <v-btn color="green darken-1" text @click="dialog2 = false">Cerrar</v-btn>
-                    <v-btn color="green darken-1" text @click="userUpdate" :disabled="!valid">Guardar cambios</v-btn>
-                  </v-card-actions>
-                </v-form>
+                </v-card-text>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="green darken-1" text @click="dialog2 = false">Cerrar</v-btn>
+                  <v-btn color="green darken-1" text @click="userUpdate" >Guardar cambios</v-btn>
+                </v-card-actions>
               </v-card>
           </v-dialog>
-          </v-col>
-        </v-row>
 
-        <v-row class="pa-3" justify="left">
-           <v-col class="Password">
-              Contraseña: <v-text class="passwordc">{{currentUser.password}} </v-text>
-           </v-col>
+      </v-list-item>
 
-          <v-col>
-          <v-dialog v-model="dialog3" persistent max-width="290">
+<v-list-item
+        >
+        <v-list-item-icon>
+          <v-icon  small  color=#FF5722> mdi-brightness-1</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title> <v-text class="estiloT"> <v-text class="User" > Contraseña: </v-text> {{currentUser.password}} </v-text> </v-list-item-title>
+        </v-list-item-content>
+
+          
+        <v-dialog v-model="dialog3" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 130px" class="subheading"
                   small
@@ -112,39 +160,53 @@
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
+                  
                   ><v-icon center>mdi-pencil</v-icon>
                 </v-btn>
+                
               </template>
-              <v-card>
+            
+              <v-card class="estiloB">
                 <v-card-title class="headline">Cambiar contraseña</v-card-title>
+                
                 <v-card-text>
-                <v-row>
-                  <v-col cols="12">
-                      <v-text-field v-model="editInfo.password"
-                      label="Contraseña"
-                      :type="showPassword ? 'text' : 'password' "
-                      :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                      :rules="passwordRules"
-                      @click:append="showPassword=!showPassword"/>
-                  </v-col>
-                </v-row>
+                     <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#212121>
+                          <v-icon x-large color=#FFFFFF>mdi-lock</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="editInfo.password" 
+                          label="Contraseña" 
+                          :rules="passwordRules"
+                        />
+                      </v-col>
+                    </v-row>
+
                 </v-card-text>
-              <v-card-actions>
-              <v-spacer></v-spacer>
-                <v-btn color="green darken-1" text @click="dialog3 = false">Cerrar</v-btn>
-                <v-btn color="green darken-1" text @click="userUpdate">Guardar cambios</v-btn>
-              </v-card-actions>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn color="green darken-1" text @click="dialog3 = false">Cerrar</v-btn>
+                  <v-btn color="green darken-1" text @click="userUpdate" >Guardar cambios</v-btn>
+                </v-card-actions>
               </v-card>
           </v-dialog>
-         </v-col>
-        </v-row>
 
+      </v-list-item>
+
+
+ <v-list-item>
         <v-row class="pa-5" justify="left" >
-          <v-btn  medium  @click="userDelete"  color="error" >Eliminar cuenta</v-btn>
+          <v-btn  medium  @click="userDelete"  :loading="loading" color="error" >Eliminar cuenta</v-btn>
         </v-row>
+      
+  </v-list-item>
 
-       
+    </v-list>
 
+  </v-card>
+      
     </v-container>
   </v-container>
 
@@ -165,6 +227,8 @@ export default {
     return {
       
       showPassword : false,
+      loading:false,
+
       editInfo:{
         user_id: '',
         username: '',
@@ -213,27 +277,33 @@ export default {
 
         this.editInfo.user_id = this.currentUser.user_id;
         let user = await this.$store.dispatch('updateUser', this.editInfo);
-          if(user.error){
-            alert(user.error)
-          }else{
-            alert('Se han actualizado tus datos con éxito');
-          }
+        this.loading1 = true;
+        if(user.error){
+          alert(user.error)
+        }else{
+          alert('Se han actualizado tus datos con éxito');
+        }
         this.$router.push("/myplaylists")
       },
       async userDelete()
       {
         let response = confirm(`¿Estás seguro que deseas eliminar tu cuenta? ${this.currentUser.username}`);
+        this.loading = true;
         if(response)
         {
           let response = await this.$store.dispatch('deleteUser',this.currentUser);
+          setTimeout(() => {
           if(response.error){
             alert(response.error);
+            this.loading=false;
           }else{
             alert("Se ha eliminado correctamente el usuario");
+            this.loading=false;
             this.$router.push("/");
-          }
+          }},1000);
 
         }
+         this.loading = false;
       }
     }
 
@@ -286,8 +356,18 @@ export default {
 
     }
 
-    .estiloT{
+.estiloT{
    font-size: 25px;
- }   
+}
+
+.estiloCard{
+
+    background-color: #4DB6AC;
+    border-radius: 30px;
+
+  } 
+.estiloB{
+    border-radius: 30px;
+}
 
 </style>

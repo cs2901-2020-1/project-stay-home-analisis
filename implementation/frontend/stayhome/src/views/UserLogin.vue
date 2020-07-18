@@ -4,7 +4,7 @@
       <v-container class="fill-height" fluid justify="center">
         <v-row align="center" justify="center">
           <v-col md="6">
-            <v-card class="elevation-12" color=#009688>
+            <v-card class="estiloCard">
               <v-container/>
               <v-row justify="center">
                  <v-text class="estilo">Iniciar sesión</v-text>
@@ -12,7 +12,7 @@
               <v-spacer></v-spacer>
               <v-form  v-model="valid"> 
                 <v-card-text>
-                  <v-card height="100px" width="800px">
+                  <v-card class="estiloSubCard" height="100px" width="800px">
                     <v-row justify="center">
                       <div class="display-4">
                         <v-avatar tile color=#212121>
@@ -26,7 +26,7 @@
                     <v-container/>
                   </v-card>
                   <v-container/>
-                  <v-card height="100px" width="800px">
+                  <v-card class="estiloSubCard" height="100px" width="800px">
                     <v-row justify="center">
                       <div class="display-4">
                         <v-avatar tile color=#212121>
@@ -142,7 +142,7 @@ export default {
                 }else{
                     this.$router.push('/buscar');
                 }
-            },2000);
+            },1000);
           }
        }else{
          alert('Correo/Contraseña incorrectos, intenta denuevo')
@@ -186,6 +186,13 @@ export default {
   }   
   .estiloC{
     background-color: #4DB6AC;
-  }  
+  }
+  .estiloSubCard{
+    border-radius: 20px;
+  } 
+  .estiloCard{
+    background-color: #4DB6AC;
+    border-radius: 30px;
+  }   
 
 </style>
