@@ -72,7 +72,7 @@ public class ArticleBusiness {
     }
 
     public void delete(BigInteger article_id){
-
+        repository.delete_article_from_article_tupac(article_id);
         repository.deleteById(article_id);
     }
 

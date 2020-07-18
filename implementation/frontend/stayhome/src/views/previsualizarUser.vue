@@ -48,6 +48,7 @@
         
         small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
         </v-btn>
+        <v-btn @click="eliminar(currentArticle)">Eliminar</v-btn>
       </v-row>
 
     <v-container></v-container>
@@ -442,11 +443,6 @@ export default {
         
         },
       ],
-
-
-
-
-
     }
    },
 
@@ -456,15 +452,12 @@ export default {
       currentArticle(){
           return this.$store.state.articles.find(ar => ar.article_id == this.$route.params.id)
       },
-
         ...mapState(['currentUser']),
         ...mapState(['articles']),
         ...mapState(['users']),
         ...mapState(['articlepacks']),
-
       
     },
-
 
     mounted(){
     this.$store.dispatch("loadAll");
@@ -506,7 +499,19 @@ methods:{
      console.log(list_ids);
    
 */
-   },     
+   },
+   async eliminar(currentArticle){
+      let response = confirm(`¿Estás seguro que deseas eliminar este paquete de articulo? ${this.currentUser.username}`);
+        if(response){
+          let rpta = await this.$store.dispatch('deleteArticle',currentArticle);
+            if(rpta.error){
+                alert(rpta.error);
+            }else{
+                alert("Se ha eliminado correctamente el articulo");
+                this.$router.push("/buscar");
+            }
+        }
+   }     
 
 }
 }

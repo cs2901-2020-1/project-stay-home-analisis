@@ -2,6 +2,7 @@ package com.stayhome.demo.repositories;
 
 import com.stayhome.demo.data.ArticlePack;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -22,6 +23,10 @@ public interface ArticlePackRepository extends JpaRepository<ArticlePack, BigInt
 
     @Query(value = "SELECT COUNT(app_articlesbypack.article_id) FROM app_articlesbypack WHERE app_articlesbypack.articlepack_id = :id", nativeQuery = true)
     BigInteger Contador(@Param("id") BigInteger articlepack_id);
+
+    @Modifying
+    @Query(value = "DELETE FROM app_articlesbypack WHERE app_articlesbypack.articlepack_id = ?1", nativeQuery = true)
+    void deleteArticlesPorPackByArticlepack_id(BigInteger articlepack_id);
 
 
 }

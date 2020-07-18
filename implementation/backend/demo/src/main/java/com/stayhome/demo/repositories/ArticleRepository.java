@@ -18,4 +18,8 @@ public interface ArticleRepository extends JpaRepository<Article, BigInteger> {
     @Modifying
     @Query(value = "DELETE FROM app_article WHERE app_article.user_id = ?1", nativeQuery = true)
     void delete_article_by_user_id(BigInteger user_id);
+
+    @Modifying
+    @Query(value = "DELETE FROM app_articlesbypack WHERE app_articlesbypack.article_id = ?1", nativeQuery = true)
+    void delete_article_from_article_tupac(BigInteger article_id);
 }

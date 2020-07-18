@@ -2,7 +2,6 @@ package com.stayhome.demo.controller;
 
 import com.stayhome.demo.business.ArticlePackBusiness;
 import com.stayhome.demo.data.ArticlePack;
-import com.stayhome.demo.data.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +17,7 @@ public class ArticlePackController {
 
     @GetMapping("/articlepacks")
     public List<ArticlePack> read() {
-
+/*
         if(business.Fav("Favoritos de " + UserController.Current.getUsername(),UserController.Current.getUser_id() ) == null){
 
                ArticlePack Favorite = new ArticlePack();
@@ -28,6 +27,8 @@ public class ArticlePackController {
                business.create(Favorite);
 
         }
+
+ */
         return business.findAll();
     }
 
@@ -37,7 +38,7 @@ public class ArticlePackController {
         return business.create(articlepack);
     }
 
-    @PutMapping("/articlepacks/:id")
+    @PutMapping("/articlepacks/{id}")
     public ArticlePack update(
             @PathVariable BigInteger id,
             @RequestBody ArticlePack item
@@ -45,7 +46,7 @@ public class ArticlePackController {
         return business.update(item);
     }
 
-    @DeleteMapping("/articlepacks/:id")
+    @DeleteMapping("/articlepacks/{id}")
     public void delete(@PathVariable BigInteger id){
         business.delete(id);
     }

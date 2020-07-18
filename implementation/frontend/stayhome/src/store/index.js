@@ -61,6 +61,11 @@ export default new Vuex.Store({
     {
       state.articlepacks = articlepacks;
     },
+    DELETE_ARTICLEPACKS(state,aid){
+      let a = state.articlepacks.filter(a => a.articlepack_id != aid)
+      this.state.articlespacks = a;
+      console.log(this.state.articlespacks);
+    },
 
     ADD_ARTICLEPACK(state,articlepack)
     {
@@ -214,6 +219,7 @@ export default new Vuex.Store({
           {
             commit('DELETE_ARTICLE',article.article_id);
           }
+          return response;
         }
         catch{
           return {error: "Hubo un error al eliminar el articulo, intenta denuevo"}
@@ -255,6 +261,21 @@ export default new Vuex.Store({
         return {error: "Hubo un error al crear el paquete de artículos"}
        }
       },
+
+      async deleteArticlepack({commit},id){
+        try{
+          let response = await Api().delete(`/articlepacks/${id}`);
+          if(response.status==200 || response.status==204)
+          {
+            commit('DELETE_ARTICLEPACKS',id);
+          }
+        }
+        catch{
+          return {error: "Hubo un error al eliminar el paquete de articulos, intenta denuevo"}
+        }
+      },
+
+
 
       async loadAllArticles_tupac({commit},info){
         try{

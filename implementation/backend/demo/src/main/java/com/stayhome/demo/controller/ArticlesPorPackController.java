@@ -26,7 +26,8 @@ public class ArticlesPorPackController {
     {
         return business.getArticlesPorPackId(articlepack_id);
     }
-
+    @DeleteMapping("articlesporpack/{id}")
+    void delete(@PathVariable BigInteger id){business.delete(id);}
     @PostMapping("articlesporpack")
     public ArticlesPorPack create(@RequestBody ArticlesPorPack articleporpack)
     {

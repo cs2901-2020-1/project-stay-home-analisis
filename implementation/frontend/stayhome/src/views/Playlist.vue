@@ -50,7 +50,7 @@
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                medium > <router-link class="white--text" :to ="{ name: 'previsualizarMyArticle', params:{ id: articles.doublei.article.article_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
+                medium > <router-link class="white--text" :to="{ name: 'previsualizarMyArticle', params:{ id: articles.doublei.article.article_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
         
       </v-row>
     </v-card-actions>

@@ -97,7 +97,6 @@
         <v-list-item-avatar color="grey darken-3">
             <v-icon
             large
-            
              >
             mdi-home
             </v-icon>

@@ -29,4 +29,10 @@ public class ArticlesPorPackBusiness {
     public ArticlesPorPack create(ArticlesPorPack newArticlesPorPack) {
         return repository.save(newArticlesPorPack);
     }
+
+    public void delete(BigInteger articlepack_id){
+        repository.deleteArticlesPorPackByArticlepack_id(articlepack_id);
+    }
+
+
 }

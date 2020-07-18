@@ -22,7 +22,6 @@ public class ArticlePackBusiness {
 
     public List<ArticlePack> findAll(){
 
-
         List<ArticlePack> items = new ArrayList<>();
 
         for (ArticlePack item : repository.findAll()){
@@ -47,7 +46,7 @@ public class ArticlePackBusiness {
     }
 
     public void delete(BigInteger articlepack_id){
-
+        repository.deleteArticlesPorPackByArticlepack_id(articlepack_id);
         repository.deleteById(articlepack_id);
     }
 

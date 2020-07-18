@@ -132,6 +132,7 @@
                 > 
                 <v-icon left  large > mdi-folder-google-drive </v-icon> 
                 <router-link class="white--text" :to="{ name: 'Playlist', params:{ id: articlepack.articlepack_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
+                <v-btn @click="eliminarArticlepack(articlepack)">Eliminar</v-btn>
               </v-row>
             </v-card>
             
@@ -209,6 +210,18 @@ export default {
           alert('El paquete ' + reponse_articlepack.name + ' se ha creado correctamente');
             this.$router.go(0);//MAGIA//
         }
+      },
+
+      async eliminarArticlepack(articlepack){
+        let id = articlepack.articlepack_id;
+        console.log(id);
+        let rpta = await this.$store.dispatch('deleteArticlepack',id);
+        if(rpta.error){
+            alert(rpta.error);
+          }else{
+            alert("Se ha eliminado correctamente el paquete de articulos");
+            this.$router.push("/myplaylists");
+          }
       }
 
     }
