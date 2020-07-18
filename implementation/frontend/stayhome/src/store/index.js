@@ -10,8 +10,8 @@ export default new Vuex.Store({
     currentUser: {},
     articles: [],
     articlepacks: [],
-    articles_por_tupac: []
-
+    articles_por_tupac: [],
+    reaccionesporarticle: []
   },
   mutations: {
     SET_USERS(state,users){
@@ -75,6 +75,11 @@ export default new Vuex.Store({
     SET_ARTICLES_POR_TUPAC(state,article_by_pack){
 
       state.articles_por_tupac = article_by_pack;
+    },
+    ADD_REACCIONPORARTICLE(state,reaccion)
+    {
+      let reaccionesarticle = state.reaccionesporarticle.concat(reaccion);
+      state.reaccionesporarticle = reaccionesarticle;
     }
 
   },
@@ -288,6 +293,21 @@ export default new Vuex.Store({
           return {error: "Hubo un error al agregar el articulo"}
         }
        },
+
+       async addReaccionToArticle({commit},reaccion)
+       {
+         try{
+         let response = await Api().post('/likesporarticles',reaccion);
+         let newreaccion = response.data;
+         console.log(newreaccion);
+         commit('ADD_ARTICLEPACK',newreaccion);
+         return newreaccion;
+        }
+         catch
+         {
+          return {error: "Hubo un error al calificar el artículo"}
+         }
+        }
 
   
   },

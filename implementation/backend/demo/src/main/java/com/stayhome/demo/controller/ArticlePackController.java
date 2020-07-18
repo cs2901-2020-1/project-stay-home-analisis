@@ -17,7 +17,7 @@ public class ArticlePackController {
 
     @GetMapping("/articlepacks")
     public List<ArticlePack> read() {
-/*
+
         if(business.Fav("Favoritos de " + UserController.Current.getUsername(),UserController.Current.getUser_id() ) == null){
 
                ArticlePack Favorite = new ArticlePack();
@@ -28,7 +28,7 @@ public class ArticlePackController {
 
         }
 
- */
+
         return business.findAll();
     }
 

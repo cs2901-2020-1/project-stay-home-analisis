@@ -22,10 +22,10 @@ CREATE TABLE APP_ARTICLE(
     PRIMARY KEY(ARTICLE_ID)
 );
 
-
 CREATE TABLE app_likesbyarticle(
-    article_id BIGINT not null REFERENCES app_article(article_id),
-    user_id BIGINT not null REFERENCES app_user(user_id),
+    articleid BIGINT not null REFERENCES app_article(article_id),
+    userid BIGINT not null REFERENCES app_user(user_id),
     lik BOOLEAN not null,
-    PRIMARY KEY(article_id,user_id)
+    PRIMARY KEY(articleid,userid)
 );
+

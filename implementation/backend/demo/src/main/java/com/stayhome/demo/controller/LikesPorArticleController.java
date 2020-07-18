@@ -22,17 +22,6 @@ public class LikesPorArticleController {
         return business.findAll();
     }
 
-    @GetMapping("/likesporarticles/{id}")
-    public List<LikesPorArticle> readlikesbyid(@PathVariable("id")BigInteger articleid)
-    {
-        return business.findLikesById(articleid);
-    }
-
-    @GetMapping("/dislikesporarticles/{id}")
-    public List<LikesPorArticle> readdislikesbyid(@PathVariable("id")BigInteger articleid)
-    {
-        return business.findDislikesById(articleid);
-    }
 
     @PostMapping("/likesporarticles")
     public LikesPorArticle create(@RequestBody LikesPorArticle like)

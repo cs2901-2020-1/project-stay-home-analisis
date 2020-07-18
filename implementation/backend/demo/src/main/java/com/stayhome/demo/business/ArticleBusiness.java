@@ -1,5 +1,7 @@
 package com.stayhome.demo.business;
 
+import com.stayhome.demo.data.ArticlePack;
+import com.stayhome.demo.data.LikesPorArticle;
 import com.stayhome.demo.exceptions.ArticleException;
 import com.stayhome.demo.exceptions.ArticleNotFoundException;
 import com.stayhome.demo.data.Article;
@@ -56,7 +58,19 @@ public class ArticleBusiness {
 
     public List<Article> findAll(){
 
-        return new ArrayList<>(repository.findAll());
+        List<Article> items = new ArrayList<>();
+
+        for(Article i : repository.findAll())
+        {
+            BigInteger contadorLikes = repository.CountLikes(i.getArticle_id());
+
+            BigInteger contadorDislikes = repository.CountDislikes(i.getArticle_id());
+
+            i.setCountlikes(contadorLikes);
+            i.setCountdislikes(contadorDislikes);
+            items.add(i);
+        }
+        return items;
     }
 
     public Article getArticle(BigInteger article_id) {
