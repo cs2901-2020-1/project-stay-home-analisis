@@ -2,7 +2,8 @@
 
 <v-container >
 
-<v-row  v-if="currentArticle.tipo[0] == 'i'">
+
+<v-row justify="center" v-if="currentArticle.tipo[0] == 'i'">
 
   <v-row>
     <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
@@ -15,14 +16,15 @@
 <v-container></v-container>
 
 <v-row justify="center">
-    <v-text  class="estiloT"> Título:  <v-text class="estiloT">  {{currentArticle.title}} </v-text></v-text>
+  <v-text  class="estilo"> Título:  <v-text class="estilo">  {{currentArticle.title}} </v-text></v-text>
 </v-row>
 
 <v-container></v-container>
 
     <v-card
-    class="mx-auto"
+    class="estiloinCard"
     max-width="1000"
+    color=#FFC400
   >
     <v-img
       v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" 
@@ -30,20 +32,33 @@
     ></v-img>
 
     <v-card-title>
-      Tema: {{currentArticle.tema}}
+      <v-text class="estiloD"> Tema: {{currentArticle.tema}} </v-text>
     </v-card-title>
 
+    <v-spacer/>
+
+
     <v-card-subtitle>
-      Subido por: {{currentArticle.user.username}}
+      
+      
+      <v-text class="estiloD"> Subido por: {{currentArticle.user.username}} </v-text>
+      
+
     </v-card-subtitle>
 
-    <v-btn @click="addLiketoArticle">Like {{currentArticle.countlikes}}</v-btn>
+      
 
-    <v-btn @click="addDisliketoArticle">Dislike {{currentArticle.countdislikes}} </v-btn>
+
+
+    
 
     <v-card-actions>
       <v-col>
+        
         <v-row justify="center">
+
+          <v-row>
+          <v-col>
       <v-btn 
         dark
         v-bind="attrs"
@@ -52,49 +67,121 @@
         
         small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
         </v-btn>
-        <v-btn @click="eliminar(currentArticle)">Eliminar</v-btn>
+        </v-col>
+
+        <v-col>
+ 
+        <v-btn 
+        fab
+        x-large
+        dark
+        @click="addLiketoArticle">
+
+        <v-icon color="blue" large>mdi-thumb-up</v-icon> <v-text>{{currentArticle.countlikes}}</v-text> </v-btn>
+          
+        </v-col>
+
+        </v-row>
+
+        <v-row>
+
+          <v-col>
+          <v-btn
+      dark
+      color="dark"
+      small
+      @click.stop="dialog = true"
+    >
+      Ver mis StayPacks
+    </v-btn>
+          </v-col>
+
+          <v-col>
+
+             <v-btn 
+        fab
+        x-large
+        dark
+        @click="addDisliketoArticle"> <v-icon color="red" large>mdi-thumb-down</v-icon>
+        
+        <v-text> {{currentArticle.countdislikes}} </v-text> </v-btn>
+        
+          </v-col>
+
+        </v-row>
+
+        
+      
+
       </v-row>
 
     <v-container></v-container>
 
       <v-row justify="center">
-    <v-btn
-      dark
-      color="dark"
-      small
-      @click.stop="dialog = true"
-    >
-      Ver mis paquetes de artículos
-    </v-btn>
-
+    
     <v-dialog
       v-model="dialog"
-      max-width="400"
+      max-width="800"
     >
-      <v-card>
-        <v-card-title class="headline"> Paquete de artículos </v-card-title>
+    
+
+        <v-card-title class="headline" > <v-text  class="estiloTextoT"> StayPacks </v-text> </v-card-title>
 
         <v-card-text>
           <v-col>
-            <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
+            <v-slide-group
+              v-model="model"
+              class="pa-4"
+              center-active
+              show-arrows
+              dark
+             >
+
+             <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
               <div v-if="articlepack.user.user_id == currentUser.user_id">
-              <v-row>
-                <v-col>
-                <v-text class="estiloP" > <v-icon color="dark">mdi-folder-multiple</v-icon>  {{articlepack.name}}</v-text>
-                </v-col>
-                <v-col>
+
+             <v-slide-item @click="sheet = false">
+
+            <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              
+                <v-text class="estiloTexto" align="center">  
+                  
+                <v-icon left color="white">mdi-folder-multiple</v-icon> <v-text class="estiloTexto"> {{articlepack.name}} </v-text>
+               
+               </v-text>
+                
+                <v-container/>
+
                 <v-btn
                   color="dark"
                   dark
-                  small
+                  medium
                   @click="addArticletoPack(articlepack)"
                 >
                   Añadir
                  </v-btn>
-                 </v-col>
-              </v-row>
+                 
+                 </v-row>
+                 </v-card>
+
+                </v-col>
+                
+            </v-slide-item>
             </div>
           </div>
+
+          </v-slide-group>
           
           </v-col>
         </v-card-text>
@@ -112,18 +199,18 @@
           </v-btn>
 
         </v-card-actions>
-      </v-card>
+    
     </v-dialog>
   </v-row>
     </v-col>
       <v-col>
-        <v-row justify="center">
+      <v-row justify="center">
       <v-btn
         icon
         @click="show = !show"
         small
       >
-        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text > Descripción </v-text>
+        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloT"> más información </v-text>
       </v-btn>
       </v-row>
       </v-col>
@@ -133,96 +220,216 @@
       <div v-show="show">
         <v-divider></v-divider>
         <v-card-text>
-        {{currentArticle.descripcion}}
+
+        <v-text class="estiloD">{{currentArticle.descripcion}}</v-text>
+
         </v-card-text>
       </div>
     </v-expand-transition>
   </v-card>
+
+  <v-container/>
+  <v-container/>
+
+
 </v-row>
 
-<v-row  v-else-if="currentArticle.tipo[0] == 'v'">
- <v-row justify="left">
-    <v-text class="estilo"> Título  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  {{currentArticle.title}} </v-text></v-text>
 
-</v-row>
+
+
+
+<v-row justify="center" v-else-if="currentArticle.tipo[0] == 'v'">
+
+   <v-row>
+    <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    <v-text class="estiloT" color="grey"> Artículo </v-text> 
+  </v-row>
 
 <v-container></v-container>
 
-    <v-card
-    class="mx-auto"
-    max-width="1000"
-  >
-  <video 
-    controls
-     widht="340" 
-     height="340" 
-    >
-    <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" type="video/mp4" />
-  </video>
+<v-row justify="center">
+  <v-text  class="estilo"> Título:  <v-text class="estilo">  {{currentArticle.title}} </v-text></v-text>
+</v-row>
+
+
+
+
+<v-container/>
+<v-container/>
+
+
+        <v-card
+          class="estiloinCard"
+          max-width="1000"
+          color=#FFC400
+        >
+
+
+
+        <video 
+          controls
+          widht="340" 
+          height="340" 
+          >
+          <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" type="video/mp4" />
+        </video>
 
 
     <v-card-title>
-      Tema: {{currentArticle.tema}}
+      <v-text class="estiloD"> Tema: {{currentArticle.tema}} </v-text>
     </v-card-title>
 
+    <v-spacer/>
+
+
     <v-card-subtitle>
-      Subido por: {{currentArticle.user.username}}
+      
+      
+      <v-text class="estiloD"> Subido por: {{currentArticle.user.username}} </v-text>
+      
+
     </v-card-subtitle>
+
+      
+
+
+
+    
 
     <v-card-actions>
       <v-col>
+        
         <v-row justify="center">
+
+          <v-row>
+          <v-col>
       <v-btn 
         dark
         v-bind="attrs"
         v-on="on"
         color="dark"
-        small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id"> Descargar
+        
+        small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
         </v-btn>
-      </v-row>
+        </v-col>
 
-    <v-container></v-container>
+        <v-col>
+ 
+        <v-btn 
+        fab
+        x-large
+        dark
+        @click="addLiketoArticle">
 
-    <v-row justify="center">
-    <v-btn
+        <v-icon color="blue" large>mdi-thumb-up</v-icon> <v-text>{{currentArticle.countlikes}}</v-text> </v-btn>
+          
+        </v-col>
+
+        </v-row>
+
+        <v-row>
+
+          <v-col>
+          <v-btn
       dark
       color="dark"
       small
       @click.stop="dialog = true"
     >
-      Ver mis paquetes de artículos
+      Ver mis StayPacks
     </v-btn>
+          </v-col>
 
+          <v-col>
+
+             <v-btn 
+        fab
+        x-large
+        dark
+        @click="addDisliketoArticle"> <v-icon color="red" large>mdi-thumb-down</v-icon>
+        
+        <v-text> {{currentArticle.countdislikes}} </v-text> </v-btn>
+        
+          </v-col>
+
+        </v-row>
+
+        
+      
+
+      </v-row>
+
+    <v-container></v-container>
+
+      <v-row justify="center">
+    
     <v-dialog
       v-model="dialog"
-      max-width="400"
+      max-width="800"
     >
-      <v-card>
-        <v-card-title class="headline"> Paquete de artículos </v-card-title>
+    
+
+        <v-card-title class="headline" > <v-text  class="estiloTextoT"> StayPacks </v-text> </v-card-title>
 
         <v-card-text>
           <v-col>
-            <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
+            <v-slide-group
+              v-model="model"
+              class="pa-4"
+              center-active
+              show-arrows
+              dark
+             >
+
+             <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
               <div v-if="articlepack.user.user_id == currentUser.user_id">
-              <v-row>
-                <v-col>
-                <v-text class="estiloP" > <v-icon color="dark">mdi-folder-multiple</v-icon>  {{articlepack.name}}</v-text>
-                </v-col>
-                <v-col>
+
+             <v-slide-item @click="sheet = false">
+
+            <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              
+                <v-text class="estiloTexto" align="center">  
+                  
+                <v-icon left color="white">mdi-folder-multiple</v-icon> <v-text class="estiloTexto"> {{articlepack.name}} </v-text>
+               
+               </v-text>
+                
+                <v-container/>
+
                 <v-btn
                   color="dark"
                   dark
-                  small
+                  medium
                   @click="addArticletoPack(articlepack)"
                 >
                   Añadir
                  </v-btn>
-                 </v-col>
-              </v-row>
+                 
+                 </v-row>
+                 </v-card>
+
+                </v-col>
+                
+            </v-slide-item>
             </div>
           </div>
-          
 
+          </v-slide-group>
+          
           </v-col>
         </v-card-text>
 
@@ -238,24 +445,19 @@
             cerrar
           </v-btn>
 
-          
         </v-card-actions>
-      </v-card>
+    
     </v-dialog>
   </v-row>
-
-
     </v-col>
-      <v-col >
-        <v-row justify="center">
+      <v-col>
+      <v-row justify="center">
       <v-btn
-      
         icon
         @click="show = !show"
         small
-        
       >
-        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text > Descripción </v-text>
+        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloT"> más información </v-text>
       </v-btn>
       </v-row>
       </v-col>
@@ -264,111 +466,210 @@
     <v-expand-transition>
       <div v-show="show">
         <v-divider></v-divider>
-
         <v-card-text>
-        {{currentArticle.descripcion}}
+
+        <v-text class="estiloD">{{currentArticle.descripcion}}</v-text>
+
         </v-card-text>
       </div>
     </v-expand-transition>
   </v-card>
+
+  <v-container/>
+  <v-container/>
 </v-row>
 
 
-<v-row  v-else-if="currentArticle.tipo[0] == 'a'">
+<v-row justify="center"  v-else-if="currentArticle.tipo[0] == 'a'">
 
-
-
-
-<v-row justify="left">
-    <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Artículo </v-text></v-text>
-
-</v-row>
-
+<v-container></v-container>
+<v-container></v-container>
 <v-container></v-container>
 
 
-<v-row class="estiloT" justify="left">
-   Tema: {{currentArticle.tema}}
-</v-row>
-<v-container></v-container>
-
-<v-row  class="estiloT" justify="left">
-   Título: {{currentArticle.title}}
-
-</v-row>
+<v-row>
+    <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    <v-text class="estiloT" color="grey"> Artículo </v-text> 
+  </v-row>
 
 <v-container></v-container>
 
-<v-row  class="estiloT" justify="left">
-  Descripción: {{currentArticle.descripcion}}
-
+<v-row justify="center">
+  <v-text  class="estilo"> Título:  <v-text class="estilo">  {{currentArticle.title}} </v-text></v-text>
 </v-row>
 
 
 
-<v-container justify="center" >
-  <v-col>
-   <iframe src="http://www.colvema.org/pdf/consejos/origenperrogato.pdf" width="900" height="780" style="border: none;"></iframe>
 
-</v-col>
-<v-container></v-container>
-<v-container></v-container>
-<v-container></v-container>
+<v-container/>
+<v-container/>
 
 
- <v-row>
-        <v-col justify="center">
+        <v-card
+          class="estiloinCard"
+          max-width="1000"
+          color=#FFC400
+        >
+
+
+<iframe src="http://www.colvema.org/pdf/consejos/origenperrogato.pdf" width="900" height="780" style="border: none;"></iframe>
+
+
+    <v-card-title>
+      <v-text class="estiloD"> Tema: {{currentArticle.tema}} </v-text>
+    </v-card-title>
+
+    <v-spacer/>
+
+
+    <v-card-subtitle>
+      
+      
+      <v-text class="estiloD"> Subido por: {{currentArticle.user.username}} </v-text>
+      
+
+    </v-card-subtitle>
+
+      
+
+
+
+    
+
+    <v-card-actions>
+      <v-col>
+        
+        <v-row justify="center">
+
+          <v-row>
+          <v-col>
       <v-btn 
         dark
         v-bind="attrs"
         v-on="on"
         color="dark"
-        small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id"> Descargar
+        
+        small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
         </v-btn>
-      </v-col>
+        </v-col>
 
-    <v-container></v-container>
+        <v-col>
+ 
+        <v-btn 
+        fab
+        x-large
+        dark
+        @click="addLiketoArticle">
 
-    <v-col justify="center">
-    <v-btn
+        <v-icon color="blue" large>mdi-thumb-up</v-icon> <v-text>{{currentArticle.countlikes}}</v-text> </v-btn>
+          
+        </v-col>
+
+        </v-row>
+
+        <v-row>
+
+          <v-col>
+          <v-btn
       dark
       color="dark"
       small
       @click.stop="dialog = true"
     >
-      Ver mis paquetes de artículos
+      Ver mis StayPacks
     </v-btn>
+          </v-col>
 
+          <v-col>
+
+             <v-btn 
+        fab
+        x-large
+        dark
+        @click="addDisliketoArticle"> <v-icon color="red" large>mdi-thumb-down</v-icon>
+        
+        <v-text> {{currentArticle.countdislikes}} </v-text> </v-btn>
+        
+          </v-col>
+
+        </v-row>
+
+        
+      
+
+      </v-row>
+
+    <v-container></v-container>
+
+      <v-row justify="center">
+    
     <v-dialog
       v-model="dialog"
-      max-width="400"
+      max-width="800"
     >
-      <v-card>
-        <v-card-title class="headline"> Paquete de artículos </v-card-title>
+    
+
+        <v-card-title class="headline" > <v-text  class="estiloTextoT"> StayPacks </v-text> </v-card-title>
 
         <v-card-text>
           <v-col>
-            <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
+            <v-slide-group
+              v-model="model"
+              class="pa-4"
+              center-active
+              show-arrows
+              dark
+             >
+
+             <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
               <div v-if="articlepack.user.user_id == currentUser.user_id">
-              <v-row>
-                <v-col>
-                <v-text class="estiloP" > <v-icon color="dark">mdi-folder-multiple</v-icon>  {{articlepack.name}}</v-text>
-                </v-col>
-                <v-col>
+
+             <v-slide-item @click="sheet = false">
+
+            <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              
+                <v-text class="estiloTexto" align="center">  
+                  
+                <v-icon left color="white">mdi-folder-multiple</v-icon> <v-text class="estiloTexto"> {{articlepack.name}} </v-text>
+               
+               </v-text>
+                
+                <v-container/>
+
                 <v-btn
                   color="dark"
                   dark
-                  small
+                  medium
                   @click="addArticletoPack(articlepack)"
                 >
                   Añadir
                  </v-btn>
-                 </v-col>
-              </v-row>
+                 
+                 </v-row>
+                 </v-card>
+
+                </v-col>
+                
+            </v-slide-item>
             </div>
           </div>
-          
 
+          </v-slide-group>
+          
           </v-col>
         </v-card-text>
 
@@ -384,22 +685,39 @@
             cerrar
           </v-btn>
 
-          
         </v-card-actions>
-      </v-card>
+    
     </v-dialog>
-  </v-col>
+  </v-row>
+    </v-col>
+      <v-col>
+      <v-row justify="center">
+      <v-btn
+        icon
+        @click="show = !show"
+        small
+      >
+        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloT"> más información </v-text>
+      </v-btn>
+      </v-row>
+      </v-col>
+    </v-card-actions>
 
+    <v-expand-transition>
+      <div v-show="show">
+        <v-divider></v-divider>
+        <v-card-text>
 
-    </v-row>
+        <v-text class="estiloD">{{currentArticle.descripcion}}</v-text>
 
+        </v-card-text>
+      </div>
+    </v-expand-transition>
+  </v-card>
 
-</v-container>
-
-
+  <v-container/>
+  <v-container/>
 </v-row>
-
-
     </v-container>
 
 </template>
@@ -419,6 +737,8 @@ export default {
       return {
          dialog:false,
          show: false,
+         
+
           article_to_pack:{
           doublei: {
                 articlepack: [],
@@ -520,6 +840,7 @@ methods:{
 
    async addLiketoArticle()
    {
+
     this.reaccion_to_article.dbi.articleid = this.currentArticle.article_id;
     this.reaccion_to_article.dbi.userid = this.currentUser.user_id;
     this.reaccion_to_article.lik = true;
@@ -530,7 +851,8 @@ methods:{
        alert(response.error);
      }else{
        alert('Se dio Like');
-       this.$router.go(0);
+        this.$router.go(0);
+       
    }
 
 },
@@ -565,8 +887,35 @@ async addDisliketoArticle()
         font-family: "Lucida Console", Courier, monospace;
     }
  .estiloT{
-   font-size: 25px;
+   font-size: 20px;
  }   
+ 
+ .estiloinCard{
 
+    border-radius: 30px;
+    justify: center;
+    
+
+
+  } 
+  .estiloD{
+   font-size: 25px;
+   text-align: center;
+ }  
+
+.estiloS{
+   font-size: 29px;
+ }  
+
+  .estiloTexto{
+   color: white;
+   font-size:20px;
+   
+ } 
+  .estiloTextoT{
+   color: white;
+   font-size:30px;
+   
+ }
 
 </style>

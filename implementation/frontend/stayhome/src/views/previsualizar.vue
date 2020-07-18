@@ -2,41 +2,47 @@
 
 <v-container v-if="currentUser.admin == true">
 
+
 <v-row  v-if="currentArticle.tipo[0] == 'i'">
 
-  
-  <v-row justify="left">
-    <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Artículo </v-text></v-text>
+  <v-container></v-container>
 
-</v-row>
+  <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    <v-text class="estiloT" color="grey"> Solicitudes </v-text> 
 
-<v-container></v-container>
+  <v-container></v-container>
 
 <v-row justify="center">
-    <v-text  class="estiloT"> Título:  <v-text class="estiloT">  {{currentArticle.title}} </v-text></v-text>
+    <v-text  class="estilo"> Título:  <v-text class="estilo">  {{currentArticle.title}} </v-text></v-text>
 
 </v-row>
 
 <v-container></v-container>
 
+  <v-row justify="center">
+    
     <v-card
-    class="mx-auto"
-    max-width="1000"
+    class="estiloinCard"
+    max-width="1000"  
   >
     <v-img
       v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" 
       height="600px"
     ></v-img>
 
+    
     <v-card-title>
-      Tema: {{currentArticle.tema}}
+      <v-text class="estiloD"> Tema: {{currentArticle.tema}} </v-text>
     </v-card-title>
 
+    <v-spacer/>
     <v-card-subtitle>
-      Subido por: {{currentArticle.user.username}}
+      <v-text class="estiloD"> Subido por: {{currentArticle.user.username}} </v-text>
     </v-card-subtitle>
 
     <v-card-actions>
+      
       <v-col>
         <v-col justify="center">
       <v-btn 
@@ -44,7 +50,7 @@
         v-bind="attrs"
         v-on="on"
         color="dark"
-        small @click="Validar(currentArticle)">Validar
+        medium @click="Validar(currentArticle)"> Validar
         </v-btn>
       </v-col>
       <v-col justify="center">
@@ -53,7 +59,7 @@
         v-bind="attrs"
         v-on="on"
         color="dark"
-        small @click="Eliminar(currentArticle)">Eliminar
+        medium @click="Eliminar(currentArticle)">Eliminar
         </v-btn>
         </v-col>
     </v-col>
@@ -66,7 +72,7 @@
         small
         
       >
-        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text > Descripción </v-text>
+        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloT"> Descripción </v-text>
       </v-btn>
       </v-row>
       </v-col>
@@ -76,46 +82,58 @@
       <div v-show="show">
         <v-divider></v-divider>
 
-        <v-card-text>
+        <v-card-text >
     
-        {{currentArticle.descripcion}}
+        <v-text class="estiloD">{{currentArticle.descripcion}} </v-text>
        
         </v-card-text>
       </div>
     </v-expand-transition>
   </v-card>
+</v-row>
 </v-row>
 
 
 
 
 <v-row  v-else-if="currentArticle.tipo[0] == 'v'">
- <v-row justify="left">
-    <v-text  class="estilo"> Título  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  {{currentArticle.title}} </v-text></v-text>
 
-</v-row>
+  <v-row justify="left">
+    <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloS">  Artículo </v-text></v-text>
+  </v-row>
 
 <v-container></v-container>
 
+<v-row justify="center">
+    <v-text  class="estilo"> Título:  <v-text class="estilo">  {{currentArticle.title}} </v-text></v-text>
+
+</v-row>
+
+<v-container/>
+
+<v-row justify="center">
     <v-card
-    class="mx-auto"
+    class="estiloinCard"
     max-width="1000"
   >
   <video 
     controls
-     widht="240" 
-     height="240" 
+     widht="440" 
+     height="540" 
     >
     <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" type="video/mp4" />
   </video>
 
+    <v-container/>
 
     <v-card-title>
-      Tema: {{currentArticle.tema}}
+      <v-text class="estiloD"> Tema: {{currentArticle.tema}} </v-text>
     </v-card-title>
 
+    <v-spacer/>
+
     <v-card-subtitle>
-      Subido por: {{currentArticle.user.username}}
+     <v-text class="estiloD">  Subido por: {{currentArticle.user.username}} </v-text>
     </v-card-subtitle>
 
     <v-card-actions>
@@ -148,7 +166,7 @@
         small
         
       >
-        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text > Descripción </v-text>
+        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloD"> Descripción </v-text>
       </v-btn>
       </v-row>
       </v-col>
@@ -160,12 +178,14 @@
 
         <v-card-text>
     
-        {{currentArticle.descripcion}}
+        <v-text class="estiloT">{{currentArticle.descripcion}} </v-text>
        
         </v-card-text>
       </div>
     </v-expand-transition>
   </v-card>
+</v-row>
+  
 </v-row>
 
 
@@ -348,8 +368,24 @@ async Validar(currentArticle){
         font-family: "Lucida Console", Courier, monospace;
     }
  .estiloT{
-   font-size: 25px;
+   font-size: 30px;
+   
  }   
+ .estiloinCard{
+
+    border-radius: 30px;
+    class:ma-4
+
+
+  } 
+  .estiloD{
+   font-size: 25px;
+   text-align: center;
+ }  
+
+.estiloS{
+   font-size: 29px;
+ }  
 
 
 </style>

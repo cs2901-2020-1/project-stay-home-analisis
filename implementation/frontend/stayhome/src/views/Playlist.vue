@@ -16,7 +16,7 @@
     <div v-for="articles in articles_por_tupac" :key="articles.article_id">
     <v-col>
             <v-card
-            max-width="344"
+            max-width="444"
             outlined
             class="estiloC"
             >

@@ -1,20 +1,34 @@
 <template>
 <v-container v-if="currentUser.admin == true">
-  <v-container></v-container>
-  <v-row justify="left">
-  <v-text  class="estilo"> {{currentUser.username}}  <v-text class="estiloP"> >> </v-text> <v-text class="estiloT">  Solicitudes </v-text></v-text>
-  </v-row>
-  <v-container></v-container>
+
+
+<v-container/>
+
+    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+    <v-icon >mdi-chevron-right</v-icon>
+    <v-text class="estiloT" color="grey"> Solicitudes </v-text> 
+
+
+  <v-container/>
+  <v-container/>
+
+
   <v-row>
     <v-col justify="center">
-      <v-card id="lateral" dark color="dark">
+
+
+
+      <v-card class ="estiloSubCard " id="lateral"  color=#FF5722>
         <v-toolbar
           dark
           tabs
           flat
-          color="dark"
+          color=#FF5722
         > 
-          <v-toolbar-title> Matemática </v-toolbar-title>
+        <v-spacer/>
+
+        <v-text class="estiloT" color="grey"> Matemática </v-text> 
+          
           <v-spacer></v-spacer>
           <template v-slot:extension>
        
@@ -30,27 +44,28 @@
 
           </template>
         </v-toolbar>
+        
         <v-card-text >
-          <v-tabs-items v-model="tabs">
+
+          <v-tabs-items v-model="tabs" color=#FF5722>
             <v-tab-item
               v-for="content in ['one', 'two', 'three']"
               :key="content"
               :value="content"
+              color=#FF5722
             >
-              <div  v-if="content == 'one'" >
+              <div  v-if="content == 'one'"  >
                 <v-col>
-                  <v-sheet
-                    class="mx-auto"
-                    elevation="8"
-                    max-width="900"
-                  >
+                 
                     <v-slide-group
                       v-model="model"
                       class="pa-4"
                       prev-icon="mdi-minus"
                       next-icon="mdi-plus"
                       show-arrows
+                      color="#FF5722"
                     >
+                    
                       <v-slide-item
                         v-for="article in articles" 
                         :key="article.article_id"
@@ -58,33 +73,41 @@
                       <div v-if="article.aceptado == false" >
                         <div v-if="article.curso == 'Matemática'" >
                           <div v-if="article.tema == 'Álgebra'" >
+                            <v-col>
                             <v-card
-                              class="ma-4"
-                              height="300"
-                              width="200"
+                              class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#CFD8DC
                             >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-            {{article.title}}
-          
-          <v-container></v-container>
+         <v-container/>
+          <v-text class="estiloTa"  align="center"
+            justify="center"> {{article.title}} </v-text>
+
+          <v-container/>
             <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                large ><v-icon left>mdi-eye</v-icon> <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          <v-container/>
+
           </v-row>
         </v-card>
+        
+        </v-col>
+        
           </div>
           </div>
           </div>
       </v-slide-item>
     </v-slide-group>
-  </v-sheet>
 
 </v-col>
 </div>
@@ -94,11 +117,7 @@
 
         <v-col>
 
-  <v-sheet
-    class="mx-auto"
-    elevation="8"
-    max-width="900"
-  >
+ 
     <v-slide-group
       v-model="model"
       class="pa-4"
@@ -114,33 +133,40 @@
         <div v-if="article.curso == 'Matemática'" >
           <div v-if="article.tema == 'Geometría'" >
       
-        <v-card
-          class="ma-4"
-          height="300"
-          width="200"
-        >
+         <v-col>
+                            <v-card
+                              class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#CFD8DC
+                            >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-            {{article.title}}
-          
-          <v-container></v-container>
+         <v-container/>
+          <v-text class="estiloTa"  align="center"
+            justify="center"> {{article.title}} </v-text>
+
+          <v-container/>
             <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                large ><v-icon left>mdi-eye</v-icon> <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          <v-container/>
+
           </v-row>
         </v-card>
+        
+        </v-col>
           </div>
           </div>
           </div>
       </v-slide-item>
     </v-slide-group>
-  </v-sheet>
 
 </v-col>
 </div>
@@ -152,11 +178,7 @@
 
 <v-col>
 
-  <v-sheet
-    class="mx-auto"
-    elevation="8"
-    max-width="900"
-  >
+ 
     <v-slide-group
       v-model="model"
       class="pa-4"
@@ -172,39 +194,48 @@
         <div v-if="article.curso == 'Matemática'" >
           <div v-if="article.tema == 'Ecuaciones'" >
       
-        <v-card
-          class="ma-4"
-          height="300"
-          width="200"
-        >
+         <v-col>
+                            <v-card
+                              class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#CFD8DC
+                            >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-            {{article.title}}
-          
-          <v-container></v-container>
+         <v-container/>
+          <v-text class="estiloTa"  align="center"
+            justify="center"> {{article.title}} </v-text>
+
+          <v-container/>
             <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                large ><v-icon left>mdi-eye</v-icon> <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          <v-container/>
+
           </v-row>
         </v-card>
+        
+        </v-col>
           </div>
           </div>
           </div>
       </v-slide-item>
     </v-slide-group>
-  </v-sheet>
+  
 
 </v-col>
 </div>
 
         </v-tab-item>
       </v-tabs-items>
+      <v-container/>
     </v-card-text>
     
   </v-card>
@@ -214,55 +245,58 @@
 </v-row>
 
 
+<v-container/>
+<v-container/>
+
+  
+
+
 <v-row>
 <v-col justify="center">
 
- <v-card id="lateral" dark color="dark">
-    <v-toolbar
-      dark
-      tabs
-      flat
-      color="dark"
-    >
+
+
+      <v-card class ="estiloSubCard " id="lateral"  color=#FF5722>
+        <v-toolbar
+          dark
+          tabs
+          flat
+          color=#FF5722
+        > 
+        <v-spacer/>
+
+        <v-text class="estiloT" color="grey"> Física </v-text> 
+          
+          <v-spacer></v-spacer>
+          <template v-slot:extension>
        
-      <v-toolbar-title> Física </v-toolbar-title>
-      <v-spacer></v-spacer>
+            <v-tabs
+              v-model="tabsF"
+              align-with-title
+            >
+              <v-tab href="#oneF"> Magnetismo </v-tab>
+              <v-tab href="#twoF"> Cinemática </v-tab>
+              <v-tab href="#threeF"> Dinámica </v-tab>
+              <v-tabs-slider color="green"></v-tabs-slider>
+            </v-tabs>
 
-    
-      <template v-slot:extension>
-       
-        <v-tabs
-          v-model="tabsF"
-          align-with-title
-        >
-          <v-tab href="#oneF"> Magnetismo </v-tab>
-          <v-tab href="#twoF"> Cinemática </v-tab>
-          <v-tab href="#threeF"> Dinámica </v-tab>
+          </template>
+        </v-toolbar>
+        
+        <v-card-text >
 
-          <v-tabs-slider color="green"></v-tabs-slider>
-
-        </v-tabs>
-
-      </template>
-    </v-toolbar>
-    <v-card-text>
-
-      <v-tabs-items v-model="tabsF">
-        <v-tab-item
-          v-for="content in ['oneF', 'twoF', 'threeF']"
-          :key="content"
-          :value="content"
-        >
-
+          <v-tabs-items v-model="tabsF" color=#FF5722>
+            <v-tab-item
+              v-for="content in ['oneF', 'twoF', 'threeF']"
+              :key="content"
+              :value="content"
+              color=#FF5722
+            >
  <div  v-if="content == 'oneF'" >
 
         <v-col>
 
-  <v-sheet
-    class="mx-auto"
-    elevation="8"
-    max-width="900"
-  >
+ 
     <v-slide-group
       v-model="model"
       class="pa-4"
@@ -278,33 +312,41 @@
         <div v-if="article.curso == 'Física'" >
           <div v-if="article.tema == 'Magnetismo'" >
       
-        <v-card
-          class="ma-4"
-          height="300"
-          width="200"
-        >
+       <v-col>
+                            <v-card
+                              class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#CFD8DC
+                            >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-            {{article.title}}
-          
-          <v-container></v-container>
+         <v-container/>
+          <v-text class="estiloTa"  align="center"
+            justify="center"> {{article.title}} </v-text>
+
+          <v-container/>
             <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                large ><v-icon left>mdi-eye</v-icon> <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          <v-container/>
+
           </v-row>
         </v-card>
+        
+        </v-col>
           </div>
           </div>
           </div>
       </v-slide-item>
     </v-slide-group>
-  </v-sheet>
+  
 
 </v-col>
 </div> 
@@ -314,11 +356,7 @@
 
         <v-col>
 
-  <v-sheet
-    class="mx-auto"
-    elevation="8"
-    max-width="900"
-  >
+ 
     <v-slide-group
       v-model="model"
       class="pa-4"
@@ -334,33 +372,40 @@
         <div v-if="article.curso == 'Física'" >
           <div v-if="article.tema == 'Cinemática'" >
       
-        <v-card
-          class="ma-4"
-          height="300"
-          width="200"
-        >
+        <v-col>
+                            <v-card
+                              class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#CFD8DC
+                            >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-            {{article.title}}
-          
-          <v-container></v-container>
+         <v-container/>
+          <v-text class="estiloTa"  align="center"
+            justify="center"> {{article.title}} </v-text>
+
+          <v-container/>
             <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                large ><v-icon left>mdi-eye</v-icon> <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          <v-container/>
+
           </v-row>
         </v-card>
+        
+        </v-col>
           </div>
           </div>
           </div>
       </v-slide-item>
     </v-slide-group>
-  </v-sheet>
 
 </v-col>
 </div> 
@@ -371,11 +416,6 @@
 
         <v-col>
 
-  <v-sheet
-    class="mx-auto"
-    elevation="8"
-    max-width="900"
-  >
     <v-slide-group
       v-model="model"
       class="pa-4"
@@ -391,33 +431,40 @@
         <div v-if="article.curso == 'Física'" >
           <div v-if="article.tema == 'Dinámica'" >
       
-        <v-card
-          class="ma-4"
-          height="300"
-          width="200"
-        >
+        <v-col>
+                            <v-card
+                              class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#CFD8DC
+                            >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-            {{article.title}}
-          
-          <v-container></v-container>
+         <v-container/>
+          <v-text class="estiloTa"  align="center"
+            justify="center"> {{article.title}} </v-text>
+
+          <v-container/>
             <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                large ><v-icon left>mdi-eye</v-icon> <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          <v-container/>
+
           </v-row>
         </v-card>
+        
+        </v-col>
           </div>
           </div>
           </div>
       </v-slide-item>
     </v-slide-group>
-  </v-sheet>
 
 </v-col>
 </div> 
@@ -432,57 +479,56 @@
   </v-col>
 </v-row>
 
-
+<v-container/>
+<v-container/>
 
 
 <v-row>
-<v-col justify="center" >
+<v-col justify="center">
 
- <v-card id="lateral" dark color="dark">
-    <v-toolbar
-      dark
-      tabs
-      flat
-      color="dark"
-    >
+
+
+      <v-card class ="estiloSubCard " id="lateral"  color=#FF5722>
+        <v-toolbar
+          dark
+          tabs
+          flat
+          color=#FF5722
+        > 
+        <v-spacer/>
+
+        <v-text class="estiloT" color="grey"> Química </v-text> 
+          
+          <v-spacer></v-spacer>
+          <template v-slot:extension>
        
-      <v-toolbar-title> Química </v-toolbar-title>
-      <v-spacer></v-spacer>
+            <v-tabs
+              v-model="tabsQ"
+              align-with-title
+            >
+              <v-tab href="#one"> Química básica </v-tab>
+              <v-tab href="#two"> Química orgánica </v-tab>
+              <v-tabs-slider color="green"></v-tabs-slider>
+            </v-tabs>
 
-    
-      <template v-slot:extension>
-       
-        <v-tabs
-          v-model="tabsQ"
-          align-with-title
-        >
-          <v-tab href="#oneQ"> Química básica </v-tab>
-          <v-tab href="#twoQ"> Química orgánica </v-tab>
+          </template>
+        </v-toolbar>
+        
+        <v-card-text >
 
-          <v-tabs-slider color="green"></v-tabs-slider>
-
-        </v-tabs>
-
-      </template>
-    </v-toolbar>
-    <v-card-text>
-
-      <v-tabs-items v-model="tabsQ">
-        <v-tab-item
-          v-for="content in ['oneQ', 'twoQ']"
-          :key="content"
-          :value="content"
-        >
+          <v-tabs-items v-model="tabsQ" color=#FF5722>
+            <v-tab-item
+              v-for="content in ['oneQ', 'twoQ']"
+              :key="content"
+              :value="content"
+              color=#FF5722
+            >
 
 <div  v-if="content == 'oneQ'" >
 
         <v-col>
 
-  <v-sheet
-    class="mx-auto"
-    elevation="8"
-    max-width="900"
-  >
+  
     <v-slide-group
       v-model="model"
       class="pa-4"
@@ -498,33 +544,40 @@
         <div v-if="article.curso == 'Química'" >
           <div v-if="article.tema == 'Química Básica'" >
       
-        <v-card
-          class="ma-4"
-          height="300"
-          width="200"
-        >
+        <v-col>
+                            <v-card
+                              class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#CFD8DC
+                            >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-            {{article.title}}
-          
-          <v-container></v-container>
+         <v-container/>
+          <v-text class="estiloTa"  align="center"
+            justify="center"> {{article.title}} </v-text>
+
+          <v-container/>
             <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to ="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                large ><v-icon left>mdi-eye</v-icon> <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          <v-container/>
+
           </v-row>
         </v-card>
+        
+        </v-col>
           </div>
           </div>
           </div>
       </v-slide-item>
     </v-slide-group>
-  </v-sheet>
 
 </v-col>
 </div> 
@@ -534,11 +587,7 @@
 
         <v-col>
 
-  <v-sheet
-    class="mx-auto"
-    elevation="8"
-    max-width="900"
-  >
+  
     <v-slide-group
       v-model="model"
       class="pa-4"
@@ -554,33 +603,40 @@
         <div v-if="article.curso == 'Química'" >
           <div v-if="article.tema == 'Química Orgánica'" >
       
-        <v-card
-          class="ma-4"
-          height="300"
-          width="200"
-        >
+        <v-col>
+                            <v-card
+                              class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#CFD8DC
+                            >
           <v-row
             class="fill-height"
             align="center"
             justify="center"
           >
-            {{article.title}}
-          
-          <v-container></v-container>
+         <v-container/>
+          <v-text class="estiloTa"  align="center"
+            justify="center"> {{article.title}} </v-text>
+
+          <v-container/>
             <v-btn 
                   dark
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
-                small > <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+                large ><v-icon left>mdi-eye</v-icon> <router-link class="white--text" :to="{ name: 'previsualizar', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link></v-btn>
+          <v-container/>
+
           </v-row>
         </v-card>
+        
+        </v-col>
           </div>
           </div>
           </div>
       </v-slide-item>
     </v-slide-group>
-  </v-sheet>
 
 </v-col>
 </div>   
@@ -596,17 +652,31 @@
 
 </v-container> 
 
+
+
+
+
+
+
+
+
+
+
 <v-container v-else-if="currentUser.username" >
 
   <v-row justify="left">
 
-    <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
-    <v-icon >mdi-chevron-right</v-icon>
     
-   <v-text class="estiloT" color="grey"> Buscar artículos </v-text> 
+          <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
+          <v-icon >mdi-chevron-right</v-icon>
+          <v-text class="estiloT" color="grey"> Buscar artículos </v-text> 
   
-</v-row>
+  </v-row>
     
+
+    <v-container/>
+    <v-container/>
+
    
     <v-row class="estiloM" >
         
@@ -614,11 +684,14 @@
         <v-flex xs12>
         <v-card
           class="estiloC"
-          outlined
-          tile
+          color=#FFC400
+
+          
         >
          <v-text class=estiloL> Matemática </v-text>
+
         </v-card>
+        
          </v-flex>
       </v-col>
       
@@ -626,8 +699,7 @@
         <v-flex xs12>
         <v-card
           class="estiloC"
-          outlined
-          tile
+          color=#FFC400 
         >
         
         <v-text class=estiloL>  Física </v-text>
@@ -640,8 +712,8 @@
         <v-flex xs12>
         <v-card
           class="estiloC"
-          outlined
-          tile
+           color=#FFC400
+
         >
          <v-text class=estiloL>  Química </v-text>
           </v-card>
@@ -650,8 +722,7 @@
     </v-row>
     
   
-   <v-container></v-container>
-   <v-container></v-container>
+   <v-container/>
 
     <v-row >
       <v-col >
@@ -659,8 +730,7 @@
         <v-flex  >
         <v-card
           class="estiloC"
-          outlined
-          tile
+          color=#FFC400
         >
         <v-container>
           <v-container></v-container>
@@ -683,40 +753,82 @@
             </v-row>
             </template>
 
-          <v-card>
-              <v-card-title>Artículos</v-card-title>
+            <v-card class="estiloB"
+                height="340px" 
+                color=#E0F2F1
+            >
+
+              
+              <v-card-title> Artículos </v-card-title>
+
               <template>
+
                 <div class="text-center">
+
                   <v-bottom-sheet v-model="sheet">
                     <template v-slot:activator="{ on, attrs }">
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
-                        <v-icon small left color=" darken">mdi-folder</v-icon> Videos
+                        <v-icon medium left color=" darken">mdi-folder</v-icon> Videos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Videos</v-subheader>
+
+
+
+                    <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Álgebra'">
                       <div  v-if="article.tipo[0] == 'v'">
-                      <v-list-item  @click="sheet = false">
+                      <v-slide-item  @click="sheet = false">
                      
-            <v-row >
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='v'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
@@ -726,17 +838,20 @@
               <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
-
-
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
+
+
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -746,35 +861,70 @@
                <template>
                 <div class="text-center">
                   <v-bottom-sheet v-model="sheet2">
+
+
                     <template v-slot:activator="{ on, attrs }">
+
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
-                        <v-icon small left color=" darken">mdi-folder</v-icon> Imágenes
+                        <v-icon medium left color=" darken">mdi-folder</v-icon> Imágenes
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Imágenes</v-subheader>
+
+
+                    <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark
+                      >
+
                       <div  v-for="article in articles" :key="article.article_id">
                       <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Álgebra'">
                       <div  v-if="article.tipo[0] == 'i'">
-                      <v-list-item  @click="sheet2 = false">
+
+                      <v-slide-item  @click="sheet2 = false">
                      
-            <v-row>
-              <v-col>
-              <div  v-if="article.tipo[0] =='i'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} Likes: {{article.countlikes}} Dislikes: {{article.countdislikes}}
+           
+               <div  v-if="article.tipo[0] =='i'"> 
+
+
+          <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+              <v-text class="estiloTexto" align="center">  
+                
+                <v-icon medium left color="white">mdi-file-image </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+
+                
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+              
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
               <v-btn  small
                       dark
                       v-bind="attrs"
@@ -783,15 +933,24 @@
                 <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
-              </v-col>
-            </v-row>
-                     </v-list-item>
+              </v-row>
+              </v-card>
+             </v-col>
+              <v-spacer/>
+              <v-container/>
+              
+
+              </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+
+                    </v-slide-group>
+
+
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -806,31 +965,59 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
-                        <v-icon small left color=" darken">mdi-folder</v-icon> Documentos
+                        <v-icon medium left color=" darken">mdi-folder</v-icon> Documentos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Documentos</v-subheader>
+
+
+                    <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
                       <div  v-for="article in articles" :key ="article.article_id">
                       <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
                       <div  v-if="article.tema == 'Álgebra'">
                       <div  v-if="article.tipo[0] == 'a'">
-                      <v-list-item  @click="sheet3 = false">
+                      <v-slide-item  @click="sheet3 = false">
+                      <div  v-if="article.tipo[0] =='a'"> 
+
                      
-            <v-row>
-              <v-col>
-              <div  v-if="article.tipo[0] =='a'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} 
+              <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+              
+
+                
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon medium left color="white">mdi-file-document </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
               <v-btn  small
                       dark
                       v-bind="attrs"
@@ -839,22 +1026,29 @@
                 <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
               </v-btn>
 
-              </v-col>
+
+              
+
             </v-row>
-                     </v-list-item>
+              </v-card>
+              </v-col>
+              </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group>
                   </v-bottom-sheet>
                 </div>
               </template>
               
                    <v-divider></v-divider>
-                 <v-card-actions>
-                  <v-btn color="blue darken-1" text @click="dialog1 = false"> Cerrar</v-btn>
+                 <v-card-actions >
+
+                  <v-btn color="dark" large dark  @click="dialog1 = false"> Cerrar</v-btn>
+
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -881,57 +1075,105 @@
             </v-row>
             </template>
 
-          <v-card>
+          <v-card
+                class="estiloB"
+                height="340px" 
+                color=#E0F2F1
+          >
               <v-card-title>Artículos</v-card-title>
+
+
+
               <template>
+
+
                 <div class="text-center">
                   <v-bottom-sheet v-model="sheetG1">
                     <template v-slot:activator="{ on, attrs }">
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Videos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Videos</v-subheader>
+
+
+
+                    
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Geometría'">
                       <div  v-if="article.tipo[0] == 'v'">
-                      <v-list-item  @click="sheet = false">
+                      <v-slide-item  @click="sheet = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='v'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye</v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -945,48 +1187,85 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Imágenes
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Imágenes</v-subheader>
+
+
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Geometría'">
                       <div  v-if="article.tipo[0] == 'i'">
-                      <v-list-item  @click="sheet2 = false">
+                      <v-slide-item  @click="sheet1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='i'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1001,55 +1280,90 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Documentos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Documentos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Geometría'">
-                      <div  v-if="article.tipo[0] == 'a' " >
-                      <v-list-item  @click="sheet3 = false">
+                      <div  v-if="article.tipo[0] == 'a'">
+                      <v-slide-item  @click="sheet = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='a'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
               
                    <v-divider></v-divider>
                  <v-card-actions>
-                  <v-btn color="blue darken-1" text @click="dialog2 = false"> Cerrar</v-btn>
+                  <v-btn color="color" dark @click="dialog2 = false"> Cerrar</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -1078,7 +1392,10 @@
             </v-row>
             </template>
 
-          <v-card>
+          <v-card
+          class="estiloB"
+                height="340px" 
+                color=#E0F2F1>
               <v-card-title>Artículos</v-card-title>
               <template>
                 <div class="text-center">
@@ -1087,48 +1404,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Videos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Videos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Ecuaciones'">
                       <div  v-if="article.tipo[0] == 'v'">
-                      <v-list-item  @click="sheet = false">
+                      <v-slide-item  @click="sheet = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='v'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
                       color="dark" > 
-                <v-icon small left color=" darken"> mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1142,48 +1494,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Imágenes
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Imágenes</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Ecuaciones'">
                       <div  v-if="article.tipo[0] == 'i'">
-                      <v-list-item  @click="sheet2 = false">
+                      <v-slide-item  @click="sheet2 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='i'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1198,55 +1585,90 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Documentos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Documentos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Matemática'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Ecuaciones'">
-                      <div  v-if="article.tipo[0] == 'a' " >
-                      <v-list-item  @click="sheet3 = false">
+                      <div  v-if="article.tipo[0] == 'a'">
+                      <v-slide-item  @click="sheet3 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='a'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken"> mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
               
                    <v-divider></v-divider>
                  <v-card-actions>
-                  <v-btn color="blue darken-1" text @click="dialog3 = false"> Cerrar</v-btn>
+                  <v-btn color="dark" dark @click="dialog3 = false"> Cerrar</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -1265,8 +1687,7 @@
        
       <v-card
           class="estiloC"
-          outlined
-          tile
+         color=#FFC400
         >
        <v-container>
       <v-container></v-container>
@@ -1289,7 +1710,10 @@
             </v-row>
             </template>
 
-          <v-card>
+          <v-card
+           class="estiloB"
+                height="340px" 
+                color=#E0F2F1>
               <v-card-title>Artículos</v-card-title>
               <template>
                 <div class="text-center">
@@ -1298,48 +1722,84 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Videos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Videos</v-subheader>
+
+                     <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Magnetismo'">
                       <div  v-if="article.tipo[0] == 'v'">
-                      <v-list-item  @click="sheetM1 = false">
+                      <v-slide-item  @click="sheetM1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='v'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1353,48 +1813,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Imágenes
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Imágenes</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Magnetismo'">
                       <div  v-if="article.tipo[0] == 'i'">
-                      <v-list-item  @click="sheetM2 = false">
+                      <v-slide-item  @click="sheetM2 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='i'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1409,55 +1904,90 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Documentos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Documentos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Magnetismo'">
                       <div  v-if="article.tipo[0] == 'a'">
-                      <v-list-item  @click="sheetM3 = false">
+                      <v-slide-item  @click="sheetM3 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='a'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
               
                    <v-divider></v-divider>
                  <v-card-actions>
-                  <v-btn color="blue darken-1" text @click="dialogf1 = false"> Cerrar</v-btn>
+                  <v-btn color="color" dark @click="dialogf1 = false"> Cerrar</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -1482,7 +2012,9 @@
             </v-row>
             </template>
 
-          <v-card>
+          <v-card  class="estiloB"
+                height="340px" 
+                color=#E0F2F1>
               <v-card-title>Artículos</v-card-title>
               <template>
                 <div class="text-center">
@@ -1491,48 +2023,84 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Videos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Videos</v-subheader>
+
+                     <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Cinemática'">
                       <div  v-if="article.tipo[0] == 'v'">
-                      <v-list-item  @click="sheetC1 = false">
+                      <v-slide-item  @click="sheetC1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='v'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1546,48 +2114,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Imágenes
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Imágenes</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Cinemática'">
                       <div  v-if="article.tipo[0] == 'i'">
-                      <v-list-item  @click="sheetC2 = false">
+                      <v-slide-item  @click="sheetC2 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='i'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1602,7 +2205,7 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
@@ -1650,7 +2253,7 @@
               
                    <v-divider></v-divider>
                  <v-card-actions>
-                  <v-btn color="blue darken-1" text @click="dialogf2 = false"> Cerrar</v-btn>
+                  <v-btn color="dark" dark @click="dialogf2 = false"> Cerrar</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -1679,7 +2282,9 @@
             </v-row>
             </template>
 
-          <v-card>
+          <v-card class="estiloB"
+                height="340px" 
+                color=#E0F2F1>
               <v-card-title>Artículos</v-card-title>
               <template>
                 <div class="text-center">
@@ -1688,48 +2293,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Videos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Videos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Dinámica'">
                       <div  v-if="article.tipo[0] == 'v'">
-                      <v-list-item  @click="sheetD1 = false">
+                      <v-slide-item  @click="sheetD1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='v'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1743,48 +2383,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Imágenes
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Imágenes</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Dinámica'">
                       <div  v-if="article.tipo[0] == 'i'">
-                      <v-list-item  @click="sheetD2 = false">
+                      <v-slide-item  @click="sheetD1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='i'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1799,55 +2474,90 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Documentos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Documentos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Dinámica'">
                       <div  v-if="article.tipo[0] == 'a'">
-                      <v-list-item  @click="sheetD3 = false">
+                      <v-slide-item  @click="sheetD3 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='a'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
               
                    <v-divider></v-divider>
                  <v-card-actions>
-                  <v-btn color="blue darken-1" text @click="dialogf3 = false"> Cerrar</v-btn>
+                  <v-btn color="dark" dark @click="dialogf3 = false"> Cerrar</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -1860,8 +2570,7 @@
     <v-col >
       <v-card
           class="estiloC"
-          outlined
-          tile
+         color=#FFC400
         >
       <v-container>
           <v-container></v-container>
@@ -1887,7 +2596,9 @@
             </v-row>
             </template>
 
-          <v-card>
+          <v-card  class="estiloB"
+                height="340px" 
+                color=#E0F2F1>
               <v-card-title>Artículos</v-card-title>
               <template>
                 <div class="text-center">
@@ -1896,48 +2607,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Videos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Videos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Química Básica'">
                       <div  v-if="article.tipo[0] == 'v'">
-                      <v-list-item  @click="sheetQ1 = false">
+                      <v-slide-item  @click="sheetQ1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='v'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -1951,48 +2697,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Imágenes
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Imágenes</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Química Básica'">
                       <div  v-if="article.tipo[0] == 'i'">
-                      <v-list-item  @click="sheetQ2 = false">
+                      <v-slide-item  @click="sheetQ2 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='i'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -2007,55 +2788,90 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Documentos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Documentos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Química Básica'">
                       <div  v-if="article.tipo[0] == 'a'">
-                      <v-list-item  @click="sheetQ3 = false">
+                      <v-slide-item  @click="sheetQ1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='a'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
               
                    <v-divider></v-divider>
                  <v-card-actions>
-                  <v-btn color="blue darken-1" text @click="dialogq1 = false"> Cerrar</v-btn>
+                  <v-btn color="dark" dark @click="dialogq1 = false"> Cerrar</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -2082,7 +2898,9 @@
             </v-row>
             </template>
 
-          <v-card>
+          <v-card  class="estiloB"
+                height="340px" 
+                color=#E0F2F1>
               <v-card-title>Artículos</v-card-title>
               <template>
                 <div class="text-center">
@@ -2091,48 +2909,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Videos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Videos</v-subheader>
+                     <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Química Orgánica'">
                       <div  v-if="article.tipo[0] == 'v'">
-                      <v-list-item  @click="sheetQO1 = false">
+                      <v-slide-item  @click="sheetQO1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='v'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-play-circle </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -2146,48 +2999,83 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Imágenes
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Imágenes</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Química Orgánica'">
                       <div  v-if="article.tipo[0] == 'i'">
-                      <v-list-item  @click="sheetQO2 = false">
+                      <v-slide-item  @click="sheetQO2 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='i'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-image </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"  > 
-                <v-icon small left color=" darken">mdi-eye</v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -2202,55 +3090,90 @@
                       <v-btn
                         color="dark"
                         dark
-                        small
+                        large
                         v-bind="attrs"
                         v-on="on"
                       >
                         <v-icon small left color=" darken">mdi-folder</v-icon> Documentos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Documentos</v-subheader>
+                      <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Química'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Química Orgánica'">
                       <div  v-if="article.tipo[0] == 'a'">
-                      <v-list-item  @click="sheetQO3 = false">
+                      <v-slide-item  @click="sheetQO1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='a'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken">mdi-eye </v-icon> <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
               
                    <v-divider></v-divider>
                  <v-card-actions>
-                  <v-btn color="blue darken-1" text @click="dialogq2 = false"> Cerrar</v-btn>
+                  <v-btn color="dark" dark @click="dialogq2 = false"> Cerrar</v-btn>
                 </v-card-actions>
               </v-card>
             </v-dialog>
@@ -2452,7 +3375,6 @@ export default {
 .estiloL {
         text-align: center;
         font-size: 40px;
-        color: white;
        
         
        //background-color: rgba(94, 175, 141, 0.664);
@@ -2476,6 +3398,8 @@ export default {
     .estiloC{
     //background-color: rgb(94, 175, 141, 0.664);
     background-color: #00897B;
+    border-radius: 20px;
+
 
 
     }
@@ -2498,10 +3422,57 @@ export default {
         font-size: 15px;
         font-family: "Lucida Console", Courier, monospace;
     }
- .estiloT{
+
+ .estiloTa{
+   font-size: 18px;
+ }   
+
+
+ .estiloSubCard{
+
+    border-radius: 20px;
+
+  } 
+
+  
+ .estiloinCard{
+
+    border-radius: 30px;
+    
+    class:ma-4
+
+
+  } 
+
+  .estiloT{
    font-size: 25px;
  }   
 
+ .estiloB{
+    border-radius: 30px;
+ } 
+
+
+ .estiloD{
+   font-size: 25px;
+   text-align: center;
+ }    
+
+ 
+ .estiloN{
+   font-size: 15px;
+   text-align: center;
+ }  
+
+ .estiloN{
+   color: white;
+   
+ }  
+
+ .estiloTexto{
+   color: white;
+   
+ } 
 
 
 

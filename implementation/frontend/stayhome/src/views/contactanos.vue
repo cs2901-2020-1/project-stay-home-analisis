@@ -1,6 +1,6 @@
 <template>
 
-<v-container >
+<v-container justify="center">
 
 <v-row >
   <v-row justify="left">
@@ -13,55 +13,16 @@
 </v-row>
 </v-row>
 <v-container></v-container>
+<v-container></v-container>
+<v-container></v-container>
 
-<v-row>
-<v-col>
- <v-card
-    class="mx-auto"
-    color="#00897B"
-    dark
-    max-width="400"
-  >
-    <v-card-title>
-      <v-icon
-        large
-        left
-      >
-        mdi-alert-box      
-        </v-icon>
-
-      <span class="title font-weight-light">¿Quiénes somos?</span>
-    </v-card-title>
-
-    <v-card-text class="headline font-weight-bold" color="#FFFFFF">
-      Somos una página web que facilita el intercambio, la búsqueda y organización de artículos educativos útiles para nuestros usuarios.
-    </v-card-text>
-
-    <v-card-actions>
-      <v-list-item class="grow">
-        <v-list-item-avatar color="grey darken-3">
-            <v-icon
-            large
-            
-             >
-            mdi-home
-            </v-icon>
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title>Equipo Stay home </v-list-item-title>
-        </v-list-item-content>
-
-      </v-list-item>
-    </v-card-actions>
-  </v-card>
-</v-col>
-<v-col>
+<v-row justify="center">
     <v-card
-    class="mx-auto"
-    color="#00897B"
+    class="estiloB"
+    color=#FFC400
     dark
-    max-width="400"
+    high="700"
+    width="400"
   >
     <v-card-title>
       <v-icon
@@ -71,7 +32,7 @@
         mdi-cellphone      
         </v-icon>
 
-      <span class="title font-weight-light">¡Contactanos!</span>
+      <span class="title font-weight-light">¡Contáctanos!</span>
     </v-card-title>
 
     <v-card-text class="headline font-weight-bold" color="#FFFFFF">
@@ -109,7 +70,6 @@
       </v-list-item>
     </v-card-actions>
   </v-card>
-  </v-col>
 
 </v-row>
 
@@ -215,6 +175,9 @@ methods:{
  .estiloT{
    font-size: 25px;
  }   
+ .estiloB{
+    border-radius: 30px;
+}
 
 
 </style>

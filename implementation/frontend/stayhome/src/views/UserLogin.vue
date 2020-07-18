@@ -185,13 +185,13 @@ export default {
     font-size: 25px;
   }   
   .estiloC{
-    background-color: #4DB6AC;
+    background-color: #F44336;
   }
   .estiloSubCard{
     border-radius: 20px;
   } 
   .estiloCard{
-    background-color: #4DB6AC;
+    background-color: #F44336;
     border-radius: 30px;
   }   
 

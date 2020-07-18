@@ -1,9 +1,16 @@
 <template>
     <v-container>
-      <div class="titulo"> ¡Bienvenido! </div>
+
+      <v-container>
+      <div class="titulo"> Stay Home </div>
+
+      <v-container/>
+
       <v-carousel cycle 
       hide-delimiter-background
-      show-arrows-on-hover>
+      show-arrows-on-hover
+      class="estiloB"
+      >
         <v-carousel-item
           v-for="(item,i) in items"
           :key="i"
@@ -12,7 +19,10 @@
           transition="fade-transition"
         ></v-carousel-item>
       </v-carousel>
-      <v-spacer></v-spacer>
+      </v-container>
+
+      <v-container/>
+
     </v-container>
 </template>
 
@@ -68,5 +78,9 @@ export default {
         font-variant: small-caps;
         text-transform: uppercase;
     }
+
+    .estiloB{
+    border-radius: 30px;
+}
 
 </style>
