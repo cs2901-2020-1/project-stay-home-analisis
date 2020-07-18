@@ -2,6 +2,7 @@ package com.stayhome.demo.business;
 
 import com.stayhome.demo.data.User;
 import com.stayhome.demo.repositories.UserRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +42,7 @@ public class UserBusiness {
      * @param item
      * @return User actualizado
      */
-    public User update(User item){
+    public User update(@NotNull User item){
         User a = repository.findById(item.getUser_id()).get();
         if(a != null){
             return repository.save(item);
@@ -54,7 +55,12 @@ public class UserBusiness {
      * @param user_id
      */
     public void delete(BigInteger user_id){
-
+        /**
+         * Eliminar articulo con usuario
+         * Eliminar ese articulo de article_pack
+         * Eliminar playlist con user_id
+         * Eliminar tabla likes_by_article
+         * **/
         repository.deleteById(user_id);
     }
 }

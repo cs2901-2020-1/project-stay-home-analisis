@@ -213,15 +213,18 @@ export default {
       },
 
       async eliminarArticlepack(articlepack){
-        let id = articlepack.articlepack_id;
-        console.log(id);
-        let rpta = await this.$store.dispatch('deleteArticlepack',id);
-        if(rpta.error){
-            alert(rpta.error);
-          }else{
-            alert("Se ha eliminado correctamente el paquete de articulos");
-            this.$router.push("/myplaylists");
-          }
+        let response = confirm(`${this.currentUser.username} ¿Estás seguro que deseas eliminar ${articlepack.name}?`);
+        if(response){
+          let id = articlepack.articlepack_id;
+          console.log(id);
+          let rpta = await this.$store.dispatch('deleteArticlepack',id);
+          if(rpta.error){
+              alert(rpta.error);
+            }else{
+              alert("Se ha eliminado correctamente el paquete de articulos");
+              this.$router.push("/myplaylists");
+            }
+        }
       }
 
     }

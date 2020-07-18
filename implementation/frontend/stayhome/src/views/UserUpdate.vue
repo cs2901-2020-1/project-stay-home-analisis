@@ -64,7 +64,7 @@
 
                   <v-row justify="center">
                       <div class="display-4">
-                        <v-avatar tile color=#212121>
+                        <v-avatar tile color="deep-orange">
                           <v-icon x-large color=#FFFFFF>> mdi-account-outline</v-icon>
                         </v-avatar>
                       </div>
@@ -119,7 +119,7 @@
                   
                     <v-row justify="center">
                       <div class="display-4">
-                        <v-avatar tile color=#212121>
+                        <v-avatar tile color="deep-orange">
                           <v-icon x-large color=#FFFFFF>mdi-email</v-icon>
                         </v-avatar>
                       </div>
@@ -172,7 +172,7 @@
                 <v-card-text>
                      <v-row justify="center">
                       <div class="display-4">
-                        <v-avatar tile color=#212121>
+                        <v-avatar tile color="deep-orange">
                           <v-icon x-large color=#FFFFFF>mdi-lock</v-icon>
                         </v-avatar>
                       </div>

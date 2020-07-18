@@ -11,7 +11,6 @@ public class ArticlesPorPack implements Serializable{
     @EmbeddedId
     private Doublei doublei;
 
-
     public ArticlesPorPack(){
 
     }

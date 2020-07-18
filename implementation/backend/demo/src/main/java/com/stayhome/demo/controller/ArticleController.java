@@ -73,10 +73,6 @@ public class ArticleController {
     }
 
 
-    @DeleteMapping("/articlesUserId/{user_id}")
-    public void delete_by_User_id(@PathVariable BigInteger user_id){business.delete_by_User_id(user_id);}
-
-
     @GetMapping("/downloadFile/{article_id}")
     public ResponseEntity<Resource> downloadFile(@PathVariable BigInteger article_id) {
         Article article = business.getArticle(article_id);

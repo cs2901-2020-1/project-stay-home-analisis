@@ -9,8 +9,6 @@ import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.math.BigInteger;
 
-
-
 @Entity
 @Table(name = "app_user",
         schema = "public"

@@ -1,6 +1,5 @@
 package com.stayhome.demo.data;
 
-
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,7 +21,6 @@ public class Doublei implements Serializable {
     public Doublei(){
 
     }
-
 
     public Doublei(ArticlePack articlepack, Article article) {
         this.articlepack=articlepack;

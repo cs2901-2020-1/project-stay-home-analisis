@@ -124,7 +124,7 @@ export default new Vuex.Store({
         commit('SET_CURRENT_USER', user);
         return user;
       }catch{
-        return {error: "Email/password incorrectos, intenta denuevo"}
+        return {error: "Correo/contraseña incorrectos, intenta denuevo"}
       }
 
     },
@@ -142,15 +142,6 @@ export default new Vuex.Store({
     async deleteUser({commit},deleteInfo){
 
       try{
-    
-        let delete_article = await Api().delete(`/articlesUserId/${deleteInfo.user_id}`);
-        console.log(delete_article.data);
-        if(delete_article.status==200 || delete_article.status==204)
-        {
-          commit('DELETE_ARTICLE',delete_article.article_id);
-        
-        }
-
         let response = await Api().delete(`/users/${deleteInfo.user_id}`);
         console.log(response.data);
         if(response.status==200 || response.status==204)
@@ -230,19 +221,6 @@ export default new Vuex.Store({
           return {error: "Hubo un error al eliminar el articulo, intenta denuevo"}
         }
       },
-      async deleteArticle_by_user_id({commit},user){
-        try{
-          let response = await Api().delete(`/articles_by_user/${user.user_id}`);
-          if(response.status==200 || response.status==204)
-          {
-            commit('DELETE_ARTICLE_BY_USER_ID',user.user_id);
-          }
-        }
-        catch{
-          return {error: "Hubo un error al eliminar el articulo, intenta denuevo"}
-        }
-      },
-
 
       async loadAllArticlepacks({commit}){
  
@@ -281,7 +259,6 @@ export default new Vuex.Store({
       },
 
 
-
       async loadAllArticles_tupac({commit},info){
         try{
         console.log(info);
@@ -290,7 +267,7 @@ export default new Vuex.Store({
         console.log(response.data);
         return response
         }catch{
-          return {error: "Hubo un error al agregar el articulo"}
+          return {error: "Hubo un error al agregar el articulo a la coleccion"}
         }
        },
 

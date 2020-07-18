@@ -1,11 +1,11 @@
 package com.stayhome.demo.business;
 
-import com.stayhome.demo.data.ArticlePack;
-import com.stayhome.demo.data.LikesPorArticle;
+
 import com.stayhome.demo.exceptions.ArticleException;
 import com.stayhome.demo.exceptions.ArticleNotFoundException;
 import com.stayhome.demo.data.Article;
 import com.stayhome.demo.repositories.ArticleRepository;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,7 +77,7 @@ public class ArticleBusiness {
         return repository.findById(article_id)
                 .orElseThrow(() -> new ArticleNotFoundException("File not found with id " + article_id));
     }
-    public Article update(Article item){
+    public Article update(@NotNull Article item){
         Article a = repository.findById(item.getArticle_id()).get();
         if(a!=null){
             return repository.save(item);
@@ -88,11 +88,6 @@ public class ArticleBusiness {
     public void delete(BigInteger article_id){
         repository.delete_article_from_article_tupac(article_id);
         repository.deleteById(article_id);
-    }
-
-    public void delete_by_User_id(BigInteger article_id){
-
-        repository.delete_article_by_user_id(article_id);
     }
 
 }
