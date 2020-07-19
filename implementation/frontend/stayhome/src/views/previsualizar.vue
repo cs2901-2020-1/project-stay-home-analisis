@@ -72,7 +72,7 @@
         small
         
       >
-        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloT"> Descripción </v-text>
+        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloT"> más información </v-text>
       </v-btn>
       </v-row>
       </v-col>
@@ -166,7 +166,7 @@
         small
         
       >
-        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloD"> Descripción </v-text>
+        <v-icon >{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon> <v-text class="estiloD"> más información </v-text>
       </v-btn>
       </v-row>
       </v-col>
@@ -215,7 +215,7 @@
 <v-container></v-container>
 
 <v-row  class="estiloT" justify="left">
-  Descripción: {{currentArticle.descripcion}}
+  más información: {{currentArticle.descripcion}}
 
 </v-row>
 
@@ -343,7 +343,7 @@ async Validar(currentArticle){
       },
 
       Eliminar(currentArticle){
-        let response = confirm(`¿Estás seguro que deseas eliminar este articulo? ${this.currentUser.username}`);
+        let response = confirm(`¿Estás seguro que deseas eliminar este StayFile? ${this.currentUser.username}`);
         if(response){
           this.$store.dispatch('deleteArticle',currentArticle);
           this.$router.push("/buscar");
@@ -368,7 +368,7 @@ async Validar(currentArticle){
         font-family: "Lucida Console", Courier, monospace;
     }
  .estiloT{
-   font-size: 30px;
+   font-size: 20px;
    
  }   
  .estiloinCard{

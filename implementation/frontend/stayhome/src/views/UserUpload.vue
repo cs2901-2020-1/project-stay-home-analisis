@@ -9,7 +9,7 @@
 
           <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
           <v-icon >mdi-chevron-right</v-icon>
-          <v-text class="estiloT" color="grey"> Subir artículos </v-text> 
+          <v-text class="estiloT" color="grey"> Subir StayFiles </v-text> 
         
     </v-row>
 
@@ -210,7 +210,7 @@
 
                     <v-file-input
                     v-model="articles"
-                    placeholder="Subir tu documento"
+                    placeholder="Subir tu StayFile"
                     label="Documento"
                     prepend-icon="mdi-file-document"
                     outlined
@@ -244,7 +244,7 @@
             <v-col justify="center" md="8">
                     <v-file-input
                     v-model="articles"
-                    placeholder="Subir tu imagen"
+                    placeholder="Subir tu StayFile"
                     label="Imagen"
                     prepend-icon="mdi-camera"
                     outlined
@@ -277,7 +277,7 @@
             <v-col justify="center" md="8">
                 <v-file-input
                 v-model="articles"
-                placeholder="Subir tu video"
+                placeholder="Subir tu StayFile"
                 label="Video"
                 prepend-icon="mdi-video"
                 outlined
@@ -426,7 +426,7 @@ import {mapState} from 'vuex';
                     alert(response_file.error)
                     this.loading=false;
                 }else{
-                    alert('La subida del archivo se completó con éxito, espere que sea validada por un administrador');
+                    alert('La subida del StayFile se completó con éxito, espere que sea validada por un administrador');
                     this.loading=false;
                     this.$router.push('/myplaylists');
                 }},1000);
@@ -471,6 +471,7 @@ import {mapState} from 'vuex';
  .estiloSubCard{
 
     border-radius: 20px;
+    background-color: #E0E0E0;
 
   } 
 

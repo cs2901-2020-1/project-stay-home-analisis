@@ -6,7 +6,7 @@
     <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
     
-   <v-text class="estiloT" color="grey"> Artículos </v-text> 
+   <v-text class="estiloT" color="grey"> StayFiles </v-text> 
   
 </v-row>
 
@@ -15,26 +15,29 @@
 <v-row>
     <div v-for="articles in articles_por_tupac" :key="articles.article_id">
     <v-col>
+      <div  v-if="articles.doublei.article.curso == 'Matemática'">
             <v-card
-            max-width="444"
-            outlined
-            class="estiloC"
+            class="estiloinCardin"
+                     height="180"
+                    width="400"
+                     color=#E53935
             >
+
     <v-list-item three-line>
         
       <v-list-item-content>
-        <v-list-item-title class="headline mb-1" >  {{articles.doublei.article.title}}</v-list-item-title>
+        <v-list-item-title class="headline mb-1" > <v-text class="estilotexto"> {{articles.doublei.article.title}} </v-text></v-list-item-title>
 
-        <div class="overline mb-4"> Curso: {{articles.doublei.article.curso}} </div>
+        <div class="overline mb-4"> <v-text class="estilotexto"> Curso: {{articles.doublei.article.curso}}</v-text> </div>
 
 
-        <v-list-item-subtitle>Tema: {{articles.doublei.article.tema}}</v-list-item-subtitle>
+        <v-list-item-subtitle> <v-text class="estilotexto"> Tema: {{articles.doublei.article.tema}} </v-text> </v-list-item-subtitle>
       </v-list-item-content>
 
       <v-list-item-avatar
         tile
         size="80"
-      ><v-icon x-large color="black">
+      ><v-icon x-large color="white">
           mdi-library
       </v-icon>
       
@@ -55,6 +58,108 @@
       </v-row>
     </v-card-actions>
   </v-card>
+  </div>
+
+
+
+<div  v-if="articles.doublei.article.curso == 'Física'">
+            <v-card
+            class="estiloinCardin"
+                     height="180"
+                    width="400"
+                     color=#FFC400
+            >
+
+    <v-list-item three-line>
+        
+      <v-list-item-content>
+        <v-list-item-title class="headline mb-1" > <v-text class="estilotexto"> {{articles.doublei.article.title}} </v-text></v-list-item-title>
+
+        <div class="overline mb-4"> <v-text class="estilotexto"> Curso: {{articles.doublei.article.curso}}</v-text> </div>
+
+
+        <v-list-item-subtitle> <v-text class="estilotexto"> Tema: {{articles.doublei.article.tema}} </v-text> </v-list-item-subtitle>
+      </v-list-item-content>
+
+      <v-list-item-avatar
+        tile
+        size="80"
+      ><v-icon x-large color="white">
+          mdi-library
+      </v-icon>
+      
+      </v-list-item-avatar>
+
+
+    </v-list-item>
+
+    <v-card-actions>
+        <v-row justify="center">
+     <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                medium > <router-link class="white--text" :to="{ name: 'previsualizarMyArticle', params:{ id: articles.doublei.article.article_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
+        
+      </v-row>
+    </v-card-actions>
+  </v-card>
+  </div>
+
+
+
+<div  v-if="articles.doublei.article.curso == 'Química'">
+            <v-card
+            class="estiloinCardin"
+                     height="180"
+                    width="400"
+                     color=#4CAF50
+            >
+
+    <v-list-item three-line>
+        
+      <v-list-item-content>
+        <v-list-item-title class="headline mb-1" > <v-text class="estilotexto"> {{articles.doublei.article.title}} </v-text></v-list-item-title>
+
+        <div class="overline mb-4"> <v-text class="estilotexto"> Curso: {{articles.doublei.article.curso}}</v-text> </div>
+
+
+        <v-list-item-subtitle> <v-text class="estilotexto"> Tema: {{articles.doublei.article.tema}} </v-text> </v-list-item-subtitle>
+      </v-list-item-content>
+
+      <v-list-item-avatar
+        tile
+        size="80"
+      ><v-icon x-large color="white">
+          mdi-library
+      </v-icon>
+      
+      </v-list-item-avatar>
+
+
+    </v-list-item>
+
+    <v-card-actions>
+        <v-row justify="center">
+     <v-btn 
+                  dark
+                  v-bind="attrs"
+                  v-on="on"
+                  color="dark"
+                medium > <router-link class="white--text" :to="{ name: 'previsualizarMyArticle', params:{ id: articles.doublei.article.article_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
+        
+      </v-row>
+    </v-card-actions>
+  </v-card>
+  </div>
+
+
+
+
+
+
+
     </v-col>
     <v-container></v-container>
 
@@ -117,9 +222,23 @@ export default {
         background-color: #4DB6AC;
 
  }  
+ 
+.estiloSubCard{
+    border-radius: 20px;
+  } 
+ .estiloinCard{
+    border-radius: 30px;
+    
+  } 
+  .estiloinCardin{
+    border-radius: 15px;
+    
+  } 
 
-
-
+  .estilotexto{
+    font-size: 15px;
+    color: white;
+  } 
 
 
 </style>

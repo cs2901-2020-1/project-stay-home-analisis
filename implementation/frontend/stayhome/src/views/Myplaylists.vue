@@ -43,7 +43,7 @@
               </v-btn>
             </template>
 
-            <v-card v-model="valid">
+            <v-card v-model="valid" class="estiloinCard">
             
             <v-container/>
             <v-container/>
@@ -86,7 +86,7 @@
                 <v-btn
                   dark
                   color="dark"
-                  
+                  small
                   @click="addarticle"
                   :disabled="!valid"
                 >
@@ -128,6 +128,7 @@
          <v-slide-item >
         
         <v-col >
+          
            <v-card  class="estiloinCardin"
                      height="450"
                     width="400"
@@ -203,15 +204,11 @@
 
 <script>
 import { mapState } from 'vuex';
-
-
 export default {
-
    data () {
       return {
         dialog: false,
         valid: false,
-
         nombreRules: [
             v => !!v || 'Nombre requirido',
             v => (v && v.length <= 20) || 'El nombre tiene que tener menos de 20 caracteres',
@@ -230,44 +227,41 @@ export default {
    },
       
  computed: {
-
         ...mapState(['currentUser']),
         ...mapState(['articles']),
         ...mapState(['users']),
         ...mapState(['articlepacks']),
-
       
     },
-
     mounted(){
-
     this.$store.dispatch("loadAll");
     this.$store.dispatch("loadAllArticles");
     this.$store.dispatch("loadAllArticlepacks");
-
    
     },
-
     methods: {
       async addarticle(){
+<<<<<<< HEAD
         console.log( this.currentUser.contador_articlepack);
         let a =  this.currentUser.contador_articlepack + 1;
         this.currentUser.contador_articlepack = a;
         console.log( this.currentUser.contador_articlepack);
         let rpta = await this.$store.dispatch('updateUser',this.currentUser);
         console.log(rpta);
+=======
+>>>>>>> 840fa91976158bf6dcbe8e53a74f2cc54cacc0d0
         this.playlist.user = this.currentUser;
         console.log(this.playlist);
         let reponse_articlepack = await this.$store.dispatch('addArticlepack',this.playlist);
         if(reponse_articlepack.error){
           alert(reponse_articlepack.error);
         }else{
-          alert('El paquete ' + reponse_articlepack.name + ' se ha creado correctamente');
+          alert('El StayPack ' + reponse_articlepack.name + ' se ha creado correctamente');
             this.$router.go(0);//MAGIA//
         }
       },
-
       async eliminarArticlepack(articlepack){
+<<<<<<< HEAD
         let response = confirm(`${this.currentUser.username} ¿Estás seguro que deseas eliminar ${articlepack.name}?`);
         if(response){
 
@@ -288,21 +282,26 @@ export default {
               this.$router.go(0);//MAGIA//
             }
         }
+=======
+        let id = articlepack.articlepack_id;
+        console.log(id);
+        let rpta = await this.$store.dispatch('deleteArticlepack',id);
+        if(rpta.error){
+            alert(rpta.error);
+          }else{
+            alert("Se ha eliminado correctamente el StayPack");
+            this.$router.push("/myplaylists");
+          }
+>>>>>>> 840fa91976158bf6dcbe8e53a74f2cc54cacc0d0
       }
-
     }
 }
-
-
-
 </script>
 
 <style scoped>
-
 .estilo {
         font-size:40px;
     }
-
 .estiloP {
         font-size: 15px;
         font-family: "Lucida Console", Courier, monospace;
@@ -311,32 +310,17 @@ export default {
    font-size: 25px;
  }   
  .estiloC{
-
         background-color: #00897B;
-
  }  
-
 .estiloSubCard{
-
     border-radius: 20px;
-
   } 
  .estiloinCard{
-
     border-radius: 30px;
     
-
-
   } 
-
   .estiloinCardin{
-
     border-radius: 15px;
     
-
-
   } 
-
-
-
 </style>
