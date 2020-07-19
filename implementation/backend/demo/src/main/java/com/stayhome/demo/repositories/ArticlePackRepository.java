@@ -28,5 +28,14 @@ public interface ArticlePackRepository extends JpaRepository<ArticlePack, BigInt
     @Query(value = "DELETE FROM app_articlesbypack WHERE app_articlesbypack.articlepack_id = ?1", nativeQuery = true)
     void deleteArticlesPorPackByArticlepack_id(BigInteger articlepack_id);
 
+    @Modifying
+    @Query(value= "UPDATE app_user SET contador_articlepack = :contador WHERE user_id = :user_id", nativeQuery = true)
+    void updateUser(@Param("contador") BigInteger contador, @Param("user_id") BigInteger user_id);
+
+
+    @Query(value = "SELECT COUNT(app_article_pack.user_id) FROM app_article_pack WHERE app_article_pack.name = :nombre AND app_article_pack.user_id = :id", nativeQuery = true)
+    BigInteger Contador_fav(@Param("nombre") String nombre, @Param("id") BigInteger user_id);
+
+
 
 }

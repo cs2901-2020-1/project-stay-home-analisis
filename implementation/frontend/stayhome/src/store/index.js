@@ -252,6 +252,7 @@ export default new Vuex.Store({
           {
             commit('DELETE_ARTICLEPACKS',id);
           }
+          return response;
         }
         catch{
           return {error: "Hubo un error al eliminar el paquete de articulos, intenta denuevo"}

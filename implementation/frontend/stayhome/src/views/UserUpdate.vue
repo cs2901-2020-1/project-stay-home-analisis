@@ -21,25 +21,22 @@
       
       <v-container>
 
-        <h2 class="text-md-left" > ¿Qué desea editar?</h2>
-        <v-container/>
+      
+      <v-container/>
 
 
-  <v-card
-    class="estiloCard"
-    max-width="800"
+
     
-    
-  >
-    
-    <v-list    color=#C8E6C9>
-      <v-list-item
-        
+    <v-list  class="estiloB" color=#FFC400>
+      <v-list-item 
       >
+    
         <v-list-item-icon>
-          <v-icon small  color=#FF5722> mdi-brightness-1</v-icon>
+          <v-icon small  color=#F44336> mdi-brightness-1</v-icon>
+        
         </v-list-item-icon>
 
+      
         <v-list-item-content >
           <v-list-item-title> <v-text class="estiloT"> <v-text class="User" > Usuario: </v-text> {{currentUser.username}} </v-text> </v-list-item-title>
         </v-list-item-content>
@@ -47,8 +44,9 @@
         <v-dialog v-model="dialog1" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 130px" class="subheading"
-                  small
+                  medium
                   dark
+                  
                   v-bind="attrs"
                   v-on="on"
                   color="dark"
@@ -92,7 +90,7 @@
 <v-list-item
         >
         <v-list-item-icon>
-          <v-icon   small  color=#FF5722> mdi-brightness-1</v-icon>
+          <v-icon   small  color=#F44336> mdi-brightness-1</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
@@ -102,7 +100,7 @@
         <v-dialog v-model="dialog2" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 130px" class="subheading"
-                  small
+                  medium
                   dark
                   v-bind="attrs"
                   v-on="on"
@@ -144,7 +142,7 @@
 <v-list-item
         >
         <v-list-item-icon>
-          <v-icon  small  color=#FF5722> mdi-brightness-1</v-icon>
+          <v-icon  small  color=#F44336> mdi-brightness-1</v-icon>
         </v-list-item-icon>
 
         <v-list-item-content>
@@ -155,7 +153,7 @@
         <v-dialog v-model="dialog3" persistent max-width="290">
               <template v-slot:activator="{ on, attrs }">
                 <v-btn style="margin-left: 130px" class="subheading"
-                  small
+                  medium
                   dark
                   v-bind="attrs"
                   v-on="on"
@@ -195,17 +193,18 @@
 
       </v-list-item>
 
+    <v-container/>
+
 
  <v-list-item>
-        <v-row class="pa-5" justify="left" >
-          <v-btn  medium  @click="userDelete"  :loading="loading" color="error" >Eliminar cuenta</v-btn>
+        <v-row class="pa-5" justify="center" >
+          <v-btn  large  @click="userDelete"  :loading="loading" color="dark" dark >Eliminar cuenta</v-btn>
         </v-row>
       
   </v-list-item>
 
     </v-list>
 
-  </v-card>
       
     </v-container>
   </v-container>
@@ -362,7 +361,7 @@ export default {
 
 .estiloCard{
 
-    background-color: #4DB6AC;
+    background-color: #01579B;
     border-radius: 30px;
 
   } 

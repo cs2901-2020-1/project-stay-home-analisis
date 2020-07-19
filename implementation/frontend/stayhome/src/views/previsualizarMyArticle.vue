@@ -26,7 +26,7 @@
     max-width="1000"
   >
     <v-img
-      v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" 
+      :src="'https://stayhome-backend.herokuapp.com/downloadFile/'+ currentArticle.article_id"
       height="600px"
     ></v-img>
 

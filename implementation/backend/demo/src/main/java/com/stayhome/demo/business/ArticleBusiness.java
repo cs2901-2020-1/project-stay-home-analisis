@@ -1,6 +1,7 @@
 package com.stayhome.demo.business;
 
 
+import com.stayhome.demo.controller.UserController;
 import com.stayhome.demo.exceptions.ArticleException;
 import com.stayhome.demo.exceptions.ArticleNotFoundException;
 import com.stayhome.demo.data.Article;
@@ -37,7 +38,7 @@ public class ArticleBusiness {
             String tipo = file.getContentType();
             String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                     .path("/downloadFile/")
-                    .path(article.getUser() +"/"+ titulo)
+                    .path(article.getArticle_id() +"/")
                     .toUriString();
             article.setTitle(titulo);
             article.setTipo(tipo);

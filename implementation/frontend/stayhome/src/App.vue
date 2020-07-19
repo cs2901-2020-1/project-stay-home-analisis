@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color=#009688 >
+    <v-app-bar app color=#01579B >
       <v-toolbar-title class="headline text-uppercase">
                  <v-btn  class="white--text" text to="/" >STAYHOME  </v-btn>
 
@@ -78,21 +78,22 @@
     <v-content class="estiloFondo">
       <router-view />
     </v-content>
+    
     <v-footer
-    dark
-    padless
+    color=#01579B
   >
     <v-card
       class="flex"
       flat
-      tile
+      color=#01579B
     >
-      <v-card-title class="teal">
-        <v-btn class="subheading" @click="contacto" >¡Contáctanos!</v-btn>
+      <v-card-title color=#01579B >
+
+        <v-btn class="subheading" color="dark" dark @click="contacto" >¡Contáctanos!</v-btn>
 
         <v-spacer></v-spacer>
 
-        <v-btn  class="white--text" dark color="dark"   href="https://www.indecopi.gob.pe/" > ©Copyright </v-btn>
+        <v-btn  class="white--text" dark color="dark" href="https://www.indecopi.gob.pe/" > ©Copyright </v-btn>
       </v-card-title>
 
       <v-card-text class="py-2 white--text text-center">
@@ -148,6 +149,6 @@ export default {
 <style scoped>
 
 .estiloFondo{
-    background-color: #ECEFF1;
+    background-color: #E0E0E0;
   } 
 </style>

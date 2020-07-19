@@ -17,11 +17,11 @@ public class ArticlePack implements Serializable {
     @GeneratedValue
     private BigInteger articlepack_id;
 
-    @Column (unique = true)
+    @Column
     @NotNull
     private String name;
 
-    @Column (unique = true)
+    @Column
     @NotNull
     private String descripcion;
 

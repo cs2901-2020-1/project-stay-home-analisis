@@ -82,6 +82,7 @@ export default {
         username: '',
         email: '',
         password: '',
+        contador_articlepack: '',
         admin: false
       },
       emailRules: [
@@ -116,6 +117,7 @@ export default {
          if(this.loginInfo.email === validator.data[i].email){
            this.loginInfo.user_id = validator.data[i].user_id;
            this.loginInfo.username = validator.data[i].username;
+           this.loginInfo.contador_articlepack = validator.data[i].contador_articlepack
            password = validator.data[i].password;
 
            if(validator.data[i].admin == true){
@@ -185,13 +187,13 @@ export default {
     font-size: 25px;
   }   
   .estiloC{
-    background-color: #4DB6AC;
+    background-color: #F44336;
   }
   .estiloSubCard{
     border-radius: 20px;
   } 
   .estiloCard{
-    background-color: #4DB6AC;
+    background-color: #F44336;
     border-radius: 30px;
   }   
 

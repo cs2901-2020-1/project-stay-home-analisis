@@ -36,7 +36,7 @@ public class ArticleController {
         Article article = business.storeFile(file,id);
         String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("/downloadFile/")
-                .path(article.getUser() +"/"+ article.getTitle())
+                .path(article.getArticle_id() +"/")
                 .toUriString();
 
         return new UploadArticleResponse(article.getTitle(), fileDownloadUri,

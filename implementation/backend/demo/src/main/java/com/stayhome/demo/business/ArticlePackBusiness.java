@@ -21,16 +21,23 @@ public class ArticlePackBusiness {
 
     public List<ArticlePack> findAll(){
 
+
         List<ArticlePack> items = new ArrayList<>();
 
-        if(repository.findAll().size() == 0){
+        if (UserController.Current.getContador_articlepack().equals(BigInteger.valueOf(0))
+                && repository.Contador_fav("Favoritos", UserController.Current.getUser_id()).equals(BigInteger.valueOf(0))){
+
             ArticlePack Favorite = new ArticlePack();
-            Favorite.setName("Favoritos de " + UserController.Current.getUsername());
-            Favorite.setDescripcion("Coleccion de Favoritos de " + UserController.Current.getUsername());
+            Favorite.setName("Favoritos");
+            Favorite.setDescripcion("StayPack Favoritos");
             Favorite.setUser(UserController.Current);
+            BigInteger actual_contador = UserController.Current.getContador_articlepack().add(BigInteger.valueOf(1));
+            repository.updateUser(actual_contador,UserController.Current.getUser_id());
             repository.save(Favorite);
         }
+
         for (ArticlePack item : repository.findAll()){
+
             BigInteger contador = repository.Contador(item.getArticlepack_id());
             item.setContador(contador);
             items.add(item);
@@ -39,6 +46,7 @@ public class ArticlePackBusiness {
     }
 
     public ArticlePack create(ArticlePack newArticlePack) {
+        UserController.Current.setContador_articlepack(UserController.Current.getContador_articlepack().add(BigInteger.valueOf(1)));
         return repository.save(newArticlePack);
     }
 

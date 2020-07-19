@@ -1,7 +1,9 @@
 <template>
 <v-container>
    <v-container  v-model="valid"
-    v-if="currentUser.username  && currentUser.admin == false ">
+    v-if="currentUser.username  && currentUser.admin == false " >
+
+        
 
     <v-row>
 
@@ -11,9 +13,34 @@
         
     </v-row>
 
-        <v-container>  </v-container>
-        
+      
+
+
+        <v-container/> 
+        <v-container/> 
+
+
         <v-form>
+            
+         <v-card class="estiloSubCard" color=#FFC400
+ >
+            <v-container class="fill-height" fluid justify="center">
+            <v-row align="center" justify="center">
+            <v-col md="6">
+
+           
+            <v-container/> 
+
+            <v-card class="estiloSubCard" height="100px" width="800px" >
+            
+                <v-row justify="center">
+                <div class="display-4">
+                <v-avatar tile color=#F44336>
+                <v-icon x-large color=#FFFFFF>mdi-library</v-icon>
+                </v-avatar>
+                 </div>
+                      
+            <v-col justify="center" md="8" >
             <v-select
             v-model="article.curso"
             :items="cursos"
@@ -21,14 +48,46 @@
             label="Curso"
             required
             ></v-select>
-                    <div v-if="article.curso">
-                        <v-select v-if="article.curso == 'Matemática'"
+            </v-col>
+
+                </v-row>            
+
+            </v-card >
+            
+            </v-col>
+            </v-row>
+            </v-container>
+
+            <v-container/>
+
+                    
+
+                         <v-container class="fill-height" fluid justify="center">
+                        <v-row align="center" justify="center">
+                        <v-col md="6">
+
+                        <v-card class="estiloSubCard" height="100px" width="800px">
+
+                         <v-row justify="center">
+                       
+                        <div class="display-4">
+                        <v-avatar tile color=#F44336>
+                        <v-icon x-large color=#FFFFFF> mdi-library</v-icon>
+                        </v-avatar>
+                        </div>
+                      
+                        <v-col justify="center" md="8">
+
+                                
+                        <v-select 
+                        v-if="article.curso == 'Matemática'"
                         v-model="article.tema"
                         :items="temas_mate"
                         :rules="[v => !!v || 'Tema es requerido']"
                         label="Tema"
                         required
                         ></v-select>
+
 
                         <v-select v-else-if="article.curso == 'Física'"
                         v-model="article.tema"
@@ -45,20 +104,109 @@
                         label="Tema"
                         required
                         ></v-select>
-                    </div>
-            <v-select v-if="article.tema" 
+
+                        </v-col>
+                        </v-row>
+                        </v-card>
+                        </v-col>
+                        </v-row>
+                         </v-container>
+
+
+
+            <v-container/>
+
+
+                <v-container class="fill-height" fluid justify="center">
+                <v-row align="center" justify="center">
+                <v-col md="6">
+                <v-card class="estiloSubCard" height="100px" width="800px">
+                    <v-row justify="center">
+                <div class="display-4">
+                <v-avatar tile color=#F44336>
+                <v-icon x-large color=#FFFFFF> mdi-library</v-icon>
+                </v-avatar>
+                 </div>
+                      
+            <v-col justify="center" md="8">
+
+            <v-select 
             v-model="article.tipo"
             :items="tipos"
             :rules="[v => !!v || 'Tipo es requerido']"
             label="Tipo"
             required
-            ></v-select>
+            >  </v-select> 
+            </v-col>
+             </v-row>
+                </v-card>
+                </v-col>
+                </v-row>
+                </v-container>
+           
 
-            <v-text-field v-if="article.tipo" v-model="article.title" label="Titulo" required :rules="tituloRules"></v-text-field>
+            <v-container/>
 
-            <v-textarea v-if="article.title" v-model="article.descripcion" label="Descripción" required :rules="descripcionRules"/>
+            <v-container class="fill-height" fluid justify="center">
+                <v-row align="center" justify="center">
+                <v-col md="6">
+
+            <v-card  class="estiloSubCard" height="100px" width="800px">
+                <v-row justify="center">
+                <div class="display-4">
+                <v-avatar tile color=#F44336>
+                <v-icon x-large color=#FFFFFF> mdi-library</v-icon>
+                </v-avatar>
+                 </div>
+                      
+            <v-col justify="center" md="8">
+
+            <v-text-field v-model="article.title" label="Titulo" required :rules="tituloRules"></v-text-field>
+            </v-col>
+                </v-row>
+            </v-card>
+            </v-col>
+            </v-row>
+            </v-container>
+
+
+            <v-container/>
+
+             <v-container class="fill-height" fluid justify="center">
+            <v-row align="center" justify="center">
+            <v-col md="6">
+
+            <v-card class="estiloSubCard" height="200px" width="800px">
+
+                <v-row justify="center">
+               
+                      
+            <v-col justify="center" md="8">
+                
+            <v-textarea  v-model="article.descripcion" label="Descripción" required :rules="descripcionRules"/>
+            </v-col>
+                </v-row>
+            </v-card>
+            
+            </v-col>
+            </v-row>
+             </v-container>
+
+            <v-container/>
+
+         <v-container class="fill-height" fluid justify="center">
+            <v-row align="center" justify="center">
+            <v-col md="6">
 
             <div v-if="article.tipo == 'Documento' && article.descripcion">
+
+                <v-card class="estiloSubCard"  height="100px" width="800px">
+
+                <v-row justify="center">
+               
+                      
+            <v-col justify="center" md="8">
+
 
                     <v-file-input
                     v-model="articles"
@@ -82,9 +230,18 @@
                         </template>
 
                     </v-file-input>
+            </v-col>
+                </v-row>
+                </v-card>
             </div>
 
             <div v-else-if="article.tipo == 'Imagen' && article.descripcion">
+                <v-card class="estiloSubCard"  height="100px" width="800px">
+
+                <v-row justify="center">
+               
+                      
+            <v-col justify="center" md="8">
                     <v-file-input
                     v-model="articles"
                     placeholder="Subir tu imagen"
@@ -105,9 +262,19 @@
                             </v-chip>
                         </template>
                     </v-file-input>
+            </v-col>
+                </v-row>
+                </v-card>
             </div>
 
             <div v-else-if="article.tipo == 'Video' && article.descripcion">
+                
+                <v-card class="estiloSubCard"  height="100px" width="800px">
+
+                <v-row justify="center">
+               
+                      
+            <v-col justify="center" md="8">
                 <v-file-input
                 v-model="articles"
                 placeholder="Subir tu video"
@@ -128,19 +295,41 @@
                         </v-chip>
                     </template>
                 </v-file-input>
+            </v-col>
+                </v-row>
+                </v-card>
             </div>
+            </v-col>
+            </v-row>
+         </v-container>
+
+
+ <v-container class="fill-height" fluid justify="center">
+            <v-row align="center" justify="center">
+            <v-col md="2">
+            <v-contaienr/>
             <v-btn 
-            color="blue-grey"
-            class="ma-2 white--text"
+            color="dark"
+            dark
             @click="upload"
             :disabled="!valid"
+            large
+            :loading="loading"
             >
             Subir
-                <v-icon right dark>mdi-cloud-upload</v-icon>
-            </v-btn>    
 
+            <v-icon right dark>mdi-cloud-upload</v-icon>
+
+            </v-btn> 
+            </v-col>
+            </v-row>
+            
+ </v-container>   
+         </v-card>
         </v-form>
    </v-container>
+
+
    <v-container v-else>
    ERROR
    </v-container>
@@ -168,6 +357,8 @@ import {mapState} from 'vuex';
         },
         data: ()=>({
             valid :false,
+
+            loading: false,
 
             descripcionRules: [
                 v => !!v || 'Descripción requirida',
@@ -228,12 +419,17 @@ import {mapState} from 'vuex';
                 let id = reponse_article.article_id;
                 let capsule = new Capsule(this.articles,id);
                 let response_file = await this.$store.dispatch('addFile',capsule);
+                this.loading=true;
+
+                setTimeout(() => {
                 if(response_file.error){
                     alert(response_file.error)
+                    this.loading=false;
                 }else{
                     alert('La subida del archivo se completó con éxito, espere que sea validada por un administrador');
+                    this.loading=false;
                     this.$router.push('/myplaylists');
-                }
+                }},1000);
             },
         },
     }
@@ -271,6 +467,12 @@ import {mapState} from 'vuex';
         background-color: #4DB6AC;
 
  }  
+
+ .estiloSubCard{
+
+    border-radius: 20px;
+
+  } 
 
 
 

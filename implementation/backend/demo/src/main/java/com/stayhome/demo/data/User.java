@@ -33,6 +33,9 @@ public class User implements Serializable{
 
     @Column
     @NotNull
+    private BigInteger contador_articlepack;
+    @Column
+    @NotNull
     private Boolean admin = false;
 
     public User() {
@@ -40,11 +43,12 @@ public class User implements Serializable{
 
     @JsonCreator
     public User(@JsonProperty("user_id")BigInteger user_id, @JsonProperty("email")String email, @JsonProperty("password")String password,
-                @JsonProperty("username") String username, @JsonProperty("admin")Boolean admin) {
+                @JsonProperty("username") String username, @JsonProperty("contador_articlepack")BigInteger contador_articlepack,@JsonProperty("admin")Boolean admin) {
         this.user_id = user_id;
         this.email =  email;
         this.username = username;
         this.password = password;
+        this.contador_articlepack = contador_articlepack;
         this.admin = admin;
     }
 
@@ -79,6 +83,14 @@ public class User implements Serializable{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public BigInteger getContador_articlepack() {
+        return contador_articlepack;
+    }
+
+    public void setContador_articlepack(BigInteger contador_articles) {
+        this.contador_articlepack = contador_articles;
     }
 
     public void setAdmin(Boolean admin) {this.admin = admin;}

@@ -10,11 +10,15 @@
   
 </v-row>
 
+<v-container/>
+
+
+
 <div class="text-center" >
 
   <v-row>
     <v-col>
-      <v-text class="estilo">Mis paquetes de artículos</v-text>
+      <v-text class="estilo">Mis StayPacks</v-text>
     </v-col>
     
     <v-col>
@@ -32,22 +36,51 @@
                 v-on="on"
                 large
               >
-              Crear paquete de artículos
+              <v-icon color="white">
+               mdi-package-up
+              </v-icon>
+              Crea un StayPack
               </v-btn>
             </template>
 
             <v-card v-model="valid">
-              <v-card-title
-              class="headline grey lighten-2"
-              primary-title
-              >
-              Paquete de artículos
-              </v-card-title>
+            
+            <v-container/>
+            <v-container/>
+            <v-card-text>
+                  <v-card class="estiloSubCard" height="100px" width="800px">
+                    <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#01579B>
+                          <v-icon x-large color=#FFFFFF>mdi-account</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="playlist.name" label="Nombre del StayPack" :rules="nombreRules"/>
+                      </v-col>
+                    </v-row>
+                    <v-container/>
+                  </v-card>
+                  <v-container/>
+                  <v-card class="estiloSubCard" height="100px" width="800px">
+                    <v-row justify="center">
+                      <div class="display-4">
+                        <v-avatar tile color=#01579B>
+                          <v-icon x-large color=#FFFFFF>mdi-lock</v-icon>
+                        </v-avatar>
+                      </div>
+                      <v-col justify="center" md="8">
+                        <v-text-field v-model="playlist.descripcion" label="Descripción" :rules="descripcionRules"
+                          
+                        />
+                      </v-col>
+                    </v-row>
+                    <v-container/>
+                  </v-card>
+                </v-card-text>
+
               <v-container></v-container>
-              <v-card-text>
-                <v-text-field v-model="playlist.name" label="Nombre del paquete" :rules="nombreRules" ></v-text-field>
-                <v-text-field v-model="playlist.descripcion" label="Descripcion" :rules="descripcionRules"></v-text-field>
-              </v-card-text>
+             
               <v-divider></v-divider>
               <v-card-actions>
                 <v-btn
@@ -78,50 +111,60 @@
 
 <v-container></v-container>
 
+<v-row justify="center">
 
-<v-card
-    max-width="920"
-    class="mx-auto"
-    dark
->
-
-<v-container>
-
-<v-item-group  >
+<v-card class="estiloinCard" color=#FFC400 >
+<v-slide-group
+        v-model="model"
+         class="pa-4"
+        prev-icon="mdi-minus"
+        next-icon="mdi-plus"
+        show-arrows
+        dark
+    >
      
-     <v-row >
-        <v-col
-          v-for="articlepack in articlepacks" :key="articlepack.articlepack_id"
-          cols="12"
-            md="6"
-        >
+        <div v-for="articlepack in articlepacks" :key="articlepack.articlepack_id">
         <div v-if="articlepack.user.user_id == currentUser.user_id">
-          <v-item class="estiloC" 
+         <v-slide-item >
+        
+        <v-col >
+           <v-card  class="estiloinCardin"
+                     height="450"
+                    width="400"
+                     color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
           >
 
-            <v-card
-              class="d-inline-block mx-auto"
-              dark
-              height="150"
-              width="430"
-              
-              
-            >
+        <v-text class="estiloTexto" align="center">  
 
-            <v-container></v-container>
-            <v-row justify="center" >
-              <v-text class="estiloT" > {{articlepack.name}} </v-text>
-            </v-row>
-            <v-row justify="center">
-              <v-text class="estiloP" > {{articlepack.descripcion}} </v-text>
-            </v-row>
-            <v-row justify="center">
-              <v-text class="estiloP" > Contador: {{articlepack.contador}} </v-text>
-            </v-row>
-            
-            <v-container></v-container>
+               <v-icon large>mdi-package</v-icon><v-text class="estiloTexto"> {{articlepack.name}} </v-text>
+              
+              </v-text> 
+
+              <v-container/>
+
+        
+              <v-card max-width="400"
+                      flat
+                     color=#E53935 >
+              <v-text class="estiloTexto" > {{articlepack.descripcion}} </v-text>  
+              </v-card>
+
+
+              <v-container/>
+
+              <v-text class="estiloTexto"> #StayFiles: {{articlepack.contador}} </v-text>
+
+              <v-container/>
+
+              
 
               <v-row justify="center" >
+                
                 
                 <v-btn 
                   dark
@@ -132,19 +175,26 @@
                 > 
                 <v-icon left  large > mdi-folder-google-drive </v-icon> 
                 <router-link class="white--text" :to="{ name: 'Playlist', params:{ id: articlepack.articlepack_id}}"> <v-text color="white">Ver </v-text> </router-link></v-btn>
-                <v-btn @click="eliminarArticlepack(articlepack)">Eliminar</v-btn>
+                
+                <v-container/>
+                <v-btn large @click="eliminarArticlepack(articlepack)">Eliminar</v-btn>
+
               </v-row>
-            </v-card>
+
+
+
+
             
-          </v-item>
-        <v-container></v-container>
-        
-          </div>
+          </v-row>
+        </v-card>
         </v-col>
-        </v-row>
-  </v-item-group>
-</v-container>
+      </v-slide-item>
+
+        </div>
+        </div>
+    </v-slide-group>
 </v-card>
+</v-row>
 
 </v-container>
 </template>
@@ -168,7 +218,7 @@ export default {
         ],
         descripcionRules: [
             v => !!v || 'Descripcion requirida',
-            v => (v && v.length <= 1000) || 'La descripcion tiene que tener menos de 1000 caracteres',
+            v => (v && v.length <= 280) || 'La descripcion tiene que tener menos de 280 caracteres',
         ],
         playlist: { 
             name:'',
@@ -200,7 +250,12 @@ export default {
 
     methods: {
       async addarticle(){
-
+        console.log( this.currentUser.contador_articlepack);
+        let a =  this.currentUser.contador_articlepack + 1;
+        this.currentUser.contador_articlepack = a;
+        console.log( this.currentUser.contador_articlepack);
+        let rpta = await this.$store.dispatch('updateUser',this.currentUser);
+        console.log(rpta);
         this.playlist.user = this.currentUser;
         console.log(this.playlist);
         let reponse_articlepack = await this.$store.dispatch('addArticlepack',this.playlist);
@@ -215,6 +270,14 @@ export default {
       async eliminarArticlepack(articlepack){
         let response = confirm(`${this.currentUser.username} ¿Estás seguro que deseas eliminar ${articlepack.name}?`);
         if(response){
+
+          let a =  this.currentUser.contador_articlepack - 1;
+          this.currentUser.contador_articlepack = a;
+          console.log( this.currentUser.contador_articlepack);
+          let aa = await this.$store.dispatch('updateUser',this.currentUser);
+          console.log(aa);
+
+
           let id = articlepack.articlepack_id;
           console.log(id);
           let rpta = await this.$store.dispatch('deleteArticlepack',id);
@@ -222,7 +285,7 @@ export default {
               alert(rpta.error);
             }else{
               alert("Se ha eliminado correctamente el paquete de articulos");
-              this.$router.push("/myplaylists");
+              this.$router.go(0);//MAGIA//
             }
         }
       }
@@ -253,7 +316,26 @@ export default {
 
  }  
 
+.estiloSubCard{
 
+    border-radius: 20px;
+
+  } 
+ .estiloinCard{
+
+    border-radius: 30px;
+    
+
+
+  } 
+
+  .estiloinCardin{
+
+    border-radius: 15px;
+    
+
+
+  } 
 
 
 

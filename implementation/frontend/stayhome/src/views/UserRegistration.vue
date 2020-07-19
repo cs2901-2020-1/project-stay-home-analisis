@@ -88,6 +88,7 @@ export default {
         username: '',
         email: '',
         password: '',
+        contador_articlepack: 0,
         admin: false,
       },
        emailRules: [
@@ -162,7 +163,7 @@ export default {
         
   }   
   .estiloC{
-    background-color: #4DB6AC;
+    background-color: #FFC400;
     border-radius: 30px;
   }  
   .estiloSubCard{
