@@ -677,7 +677,7 @@
     
           <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
           <v-icon >mdi-chevron-right</v-icon>
-          <v-text class="estiloT" color="grey"> Buscar artículos </v-text> 
+          <v-text class="estiloT" color="grey"> Buscar StayFiles </v-text> 
   
   </v-row>
     
@@ -767,7 +767,7 @@
             >
 
               
-              <v-card-title> Artículos </v-card-title>
+              <v-card-title> StayFiles </v-card-title>
 
               <template>
 
@@ -829,9 +829,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">{{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -929,9 +929,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> {{article.countdislikes}} </v-text>
               <v-container/>
               <v-btn  small
                       dark
@@ -1021,9 +1021,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
               <v-btn  small
@@ -1088,7 +1088,7 @@
                 height="340px" 
                 color=#E0F2F1
           >
-              <v-card-title>Artículos</v-card-title>
+              <v-card-title>StayFiles</v-card-title>
 
 
 
@@ -1153,9 +1153,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -1237,7 +1237,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-image </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -1245,9 +1245,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -1328,7 +1328,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-document </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -1336,9 +1336,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -1404,7 +1404,7 @@
           class="estiloB"
                 height="340px" 
                 color=#E0F2F1>
-              <v-card-title>Artículos</v-card-title>
+              <v-card-title>StayFiles</v-card-title>
               <template>
                 <div class="text-center">
                   <v-bottom-sheet v-model="sheetE1">
@@ -1460,9 +1460,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -1542,7 +1542,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-image </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -1550,9 +1550,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -1633,7 +1633,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-document </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -1641,9 +1641,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -1722,7 +1722,7 @@
            class="estiloB"
                 height="340px" 
                 color=#E0F2F1>
-              <v-card-title>Artículos</v-card-title>
+              <v-card-title>StayFiles</v-card-title>
               <template>
                 <div class="text-center">
                   <v-bottom-sheet v-model="sheetM1">
@@ -1779,9 +1779,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -1861,7 +1861,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-image </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -1869,9 +1869,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -1952,7 +1952,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-document </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -1960,9 +1960,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2023,7 +2023,7 @@
           <v-card  class="estiloB"
                 height="340px" 
                 color=#E0F2F1>
-              <v-card-title>Artículos</v-card-title>
+              <v-card-title>StayFiles</v-card-title>
               <template>
                 <div class="text-center">
                   <v-bottom-sheet v-model="sheetC1">
@@ -2080,9 +2080,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2143,6 +2143,7 @@
                       <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Cinemática'">
                       <div  v-if="article.tipo[0] == 'i'">
+
                       <v-slide-item  @click="sheetC2 = false">
                      
               
@@ -2162,7 +2163,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-image </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -2170,9 +2171,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2220,41 +2221,76 @@
                         <v-icon small left color=" darken">mdi-folder</v-icon> Documentos
                       </v-btn>
                     </template>
-                    <v-list>
-                      <v-subheader>Documentos</v-subheader>
+                    <v-slide-group 
+                    
+                    v-model="model"
+                      class="pa-4"
+                      prev-icon="mdi-minus"
+                      next-icon="mdi-plus"
+                      show-arrows
+                      dark>
+
                       <div  v-for="article in articles" :key ="article.article_id">
-                      <div  v-if="article.aceptado == true">
                       <div  v-if="article.curso == 'Física'">
+                      <div  v-if="article.aceptado == true ">
                       <div  v-if="article.tema == 'Cinemática'">
                       <div  v-if="article.tipo[0] == 'a'">
-                      <v-list-item  @click="sheetC3 = false">
+                      <v-slide-item  @click="sheetC1 = false">
                      
-            <v-row>
-              <v-col>
+              
               <div  v-if="article.tipo[0] =='a'"> 
-              <v-text class="estiloArticle">  
-                <v-icon medium left color="blue">mdi-file-document </v-icon> {{article.title}} 
+
+                 <v-col >
+                 <v-card  class="estiloinCard"
+                              height="180"
+                              width="300"
+                              color=#E53935
+                              >
+          <v-row
+            class="fill-height"
+            align="center"
+            justify="center"
+          >
+
+              <v-text class="estiloTexto" align="center">  
+
+                <v-icon  medium left color="white" > mdi-file-document </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+              
               </v-text> 
-              </div>
-              </v-col>
-              <v-col>
+
+              <v-container/>
+
+        
+
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
+             
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
+              <v-container/>
+
+
+             
+              
               <v-btn  small
                       dark
                       v-bind="attrs"
                       v-on="on"
-                      color="dark"   > 
-                <v-icon small left color=" darken"> mdi-eye </v-icon>  <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link> 
+                      color="dark" > 
+                <v-icon small left color=" darken">mdi-eye </v-icon>  
+              <router-link class="white--text" :to ="{ name: 'previsualizarUser', params:{ id: article.article_id}}"> <v-text color="white">Previsualizar </v-text> </router-link>
               </v-btn>
 
+              </v-row>
+              </v-card>
               </v-col>
-            </v-row>
-                     </v-list-item>
+
+                </div>
+                     </v-slide-item>
                      </div>
                      </div>
                      </div>
                      </div>
                      </div>
-                    </v-list>
+                    </v-slide-group >
                   </v-bottom-sheet>
                 </div>
               </template>
@@ -2293,7 +2329,7 @@
           <v-card class="estiloB"
                 height="340px" 
                 color=#E0F2F1>
-              <v-card-title>Artículos</v-card-title>
+              <v-card-title>StayFiles</v-card-title>
               <template>
                 <div class="text-center">
                   <v-bottom-sheet v-model="sheetD1">
@@ -2349,9 +2385,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2431,7 +2467,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-image </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -2439,9 +2475,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2522,7 +2558,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-document </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -2530,9 +2566,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2607,7 +2643,7 @@
           <v-card  class="estiloB"
                 height="340px" 
                 color=#E0F2F1>
-              <v-card-title>Artículos</v-card-title>
+              <v-card-title>StayFiles</v-card-title>
               <template>
                 <div class="text-center">
                   <v-bottom-sheet v-model="sheetQ1">
@@ -2663,9 +2699,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2745,7 +2781,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-image </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -2753,9 +2789,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2836,7 +2872,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-document </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -2844,9 +2880,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -2909,7 +2945,7 @@
           <v-card  class="estiloB"
                 height="340px" 
                 color=#E0F2F1>
-              <v-card-title>Artículos</v-card-title>
+              <v-card-title>StayFiles</v-card-title>
               <template>
                 <div class="text-center">
                   <v-bottom-sheet v-model="sheetQO1">
@@ -2965,9 +3001,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -3047,7 +3083,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-image </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -3055,9 +3091,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -3138,7 +3174,7 @@
 
               <v-text class="estiloTexto" align="center">  
 
-                <v-icon  medium left color="white" > mdi-play-circle </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
+                <v-icon  medium left color="white" > mdi-file-document </v-icon> <v-text class="estiloTexto"> {{article.title}} </v-text>
               
               </v-text> 
 
@@ -3146,9 +3182,9 @@
 
         
 
-               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" > Me gusta: {{article.countlikes}}</v-text>  
+               <v-icon medium left color="white">mdi-thumb-up </v-icon> <v-text class="estiloTexto" >  {{article.countlikes}}</v-text>  
              
-              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto"> No me gusta: {{article.countdislikes}} </v-text>
+              <v-icon medium left color="white">mdi-thumb-down </v-icon><v-text class="estiloTexto">  {{article.countdislikes}} </v-text>
               <v-container/>
 
 
@@ -3300,7 +3336,7 @@ export default {
         if(reponse_articlepack.error){
           alert(reponse_articlepack.error);
         }else{
-           alert('El paquete ' + reponse_articlepack.name + ' se ha creado correctamente');
+           alert('El StayPack ' + reponse_articlepack.name + ' se ha creado correctamente');
            this.$router.go(0);//MAGIA//
         }
       }

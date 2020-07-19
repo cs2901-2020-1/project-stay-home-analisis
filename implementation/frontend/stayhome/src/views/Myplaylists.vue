@@ -247,7 +247,7 @@ export default {
         if(reponse_articlepack.error){
           alert(reponse_articlepack.error);
         }else{
-          alert('El paquete ' + reponse_articlepack.name + ' se ha creado correctamente');
+          alert('El StayPack ' + reponse_articlepack.name + ' se ha creado correctamente');
             this.$router.go(0);//MAGIA//
         }
       },
@@ -258,7 +258,7 @@ export default {
         if(rpta.error){
             alert(rpta.error);
           }else{
-            alert("Se ha eliminado correctamente el paquete de articulos");
+            alert("Se ha eliminado correctamente el StayPack");
             this.$router.push("/myplaylists");
           }
       }

@@ -343,7 +343,7 @@ async Validar(currentArticle){
       },
 
       Eliminar(currentArticle){
-        let response = confirm(`¿Estás seguro que deseas eliminar este articulo? ${this.currentUser.username}`);
+        let response = confirm(`¿Estás seguro que deseas eliminar este StayFile? ${this.currentUser.username}`);
         if(response){
           this.$store.dispatch('deleteArticle',currentArticle);
           this.$router.push("/buscar");

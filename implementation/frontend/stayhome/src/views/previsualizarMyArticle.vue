@@ -7,9 +7,9 @@
   <v-row>
     <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
+    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> StayFiles </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <v-text class="estiloT" color="grey"> Artículo </v-text> 
+    <v-text class="estiloT" color="grey"> StayFile </v-text> 
   </v-row>
 
 <v-container></v-container>
@@ -360,7 +360,7 @@ methods:{
      if(response.error){
        alert(response.error)
      }else{
-       alert('Se agrego el articulo a ' + this.article_to_pack.doublei.articlepack.name)
+       alert('Se agrego el StayFile a ' + this.article_to_pack.doublei.articlepack.name)
        this.$router.go(0);//MAGIA//
      }
 /*

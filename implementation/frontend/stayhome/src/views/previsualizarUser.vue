@@ -8,9 +8,9 @@
   <v-row>
     <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
+    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> StayFiles </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <v-text class="estiloT" color="grey"> Artículo </v-text> 
+    <v-text class="estiloT" color="grey"> StayFile </v-text> 
   </v-row>
 
 <v-container></v-container>
@@ -243,9 +243,9 @@
    <v-row>
     <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
+    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> StayFiles </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <v-text class="estiloT" color="grey"> Artículo </v-text> 
+    <v-text class="estiloT" color="grey"> StayFile </v-text> 
   </v-row>
 
 <v-container></v-container>
@@ -491,9 +491,9 @@
 <v-row>
     <router-link  to="/myplaylists"> <v-text class="estiloT" color="blue"> {{currentUser.username}} </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> Artículos </v-text> </router-link>
+    <router-link  to="/buscar"> <v-text class="estiloT" color="blue"> StayFiles </v-text> </router-link>
     <v-icon >mdi-chevron-right</v-icon>
-    <v-text class="estiloT" color="grey"> Artículo </v-text> 
+    <v-text class="estiloT" color="grey"> StayFile </v-text> 
   </v-row>
 
 <v-container></v-container>
@@ -851,7 +851,7 @@ methods:{
     if(response.error){
        alert(response.error);
      }else{
-       alert('Se dio Like');
+       alert('Se dio Me gusta');
         this.$router.go(0);
        
    }
@@ -868,7 +868,7 @@ async addDisliketoArticle()
     if(response.error){
        alert(response.error);
      }else{
-       alert('Se dio Dislike');
+       alert('Se dio No me gusta');
        this.$router.go(0);
    }
 }
