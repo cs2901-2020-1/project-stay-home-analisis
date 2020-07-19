@@ -23,8 +23,8 @@ public interface ArticlesPorPackRepository extends JpaRepository<ArticlesPorPack
     List<ArticlesPorPack> findByDoubleiArticlepack(@Param("id") BigInteger id);
 
     @Modifying
-    @Query(value = "DELETE FROM app_articlesbypack WHERE app_articlesbypack.articlepack_id = ?1", nativeQuery = true)
-    void deleteArticlesPorPackByArticlepack_id(BigInteger articlepack_id);
+    @Query(value = "DELETE FROM app_articlesbypack WHERE app_articlesbypack.article_id = ?1", nativeQuery = true)
+    void deleteArticlesPorPackByArticlepack_id(BigInteger article_id);
 
 
 }

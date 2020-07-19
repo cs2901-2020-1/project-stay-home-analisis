@@ -26,7 +26,7 @@
     color=#FFC400
   >
     <v-img
-      :src="'https://stayhome-backend.herokuapp.com/downloadFile/'+ currentArticle.article_id"
+      v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" 
       height="600px"
     ></v-img>
 
@@ -41,8 +41,15 @@
       
       
       <v-text class="estiloD"> Subido por: {{currentArticle.user.username}} </v-text>
-      
-
+      <v-row>
+        <v-col>
+        <v-btn
+          dark
+          medium
+          @click="remover(currentArticle)"
+        >Remover</v-btn>
+        </v-col>
+      </v-row>
     </v-card-subtitle>
 
     <v-card-actions>
@@ -134,7 +141,15 @@
       
       
       <v-text class="estiloD"> Subido por: {{currentArticle.user.username}} </v-text>
-      
+      <v-row>
+        <v-col>
+        <v-btn
+          dark
+          medium
+          @click="remover(currentArticle)"
+        >Remover</v-btn>
+        </v-col>
+      </v-row>
 
     </v-card-subtitle>
 
@@ -226,7 +241,15 @@
       
       
       <v-text class="estiloD"> Subido por: {{currentArticle.user.username}} </v-text>
-      
+        <v-row>
+          <v-col>
+          <v-btn
+            dark
+            medium
+            @click="remover(currentArticle)"
+          >Remover</v-btn>
+          </v-col>
+        </v-row>
 
     </v-card-subtitle>
 
@@ -269,7 +292,6 @@
 <script>
 import { mapState } from 'vuex';
 
-import Api from "@/services/api";
 
 export default {
 
@@ -349,30 +371,20 @@ methods:{
   down(){
             this.$router.push("/download")
         },
+  async remover(currentArticle){
+    let response = confirm(`¿Estás seguro que deseas remover este StayFile? ${this.currentUser.username}`);
+    if(response){
+      let a = await this.$store.dispatch("deleteArticledelpack",currentArticle.article_id);
+      if(a.error){
+        alert(a.error);
+      }else{
+        alert("Se removio correctamente");
+            this.$router.push("/myplaylists");
+      }
 
-  async addArticletoPack(articlepack)
-   {
-     this.article_to_pack.doublei.article = this.currentArticle;
-     this.article_to_pack.doublei.articlepack = articlepack;
-     console.log(this.article_to_pack);
-     let response = await Api().post("/articlesporpack/",this.article_to_pack);
-     console.log(response)
-     if(response.error){
-       alert(response.error)
-     }else{
-       alert('Se agrego el StayFile a ' + this.article_to_pack.doublei.articlepack.name)
-       this.$router.go(0);//MAGIA//
-     }
-/*
-     let list_ids = [];
-     let articlepack_response = await Api().get(`/articlesporpack/${this.article_to_pack.doublei.articlepackid}`);
-     for(var i = 0; i < articlepack_response.data.length; i++){
-          list_ids[i] = articlepack_response.data[i].doublei.article_id;
-     }
-     console.log(list_ids);
-   
-*/
-   },     
+    }  
+
+  }
 
 }
 }

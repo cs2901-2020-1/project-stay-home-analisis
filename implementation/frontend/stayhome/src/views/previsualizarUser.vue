@@ -27,7 +27,7 @@
     color=#FFC400
   >
     <v-img
-      :src="'https://stayhome-backend.herokuapp.com/downloadFile/'+ currentArticle.article_id"
+       v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)"
       height="600px"
     ></v-img>
 
@@ -46,73 +46,62 @@
 
     </v-card-subtitle>
 
-      
-
-
-
     
 
     <v-card-actions>
       <v-col>
-        
         <v-row justify="center">
-
           <v-row>
-          <v-col>
-      <v-btn 
-        dark
-        v-bind="attrs"
-        v-on="on"
-        color="dark"
-        
-        small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
-        </v-btn>
-        </v-col>
-
-        <v-col>
- 
-        <v-btn 
-        fab
-        x-large
-        dark
-        @click="addLiketoArticle">
-
-        <v-icon color="blue" large>mdi-thumb-up</v-icon> <v-text>{{currentArticle.countlikes}}</v-text> </v-btn>
-          
-        </v-col>
-
-        </v-row>
-
-        <v-row>
-
-          <v-col>
-          <v-btn
-      dark
-      color="dark"
-      small
-      @click.stop="dialog = true"
-    >
-      Ver mis StayPacks
-    </v-btn>
-          </v-col>
-
-          <v-col>
-
-             <v-btn 
-        fab
-        x-large
-        dark
-        @click="addDisliketoArticle"> <v-icon color="red" large>mdi-thumb-down</v-icon>
-        
-        <v-text> {{currentArticle.countdislikes}} </v-text> </v-btn>
-        
-          </v-col>
-
-        </v-row>
-
-        
-      
-
+            <v-col>
+              <v-btn 
+                dark
+                v-bind="attrs"
+                v-on="on"
+                color="dark"
+                small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn 
+                fab
+                x-large
+                dark
+                @click="addLiketoArticle">
+               <v-icon color="blue" large>mdi-thumb-up</v-icon> <v-text>{{currentArticle.countlikes}}</v-text> </v-btn>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-btn
+                dark
+                color="dark"
+                small
+                @click.stop="dialog = true"
+              >
+                Ver mis StayPacks
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn 
+                fab
+                x-large
+                dark
+                @click="addDisliketoArticle"> <v-icon color="red" large>mdi-thumb-down</v-icon>
+                  <v-text> {{currentArticle.countdislikes}} </v-text> </v-btn>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-btn
+                dark
+                color="dark"
+                small
+                @click="eliminar(currentArticle)"
+              >
+                Eliminar
+              </v-btn>
+            </v-col>
+          </v-row>
       </v-row>
 
     <v-container></v-container>
@@ -356,7 +345,18 @@
           </v-col>
 
         </v-row>
-
+        <v-row>
+            <v-col>
+              <v-btn
+                dark
+                color="dark"
+                small
+                @click="eliminar(currentArticle)"
+              >
+                Eliminar
+              </v-btn>
+            </v-col>
+          </v-row>
         
       
 
@@ -597,7 +597,18 @@
           </v-col>
 
         </v-row>
-
+        <v-row>
+            <v-col>
+              <v-btn
+                dark
+                color="dark"
+                small
+                @click="eliminar(currentArticle)"
+              >
+                Eliminar
+              </v-btn>
+            </v-col>
+          </v-row>
         
       
 
@@ -820,19 +831,19 @@ methods:{
      if(response.error){
        alert(response.error)
      }else{
-       alert('Se agrego el articulo a ' + this.article_to_pack.doublei.articlepack.name)
+       alert('Se agrego el StayFile a ' + this.article_to_pack.doublei.articlepack.name)
        this.$router.go(0);//MAGIA//
      }
 
    },
    async eliminar(currentArticle){
-      let response = confirm(`¿Estás seguro que deseas eliminar este paquete de articulo? ${this.currentUser.username}`);
+      let response = confirm(`¿Estás seguro que deseas eliminar este StayFile? ${this.currentUser.username}`);
         if(response){
           let rpta = await this.$store.dispatch('deleteArticle',currentArticle);
             if(rpta.error){
                 alert(rpta.error);
             }else{
-                alert("Se ha eliminado correctamente el articulo");
+                alert("Se ha eliminado correctamente el StayFile");
                 this.$router.push("/buscar");
             }
         }

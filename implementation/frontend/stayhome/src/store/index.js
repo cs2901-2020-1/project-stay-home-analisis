@@ -80,7 +80,12 @@ export default new Vuex.Store({
     {
       let reaccionesarticle = state.reaccionesporarticle.concat(reaccion);
       state.reaccionesporarticle = reaccionesarticle;
-    }
+    },
+    DELETE_ARTICLES_POR_TUPAC(state,aid){
+      let a = state.articles_por_tupac.filter(a => a.article_id != aid)
+      this.state.articles_por_tupac = a;
+      console.log(this.state.articles_por_tupac);
+    },
 
   },
   actions: {
@@ -285,7 +290,21 @@ export default new Vuex.Store({
          {
           return {error: "Hubo un error al calificar el artículo"}
          }
-        }
+        },
+
+        async deleteArticledelpack({commit},id){
+          try{
+            let response = await Api().delete(`/articlesporpack/${id}`);
+            if(response.status==200 || response.status==204)
+            {
+              commit('DELETE_ARTICLES_POR_TUPAC',id);
+            }
+            return response;
+          }
+          catch{
+            return {error: "Hubo un error al quitar el StayFile, intenta denuevo"}
+          }
+        },
 
   
   },

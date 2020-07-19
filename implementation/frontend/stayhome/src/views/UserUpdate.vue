@@ -170,11 +170,7 @@
                 <v-card-text>
                      <v-row justify="center">
                       <div class="display-4">
-<<<<<<< HEAD
-                        <v-avatar tile color="deep-orange">
-=======
                         <v-avatar tile color=#01579B>
->>>>>>> 840fa91976158bf6dcbe8e53a74f2cc54cacc0d0
                           <v-icon x-large color=#FFFFFF>mdi-lock</v-icon>
                         </v-avatar>
                       </div>

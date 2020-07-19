@@ -241,15 +241,12 @@ export default {
     },
     methods: {
       async addarticle(){
-<<<<<<< HEAD
         console.log( this.currentUser.contador_articlepack);
         let a =  this.currentUser.contador_articlepack + 1;
         this.currentUser.contador_articlepack = a;
         console.log( this.currentUser.contador_articlepack);
         let rpta = await this.$store.dispatch('updateUser',this.currentUser);
         console.log(rpta);
-=======
->>>>>>> 840fa91976158bf6dcbe8e53a74f2cc54cacc0d0
         this.playlist.user = this.currentUser;
         console.log(this.playlist);
         let reponse_articlepack = await this.$store.dispatch('addArticlepack',this.playlist);
@@ -261,7 +258,6 @@ export default {
         }
       },
       async eliminarArticlepack(articlepack){
-<<<<<<< HEAD
         let response = confirm(`${this.currentUser.username} ¿Estás seguro que deseas eliminar ${articlepack.name}?`);
         if(response){
 
@@ -278,21 +274,10 @@ export default {
           if(rpta.error){
               alert(rpta.error);
             }else{
-              alert("Se ha eliminado correctamente el paquete de articulos");
+              alert("Se ha eliminado correctamente el StayPack");
               this.$router.go(0);//MAGIA//
             }
         }
-=======
-        let id = articlepack.articlepack_id;
-        console.log(id);
-        let rpta = await this.$store.dispatch('deleteArticlepack',id);
-        if(rpta.error){
-            alert(rpta.error);
-          }else{
-            alert("Se ha eliminado correctamente el StayPack");
-            this.$router.push("/myplaylists");
-          }
->>>>>>> 840fa91976158bf6dcbe8e53a74f2cc54cacc0d0
       }
     }
 }

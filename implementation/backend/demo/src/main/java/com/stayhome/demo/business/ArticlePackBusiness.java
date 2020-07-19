@@ -63,10 +63,5 @@ public class ArticlePackBusiness {
         repository.deleteById(articlepack_id);
     }
 
-    public String Fav(String name, BigInteger id){
-        return repository.FindFavorite(name,id);
-    }
-
-
 
 }
