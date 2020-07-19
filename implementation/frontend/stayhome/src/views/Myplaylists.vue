@@ -43,7 +43,7 @@
               </v-btn>
             </template>
 
-            <v-card v-model="valid">
+            <v-card v-model="valid" class="estiloinCard">
             
             <v-container/>
             <v-container/>
@@ -86,7 +86,7 @@
                 <v-btn
                   dark
                   color="dark"
-                  
+                  small
                   @click="addarticle"
                   :disabled="!valid"
                 >
@@ -128,6 +128,7 @@
          <v-slide-item >
         
         <v-col >
+          
            <v-card  class="estiloinCardin"
                      height="450"
                     width="400"
@@ -203,15 +204,11 @@
 
 <script>
 import { mapState } from 'vuex';
-
-
 export default {
-
    data () {
       return {
         dialog: false,
         valid: false,
-
         nombreRules: [
             v => !!v || 'Nombre requirido',
             v => (v && v.length <= 20) || 'El nombre tiene que tener menos de 20 caracteres',
@@ -230,27 +227,20 @@ export default {
    },
       
  computed: {
-
         ...mapState(['currentUser']),
         ...mapState(['articles']),
         ...mapState(['users']),
         ...mapState(['articlepacks']),
-
       
     },
-
     mounted(){
-
     this.$store.dispatch("loadAll");
     this.$store.dispatch("loadAllArticles");
     this.$store.dispatch("loadAllArticlepacks");
-
    
     },
-
     methods: {
       async addarticle(){
-
         this.playlist.user = this.currentUser;
         console.log(this.playlist);
         let reponse_articlepack = await this.$store.dispatch('addArticlepack',this.playlist);
@@ -261,7 +251,6 @@ export default {
             this.$router.go(0);//MAGIA//
         }
       },
-
       async eliminarArticlepack(articlepack){
         let id = articlepack.articlepack_id;
         console.log(id);
@@ -273,20 +262,14 @@ export default {
             this.$router.push("/myplaylists");
           }
       }
-
     }
 }
-
-
-
 </script>
 
 <style scoped>
-
 .estilo {
         font-size:40px;
     }
-
 .estiloP {
         font-size: 15px;
         font-family: "Lucida Console", Courier, monospace;
@@ -295,32 +278,17 @@ export default {
    font-size: 25px;
  }   
  .estiloC{
-
         background-color: #00897B;
-
  }  
-
 .estiloSubCard{
-
     border-radius: 20px;
-
   } 
  .estiloinCard{
-
     border-radius: 30px;
     
-
-
   } 
-
   .estiloinCardin{
-
     border-radius: 15px;
     
-
-
   } 
-
-
-
 </style>

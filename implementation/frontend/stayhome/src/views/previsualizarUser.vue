@@ -462,6 +462,7 @@
       </v-row>
       </v-col>
     </v-card-actions>
+    
 
     <v-expand-transition>
       <div v-show="show">

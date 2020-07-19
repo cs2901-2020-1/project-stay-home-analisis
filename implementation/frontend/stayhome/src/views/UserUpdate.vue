@@ -62,7 +62,7 @@
 
                   <v-row justify="center">
                       <div class="display-4">
-                        <v-avatar tile color="deep-orange">
+                        <v-avatar tile color=#01579B>
                           <v-icon x-large color=#FFFFFF>> mdi-account-outline</v-icon>
                         </v-avatar>
                       </div>
@@ -78,8 +78,8 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="green darken-1" text @click="dialog1 = false">Cerrar</v-btn>
-                  <v-btn color="green darken-1" text @click="userUpdate"  >Guardar cambios</v-btn>
+                  <v-btn color=#01579B text @click="dialog1 = false">Cerrar</v-btn>
+                  <v-btn color=#01579B text @click="userUpdate"  >Guardar cambios</v-btn>
                 </v-card-actions>
               </v-card>
           </v-dialog>
@@ -117,7 +117,7 @@
                   
                     <v-row justify="center">
                       <div class="display-4">
-                        <v-avatar tile color="deep-orange">
+                        <v-avatar tile color=#01579B>
                           <v-icon x-large color=#FFFFFF>mdi-email</v-icon>
                         </v-avatar>
                       </div>
@@ -131,8 +131,8 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="green darken-1" text @click="dialog2 = false">Cerrar</v-btn>
-                  <v-btn color="green darken-1" text @click="userUpdate" >Guardar cambios</v-btn>
+                  <v-btn color=#01579B text @click="dialog2 = false">Cerrar</v-btn>
+                  <v-btn color=#01579B text @click="userUpdate" >Guardar cambios</v-btn>
                 </v-card-actions>
               </v-card>
           </v-dialog>
@@ -170,7 +170,7 @@
                 <v-card-text>
                      <v-row justify="center">
                       <div class="display-4">
-                        <v-avatar tile color="orange">
+                        <v-avatar tile color=#01579B>
                           <v-icon x-large color=#FFFFFF>mdi-lock</v-icon>
                         </v-avatar>
                       </div>
@@ -185,8 +185,8 @@
                 </v-card-text>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn color="green darken-1" text @click="dialog3 = false">Cerrar</v-btn>
-                  <v-btn color="green darken-1" text @click="userUpdate" >Guardar cambios</v-btn>
+                  <v-btn color=#01579B text @click="dialog3 = false">Cerrar</v-btn>
+                  <v-btn color=#01579B text @click="userUpdate" >Guardar cambios</v-btn>
                 </v-card-actions>
               </v-card>
           </v-dialog>
@@ -367,6 +367,7 @@ export default {
   } 
 .estiloB{
     border-radius: 30px;
+    background-color: #E0E0E0;
 }
 
 </style>

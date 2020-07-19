@@ -471,6 +471,7 @@ import {mapState} from 'vuex';
  .estiloSubCard{
 
     border-radius: 20px;
+    background-color: #E0E0E0;
 
   } 
 

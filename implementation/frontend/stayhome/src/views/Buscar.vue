@@ -13,23 +13,25 @@
   <v-container/>
 
 
-  <v-row>
-    <v-col justify="center">
+  <v-row justify="center">
 
-
-
-      <v-card class ="estiloSubCard " id="lateral"  color=#FF5722>
+      <v-card class ="estiloSubCard " color=#F44336
+      
+      height="450" width="800"
+      
+      >
         <v-toolbar
           dark
           tabs
           flat
-          color=#FF5722
+          color=#F44336
         > 
         <v-spacer/>
 
         <v-text class="estiloT" color="grey"> Matemática </v-text> 
           
           <v-spacer></v-spacer>
+
           <template v-slot:extension>
        
             <v-tabs
@@ -39,7 +41,8 @@
               <v-tab href="#one"> Álgebra </v-tab>
               <v-tab href="#two"> Geometría </v-tab>
               <v-tab href="#three"> Ecuaciones </v-tab>
-              <v-tabs-slider color="green"></v-tabs-slider>
+
+              <v-tabs-slider color=#01579B></v-tabs-slider>
             </v-tabs>
 
           </template>
@@ -48,6 +51,7 @@
         <v-card-text >
 
           <v-tabs-items v-model="tabs" color=#FF5722>
+            
             <v-tab-item
               v-for="content in ['one', 'two', 'three']"
               :key="content"
@@ -78,7 +82,7 @@
                               class="estiloinCard"
                               height="180"
                               width="300"
-                              color=#CFD8DC
+                              color=#F44336
                             >
           <v-row
             class="fill-height"
@@ -87,7 +91,7 @@
           >
          <v-container/>
           <v-text class="estiloTa"  align="center"
-            justify="center"> {{article.title}} </v-text>
+            justify="center">  {{article.title}} </v-text>
 
           <v-container/>
             <v-btn 
@@ -138,7 +142,7 @@
                               class="estiloinCard"
                               height="180"
                               width="300"
-                              color=#CFD8DC
+                              color=#F44336
                             >
           <v-row
             class="fill-height"
@@ -199,7 +203,7 @@
                               class="estiloinCard"
                               height="180"
                               width="300"
-                              color=#CFD8DC
+                              color=#F44336
                             >
           <v-row
             class="fill-height"
@@ -241,7 +245,6 @@
   </v-card>
   
 
-  </v-col>
 </v-row>
 
 
@@ -251,17 +254,15 @@
   
 
 
-<v-row>
-<v-col justify="center">
+<v-row justify="center">
 
-
-
-      <v-card class ="estiloSubCard " id="lateral"  color=#FF5722>
+      <v-card class ="estiloSubCard "  color=#01579B
+      height="450" width="800">
         <v-toolbar
           dark
           tabs
           flat
-          color=#FF5722
+          color=#01579B
         > 
         <v-spacer/>
 
@@ -277,7 +278,7 @@
               <v-tab href="#oneF"> Magnetismo </v-tab>
               <v-tab href="#twoF"> Cinemática </v-tab>
               <v-tab href="#threeF"> Dinámica </v-tab>
-              <v-tabs-slider color="green"></v-tabs-slider>
+              <v-tabs-slider color="#F44336"></v-tabs-slider>
             </v-tabs>
 
           </template>
@@ -317,7 +318,7 @@
                               class="estiloinCard"
                               height="180"
                               width="300"
-                              color=#CFD8DC
+                              color=#01579B
                             >
           <v-row
             class="fill-height"
@@ -377,7 +378,7 @@
                               class="estiloinCard"
                               height="180"
                               width="300"
-                              color=#CFD8DC
+                              color=#01579B
                             >
           <v-row
             class="fill-height"
@@ -436,7 +437,7 @@
                               class="estiloinCard"
                               height="180"
                               width="300"
-                              color=#CFD8DC
+                              color=#01579B
                             >
           <v-row
             class="fill-height"
@@ -476,24 +477,25 @@
     
   </v-card>
 
-  </v-col>
 </v-row>
 
 <v-container/>
 <v-container/>
 
 
-<v-row>
-<v-col justify="center">
+<v-row justify="center">
 
 
+      <v-card class ="estiloSubCard " id="lateral"  color=#FFC400
+      height="450" width="800"
 
-      <v-card class ="estiloSubCard " id="lateral"  color=#FF5722>
+      
+      >
         <v-toolbar
           dark
           tabs
           flat
-          color=#FF5722
+          color=#FFC400
         > 
         <v-spacer/>
 
@@ -506,9 +508,9 @@
               v-model="tabsQ"
               align-with-title
             >
-              <v-tab href="#one"> Química básica </v-tab>
-              <v-tab href="#two"> Química orgánica </v-tab>
-              <v-tabs-slider color="green"></v-tabs-slider>
+              <v-tab href="#oneQ"> Química básica </v-tab>
+              <v-tab href="#twoQ"> Química orgánica </v-tab>
+              <v-tabs-slider color=#01579B></v-tabs-slider>
             </v-tabs>
 
           </template>
@@ -549,7 +551,7 @@
                               class="estiloinCard"
                               height="180"
                               width="300"
-                              color=#CFD8DC
+                              color=#FFC400
                             >
           <v-row
             class="fill-height"
@@ -573,6 +575,12 @@
         </v-card>
         
         </v-col>
+
+
+
+
+
+
           </div>
           </div>
           </div>
@@ -596,6 +604,7 @@
       show-arrows
     >
       <v-slide-item
+
        v-for="article in articles" 
           :key="article.article_id"
       >
@@ -646,7 +655,6 @@
     
   </v-card>
 
-  </v-col>
 </v-row>
 
 

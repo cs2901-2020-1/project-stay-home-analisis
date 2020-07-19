@@ -25,45 +25,46 @@
             dark
           >{{currentUser.username}}</v-btn>
         </template>
-        <v-list>
+        <v-list dark>
           <v-list-item
             @click="inicio"
             v-if="currentUser.admin==false"
           >
-            <v-list-item-title>Inicio</v-list-item-title>
+            <v-list-item-title> <v-icon> mdi-account-circle    </v-icon> Inicio   </v-list-item-title>
           </v-list-item>
            <v-list-item
             @click="buscar"
             v-if="currentUser.admin==true"
           >
-            <v-list-item-title>Solicitudes</v-list-item-title>
+            <v-list-item-title> <v-icon>mdi-account-alert</v-icon>Solicitudes</v-list-item-title>
           </v-list-item>
 
           <v-list-item
             @click="admin"
             v-if="currentUser.admin == false"
+            
           >
-            <v-list-item-title> Administrar Perfil </v-list-item-title>
+            <v-list-item-title><v-icon > mdi-account-settings </v-icon> Administrar Perfil </v-list-item-title>
           </v-list-item>
 
           <v-list-item
             @click="upload"
             v-if="currentUser.admin == false"
           >
-          <v-list-item-title>Subir Artículos</v-list-item-title>
+          <v-list-item-title><v-icon>mdi-folder-upload </v-icon>Subir StayFiles</v-list-item-title>
            </v-list-item>
 
            <v-list-item
             @click="buscar"
             v-if="currentUser.admin == false"
           >
-          <v-list-item-title>Buscar Artículos</v-list-item-title>
+          <v-list-item-title> <v-icon>mdi-file-search </v-icon>Buscar StayFiles</v-list-item-title>
            </v-list-item>
 
            <v-list-item
             @click="logoutUser"
           >
-          <v-list-item-title>Cerrar Sesión</v-list-item-title>
+          <v-list-item-title> <v-icon>mdi-exit-to-app</v-icon>Cerrar Sesión</v-list-item-title>
            </v-list-item>
 
         </v-list>
