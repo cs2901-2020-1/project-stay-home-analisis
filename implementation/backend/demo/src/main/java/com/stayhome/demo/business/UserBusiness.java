@@ -1,6 +1,7 @@
 package com.stayhome.demo.business;
 
 import com.stayhome.demo.data.User;
+import com.stayhome.demo.data.Article;
 import com.stayhome.demo.repositories.UserRepository;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,12 @@ public class UserBusiness {
          * Eliminar playlist con user_id
          * Eliminar tabla likes_by_article
          * **/
+        repository.deleteLikes_by_user(user_id);//Eliminar  likes_by_article
+        for(BigInteger i : repository.allArticles_by_user(user_id)){
+            repository.deleteArticlebypack_by_user(i);//Eliminar ese articulo de article_pack
+        }
+        repository.deleteArticlepack_by_user(user_id);//Eliminar playlist con user_id
+        repository.delete_article_by_user_id(user_id);//Eliminar articulo con usuario
         repository.deleteById(user_id);
     }
 }

@@ -18,9 +18,6 @@ import java.math.BigInteger;
 public interface ArticlePackRepository extends JpaRepository<ArticlePack, BigInteger> {
 
     @Transactional
-    @Query(value = "SELECT app_article_pack.name FROM app_article_pack WHERE app_article_pack.name = :id AND app_article_pack.user_id = :user_id ", nativeQuery = true)
-    String FindFavorite(@Param("id") String id, @Param("user_id") BigInteger user_id);
-
     @Query(value = "SELECT COUNT(app_articlesbypack.article_id) FROM app_articlesbypack WHERE app_articlesbypack.articlepack_id = :id", nativeQuery = true)
     BigInteger Contador(@Param("id") BigInteger articlepack_id);
 

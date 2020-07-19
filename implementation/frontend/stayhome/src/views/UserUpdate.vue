@@ -291,7 +291,7 @@ export default {
         if(response)
         {
           let response = await this.$store.dispatch('deleteUser',this.currentUser);
-          setTimeout(() => {
+          //setTimeout(() => {
           if(response.error){
             alert(response.error);
             this.loading=false;
@@ -299,7 +299,7 @@ export default {
             alert("Se ha eliminado correctamente el usuario");
             this.loading=false;
             this.$router.push("/");
-          }},1000);
+          }//},1000);
 
         }
          this.loading = false;
