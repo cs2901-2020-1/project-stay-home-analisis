@@ -516,7 +516,6 @@
           color=#FFC400
         >
 
-
 <pdf :src="currentArticle.link" width="900" height="780" style="border: none;"></pdf>
 
 
