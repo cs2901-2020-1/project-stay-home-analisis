@@ -27,7 +27,7 @@
     max-width="1000"  
   >
     <v-img
-      v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)"
+      :src="currentArticle.link"
       height="600px"
     ></v-img>
 
@@ -120,8 +120,8 @@
     controls
      widht="440" 
      height="540" 
+    :src="currentArticle.link" type="video/mp4"
     >
-    <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" type="video/mp4" />
   </video>
 
     <v-container/>
@@ -223,7 +223,7 @@
 
 <v-container justify="center" >
   <v-col>
-   <iframe src="http://www.colvema.org/pdf/consejos/origenperrogato.pdf" width="900" height="780" style="border: none;"></iframe>
+   <pdf :src="currentArticle.link" width="900" height="780" style="border: none;"></pdf>
 
 </v-col>
 <v-container></v-container>
@@ -288,13 +288,16 @@
 
 
 <script>
+import pdf from 'vue-pdf'
 import { mapState } from 'vuex';
 
 
 
 export default {
 
- 
+ components: {
+    pdf
+  },
     
     data: () => ({
       show: false,

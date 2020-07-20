@@ -27,7 +27,7 @@
     color=#FFC400
   >
     <v-img
-       v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)"
+      :src="currentArticle.link"
       height="600px"
     ></v-img>
 
@@ -58,7 +58,7 @@
                 v-bind="attrs"
                 v-on="on"
                 color="dark"
-                small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
+                small :href="currentArticle.link">Descargar
               </v-btn>
             </v-col>
             <v-col>
@@ -262,8 +262,9 @@
           controls
           widht="340" 
           height="340" 
+          :src="currentArticle.link" type="video/mp4"
           >
-          <source v-bind:src="require(`../../../../backend/demo/src/main/resources/Files/${currentArticle.nombre}`)" type="video/mp4" />
+          
         </video>
 
 
@@ -301,7 +302,7 @@
         v-on="on"
         color="dark"
         
-        small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
+        small :href="currentArticle.link">Descargar
         </v-btn>
         </v-col>
 
@@ -516,7 +517,7 @@
         >
 
 
-<iframe src="http://www.colvema.org/pdf/consejos/origenperrogato.pdf" width="900" height="780" style="border: none;"></iframe>
+<pdf :src="currentArticle.link" width="900" height="780" style="border: none;"></pdf>
 
 
     <v-card-title>
@@ -553,7 +554,7 @@
         v-on="on"
         color="dark"
         
-        small :href="'http://localhost:9898/downloadFile/'+ currentArticle.article_id">Descargar
+        small :href="currentArticle.link">Descargar
         </v-btn>
         </v-col>
 
@@ -740,10 +741,13 @@
 import { mapState } from 'vuex';
 
 import Api from "@/services/api";
+import pdf from 'vue-pdf'
 
 export default {
 
-  
+    components: {
+    pdf
+  },
     
     data () {
       return {
@@ -831,7 +835,7 @@ methods:{
      if(response.error){
        alert(response.error)
      }else{
-       alert('Se agrego el StayFile a ' + this.article_to_pack.doublei.articlepack.name)
+       alert('Se agregó el StayFile a ' + this.article_to_pack.doublei.articlepack.name)
        this.$router.go(0);//MAGIA//
      }
 

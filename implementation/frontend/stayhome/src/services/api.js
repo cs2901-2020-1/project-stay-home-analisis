@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export default () => {
     return axios.create({
-        baseURL: 'http://localhost:9898',
+        baseURL: 'https://stayhome-backend.herokuapp.com',
         withCredentials : false
      })
 };
