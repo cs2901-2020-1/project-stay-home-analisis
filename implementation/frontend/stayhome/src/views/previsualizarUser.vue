@@ -761,8 +761,8 @@ export default {
 
           reaccion_to_article:{
             dbi: {
-              articleid: ' ',
-              userid: ' ',
+              articleid: [],
+              userid: [],
             },
             lik: ' '
           },
@@ -853,8 +853,8 @@ methods:{
    async addLiketoArticle()
    {
 
-    this.reaccion_to_article.dbi.articleid = this.currentArticle.article_id;
-    this.reaccion_to_article.dbi.userid = this.currentUser.user_id;
+    this.reaccion_to_article.dbi.articleid = this.currentArticle;
+    this.reaccion_to_article.dbi.userid = this.currentUser;
     this.reaccion_to_article.lik = true;
     console.log(this.reaccion_to_article);
     let response = await this.$store.dispatch('addReaccionToArticle',this.reaccion_to_article);
@@ -870,8 +870,8 @@ methods:{
 },
 async addDisliketoArticle()
    {
-    this.reaccion_to_article.dbi.articleid = this.currentArticle.article_id;
-    this.reaccion_to_article.dbi.userid = this.currentUser.user_id;
+    this.reaccion_to_article.dbi.articleid = this.currentArticle;
+    this.reaccion_to_article.dbi.userid = this.currentUser;
     this.reaccion_to_article.lik = false;
     console.log(this.reaccion_to_article);
     let response = await this.$store.dispatch('addReaccionToArticle',this.reaccion_to_article);

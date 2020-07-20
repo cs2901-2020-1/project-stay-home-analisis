@@ -19,12 +19,12 @@ public interface LikesPorArticleRepository extends JpaRepository<LikesPorArticle
 
     @Transactional
 
-    @Query(value="SELECT * FROM app_likesbyarticle WHERE articleid = :asid AND userid = :usid",nativeQuery = true)
+    @Query(value="SELECT * FROM app_likesbyarticle WHERE article_id = :asid AND user_id = :usid",nativeQuery = true)
     LikesPorArticle findbykey(@Param("asid") BigInteger asid, @Param("usid")BigInteger usid);
 
 
     @Modifying
-    @Query(value = "DELETE FROM app_likesbyarticle WHERE articleid = :asid AND userid= :usid", nativeQuery = true)
+    @Query(value = "DELETE FROM app_likesbyarticle WHERE article_id = :asid AND user_id= :usid", nativeQuery = true)
     void deletebykey(@Param("asid")BigInteger asid, @Param("usid")BigInteger usid);
 
 

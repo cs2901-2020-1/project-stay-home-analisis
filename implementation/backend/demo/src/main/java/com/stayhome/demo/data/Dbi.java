@@ -1,46 +1,45 @@
 package com.stayhome.demo.data;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
-import javax.validation.constraints.NotNull;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
-import java.math.BigInteger;
 
 @Embeddable
 public class    Dbi implements Serializable {
 
-    @Column
-    @NotNull
-    private BigInteger articleid;
+    @ManyToOne
+    @JoinColumn(name = "article_id", nullable = false)
+    private Article articleid;
 
-
-    @Column
-    @NotNull
-    private BigInteger userid;
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User userid;
 
 
     public Dbi(){
 
     }
 
-    public Dbi(BigInteger articleid, BigInteger userid) {
+    public Dbi(Article articleid, User userid) {
         this.articleid=articleid;
         this.userid=userid;
     }
 
-    public BigInteger getArticleid() {
+
+    public Article getArticleid() {
         return articleid;
     }
 
-    public void setArticleid(BigInteger articleid) {
+    public void setArticleid(Article articleid) {
         this.articleid = articleid;
     }
 
-    public BigInteger getUserid() {
+    public User getUserid() {
         return userid;
     }
 
-    public void setUserid(BigInteger userid) {
+    public void setUserid(User userid) {
         this.userid = userid;
     }
 

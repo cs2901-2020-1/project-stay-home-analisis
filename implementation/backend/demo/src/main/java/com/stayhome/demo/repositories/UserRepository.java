@@ -1,6 +1,5 @@
 package com.stayhome.demo.repositories;
 
-import com.stayhome.demo.data.Article;
 import com.stayhome.demo.data.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -24,7 +23,7 @@ public interface UserRepository extends JpaRepository<User, BigInteger> {
     void delete_article_by_user_id(BigInteger user_id);
 
     @Modifying
-    @Query(value = "DELETE FROM app_likesbyarticle WHERE app_likesbyarticle.userid = :userid", nativeQuery = true)
+    @Query(value = "DELETE FROM app_likesbyarticle WHERE app_likesbyarticle.user_id = :userid", nativeQuery = true)
     void deleteLikes_by_user(@Param("userid")BigInteger userid);
 
     @Query(value = "SELECT app_article.article_id FROM app_article WHERE app_article.user_id = :userid", nativeQuery = true)

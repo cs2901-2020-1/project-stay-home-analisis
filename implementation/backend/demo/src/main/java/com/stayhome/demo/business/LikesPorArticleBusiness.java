@@ -22,10 +22,10 @@ public class LikesPorArticleBusiness {
 
     public LikesPorArticle create(@NotNull LikesPorArticle newLike)
     {
-        LikesPorArticle react = repository.findbykey(newLike.getDbi().getArticleid(),newLike.getDbi().getUserid());
+        LikesPorArticle react = repository.findbykey(newLike.getDbi().getArticleid().getArticle_id(),newLike.getDbi().getUserid().getUser_id());
         if(react!=null) {
             if (newLike.getLik() == react.getLik()) {
-                repository.deletebykey(react.getDbi().getArticleid(), react.getDbi().getUserid());
+                repository.deletebykey(react.getDbi().getArticleid().getArticle_id(), react.getDbi().getUserid().getUser_id());
                 return newLike;
             }
         }
