@@ -518,7 +518,6 @@
 
 <pdf :src="currentArticle.link" width="900" height="780" style="border: none;"></pdf>
 
-
     <v-card-title>
       <v-text class="estiloD"> Tema: {{currentArticle.tema}} </v-text>
     </v-card-title>
