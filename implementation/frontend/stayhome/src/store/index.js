@@ -95,8 +95,10 @@ export default new Vuex.Store({
       commit('SET_USERS', response.data);
       console.log(response.data);
 
-      let user = JSON.parse(window.localStorage.currentUser);
-      commit('SET_CURRENT_USER', user);
+      if(window.localStorage.currentUser){
+        let user = JSON.parse(window.localStorage.currentUser);
+        commit('SET_CURRENT_USER', user);
+      }
 
       return response;
 
