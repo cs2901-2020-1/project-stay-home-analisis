@@ -275,6 +275,7 @@ export default {
         {
           this.editInfo.password = this.currentUser.password;
           this.editInfo.email = this.currentUser.email;
+          this.contador_articlepack = this.currentUser.contador_articlepack;
         }
 
         this.editInfo.user_id = this.currentUser.user_id;
