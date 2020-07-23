@@ -234,7 +234,7 @@ export default {
         email: '',
         password: '',
         admin: false,
-        contador_articlepack
+        contador_articlepack:''
        },
        emailRules: [
         v => !!v || 'Correo requerido',

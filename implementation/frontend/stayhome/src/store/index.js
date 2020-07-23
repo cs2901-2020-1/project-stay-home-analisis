@@ -20,10 +20,12 @@ export default new Vuex.Store({
     LOGOUT_USER(state){
       state.currentUser = {};
       window.localStorage.currentUser = JSON.stringify({});
+      window.localStorage.clear();
     },
     SET_CURRENT_USER(state,user){
       state.currentUser = user;
       window.localStorage.currentUser = JSON.stringify(user);
+    
     },
     UPDATE_USER(state,user){
       let u = state.users.find(u => u.user_id == user.user_id)
