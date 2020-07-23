@@ -233,7 +233,8 @@ export default {
         username: '',
         email: '',
         password: '',
-        admin: false
+        admin: false,
+        contador_articlepack
        },
        emailRules: [
         v => !!v || 'Correo requerido',
@@ -262,11 +263,13 @@ export default {
         {
           this.editInfo.username = this.currentUser.username;
           this.editInfo.email = this.currentUser.email;
+          this.contador_articlepack = this.currentUser.contador_articlepack;
         }
         else if(this.editInfo.email!=='')
         {
           this.editInfo.username = this.currentUser.username;
           this.editInfo.password = this.currentUser.password;
+          this.contador_articlepack = this.currentUser.contador_articlepack;
         }
         else
         {
