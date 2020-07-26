@@ -234,7 +234,7 @@ export default {
         email: '',
         password: '',
         admin: false,
-        contador_articlepack:''
+        contador_articlepack: ''
        },
        emailRules: [
         v => !!v || 'Correo requerido',
@@ -263,19 +263,19 @@ export default {
         {
           this.editInfo.username = this.currentUser.username;
           this.editInfo.email = this.currentUser.email;
-          this.contador_articlepack = this.currentUser.contador_articlepack;
+          this.editInfo.contador_articlepack = this.currentUser.contador_articlepack;
         }
         else if(this.editInfo.email!=='')
         {
           this.editInfo.username = this.currentUser.username;
           this.editInfo.password = this.currentUser.password;
-          this.contador_articlepack = this.currentUser.contador_articlepack;
+          this.editInfo.contador_articlepack = this.currentUser.contador_articlepack;
         }
         else
         {
           this.editInfo.password = this.currentUser.password;
           this.editInfo.email = this.currentUser.email;
-          this.contador_articlepack = this.currentUser.contador_articlepack;
+          this.editInfo.contador_articlepack = this.currentUser.contador_articlepack;
         }
 
         this.editInfo.user_id = this.currentUser.user_id;

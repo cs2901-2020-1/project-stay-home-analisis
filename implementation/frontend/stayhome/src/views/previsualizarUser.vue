@@ -864,7 +864,7 @@ methods:{
        alert(response.error);
      }else{
        alert('Se dio Me gusta');
-        this.$router.go(0);
+        //this.$router.go(0);
        
    }
 
@@ -881,7 +881,7 @@ async addDisliketoArticle()
        alert(response.error);
      }else{
        alert('Se dio No me gusta');
-       this.$router.go(0);
+       //this.$router.go(0);
    }
 }
 
